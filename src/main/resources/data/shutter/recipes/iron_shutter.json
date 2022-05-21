@@ -1,0 +1,19 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "#_#",
+        "#_#"
+    ],
+    "key": {
+        "_": {
+            "item": "minecraft:iron_nugget"
+        },
+        "#": {
+        	"item": "minecraft:iron_ingot"
+        }
+    },
+    "result": {
+        "item": "shutter:iron_shutter",
+        "count": 1
+    }
+}

@@ -1,0 +1,13 @@
+{
+	"block.shutter.oak_shutter": "Oak Shutter",
+	"block.shutter.acacia_shutter": "Acacia Shutter",
+	"block.shutter.birch_shutter": "Birch Shutter",
+	"block.shutter.crimson_shutter": "Crimson Shutter",
+	"block.shutter.dark_oak_shutter": "Dark Oak Shutter",
+	"block.shutter.iron_shutter": "Iron Shutter",
+	"block.shutter.jungle_shutter": "Jungle Shutter",
+	"block.shutter.spruce_shutter": "Spruce Shutter",
+	"block.shutter.warped_shutter": "Warped Shutter",
+	
+	"itemGroup.shutter_tab":"Shutters"
+}
