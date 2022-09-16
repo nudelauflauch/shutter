@@ -3,6 +3,7 @@ package net.stehschnitzel.shutter;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.stehschnitzel.shutter.init.Init;
 
 public class ShutterTab extends CreativeModeTab {
 

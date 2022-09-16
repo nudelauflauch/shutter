@@ -9,5 +9,9 @@
 	"block.shutter.spruce_shutter": "Spruce Shutter",
 	"block.shutter.warped_shutter": "Warped Shutter",
 	
-	"itemGroup.shutter_tab":"Shutters"
+	"itemGroup.shutter_tab":"Shutters",
+	
+	"sounds.shutter.shutter_open_half": "Shutter Open Half",
+	"sounds.shutter.shutter_open_full": "Shutter Open Full",
+	"sounds.shutter.shutter_close": "Shutter Close"
 }
