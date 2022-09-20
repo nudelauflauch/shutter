@@ -174,17 +174,15 @@ public class Shutter extends Block {
 	}
 
 	private void playSound(Level level, BlockPos pos) {
-		System.out.println(level.isClientSide);
-		level.playLocalSound((double) (pos.getX()), (double) (pos.getX()),
-				(double) (pos.getX()), getSound(level, pos).get(),
-				SoundSource.BLOCKS, 100f, 100f, false);
+		level.playSound(null, pos, this.getSound(level, pos).get(),
+				SoundSource.BLOCKS, 100F, 100F);
 	}
 
 	private RegistryObject<SoundEvent> getSound(Level level, BlockPos pos) {
-		int state = level.getBlockState(pos).getValue(OPEN);
-		return state == 0
+		int open = level.getBlockState(pos).getValue(OPEN);
+		return open == 0
 				? SoundInit.SHUTTER_OPEN_HALF
-				: state == 1 && this.canUpdate()
+				: open == 1 && this.canUpdate()
 						? SoundInit.SHUTTER_OPEN_FULL
 						: SoundInit.SHUTTER_CLOSE;
 	}
@@ -199,20 +197,22 @@ public class Shutter extends Block {
 				pLevel.getBlockState(pPos).setValue(POS, pos));
 
 		// For redstone or power
-		if (!(pLevel.getBlockState(pFromPos).getBlock() instanceof Shutter)
-				&& pLevel.hasNeighborSignal(pPos)) {
-			this.playSound(pLevel, pPos);
-			this.setPowered(pLevel, pPos, true);
-			if (this.stateTwoPossible(pLevel, pPos, false)) {
-				this.updateAll(pLevel, pPos, 2, false);
-			} else {
-				this.updateAll(pLevel, pPos, 1, false);
+		if (!(pLevel.getBlockState(pFromPos).getBlock() instanceof Shutter)) {
+			// opening
+			if (pLevel.hasNeighborSignal(pPos)) {
+				this.playSound(pLevel, pPos);
+				this.setPowered(pLevel, pPos, true);
+				if (this.stateTwoPossible(pLevel, pPos, false)) {
+					this.updateAll(pLevel, pPos, 2, false);
+				} else {
+					this.updateAll(pLevel, pPos, 1, false);
+				}
+				// closing
+			} else if (!pLevel.hasNeighborSignal(pPos)) {
+				this.playSound(pLevel, pPos);
+				this.setPowered(pLevel, pPos, false);
+				this.updateAll(pLevel, pPos, 0, false);
 			}
-		} else if (!pLevel.hasNeighborSignal(pPos)
-				&& pLevel.getBlockState(pPos).getValue(POWERED)) {
-			this.playSound(pLevel, pPos);
-			this.setPowered(pLevel, pPos, false);
-			this.updateAll(pLevel, pPos, 0, false);
 		}
 
 		// sets the shutter to 0 when a block on the left or the right is
@@ -261,7 +261,6 @@ public class Shutter extends Block {
 
 		// gets the block state above and below
 		if (this.getBlockBelow(blockpos, level) instanceof Shutter shutter) {
-
 			return this.defaultBlockState().setValue(POS, pos)
 					.setValue(OPEN,
 							level.getBlockState(blockpos.below())
@@ -307,7 +306,6 @@ public class Shutter extends Block {
 	}
 
 	private Direction getPlaceDirection(Level level, BlockPos pos) {
-
 		return level.getBlockState(pos).getValue(FACING);
 	}
 

@@ -2,8 +2,9 @@ buildscript {
     repositories {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
         maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://maven.parchmentmc.org' }
         mavenCentral()
+        maven { url = 'https://maven.parchmentmc.org' }
+        mavenLocal()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
@@ -18,8 +19,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 
-
-version = '0.1.2.2-1.18.2'
+version = '0.1.3-1.18.2'
 group = 'net.stehschnitzel.shutters' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'shutters'
 
@@ -102,6 +102,8 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.18.2-40.1.80'
+    
+    annotationProcessor 'org.spongepowered:mixin:0.8.4:processor'
 }
 
 jar {
