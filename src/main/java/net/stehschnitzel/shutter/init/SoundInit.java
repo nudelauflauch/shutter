@@ -17,9 +17,9 @@ public class SoundInit {
 	public static final RegistryObject<SoundEvent> SHUTTER_CLOSE = registerSoundEvent("shutter_close");
 	
 	private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
-		return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(ShutterMain.MODID, name)));
-	}
-	
+        return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(ShutterMain.MODID, name)));
+    }
+
 	public static void register(IEventBus eventBus) {
 		SOUND_EVENTS.register(eventBus);
 	}

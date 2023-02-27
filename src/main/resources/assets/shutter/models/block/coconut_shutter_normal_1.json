@@ -1,0 +1,6 @@
+{
+  "parent": "shutter:block/template_shutter_1",
+  "textures": {
+    "texture": "shutter:block/coconut_shutter_normal",
+"particle": "ecologics:block/coconut_planks"}
+}

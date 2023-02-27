@@ -1,0 +1,6 @@
+{
+  "parent": "shutter:block/template_shutter_0",
+  "textures": {
+    "texture": "shutter:block/silver_shutter_lower",
+"particle": "supplementaires:block/silver_block"}
+}
