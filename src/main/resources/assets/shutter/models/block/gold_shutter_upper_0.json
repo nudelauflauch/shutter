@@ -1,0 +1,6 @@
+{
+  "parent": "shutter:block/template_shutter_0",
+  "textures": {
+    "texture": "shutter:block/gold_shutter_upper",
+"particle": "minecraft:block/gold_block"}
+}

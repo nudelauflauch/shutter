@@ -1,0 +1,6 @@
+{
+  "parent": "shutter:block/template_shutter_1",
+  "textures": {
+    "texture": "shutter:block/stripped_bamboo_shutter_normal",
+"particle": "twigs:block/stripped_bamboo_planks"}
+}

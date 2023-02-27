@@ -5,10 +5,10 @@
         "#_#"
     ],
     "key": {
-        "_": {
+        "#": {
             "item": "minecraft:iron_nugget"
         },
-        "#": {
+        "_": {
         	"item": "minecraft:iron_ingot"
         }
     },
