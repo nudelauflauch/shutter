@@ -3,7 +3,9 @@ package net.stehschnitzel.shutter;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -13,10 +15,11 @@ import net.stehschnitzel.shutter.init.BlockInit;
 import net.stehschnitzel.shutter.init.ItemInit;
 import net.stehschnitzel.shutter.init.SoundInit;
 
+import static net.minecraftforge.versions.forge.ForgeVersion.MOD_ID;
+
 @Mod(ShutterMain.MODID)
 public class ShutterMain {
 	public static final String MODID = "shutter";
-	public static final ShutterTab SHUTTER_TAB = new ShutterTab("shutter_tab");
 
 	public ShutterMain() {
 		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -69,31 +72,38 @@ public class ShutterMain {
 
 		MinecraftForge.EVENT_BUS.register(this);
 
+		bus.addListener(this::addCreative);
+
+	}
+
+	private void addCreative(CreativeModeTabEvent.BuildContents event) {
+		ShutterTab.fillCreativeMenu(event);
 	}
 
 	private void setup(final FMLClientSetupEvent event) {
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.ACACIA_SHUTTER.get(),
-				RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.BIRCH_SHUTTER.get(),
-				RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.CRIMSON_SHUTTER.get(),
-				RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.DARK_OAK_SHUTTER.get(),
-				RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.IRON_SHUTTER.get(),
-				RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.JUNGLE_SHUTTER.get(),
-				RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.OAK_SHUTTER.get(),
-				RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.SPRUCE_SHUTTER.get(),
-				RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.WARPED_SHUTTER.get(),
-				RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.GLASS_SHUTTER.get(),
-				RenderType.translucent());
-		ItemBlockRenderTypes.setRenderLayer(BlockInit.BLOSSOM_SHUTTER.get(),
-				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.ACACIA_SHUTTER.get(),
+//				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.BIRCH_SHUTTER.get(),
+//				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.CRIMSON_SHUTTER.get(),
+//				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.DARK_OAK_SHUTTER.get(),
+//				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.IRON_SHUTTER.get(),
+//				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.JUNGLE_SHUTTER.get(),
+//				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.OAK_SHUTTER.get(),
+//				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.SPRUCE_SHUTTER.get(),
+//				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.WARPED_SHUTTER.get(),
+//				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.GLASS_SHUTTER.get(),
+//				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.BLOSSOM_SHUTTER.get(),
+//				RenderType.translucent());
+//		ItemBlockRenderTypes.setRenderLayer(BlockInit.BLOSSOM_SHUTTER.get(), RenderType.translucent());
 	}
 
 }

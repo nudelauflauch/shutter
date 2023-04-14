@@ -1,106 +1,111 @@
 package net.stehschnitzel.shutter;
 
-import net.minecraft.core.NonNullList;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.loading.FMLLoader;
 import net.stehschnitzel.shutter.init.ItemInit;
 
-public class ShutterTab extends CreativeModeTab {
+@Mod.EventBusSubscriber(modid = ShutterMain.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+public class ShutterTab{
 
+	public static CreativeModeTab SHUTTER_TAB;
 
-	public ShutterTab(String label) {
-		super(label);
+	@SubscribeEvent
+	public static void registerCreativeModeTabs(CreativeModeTabEvent.Register event) {
+		SHUTTER_TAB = event.registerCreativeModeTab(new ResourceLocation(ShutterMain.MODID, "shutter_tab"),
+				builder -> builder.icon(() -> new ItemStack(ItemInit.OAK_SHUTTER.get())).title(Component.literal("Shutter Tab")).build());
 	}
 
-	@Override
-	public ItemStack makeIcon() {
-		return new ItemStack(ItemInit.OAK_SHUTTER.get());
-	}
 
-	@Override
-	public void fillItemList(NonNullList<ItemStack> items) {
-		registerMinecraftShutters(items);
+	public static void fillCreativeMenu(CreativeModeTabEvent.BuildContents event) {
+
+		registerMinecraftShutters(event);
+
 		if(ModList.get().isLoaded("create")) {
-			registerCreate(items);
+			registerCreate(event);
 		} 
 		if(ModList.get().isLoaded("ecologics")) {
-			registerEcologics(items);
+			registerEcologics(event);
 		} 
 		if(ModList.get().isLoaded("endergetic")) {
-			registerEndergetic(items);
+			registerEndergetic(event);
 		} 
 		if(ModList.get().isLoaded("outer_end")) {
-			registerOuterEnd(items);
+			registerOuterEnd(event);
 		} 
 		if(ModList.get().isLoaded("quark")) {
-			registerQuark(items);
+			registerQuark(event);
 		} 
 		if(ModList.get().isLoaded("supplementaries")) {
-			registerSupplementaries(items);
+			registerSupplementaries(event);
 		} 
 		if(ModList.get().isLoaded("twigs")) {
-			registerTwigs(items);
+			registerTwigs(event);
 		} 
 		if(ModList.get().isLoaded("oreganized")) {
-			registerOreganized(items);
+			registerOreganized(event);
 		} 
 		if (!FMLLoader.isProduction()) {
-			registerCreate(items);
-			registerEcologics(items);
-			registerEndergetic(items);
-			registerOuterEnd(items);
-			registerQuark(items);
-			registerSupplementaries(items);
-			registerTwigs(items);
-			registerOreganized(items);
+			registerCreate(event);
+			registerEcologics(event);
+			registerEndergetic(event);
+			registerOuterEnd(event);
+			registerQuark(event);
+			registerSupplementaries(event);
+			registerTwigs(event);
+			registerOreganized(event);
 			
 		}
 	}
 
-	private void registerMinecraftShutters(NonNullList<ItemStack> items) {
-		items.add(new ItemStack(ItemInit.ACACIA_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.BIRCH_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.CRIMSON_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.DARK_OAK_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.IRON_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.JUNGLE_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.OAK_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.SPRUCE_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.WARPED_SHUTTER.get()));
+	private static void registerMinecraftShutters(CreativeModeTabEvent.BuildContents event) {
+		event.accept(new ItemStack(ItemInit.ACACIA_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.BIRCH_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.CRIMSON_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.DARK_OAK_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.IRON_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.JUNGLE_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.OAK_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.SPRUCE_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.WARPED_SHUTTER.get()));
 	}
 
-	private void registerCreate(NonNullList<ItemStack> items) {
-		items.add(new ItemStack(ItemInit.GLASS_SHUTTER.get()));
+	private static void registerCreate(CreativeModeTabEvent.BuildContents event) {
+		event.accept(new ItemStack(ItemInit.GLASS_SHUTTER.get()));
 	}
 
-	private void registerEcologics(NonNullList<ItemStack> items) {
-		items.add(new ItemStack(ItemInit.AZALEA_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.COCONUT_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.FLOWERING_AZALEA_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.WALNUT_SHUTTER.get()));
+	private static void registerEcologics(CreativeModeTabEvent.BuildContents event) {
+		event.accept(new ItemStack(ItemInit.AZALEA_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.COCONUT_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.FLOWERING_AZALEA_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.WALNUT_SHUTTER.get()));
 	}
 
-	private void registerEndergetic(NonNullList<ItemStack> items) {
-		items.add(new ItemStack(ItemInit.POISE_SHUTTER.get()));
+	private static void registerEndergetic(CreativeModeTabEvent.BuildContents event) {
+		event.accept(new ItemStack(ItemInit.POISE_SHUTTER.get()));
 	}
-	private void registerOuterEnd(NonNullList<ItemStack> items) {
-		items.add(new ItemStack(ItemInit.AZURE_SHUTTER.get()));
+	private static void registerOuterEnd(CreativeModeTabEvent.BuildContents event) {
+		event.accept(new ItemStack(ItemInit.AZURE_SHUTTER.get()));
 	}
-	private void registerQuark(NonNullList<ItemStack> items) {
-		items.add(new ItemStack(ItemInit.BLOSSOM_SHUTTER.get()));
+	private static void registerQuark(CreativeModeTabEvent.BuildContents event) {
+		event.accept(new ItemStack(ItemInit.BLOSSOM_SHUTTER.get()));
 	}
-	private void registerSupplementaries(NonNullList<ItemStack> items) {
-		items.add(new ItemStack(ItemInit.GOLD_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.NETHERITE_SHUTTER.get()));
+	private static void registerSupplementaries(CreativeModeTabEvent.BuildContents event) {
+		event.accept(new ItemStack(ItemInit.GOLD_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.NETHERITE_SHUTTER.get()));
 	}
-	private void registerTwigs(NonNullList<ItemStack> items) {
-		items.add(new ItemStack(ItemInit.STRIPPED_BAMBOO_SHUTTER.get()));
+	private static void registerTwigs(CreativeModeTabEvent.BuildContents event) {
+		event.accept(new ItemStack(ItemInit.STRIPPED_BAMBOO_SHUTTER.get()));
 	}
 	
-	private void registerOreganized(NonNullList<ItemStack> items) {
-		items.add(new ItemStack(ItemInit.SILVER_SHUTTER.get()));
-		items.add(new ItemStack(ItemInit.LEAD_SHUTTER.get()));
+	private static void registerOreganized(CreativeModeTabEvent.BuildContents event) {
+		event.accept(new ItemStack(ItemInit.SILVER_SHUTTER.get()));
+		event.accept(new ItemStack(ItemInit.LEAD_SHUTTER.get()));
 	}
 }
