@@ -36,7 +36,7 @@ public class ShutterMain {
 			ItemInit.ITEMS_ECOLOGICS.register(bus);
 		}
 
-		if (ModList.get().isLoaded("endergetic_expansison")) {
+		if (ModList.get().isLoaded("endergetic")) {
 			ItemInit.ITEMS_ENDERGETIC.register(bus);
 		}
 

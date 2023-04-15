@@ -2,5 +2,5 @@
   "parent": "shutter:block/template_shutter_0",
   "textures": {
     "texture": "shutter:block/silver_shutter_middle",
-"particle": "supplementaires:block/silver_block"}
+"particle": "oreganized:block/silver_block"}
 }
