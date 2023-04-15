@@ -19,7 +19,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '1.0.6-1.18.2'
+version = '1.0.7-1.18.2'
 group = 'net.stehschnitzel.shutter' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'shutters'
 
@@ -103,7 +103,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
 	// MINECRAFT
     //minecraft 'net.minecraftforge:forge:1.19.2-43.2.3'
-    minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
+    minecraft 'net.minecraftforge:forge:1.18.2-40.2.1'
     
     // Mixins
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
