@@ -1,0 +1,6 @@
+{
+  "parent": "shutter:block/template_shutter_1",
+  "textures": {
+    "texture": "shutter:block/flowering_azalea_shutter_upper",
+"particle": "ecologics:block/flowering_azalea_planks"}
+}

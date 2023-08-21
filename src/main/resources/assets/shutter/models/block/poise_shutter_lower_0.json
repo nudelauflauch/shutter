@@ -1,0 +1,6 @@
+{
+  "parent": "shutter:block/template_shutter_0",
+  "textures": {
+    "texture": "shutter:block/poise_shutter_lower",
+"particle": "endergetic_expansision:block/poise_planks"}
+}

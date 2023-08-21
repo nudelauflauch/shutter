@@ -1,6 +1,10 @@
 {
 	"replace": false,
 	"values": [
-		"shutter:iron_shutter"
+		"shutter:iron_shutter",
+		"shutter:gold_shutter",
+		"shutter:lead_shutter",
+		"shutter:netherite_shutter",
+		"shutter:silver_shutter"
 	]
 }

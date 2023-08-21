@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"#o#",
+		"#o#"
+	],
+	"key": {
+		"#": {
+			"item": "oreganized:lead_nugget"
+		},
+		"o": {
+			"item": "oreganized:lead_ingot"
+		}
+	},
+	"result": {
+		"item": "shutter:lead_shutter",
+		"count": 1
+	}
+}

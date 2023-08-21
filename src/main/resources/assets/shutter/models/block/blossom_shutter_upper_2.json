@@ -1,0 +1,6 @@
+{
+  "parent": "shutter:block/template_shutter_2",
+  "textures": {
+    "texture": "shutter:block/blossom_shutter_upper",
+"particle": "quark:block/blossom_planks"}
+}
