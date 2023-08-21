@@ -1,0 +1,13 @@
+.gradle/*
+.idea/
+bin/*
+.settings/*
+build/*
+run/*
+gradle/*
+gradle/*
+runGameTestServer.launch
+runData.launch
+runServer.launch
+runClientShutter.launch
+runClient.launch
