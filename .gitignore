@@ -11,3 +11,4 @@ runData.launch
 runServer.launch
 runClientShutter.launch
 runClient.launch
+gradle/wrapper/gradle-wrapper.jar
