@@ -16,11 +16,11 @@ Adds Shutters for different mods
 [[dependencies.shutter]] #optional
     modId="forge" #mandatory
     mandatory=true #mandatory
-    versionRange="43.2"
+    versionRange="[43,)"
     side="BOTH"
 
 [[dependencies.shutter]]
     modId="minecraft"
     mandatory=true
-    versionRange="1.19.2"
+    versionRange="[1.19.2]"
     side="BOTH"
