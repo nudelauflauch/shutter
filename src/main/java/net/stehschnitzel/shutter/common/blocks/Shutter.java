@@ -32,7 +32,6 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -51,13 +50,20 @@ public class Shutter extends Block {
 			2);
 
 	private Block[] sideblocks = new Block[2];
-	ShutterPos pos;
+	private boolean isMetal;
+	private ShutterPos pos;
 
-	public Shutter(Properties p_49795_) {
-		super(p_49795_);
+	public Shutter (Properties properties) {
+		this(properties, false);
+	}
+
+	public Shutter(Properties properties, boolean isMetal) {
+		super(properties);
 		this.registerDefaultState(this.stateDefinition.any()
 				.setValue(FACING, Direction.NORTH).setValue(POWERED, false)
 				.setValue(OPEN, 0).setValue(POS, ShutterPos.NORMAL));
+
+		this.isMetal = isMetal;
 	}
 
 	@Override
@@ -110,7 +116,7 @@ public class Shutter extends Block {
 			return InteractionResult.PASS;
 		} else if (!pPlayer.isCrouching()
 				&& pHand.equals(InteractionHand.MAIN_HAND)
-				&& this.material != Material.METAL) {
+				&& !this.isMetal) {
 			this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 
 			this.playSound(pLevel, pPos);
@@ -188,7 +194,7 @@ public class Shutter extends Block {
 
 	public void playSound(Level level, BlockPos pos) {
 		level.playSound(null, pos, this.getSound(level, pos).get(),
-				SoundSource.BLOCKS, 100F, 100F);
+				SoundSource.BLOCKS, 1F, 1F);
 	}
 
 	private RegistryObject<SoundEvent> getSound(Level level, BlockPos pos) {
@@ -324,21 +330,21 @@ public class Shutter extends Block {
 	@Override
 	public boolean isFlammable(BlockState state, BlockGetter level,
 			BlockPos pos, Direction direction) {
-		return this.material != Material.METAL
+		return this.isMetal
 				|| state.is(BlockInit.GLASS_SHUTTER.get());
 	}
 
 	@Override
 	public int getFlammability(BlockState state, BlockGetter level,
 			BlockPos pos, Direction direction) {
-		return this.material != Material.METAL
+		return !this.isMetal
 				|| state.is(BlockInit.GLASS_SHUTTER.get()) ? 20 : 0;
 	}
 
 	@Override
 	public int getFireSpreadSpeed(BlockState state, BlockGetter level,
 			BlockPos pos, Direction direction) {
-		return this.material != Material.METAL
+		return !this.isMetal
 				|| state.is(BlockInit.GLASS_SHUTTER.get()) ? 5 : 0;
 	}
 

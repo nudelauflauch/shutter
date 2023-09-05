@@ -10,8 +10,8 @@ import net.minecraft.world.phys.BlockHitResult;
 
 public class GoldShutter extends Shutter {
 
-	public GoldShutter(Properties p_49795_) {
-		super(p_49795_);
+	public GoldShutter(Properties properties) {
+		super(properties, true);
 	}
 
 	@Override

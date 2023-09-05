@@ -1,5 +1,5 @@
 {
-  "parent": "shutter:block/template_shutter_2",
+  "parent": "shutter:block/template_shutter_2","render_type": "cutout",
   "textures": {
     "texture": "shutter:block/glass_shutter_normal",
 "particle": "minecraft:block/glass"}

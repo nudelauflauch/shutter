@@ -12,8 +12,8 @@ import net.minecraft.world.phys.BlockHitResult;
 
 public class LeadShutter extends Shutter {
 
-	public LeadShutter(Properties p_49795_) {
-		super(p_49795_);
+	public LeadShutter(Properties properties) {
+		super(properties, true);
 	}
 
 	@Override
