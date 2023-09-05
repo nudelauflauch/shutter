@@ -164,7 +164,7 @@ public class ShutterTab extends CreativeModeTab{
 		modItems.put("twigs", BlockInit.ITEMS_TWIGS);
 		modItems.put("oreganized", BlockInit.ITEMS_OREGANIZED);
 		modItems.put("environmental", BlockInit.ITEMS_ENVIRONMENTAL);
-		modItems.put("snowy_spirit", BlockInit.ITEMS_SNOWY_SPIRIT);
+		modItems.put("snowyspirit", BlockInit.ITEMS_SNOWY_SPIRIT);
 		modItems.put("upgrade_aquatic", BlockInit.ITEMS_UPGRADE_AQUATTIC);
 
 		for (Map.Entry<String, DeferredRegister<Item>> entry : modItems.entrySet()) {
