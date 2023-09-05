@@ -236,9 +236,9 @@ public class BlockInit {
 	private static <T extends Block> RegistryObject<Item> registerBlockItem(
 			String name, DeferredRegister<Item> item_reg, RegistryObject<T> registered_block, boolean burnAble) {
 		if (burnAble) {
-			return item_reg.register(name, () -> new BurnableItem(registered_block.get(), new Item.Properties(), 300));
+			return item_reg.register(name, () -> new BurnableItem(registered_block.get(), new Item.Properties().tab(ShutterMain.SHUTTER_TAB), 300));
 		} else {
-			return item_reg.register(name, () -> new BlockItem(registered_block.get(), new Item.Properties()));
+			return item_reg.register(name, () -> new BlockItem(registered_block.get(), new Item.Properties().tab(ShutterMain.SHUTTER_TAB)));
 		}
 	}
 

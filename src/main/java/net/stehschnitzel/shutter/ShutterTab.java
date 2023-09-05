@@ -152,7 +152,7 @@ public class ShutterTab extends CreativeModeTab{
 		items.add(new ItemStack(BlockInit.RIVER_SHUTTER.get()));
 	}
 
-	public static void registerMods(IEventBus bus){
+	public static void registerMods(IEventBus bus) {
 		Map<String, DeferredRegister<Item>> modItems = new HashMap<>();
 		modItems.put("autumnity", BlockInit.ITEMS_AUTUMNITY);
 		modItems.put("create", BlockInit.ITEMS_CREATE);
