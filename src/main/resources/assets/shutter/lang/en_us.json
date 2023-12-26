@@ -32,7 +32,8 @@
   "block.shutter.ancient_shutter" : "Ancient Shutter",
   "block.shutter.bamboo_shutter" : "Bamboo Shutter",
   "block.shutter.river_shutter" : "River Shutter",
-  
+  "block.shutter.glass_shutter" : "Glass Shutter",
+
 	"itemGroup.shutter_tab":"Shutters",
 
 	"sounds.shutter.shutter_open_half": "Shutter Open Half",

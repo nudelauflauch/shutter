@@ -28,7 +28,7 @@ public class ModBlockStateProvider extends ShuterBlockStateCreator {
         shutterBuilder(BlockInit.FLOWERING_AZALEA_SHUTTER);
         shutterBuilder(BlockInit.WALNUT_SHUTTER);
         shutterBuilder(BlockInit.POISE_SHUTTER);
-        shutterBuilder(BlockInit.CHERRY_SHUTTER,"block/cherry_planks");
+        shutterBuilder(BlockInit.CHERRY_ENV_SHUTTER);
         shutterBuilder(BlockInit.WILLOW_SHUTTER);
         shutterBuilder(BlockInit.WISTERIA_SHUTTER);
 
@@ -114,17 +114,17 @@ public class ModBlockStateProvider extends ShuterBlockStateCreator {
                 lb_0, lb_1, lb_2,
                 lbr_0, lbr_1, lbr_2,
 
-                m_0, m_1, m_2,
-                mb_0, mb_1, mb_2,
-                mbr_0, mbr_1, mbr_2,
+                n_0, n_1, n_2,
+                nb_0, nb_1, nb_2,
+                nbr_0, nbr_1, nbr_2,
 
                 u_0, u_1, u_2,
                 ub_0, ub_1, ub_2,
                 ubr_0, ubr_1, ubr_2,
 
-                n_0, n_1, n_2,
-                nb_0, nb_1, nb_2,
-                nbr_0, nbr_1, nbr_2
+                m_0, m_1, m_2,
+                mb_0, mb_1, mb_2,
+                mbr_0, mbr_1, mbr_2
         );
     }
 
@@ -188,17 +188,17 @@ public class ModBlockStateProvider extends ShuterBlockStateCreator {
                 lb_0, lb_1, lb_2,
                 lbr_0, lbr_1, lbr_2,
 
-                m_0, m_1, m_2,
-                mb_0, mb_1, mb_2,
-                mbr_0, mbr_1, mbr_2,
+                n_0, n_1, n_2,
+                nb_0, nb_1, nb_2,
+                nbr_0, nbr_1, nbr_2,
 
                 u_0, u_1, u_2,
                 ub_0, ub_1, ub_2,
                 ubr_0, ubr_1, ubr_2,
 
-                n_0, n_1, n_2,
-                nb_0, nb_1, nb_2,
-                nbr_0, nbr_1, nbr_2
+                m_0, m_1, m_2,
+                mb_0, mb_1, mb_2,
+                mbr_0, mbr_1, mbr_2
         );
     }
 
