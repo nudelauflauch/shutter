@@ -6,10 +6,10 @@
 	],
 	"key": {
 		"#": {
-			"item": "oreganized:silver_nugget"
+			"item": "oreganized:silver_ingot"
 		},
 		"o": {
-			"item": "oreganized:silver_ingot"
+			"item": "oreganized:silver_nugget"
 		}
 	},
 	"result": {

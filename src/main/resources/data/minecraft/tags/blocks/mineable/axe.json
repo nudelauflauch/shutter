@@ -9,6 +9,7 @@
 		"shutter:jungle_shutter",
 		"shutter:spruce_shutter",
 		"shutter:warped_shutter",
+		"shutter:mangrove_shutter",
 		"shutter:azalea_shutter",
 		"shutter:coconut_shutter",
 		"shutter:flowering_azalea_shutter",
@@ -21,6 +22,12 @@
 		"shutter:cherry_env_shutter",
 		"shutter:mangrove_shutter",
 		"shutter:ancient_shutter",
-		"shutter:bamboo_shutter"
+		"shutter:bamboo_shutter",
+		"shutter:maple_shutter",
+		"shutter:cherry_env_shutter",
+		"shutter:willow_shutter",
+		"shutter:wisteria_shutter",
+		"shutter:driftwood_shutter",
+		"shutter:river_shutter"
 	]
 }

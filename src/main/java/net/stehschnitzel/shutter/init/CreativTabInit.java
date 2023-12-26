@@ -51,7 +51,7 @@ public class CreativTabInit{
 			registerSupplementaries(pItems);
 		}
 		if(ModList.get().isLoaded("twigs")) {
-			registerTwigs(pItems);
+//			registerTwigs(pItems);
 		}
 		if(ModList.get().isLoaded("oreganized")) {
 			registerOreganized(pItems);

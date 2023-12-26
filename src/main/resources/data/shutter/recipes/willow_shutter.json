@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped", "pattern": ["___", "___"], "key": {"_": {"item": "environmental:willow_slap"}}, "result": {"item": "shutter:willow_shutter", "count": 2}}
+{"type": "minecraft:crafting_shaped", "pattern": ["___", "___"], "key": {"_": {"item": "environmental:willow_slab"}}, "result": {"item": "shutter:willow_shutter", "count": 2}}

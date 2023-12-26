@@ -6,11 +6,11 @@
     ],
     "key": {
         "_": {
-            "item": "twigs:stripped_bamboo_slab"
+            "item": "twigs:stripped_bamboo_planks"
         }
     },
     "result": {
         "item": "shutter:stripped_bamboo_shutter",
-        "count": 2
+        "count": 6
     }
 }

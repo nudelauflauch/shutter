@@ -1,6 +1,0 @@
-{
-  "parent": "shutter:block/template_shutter_1",
-  "textures": {
-    "texture": "shutter:block/willow_shutter_lower",
-"particle": "environmental:block/willow_planks"}
-}

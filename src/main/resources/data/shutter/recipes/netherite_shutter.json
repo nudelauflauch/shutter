@@ -1,12 +1,15 @@
 {
-	"type": "minecraft:smithing",
-	"base": {
-		"item": "shutter:gold_shutter"
-	},
+	"type": "minecraft:smithing_transform",
 	"addition": {
 		"item": "minecraft:netherite_scrap"
 	},
+	"base": {
+		"item": "shutter:gold_shutter"
+	},
 	"result": {
 		"item": "shutter:netherite_shutter"
+	},
+	"template": {
+		"item": "minecraft:netherite_upgrade_smithing_template"
 	}
 }

@@ -69,155 +69,155 @@ public class BlockInit {
 
 
 	// create
-	public static final RegistryObject<Block> GLASS_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> GLASS_SHUTTER = registerBlock(
 			"glass_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion()),
 			ITEMS_CREATE, false);
 
 	// ecologics
-	public static final RegistryObject<Block> AZALEA_SHUTTER = registerBlock("azalea_shutter", () -> new Shutter(
+	public static final RegistryObject<Shutter> AZALEA_SHUTTER = registerBlock("azalea_shutter", () -> new Shutter(
 			BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
 
-	public static final RegistryObject<Block> COCONUT_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> COCONUT_SHUTTER = registerBlock(
 			"coconut_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
 
-	public static final RegistryObject<Block> FLOWERING_AZALEA_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> FLOWERING_AZALEA_SHUTTER = registerBlock(
 			"flowering_azalea_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
 
-	public static final RegistryObject<Block> WALNUT_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> WALNUT_SHUTTER = registerBlock(
 			"walnut_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
 
 	// endergetic
-	public static final RegistryObject<Block> POISE_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> POISE_SHUTTER = registerBlock(
 			"poise_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENDERGETIC);
 
 
 	// minecraft
-	public static final RegistryObject<Block> ACACIA_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> ACACIA_SHUTTER = registerBlock(
 			"acacia_shutter",
 			() -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
 
-	public static final RegistryObject<Block> BIRCH_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> BIRCH_SHUTTER = registerBlock(
 			"birch_shutter",
 			() -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
 
-	public static final RegistryObject<Block> CRIMSON_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> CRIMSON_SHUTTER = registerBlock(
 			"crimson_shutter",
 			() -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.CRIMSON_PLANKS)), MINECRAFT_ITEMS, false);
 
-	public static final RegistryObject<Block> DARK_OAK_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> DARK_OAK_SHUTTER = registerBlock(
 			"dark_oak_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
 
-	public static final RegistryObject<Block> IRON_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> IRON_SHUTTER = registerBlock(
 			"iron_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR), true), MINECRAFT_ITEMS, false);
 
-	public static final RegistryObject<Block> JUNGLE_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> JUNGLE_SHUTTER = registerBlock(
 			"jungle_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
 
-	public static final RegistryObject<Block> OAK_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> OAK_SHUTTER = registerBlock(
 			"oak_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
 
-	public static final RegistryObject<Block> SPRUCE_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> SPRUCE_SHUTTER = registerBlock(
 			"spruce_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
 
-	public static final RegistryObject<Block> WARPED_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> WARPED_SHUTTER = registerBlock(
 			"warped_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.WARPED_PLANKS)), MINECRAFT_ITEMS, false);
 
-	public static final RegistryObject<Block> MANGROVE_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> MANGROVE_SHUTTER = registerBlock(
 			"mangrove_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
 
-	public static final RegistryObject<Block> BAMBOO_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> BAMBOO_SHUTTER = registerBlock(
 			"bamboo_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.BAMBOO_PLANKS)), MINECRAFT_ITEMS);
 
-	public static final RegistryObject<Block> CHERRY_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> CHERRY_SHUTTER = registerBlock(
 			"cherry_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.CHERRY_PLANKS)), MINECRAFT_ITEMS);
 
 
 	// outer_end
-	public static final RegistryObject<Block> AZURE_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> AZURE_SHUTTER = registerBlock(
 			"azure_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_OUTER_END);
 
 
 	// quark
-	public static final RegistryObject<Block> BLOSSOM_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> BLOSSOM_SHUTTER = registerBlock(
 			"blossom_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
 
-	public static final RegistryObject<Block> ANCIENT_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> ANCIENT_SHUTTER = registerBlock(
 			"ancient_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
 
 	// supplementaries
-	public static final RegistryObject<Block> GOLD_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> GOLD_SHUTTER = registerBlock(
 			"gold_shutter", () -> new GoldShutter(
 					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
 
-	public static final RegistryObject<Block> NETHERITE_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> NETHERITE_SHUTTER = registerBlock(
 			"netherite_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR), true), ITEMS_SUPPLEMENTARIES, false);
 
-	public static final RegistryObject<Block> LEAD_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> LEAD_SHUTTER = registerBlock(
 			"lead_shutter", () -> new LeadShutter(
 					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
 
-	public static final RegistryObject<Block> SILVER_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> SILVER_SHUTTER = registerBlock(
 			"silver_shutter", () -> new SilverShutter(
 					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
 
 	// twigs
-	public static final RegistryObject<Block> STRIPPED_BAMBOO_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> STRIPPED_BAMBOO_SHUTTER = registerBlock(
 			"stripped_bamboo_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_TWIGS);
 
 	//autumnity
-	public static final RegistryObject<Block> MAPLE_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> MAPLE_SHUTTER = registerBlock(
 			"maple_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_AUTUMNITY);
 
 
 	//environmental
-	public static final RegistryObject<Block> CHERRY_ENV_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> CHERRY_ENV_SHUTTER = registerBlock(
 			"cherry_env_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
 
-	public static final RegistryObject<Block> WILLOW_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> WILLOW_SHUTTER = registerBlock(
 			"willow_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
 
-	public static final RegistryObject<Block> WISTERIA_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> WISTERIA_SHUTTER = registerBlock(
 			"wisteria_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
 
 
 	//snowy spirit
-	public static final RegistryObject<Block> GINGERBREAD_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> GINGERBREAD_SHUTTER = registerBlock(
 			"gingerbread_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_SNOWY_SPIRIT);
 
 
 	//update_aquatic
-	public static final RegistryObject<Block> DRIFTWOOD_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> DRIFTWOOD_SHUTTER = registerBlock(
 			"driftwood_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_UPGRADE_AQUATTIC);
 
-	public static final RegistryObject<Block> RIVER_SHUTTER = registerBlock(
+	public static final RegistryObject<Shutter> RIVER_SHUTTER = registerBlock(
 			"river_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_UPGRADE_AQUATTIC);
 
@@ -231,9 +231,9 @@ public class BlockInit {
 
 	private static <T extends Block> RegistryObject<T> registerBlock(
 			String name, Supplier<T> block, DeferredRegister<Item> item_reg, boolean burnAble) {
-		RegistryObject<T> to_return = BLOCKS.register(name, block);
-		registerBlockItem(name, item_reg, to_return, burnAble);
-		return to_return;
+		RegistryObject<T> registryBlock = BLOCKS.register(name, block);
+		registerBlockItem(name, item_reg, registryBlock, burnAble);
+		return registryBlock;
 	}
 
 	private static <T extends Block> RegistryObject<Item> registerBlockItem(
@@ -244,5 +244,4 @@ public class BlockInit {
 			return item_reg.register(name, () -> new BlockItem(registered_block.get(), new Item.Properties()));
 		}
 	}
-
 }

@@ -6,10 +6,10 @@
 	],
 	"key": {
 		"#": {
-			"item": "oreganized:lead_nugget"
+			"item": "oreganized:lead_ingot"
 		},
 		"o": {
-			"item": "oreganized:lead_ingot"
+			"item": "oreganized:lead_nugget"
 		}
 	},
 	"result": {
