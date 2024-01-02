@@ -10,17 +10,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.ButtonBlock;
-import net.minecraft.world.level.block.CandleBlock;
-import net.minecraft.world.level.block.FenceBlock;
-import net.minecraft.world.level.block.FenceGateBlock;
-import net.minecraft.world.level.block.FlowerPotBlock;
-import net.minecraft.world.level.block.LadderBlock;
-import net.minecraft.world.level.block.LanternBlock;
-import net.minecraft.world.level.block.SignBlock;
-import net.minecraft.world.level.block.TorchBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -113,7 +103,22 @@ public class Shutter extends Block {
 
 	private void updateAllDouble(Level level, BlockPos pos, int state, boolean first) {
 		updateAll(level, pos, state, first);
-		updateAll(level, this.hasShutterAsNeighbor(level,pos), state, first);
+
+		setNeighbourBlocks(level, pos);
+		if (level.getBlockState(pos).getValue(DOUBLE_DOOR) == ShutterDouble.RIGHT) {
+			updateAll(level, this.getNeighborShutterPos(level, pos, sideblocks[0]), state, first);
+		} else {
+			updateAll(level, this.getNeighborShutterPos(level, pos, sideblocks[1]), state, first);
+		}
+	}
+
+	private boolean stateTwoPossibleDouble(Level level, BlockPos pos, boolean first) {
+		this.setNeighbourBlocks(level, pos);
+		boolean thisCanUpdate =  stateTwoPossible(level, pos, first) ;
+		if (level.getBlockState(pos).getValue(DOUBLE_DOOR) == ShutterDouble.RIGHT) {
+			return thisCanUpdate && stateTwoPossible(level, this.getNeighborShutterPos(level,pos, sideblocks[0]), false);
+		}
+		return thisCanUpdate && stateTwoPossible(level, this.getNeighborShutterPos(level,pos, sideblocks[1]), false);
 	}
 
 	private void updateAll(Level level, BlockPos pos, int state, boolean first) {
@@ -139,10 +144,6 @@ public class Shutter extends Block {
 				}
 			}
 		}
-	}
-
-	private boolean stateTwoPossibleDouble(Level level, BlockPos pos, boolean first) {
-		return stateTwoPossible(level, pos, first) && stateTwoPossible(level, this.hasShutterAsNeighbor(level,pos), false);
 	}
 
 	private boolean stateTwoPossible(Level level, BlockPos pos, boolean first) {
@@ -187,19 +188,24 @@ public class Shutter extends Block {
 				: SoundInit.SHUTTER_OPEN_FULL;
 	}
 
+	private BlockPos getNeighborShutterPos(Level level, BlockPos pos, BlockState state) {
+		if (level.getBlockState(pos.north()) == state) return pos.north();
+		if (level.getBlockState(pos.east()) == state) return pos.east();
+		if (level.getBlockState(pos.south()) == state) return pos.south();
+		else return pos.west();
+	}
+
 	// gets called when a block updates
 	@Override
-	public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos,
-								Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
+	public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
 		this.setNeighbourBlocks(pLevel, pPos);
 		redstoneUpdate(pLevel, pFromPos, pPos);
 
-
 		//checks if it should update it double block state
 		if (pState.getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
-			if (sideblocks[0].getBlock() instanceof Shutter) {
+			if (sideblocks[0].getBlock() instanceof Shutter ) {
 				pState = pState.setValue(DOUBLE_DOOR, ShutterDouble.RIGHT);
-			} else if (sideblocks[1].getBlock() instanceof Shutter) {
+			} else if (sideblocks[1].getBlock() instanceof Shutter ) {
 				pState = pState.setValue(DOUBLE_DOOR, ShutterDouble.LEFT);
 			}
 		}
@@ -261,6 +267,7 @@ public class Shutter extends Block {
 	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
 		BlockPos blockpos = pContext.getClickedPos();
 		Level level = pContext.getLevel();
+		Direction direction = pContext.getHorizontalDirection();
 
 		this.setNeighbourBlocks(level, blockpos, pContext.getHorizontalDirection());
 
@@ -285,20 +292,23 @@ public class Shutter extends Block {
 
 		// gets the block state above and below
 		int open_state = neighbor_has_signal ? this.canUpdate() ? 2 : 1 : 0;
+
 		if (this.getBlockBelow(blockpos, level) instanceof Shutter) {
 			open_state = level.getBlockState(blockpos.below()).getValue(OPEN);
+			direction = level.getBlockState(blockpos.below()).getValue(FACING);
 
-		} else if (this.getBlockAbove(blockpos, level) instanceof Shutter ) {
+		} else if (this.getBlockAbove(blockpos, level) instanceof Shutter) {
 			open_state = level.getBlockState(blockpos.above()).getValue(OPEN);
+			direction = level.getBlockState(blockpos.above()).getValue(FACING);
+
 		}
 
 		return this.defaultBlockState()
-				.setValue(FACING, pContext.getHorizontalDirection())
+				.setValue(FACING, direction)
 				.setValue(POWERED, neighbor_has_signal)
 				.setValue(POS, getPosition(level, blockpos))
 				.setValue(DOUBLE_DOOR, isdoubleDoor)
 				.setValue(OPEN, open_state);
-
 	}
 
 	private void setNeighbourBlocks(Level level, BlockPos pos) {
@@ -312,19 +322,6 @@ public class Shutter extends Block {
 			case EAST: sideblocks[0] = level.getBlockState(pos.south()); sideblocks[1] = level.getBlockState(pos.north()); break;
 			default: sideblocks[0] = level.getBlockState(pos.north()); sideblocks[1] = level.getBlockState(pos.south()); break;
 		}
-	}
-
-	private BlockPos hasShutterAsNeighbor(Level level, BlockPos pos) {
-		if (level.getBlockState(pos.west()).getBlock() instanceof Shutter) {
-			return pos.west();
-		} else if (level.getBlockState(pos.east()).getBlock() instanceof Shutter) {
-			return pos.east();
-		} else if (level.getBlockState(pos.north()).getBlock() instanceof Shutter) {
-			return pos.north();
-		} else if (level.getBlockState(pos.south()).getBlock() instanceof Shutter) {
-			return pos.south();
-		}
-		return pos.north();
 	}
 
 	@Override
@@ -359,7 +356,8 @@ public class Shutter extends Block {
 				return false;
 			}
 			Block block = block1.getBlock();
-			if (block != Blocks.AIR && !(block instanceof IPlantable)
+			if (block != Blocks.AIR
+					&& !(block instanceof IPlantable)
 					&& !(block instanceof FenceBlock)
 					&& !(block instanceof FenceGateBlock)
 					&& !(block == Blocks.WATER) && block != Blocks.LAVA
@@ -371,7 +369,11 @@ public class Shutter extends Block {
 					&& !(block instanceof ButtonBlock)
 					&& !(block instanceof LadderBlock)
 					&& !(block instanceof SignBlock)
-					&& !(block instanceof Shutter)) {
+					&& !(block instanceof ChainBlock)
+					&& !(block instanceof VineBlock)
+
+					&& !(block instanceof Shutter shutter)
+			) {
 				return false;
 			}
 		}
@@ -380,14 +382,12 @@ public class Shutter extends Block {
 
 	public void setPowered(Level level, BlockPos pos, boolean state) {
 		level.setBlock(pos,
-				level.getBlockState(pos).setValue(POWERED, state), 19);
-		System.out.println("sus");
+				level.getBlockState(pos).setValue(POWERED, state), 18);
 	}
 
 	public void setOpen(Level level, BlockPos pos, int state) {
 		level.setBlock(pos,
-				level.getBlockState(pos).setValue(OPEN, state), 19);
-		System.out.println("sas");
+				level.getBlockState(pos).setValue(OPEN, state), 18);
 	}
 
 	private Block getBlockAbove(BlockPos pos, Level level) {

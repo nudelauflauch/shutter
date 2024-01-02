@@ -33,36 +33,44 @@ public class ShuterBlockStateCreator extends BlockStateProvider {
 
 
     public ModelBuilder shuttter_0_big(String name, String shutter, String particle) {
-        return shuttter(name, "template_shutter_0_big", shutter, 0, particle);
+        return shuttter_big_left(name, "template_shutter_0_big_left", shutter, 0, particle);
     }
 
     public ModelBuilder shuttter_1_big(String name, String shutter, String particle) {
-        return shuttter(name, "template_shutter_1_big", shutter, 1, particle);
+        return shuttter_big_left(name, "template_shutter_1_big_left", shutter, 1, particle);
     }
 
 
     public ModelBuilder shuttter_2_big(String name, String shutter, String particle) {
-        return shuttter(name, "template_shutter_2_big", shutter, 2, particle);
+        return shuttter_big_left(name, "template_shutter_2_big_left", shutter, 2, particle);
     }
 
 
 
     public ModelBuilder shuttter_0_big_right(String name, String shutter, String particle) {
-        return shuttter_right(name, "template_shutter_0_big_right", shutter, 0, particle);
+        return shuttter_big_right(name, "template_shutter_0_big_right", shutter, 0, particle);
     }
 
     public ModelBuilder shuttter_1_big_right(String name, String shutter, String particle) {
-        return shuttter_right(name, "template_shutter_1_big_right", shutter, 1, particle);
+        return shuttter_big_right(name, "template_shutter_1_big_right", shutter, 1, particle);
     }
 
     public ModelBuilder shuttter_2_big_right(String name, String shutter, String particle) {
-        return shuttter_right(name, "template_shutter_2_big_right", shutter, 2, particle);
+        return shuttter_big_right(name, "template_shutter_2_big_right", shutter, 2, particle);
     }
 
-    public ModelBuilder shuttter_right(String name, String template, String shutter, int cnt, String particle) {
+    public ModelBuilder shuttter_big_right(String name, String template, String shutter, int cnt, String particle) {
         ResourceLocation shutter_texture = new ResourceLocation(ShutterMain.MODID, "block/" + name + shutter);
 
         return models().withExistingParent(name + shutter + "_right_" + cnt, new ResourceLocation(ShutterMain.MODID, "block/" + template))
+                .texture("texture", shutter_texture)
+                .texture("particle", ResourceLocation.tryParse(particle));
+    }
+
+    public ModelBuilder shuttter_big_left(String name, String template, String shutter, int cnt, String particle) {
+        ResourceLocation shutter_texture = new ResourceLocation(ShutterMain.MODID, "block/" + name + shutter);
+
+        return models().withExistingParent(name + shutter + "_left_" + cnt, new ResourceLocation(ShutterMain.MODID, "block/" + template))
                 .texture("texture", shutter_texture)
                 .texture("particle", ResourceLocation.tryParse(particle));
     }

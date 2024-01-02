@@ -27,13 +27,14 @@ public class ModBlockStateProvider extends ShuterBlockStateCreator {
         shutterBuilder(BlockInit.COCONUT_SHUTTER);
         shutterBuilder(BlockInit.FLOWERING_AZALEA_SHUTTER);
         shutterBuilder(BlockInit.WALNUT_SHUTTER);
-        shutterBuilder(BlockInit.POISE_SHUTTER);
         shutterBuilder(BlockInit.CHERRY_ENV_SHUTTER);
         shutterBuilder(BlockInit.WILLOW_SHUTTER);
         shutterBuilder(BlockInit.WISTERIA_SHUTTER);
 
         shutterBuilder(BlockInit.ACACIA_SHUTTER, "block/acacia_planks");
         shutterBuilder(BlockInit.BAMBOO_SHUTTER, "block/bamboo_planks");
+        shutterBuilder(BlockInit.BIRCH_SHUTTER, "block/bamboo_planks");
+        shutterBuilder(BlockInit.CRIMSON_SHUTTER, "block/bamboo_planks");
 
         //vanila
 //
@@ -227,9 +228,9 @@ public class ModBlockStateProvider extends ShuterBlockStateCreator {
             ShutterDouble doubleDoor = state.getValue(Shutter.DOUBLE_DOOR);
             int yRot = ((int) state.getValue(DoorBlock.FACING).toYRot()) + 180;
 
-            if (open == 1 && doubleDoor != ShutterDouble.NONE) {
-                yRot += 270;
-            }
+//            if (open == 1 && doubleDoor != ShutterDouble.NONE) {
+//                yRot += 270;
+//            }
             yRot %= 360;
 
             ModelFile model = null;

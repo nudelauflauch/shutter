@@ -12,7 +12,9 @@ import net.stehschnitzel.shutter.init.SoundInit;
 public class ShutterMain {
 	public static final String MODID = "shutter";
 	public ShutterMain() {
-		final IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+
+
 		BlockInit.MINECRAFT_ITEMS.register(bus);
 		BlockInit.BLOCKS.register(bus);
 		SoundInit.register(bus);
