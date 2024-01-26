@@ -101,7 +101,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
 	// MINECRAFT
-    minecraft 'net.minecraftforge:forge:1.20.1-47.2.18'
+    minecraft 'net.minecraftforge:forge:1.20.1-47.2.20'
     //minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
     
     // Mixins

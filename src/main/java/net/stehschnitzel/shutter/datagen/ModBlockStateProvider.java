@@ -33,21 +33,25 @@ public class ModBlockStateProvider extends ShuterBlockStateCreator {
 
         shutterBuilder(BlockInit.ACACIA_SHUTTER, "block/acacia_planks");
         shutterBuilder(BlockInit.BAMBOO_SHUTTER, "block/bamboo_planks");
-        shutterBuilder(BlockInit.BIRCH_SHUTTER, "block/bamboo_planks");
-        shutterBuilder(BlockInit.CRIMSON_SHUTTER, "block/bamboo_planks");
+        shutterBuilder(BlockInit.BIRCH_SHUTTER, "block/birch_planks");
+        shutterBuilder(BlockInit.CRIMSON_SHUTTER, "block/crimson_planks");
+//        shutterBuilder(BlockInit.OAK_SHUTTER, "block/oak_planks");
+        shutterBuilder(BlockInit.DARK_OAK_SHUTTER, "block/dark_oak_planks");
+        shutterBuilder(BlockInit.MANGROVE_SHUTTER, "block/mangrove_planks");
+        shutterBuilder(BlockInit.JUNGLE_SHUTTER, "block/jungle_planks");
 
         //vanila
 //
-//        shutterBuilder(BlockInit.OAK_SHUTTER, "block/oak_planks");
-//        shutterBuilder(BlockInit.DARK_OAK_SHUTTER, "block/dark_oak_planks");
+//
+//
 //        shutterBuilder(BlockInit.BIRCH_SHUTTER, "block/birch_planks");
 //        shutterBuilder(BlockInit.CHERRY_SHUTTER, "block/cherry_planks");
 //        shutterBuilder(BlockInit.CRIMSON_SHUTTER, "block/crimson_planks");
-//        shutterBuilder(BlockInit.MANGROVE_SHUTTER, "block/mangrove_planks");
+//
 //        shutterBuilder(BlockInit.WARPED_SHUTTER, "block/warped_planks");
 //
 //        shutterBuilder(BlockInit.SPRUCE_SHUTTER, "block/spruce_planks");
-//        shutterBuilder(BlockInit.JUNGLE_SHUTTER, "block/jungle_planks");
+//
 //        shutterBuilder(BlockInit.IRON_SHUTTER, "block/iron_block");
 //        shutterBuilder(BlockInit.GOLD_SHUTTER, "block/gold_block");
 //        shutterBuilder(BlockInit.NETHERITE_SHUTTER, "block/netherite_block");
