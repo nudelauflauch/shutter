@@ -21,13 +21,12 @@ import java.util.List;
 
 public class Shutter extends AbstractShutter {
 
-	public Shutter (Properties properties) {
+	public Shutter(Properties properties) {
 		this(properties, false);
 	}
 
 	public Shutter(Properties properties, boolean isMetal) {
-		super(properties);
-		this.isMetal = isMetal;
+		super(properties, isMetal);
 		this.registerDefaultState(this.defaultBlockState()
 				.setValue(FACING, Direction.NORTH)
 				.setValue(POWERED, false)
@@ -49,9 +48,10 @@ public class Shutter extends AbstractShutter {
 		} else if (!pPlayer.isCrouching()
 				&& pHand.equals(InteractionHand.MAIN_HAND)
 				&& !this.isMetal) {
+
 			this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 
-			this.playSound(pLevel, pPos);
+			this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
 			return InteractionResult.sidedSuccess(pLevel.isClientSide);
 		}
 		return InteractionResult.FAIL;
@@ -65,34 +65,52 @@ public class Shutter extends AbstractShutter {
 
 		//checks if it should update it double block state
 		if (pState.getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
-			if (sideblocks.get(0).getBlock() instanceof Shutter ) {
-				pState = pState.setValue(DOUBLE_DOOR, ShutterDouble.RIGHT);
+			BlockPos right = getNeighborShutterPos(pLevel, pPos, ShutterDouble.RIGHT);
+			BlockPos left = getNeighborShutterPos(pLevel, pPos, ShutterDouble.LEFT);
 
-			} else if (sideblocks.get(1).getBlock() instanceof Shutter ) {
-				pState = pState.setValue(DOUBLE_DOOR, ShutterDouble.LEFT);
+
+			if (sideblocks.get(0).getBlock() instanceof Shutter && pPos.equals(getNeighborShutterPos(pLevel, right))) {
+				pLevel.setBlock(pPos, pLevel.getBlockState(pPos).setValue(DOUBLE_DOOR, ShutterDouble.RIGHT), 18);
+
+				updatePosNeighborHelper(pLevel, pPos);
+
+			} else if (sideblocks.get(1).getBlock() instanceof Shutter && pPos.equals(getNeighborShutterPos(pLevel, left))) {
+				pLevel.setBlock(pPos, pLevel.getBlockState(pPos).setValue(DOUBLE_DOOR, ShutterDouble.LEFT), 18);
+
+				updatePosNeighborHelper(pLevel, pPos);
 			}
 		}
 
-		//resets it to None, if there are no shutters arround
+		//resets it to None, if there are no shutters around
 		if (pState.getValue(DOUBLE_DOOR) == ShutterDouble.LEFT && !(sideblocks.get(1).getBlock() instanceof Shutter)) {
-			pState = pState.setValue(DOUBLE_DOOR, ShutterDouble.NONE);
+			pLevel.setBlock(pPos, pLevel.getBlockState(pPos).setValue(DOUBLE_DOOR, ShutterDouble.NONE), 18);
+
+			updatePosNeighborHelper(pLevel, pPos);
 		}
 		if (pState.getValue(DOUBLE_DOOR) == ShutterDouble.RIGHT && !(sideblocks.get(0).getBlock() instanceof Shutter)) {
-			pState = pState.setValue(DOUBLE_DOOR, ShutterDouble.NONE);
+			pLevel.setBlock(pPos, pLevel.getBlockState(pPos).setValue(DOUBLE_DOOR, ShutterDouble.NONE), 18);
+
+			updatePosNeighborHelper(pLevel, pPos);
 		}
 
-		// sets the shutter to 0 when a block on the left or right is placed
+		// resets the shutter to 0 when i cant be in state 2
 		if (!pLevel.isClientSide && pState.getValue(OPEN) == 2
 				&& !canUpdate(pLevel, pPos)) {
 			this.update(pLevel, pPos, 0, false);
-			this.playSound(pLevel, pPos);
+			this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
 		}
 
-		//update pos
+		//update position
 		if (pPos.above().equals(pFromPos) || pPos.below().equals(pFromPos)) {
-			pState = pState.setValue(POS, this.getPosition(pLevel, pPos));
+			updatePosNeighborHelper(pLevel, pPos);
 		}
-		pLevel.setBlock(pPos, pState, 18);
+	}
+
+	//updates the position so it
+	private void updatePosNeighborHelper(Level level, BlockPos pos) {
+		if (this.getPosition(level, pos) != level.getBlockState(pos).getValue(POS)) {
+			level.setBlock(pos, level.getBlockState(pos).setValue(POS, this.getPosition(level, pos)), 3);
+		}
 	}
 
 	@Override
@@ -127,7 +145,7 @@ public class Shutter extends AbstractShutter {
 
 
 		if (neighbor_has_signal) {
-			open_state = isdoubleDoor == ShutterDouble.NONE ? this.stateTwoPossible(level, blockpos, true) ? 2 : 1 : this.stateTwoPossibleDouble (level, blockpos, true) ? 2 : 1;
+			open_state = isdoubleDoor == ShutterDouble.NONE ? this.stateTwoPossible(level, blockpos, true, isdoubleDoor == ShutterDouble.NONE) ? 2 : 1 : this.stateTwoPossibleDouble (level, blockpos, true) ? 2 : 1;
 
 			updateRedstone(level, blockpos, true, isdoubleDoor);
 		}
@@ -135,7 +153,7 @@ public class Shutter extends AbstractShutter {
 		return this.defaultBlockState()
 				.setValue(FACING, direction)
 				.setValue(POWERED, neighbor_has_signal)
-				.setValue(POS, getPosition(level, blockpos))
+				.setValue(POS, getPosition(level, blockpos, isdoubleDoor))
 				.setValue(DOUBLE_DOOR, isdoubleDoor)
 				.setValue(OPEN, open_state);
 	}

@@ -22,7 +22,7 @@ public class GoldShutter extends Shutter {
 		} else if (!pPlayer.isCrouching() && pHand.equals(InteractionHand.MAIN_HAND)
 				&& !pLevel.getBlockState(pPos).getValue(Shutter.POWERED)) {
 			this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
-			this.playSound(pLevel, pPos);
+			this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
 			return InteractionResult.sidedSuccess(pLevel.isClientSide);
 		}
 		return InteractionResult.FAIL;
