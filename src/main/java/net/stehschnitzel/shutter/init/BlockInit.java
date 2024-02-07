@@ -62,18 +62,6 @@ public class BlockInit {
 			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
 
 
-
-
-
-
-
-
-	// create
-	public static final RegistryObject<Shutter> GLASS_SHUTTER = registerBlock(
-			"glass_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion()),
-			ITEMS_CREATE, false);
-
 	// ecologics
 	public static final RegistryObject<Shutter> AZALEA_SHUTTER = registerBlock("azalea_shutter", () -> new Shutter(
 			BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
@@ -91,9 +79,9 @@ public class BlockInit {
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
 
 	// endergetic
-	public static final RegistryObject<Shutter> POISE_SHUTTER = registerBlock(
-			"poise_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENDERGETIC);
+//	public static final RegistryObject<Shutter> POISE_SHUTTER = registerBlock(
+//			"poise_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENDERGETIC);
 
 
 	// minecraft
@@ -148,11 +136,24 @@ public class BlockInit {
 			"cherry_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.CHERRY_PLANKS)), MINECRAFT_ITEMS);
 
+	//mc but not really
+	public static final RegistryObject<Shutter> GOLD_SHUTTER = registerBlock(
+			"gold_shutter", () -> new GoldShutter(
+					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), MINECRAFT_ITEMS, false);
+
+	public static final RegistryObject<Shutter> NETHERITE_SHUTTER = registerBlock(
+			"netherite_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK), true), MINECRAFT_ITEMS, false);
+
+	public static final RegistryObject<Shutter> GLASS_SHUTTER = registerBlock(
+			"glass_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.GLASS).noOcclusion()),
+			MINECRAFT_ITEMS, false);
 
 	// outer_end
-	public static final RegistryObject<Shutter> AZURE_SHUTTER = registerBlock(
-			"azure_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_OUTER_END);
+//	public static final RegistryObject<Shutter> AZURE_SHUTTER = registerBlock(
+//			"azure_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_OUTER_END);
 
 
 	// quark
@@ -164,15 +165,11 @@ public class BlockInit {
 			"ancient_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
 
+	public static final RegistryObject<Shutter> AZALEA_QUARK_SHUTTER = registerBlock(
+			"azalea_quark_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
+
 	// supplementaries
-	public static final RegistryObject<Shutter> GOLD_SHUTTER = registerBlock(
-			"gold_shutter", () -> new GoldShutter(
-					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
-
-	public static final RegistryObject<Shutter> NETHERITE_SHUTTER = registerBlock(
-			"netherite_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR), true), ITEMS_SUPPLEMENTARIES, false);
-
 	public static final RegistryObject<Shutter> LEAD_SHUTTER = registerBlock(
 			"lead_shutter", () -> new LeadShutter(
 					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
@@ -205,12 +202,10 @@ public class BlockInit {
 			"wisteria_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
 
-
 	//snowy spirit
 	public static final RegistryObject<Shutter> GINGERBREAD_SHUTTER = registerBlock(
 			"gingerbread_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_SNOWY_SPIRIT);
-
 
 	//update_aquatic
 	public static final RegistryObject<Shutter> DRIFTWOOD_SHUTTER = registerBlock(

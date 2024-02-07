@@ -12,7 +12,7 @@ import net.stehschnitzel.shutter.common.blocks.properties.ShutterDouble;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterPos;
 import net.stehschnitzel.shutter.init.BlockInit;
 
-public class ModBlockStateProvider extends ShuterBlockStateCreator {
+public class ModBlockStateProvider extends ShutterBlockStateCreator {
 
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, ShutterMain.MODID, exFileHelper);
@@ -20,7 +20,7 @@ public class ModBlockStateProvider extends ShuterBlockStateCreator {
     }
 
     @Override
-    protected void registerStatesAndModels() {
+    public void registerStatesAndModels() {
         shutterBuilder(BlockInit.MAPLE_SHUTTER);
         shutterBuilderWithRenderTyp(BlockInit.GLASS_SHUTTER, "block/glass", "cutout");
         shutterBuilder(BlockInit.AZALEA_SHUTTER);
@@ -41,17 +41,16 @@ public class ModBlockStateProvider extends ShuterBlockStateCreator {
         shutterBuilder(BlockInit.JUNGLE_SHUTTER, "block/jungle_planks");
         shutterBuilder(BlockInit.WARPED_SHUTTER, "block/warped_planks");
         shutterBuilder(BlockInit.IRON_SHUTTER, "block/iron_block");
+        shutterBuilder(BlockInit.SPRUCE_SHUTTER, "block/spruce_planks");
+
+        shutterBuilder(BlockInit.BLOSSOM_SHUTTER);
+        shutterBuilder(BlockInit.ANCIENT_SHUTTER);
+        shutterBuilder(BlockInit.AZALEA_QUARK_SHUTTER);
+
+        shutterBuilder(BlockInit.STRIPPED_BAMBOO_SHUTTER, "block/bamboo_planks");
 
 
-//        shutterBuilder(BlockInit.BIRCH_SHUTTER, "block/birch_planks");
-//        shutterBuilder(BlockInit.CHERRY_SHUTTER, "block/cherry_planks");
-//        shutterBuilder(BlockInit.CRIMSON_SHUTTER, "block/crimson_planks");
-//
-//        shutterBuilder(BlockInit.WARPED_SHUTTER, "block/warped_planks");
-//
-//        shutterBuilder(BlockInit.SPRUCE_SHUTTER, "block/spruce_planks");
-//
-//        shutterBuilder(BlockInit.IRON_SHUTTER, "block/iron_block");
+//        shutterBuilder(BlockInit.CHERRY_SHUTTER, "block/cherry_planks");d
 //        shutterBuilder(BlockInit.GOLD_SHUTTER, "block/gold_block");
 //        shutterBuilder(BlockInit.NETHERITE_SHUTTER, "block/netherite_block");
         //
@@ -65,53 +64,53 @@ public class ModBlockStateProvider extends ShuterBlockStateCreator {
         String name = block.getId().getPath();
         ResourceLocation render = ResourceLocation.tryParse(renderType);
 
-        ModelFile n_0 = shuttter_0(name, "_normal", particle).renderType(render);
-        ModelFile n_1 = shuttter_1(name, "_normal", particle).renderType(render);
-        ModelFile n_2 = shuttter_2(name, "_normal", particle).renderType(render);
+        ModelFile n_0 = shutter_0(name, "_normal", particle).renderType(render);
+        ModelFile n_1 = shutter_1(name, "_normal", particle).renderType(render);
+        ModelFile n_2 = shutter_2(name, "_normal", particle).renderType(render);
 
-        ModelFile nb_0 = shuttter_0_big(name, "_normal_big", particle).renderType(render);
-        ModelFile nb_1 = shuttter_1_big(name, "_normal_big", particle).renderType(render);
-        ModelFile nb_2 = shuttter_2_big(name, "_normal_big", particle).renderType(render);
+        ModelFile nb_0 = shutter_0_big(name, "_normal_big", particle).renderType(render);
+        ModelFile nb_1 = shutter_1_big(name, "_normal_big", particle).renderType(render);
+        ModelFile nb_2 = shutter_2_big(name, "_normal_big", particle).renderType(render);
 
-        ModelFile nbr_0 = shuttter_0_big_right(name, "_normal_big", particle).renderType(render);
-        ModelFile nbr_1 = shuttter_1_big_right(name, "_normal_big", particle).renderType(render);
-        ModelFile nbr_2 = shuttter_2_big_right(name, "_normal_big", particle).renderType(render);
+        ModelFile nbr_0 = shutter_0_big_right(name, "_normal_big", particle).renderType(render);
+        ModelFile nbr_1 = shutter_1_big_right(name, "_normal_big", particle).renderType(render);
+        ModelFile nbr_2 = shutter_2_big_right(name, "_normal_big", particle).renderType(render);
 
-        ModelFile l_0 = shuttter_0(name, "_lower", particle).renderType(render);
-        ModelFile l_1 = shuttter_1(name, "_lower", particle).renderType(render);
-        ModelFile l_2 = shuttter_2(name, "_lower", particle).renderType(render);
+        ModelFile l_0 = shutter_0(name, "_lower", particle).renderType(render);
+        ModelFile l_1 = shutter_1(name, "_lower", particle).renderType(render);
+        ModelFile l_2 = shutter_2(name, "_lower", particle).renderType(render);
 
-        ModelFile lb_0 = shuttter_0_big(name, "_lower_big", particle).renderType(render);
-        ModelFile lb_1 = shuttter_1_big(name, "_lower_big", particle).renderType(render);
-        ModelFile lb_2 = shuttter_2_big(name, "_lower_big", particle).renderType(render);
+        ModelFile lb_0 = shutter_0_big(name, "_lower_big", particle).renderType(render);
+        ModelFile lb_1 = shutter_1_big(name, "_lower_big", particle).renderType(render);
+        ModelFile lb_2 = shutter_2_big(name, "_lower_big", particle).renderType(render);
 
-        ModelFile lbr_0 = shuttter_0_big_right(name, "_lower_big", particle).renderType(render);
-        ModelFile lbr_1 = shuttter_1_big_right(name, "_lower_big", particle).renderType(render);
-        ModelFile lbr_2 = shuttter_2_big_right(name, "_lower_big", particle).renderType(render);
+        ModelFile lbr_0 = shutter_0_big_right(name, "_lower_big", particle).renderType(render);
+        ModelFile lbr_1 = shutter_1_big_right(name, "_lower_big", particle).renderType(render);
+        ModelFile lbr_2 = shutter_2_big_right(name, "_lower_big", particle).renderType(render);
 
-        ModelFile m_0 = shuttter_0(name, "_middle", particle).renderType(render);
-        ModelFile m_1 = shuttter_1(name, "_middle", particle).renderType(render);
-        ModelFile m_2 = shuttter_2(name, "_middle", particle).renderType(render);
+        ModelFile m_0 = shutter_0(name, "_middle", particle).renderType(render);
+        ModelFile m_1 = shutter_1(name, "_middle", particle).renderType(render);
+        ModelFile m_2 = shutter_2(name, "_middle", particle).renderType(render);
 
-        ModelFile mb_0 = shuttter_0_big(name, "_middle_big", particle).renderType(render);
-        ModelFile mb_1 = shuttter_1_big(name, "_middle_big", particle).renderType(render);
-        ModelFile mb_2 = shuttter_2_big(name, "_middle_big", particle).renderType(render);
+        ModelFile mb_0 = shutter_0_big(name, "_middle_big", particle).renderType(render);
+        ModelFile mb_1 = shutter_1_big(name, "_middle_big", particle).renderType(render);
+        ModelFile mb_2 = shutter_2_big(name, "_middle_big", particle).renderType(render);
 
-        ModelFile mbr_0 = shuttter_0_big_right(name, "_middle_big", particle).renderType(render);
-        ModelFile mbr_1 = shuttter_1_big_right(name, "_middle_big", particle).renderType(render);
-        ModelFile mbr_2 = shuttter_2_big_right(name, "_middle_big", particle).renderType(render);
+        ModelFile mbr_0 = shutter_0_big_right(name, "_middle_big", particle).renderType(render);
+        ModelFile mbr_1 = shutter_1_big_right(name, "_middle_big", particle).renderType(render);
+        ModelFile mbr_2 = shutter_2_big_right(name, "_middle_big", particle).renderType(render);
 
-        ModelFile u_0 = shuttter_0(name, "_upper", particle).renderType(render);
-        ModelFile u_1 = shuttter_1(name, "_upper", particle).renderType(render);
-        ModelFile u_2 = shuttter_2(name, "_upper", particle).renderType(render);
+        ModelFile u_0 = shutter_0(name, "_upper", particle).renderType(render);
+        ModelFile u_1 = shutter_1(name, "_upper", particle).renderType(render);
+        ModelFile u_2 = shutter_2(name, "_upper", particle).renderType(render);
 
-        ModelFile ub_0 = shuttter_0_big(name, "_upper_big", particle).renderType(render);
-        ModelFile ub_1 = shuttter_1_big(name, "_upper_big", particle).renderType(render);
-        ModelFile ub_2 = shuttter_2_big(name, "_upper_big", particle).renderType(render);
+        ModelFile ub_0 = shutter_0_big(name, "_upper_big", particle).renderType(render);
+        ModelFile ub_1 = shutter_1_big(name, "_upper_big", particle).renderType(render);
+        ModelFile ub_2 = shutter_2_big(name, "_upper_big", particle).renderType(render);
 
-        ModelFile ubr_0 = shuttter_0_big_right(name, "_upper_big", particle).renderType(render);
-        ModelFile ubr_1 = shuttter_1_big_right(name, "_upper_big", particle).renderType(render);
-        ModelFile ubr_2 = shuttter_2_big_right(name, "_upper_big", particle).renderType(render);
+        ModelFile ubr_0 = shutter_0_big_right(name, "_upper_big", particle).renderType(render);
+        ModelFile ubr_1 = shutter_1_big_right(name, "_upper_big", particle).renderType(render);
+        ModelFile ubr_2 = shutter_2_big_right(name, "_upper_big", particle).renderType(render);
 
         shutter(block,
                 l_0, l_1, l_2,
@@ -139,53 +138,53 @@ public class ModBlockStateProvider extends ShuterBlockStateCreator {
     private void shutterBuilder(RegistryObject<Shutter> block, String particle) {
         String name = block.getId().getPath();
 
-        ModelFile n_0 = shuttter_0(name, "_normal", particle);
-        ModelFile n_1 = shuttter_1(name, "_normal", particle);
-        ModelFile n_2 = shuttter_2(name, "_normal", particle);
+        ModelFile n_0 = shutter_0(name, "_normal", particle);
+        ModelFile n_1 = shutter_1(name, "_normal", particle);
+        ModelFile n_2 = shutter_2(name, "_normal", particle);
 
-        ModelFile nb_0 = shuttter_0_big(name, "_normal_big", particle);
-        ModelFile nb_1 = shuttter_1_big(name, "_normal_big", particle);
-        ModelFile nb_2 = shuttter_2_big(name, "_normal_big", particle);
+        ModelFile nb_0 = shutter_0_big(name, "_normal_big", particle);
+        ModelFile nb_1 = shutter_1_big(name, "_normal_big", particle);
+        ModelFile nb_2 = shutter_2_big(name, "_normal_big", particle);
 
-        ModelFile nbr_0 = shuttter_0_big_right(name, "_normal_big", particle);
-        ModelFile nbr_1 = shuttter_1_big_right(name, "_normal_big", particle);
-        ModelFile nbr_2 = shuttter_2_big_right(name, "_normal_big", particle);
+        ModelFile nbr_0 = shutter_0_big_right(name, "_normal_big", particle);
+        ModelFile nbr_1 = shutter_1_big_right(name, "_normal_big", particle);
+        ModelFile nbr_2 = shutter_2_big_right(name, "_normal_big", particle);
 
-        ModelFile l_0 = shuttter_0(name, "_lower", particle);
-        ModelFile l_1 = shuttter_1(name, "_lower", particle);
-        ModelFile l_2 = shuttter_2(name, "_lower", particle);
+        ModelFile l_0 = shutter_0(name, "_lower", particle);
+        ModelFile l_1 = shutter_1(name, "_lower", particle);
+        ModelFile l_2 = shutter_2(name, "_lower", particle);
 
-        ModelFile lb_0 = shuttter_0_big(name, "_lower_big", particle);
-        ModelFile lb_1 = shuttter_1_big(name, "_lower_big", particle);
-        ModelFile lb_2 = shuttter_2_big(name, "_lower_big", particle);
+        ModelFile lb_0 = shutter_0_big(name, "_lower_big", particle);
+        ModelFile lb_1 = shutter_1_big(name, "_lower_big", particle);
+        ModelFile lb_2 = shutter_2_big(name, "_lower_big", particle);
 
-        ModelFile lbr_0 = shuttter_0_big_right(name, "_lower_big", particle);
-        ModelFile lbr_1 = shuttter_1_big_right(name, "_lower_big", particle);
-        ModelFile lbr_2 = shuttter_2_big_right(name, "_lower_big", particle);
+        ModelFile lbr_0 = shutter_0_big_right(name, "_lower_big", particle);
+        ModelFile lbr_1 = shutter_1_big_right(name, "_lower_big", particle);
+        ModelFile lbr_2 = shutter_2_big_right(name, "_lower_big", particle);
 
-        ModelFile m_0 = shuttter_0(name, "_middle", particle);
-        ModelFile m_1 = shuttter_1(name, "_middle", particle);
-        ModelFile m_2 = shuttter_2(name, "_middle", particle);
+        ModelFile m_0 = shutter_0(name, "_middle", particle);
+        ModelFile m_1 = shutter_1(name, "_middle", particle);
+        ModelFile m_2 = shutter_2(name, "_middle", particle);
 
-        ModelFile mb_0 = shuttter_0_big(name, "_middle_big", particle);
-        ModelFile mb_1 = shuttter_1_big(name, "_middle_big", particle);
-        ModelFile mb_2 = shuttter_2_big(name, "_middle_big", particle);
+        ModelFile mb_0 = shutter_0_big(name, "_middle_big", particle);
+        ModelFile mb_1 = shutter_1_big(name, "_middle_big", particle);
+        ModelFile mb_2 = shutter_2_big(name, "_middle_big", particle);
 
-        ModelFile mbr_0 = shuttter_0_big_right(name, "_middle_big", particle);
-        ModelFile mbr_1 = shuttter_1_big_right(name, "_middle_big", particle);
-        ModelFile mbr_2 = shuttter_2_big_right(name, "_middle_big", particle);
+        ModelFile mbr_0 = shutter_0_big_right(name, "_middle_big", particle);
+        ModelFile mbr_1 = shutter_1_big_right(name, "_middle_big", particle);
+        ModelFile mbr_2 = shutter_2_big_right(name, "_middle_big", particle);
 
-        ModelFile u_0 = shuttter_0(name, "_upper", particle);
-        ModelFile u_1 = shuttter_1(name, "_upper", particle);
-        ModelFile u_2 = shuttter_2(name, "_upper", particle);
+        ModelFile u_0 = shutter_0(name, "_upper", particle);
+        ModelFile u_1 = shutter_1(name, "_upper", particle);
+        ModelFile u_2 = shutter_2(name, "_upper", particle);
 
-        ModelFile ub_0 = shuttter_0_big(name, "_upper_big", particle);
-        ModelFile ub_1 = shuttter_1_big(name, "_upper_big", particle);
-        ModelFile ub_2 = shuttter_2_big(name, "_upper_big", particle);
+        ModelFile ub_0 = shutter_0_big(name, "_upper_big", particle);
+        ModelFile ub_1 = shutter_1_big(name, "_upper_big", particle);
+        ModelFile ub_2 = shutter_2_big(name, "_upper_big", particle);
 
-        ModelFile ubr_0 = shuttter_0_big_right(name, "_upper_big", particle);
-        ModelFile ubr_1 = shuttter_1_big_right(name, "_upper_big", particle);
-        ModelFile ubr_2 = shuttter_2_big_right(name, "_upper_big", particle);
+        ModelFile ubr_0 = shutter_0_big_right(name, "_upper_big", particle);
+        ModelFile ubr_1 = shutter_1_big_right(name, "_upper_big", particle);
+        ModelFile ubr_2 = shutter_2_big_right(name, "_upper_big", particle);
 
         shutter(block,
                 l_0, l_1, l_2,

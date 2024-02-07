@@ -97,10 +97,15 @@ public class CreativTabInit{
 		items.accept(new ItemStack(BlockInit.MANGROVE_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.BAMBOO_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.CHERRY_SHUTTER.get()));
+
+		//mc but not really
+		items.accept(new ItemStack(BlockInit.GOLD_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.NETHERITE_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.GLASS_SHUTTER.get()));
 	}
 
 	private static void registerCreate(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.GLASS_SHUTTER.get()));
+
 	}
 
 	private static void registerEcologics(CreativeModeTab.Output items) {
@@ -111,25 +116,26 @@ public class CreativTabInit{
 	}
 
 	private static void registerEndergetic(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.POISE_SHUTTER.get()));
+//		items.accept(new ItemStack(BlockInit.POISE_SHUTTER.get()));
 	}
 
 	private static void registerOuterEnd(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.AZURE_SHUTTER.get()));
+//		items.accept(new ItemStack(BlockInit.AZURE_SHUTTER.get()));
 	}
 
 	private static void registerQuark(CreativeModeTab.Output items) {
 		items.accept(new ItemStack(BlockInit.ANCIENT_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.AZALEA_QUARK_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.BLOSSOM_SHUTTER.get()));
 	}
 
 	private static void registerSupplementaries(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.GOLD_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.NETHERITE_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.LEAD_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.SILVER_SHUTTER.get()));
 	}
 
 	private static void registerTwigs(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.STRIPPED_BAMBOO_SHUTTER.get()));
+//		items.accept(new ItemStack(BlockInit.STRIPPED_BAMBOO_SHUTTER.get()));
 	}
 
 	private static void registerOreganized(CreativeModeTab.Output items) {

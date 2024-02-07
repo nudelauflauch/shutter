@@ -6,7 +6,7 @@
 			"entries": [
 				{
 					"type": "minecraft:item",
-					"name": "shutter:stripped_bamboo_shutter"
+					"name": "shutter:bamboo_shutter"
 				}
 			]
 		}
