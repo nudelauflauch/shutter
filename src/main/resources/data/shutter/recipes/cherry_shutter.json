@@ -1,1 +1,1 @@
-{"type": "minecraft:crafting_shaped", "pattern": ["___", "___"], "key": {"_": {"item": "minecraft:cherry_slab"}}, "result": {"item": "shutter:cherry_shutter", "count": 2}}
+{"type": "minecraft:crafting_shaped", "pattern": ["___", "___"], "key": {"_": {"item": "minecraft:cherry_slab"}}, "result": {"item": "shutter:cherry_shutter", "count": 4}}

@@ -53,16 +53,13 @@ public class CreativTabInit{
 		if(ModList.get().isLoaded("twigs")) {
 //			registerTwigs(pItems);
 		}
-		if(ModList.get().isLoaded("oreganized")) {
-			registerOreganized(pItems);
-		}
 		if(ModList.get().isLoaded("autumnity")) {
 			registerAutumnity(pItems);
 		}
 		if(ModList.get().isLoaded("environmental")) {
 			registerEnvironmental(pItems);
 		}
-		if(ModList.get().isLoaded("snowy_spirit")) {
+		if(ModList.get().isLoaded("snowyspirit")) {
 			registerSnowySpirit(pItems);
 		}
 		if(ModList.get().isLoaded("upgrade_aquatic")) {
@@ -76,7 +73,6 @@ public class CreativTabInit{
 			registerQuark(pItems);
 			registerSupplementaries(pItems);
 			registerTwigs(pItems);
-			registerOreganized(pItems);
 			registerAutumnity(pItems);
 			registerEnvironmental(pItems);
 			registerSnowySpirit(pItems);
@@ -130,17 +126,12 @@ public class CreativTabInit{
 	}
 
 	private static void registerSupplementaries(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.LEAD_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.SILVER_SHUTTER.get()));
+//		items.accept(new ItemStack(BlockInit.LEAD_SHUTTER.get()));
+//		items.accept(new ItemStack(BlockInit.SILVER_SHUTTER.get()));
 	}
 
 	private static void registerTwigs(CreativeModeTab.Output items) {
 //		items.accept(new ItemStack(BlockInit.STRIPPED_BAMBOO_SHUTTER.get()));
-	}
-
-	private static void registerOreganized(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.SILVER_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.LEAD_SHUTTER.get()));
 	}
 
 	private static void registerAutumnity(CreativeModeTab.Output items) {
@@ -158,8 +149,8 @@ public class CreativTabInit{
 	}
 
 	private static void registerUpdateAquatic(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.DRIFTWOOD_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.RIVER_SHUTTER.get()));
+//		items.accept(new ItemStack(BlockInit.DRIFTWOOD_SHUTTER.get()));
+//		items.accept(new ItemStack(BlockInit.RIVER_SHUTTER.get()));
 	}
 
 	public static void registerDeferredItemRegister(IEventBus bus){
@@ -174,7 +165,7 @@ public class CreativTabInit{
 		modItems.put("twigs", BlockInit.ITEMS_TWIGS);
 		modItems.put("oreganized", BlockInit.ITEMS_OREGANIZED);
 		modItems.put("environmental", BlockInit.ITEMS_ENVIRONMENTAL);
-		modItems.put("snowy_spirit", BlockInit.ITEMS_SNOWY_SPIRIT);
+		modItems.put("snowyspirit", BlockInit.ITEMS_SNOWY_SPIRIT);
 		modItems.put("upgrade_aquatic", BlockInit.ITEMS_UPGRADE_AQUATTIC);
 
 		for (Map.Entry<String, DeferredRegister<Item>> entry : modItems.entrySet()) {

@@ -46,13 +46,15 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
         shutterBuilder(BlockInit.BLOSSOM_SHUTTER);
         shutterBuilder(BlockInit.ANCIENT_SHUTTER);
         shutterBuilder(BlockInit.AZALEA_QUARK_SHUTTER);
+        shutterBuilder(BlockInit.GINGERBREAD_SHUTTER);
+        shutterBuilder(BlockInit.CHERRY_SHUTTER, "block/cherry_planks");
+        shutterBuilder(BlockInit.GOLD_SHUTTER, "block/gold_block");
+        shutterBuilder(BlockInit.NETHERITE_SHUTTER, "block/netherite_block");
 
         shutterBuilder(BlockInit.STRIPPED_BAMBOO_SHUTTER, "block/bamboo_planks");
 
 
-//        shutterBuilder(BlockInit.CHERRY_SHUTTER, "block/cherry_planks");d
-//        shutterBuilder(BlockInit.GOLD_SHUTTER, "block/gold_block");
-//        shutterBuilder(BlockInit.NETHERITE_SHUTTER, "block/netherite_block");
+
         //
     }
 

@@ -1,0 +1,7 @@
+{
+  "parent": "shutter:block/template_shutter_1_big_left",
+  "textures": {
+    "particle": "minecraft:block/gold_block",
+    "texture": "shutter:block/gold_shutter_upper_big"
+  }
+}
