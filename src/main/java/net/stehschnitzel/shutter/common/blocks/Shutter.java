@@ -65,8 +65,8 @@ public class Shutter extends AbstractShutter {
 
 		//checks if it should update it double block state
 		if (pState.getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
-			BlockPos right = getNeighborShutterPos(pLevel, pPos, ShutterDouble.RIGHT);
-			BlockPos left = getNeighborShutterPos(pLevel, pPos, ShutterDouble.LEFT);
+			BlockPos right = getNeighborShutterPos(pPos, ShutterDouble.RIGHT, pState.getValue(FACING));
+			BlockPos left = getNeighborShutterPos(pPos, ShutterDouble.LEFT, pState.getValue(FACING));
 
 
 			if (sideblocks.get(0).getBlock() instanceof Shutter && pPos.equals(getNeighborShutterPos(pLevel, right))) {
@@ -145,9 +145,9 @@ public class Shutter extends AbstractShutter {
 
 
 		if (neighbor_has_signal) {
-			open_state = isdoubleDoor == ShutterDouble.NONE ? this.stateTwoPossible(level, blockpos, true, isdoubleDoor == ShutterDouble.NONE) ? 2 : 1 : this.stateTwoPossibleDouble (level, blockpos, true) ? 2 : 1;
+			open_state = isdoubleDoor == ShutterDouble.NONE ? this.stateTwoPossible(level, blockpos, true, true) ? 2 : 1 : this.stateTwoPossibleDouble (level, blockpos, true, isdoubleDoor, direction) ? 2 : 1;
 
-			updateRedstone(level, blockpos, true, isdoubleDoor);
+			updateRedstone(level, blockpos, true, isdoubleDoor, direction);
 		}
 
 		return this.defaultBlockState()

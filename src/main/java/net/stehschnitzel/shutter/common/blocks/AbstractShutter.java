@@ -45,10 +45,10 @@ abstract class AbstractShutter extends Block {
     }
 
     void updateRedstone(Level level, BlockPos pos, boolean first) {
-        updateRedstone(level, pos, first, level.getBlockState(pos).getValue(DOUBLE_DOOR));
+        updateRedstone(level, pos, first, level.getBlockState(pos).getValue(DOUBLE_DOOR), level.getBlockState(pos).getValue(FACING));
     }
 
-    void updateRedstone(Level level, BlockPos pos, boolean first, ShutterDouble doorType) {
+    void updateRedstone(Level level, BlockPos pos, boolean first, ShutterDouble doorType, Direction facing) {
         if (doorType == ShutterDouble.NONE) {
              if (stateTwoPossible(level, pos, first, false)) {
                 updateAll(level, pos, 2, first, false);
@@ -56,16 +56,15 @@ abstract class AbstractShutter extends Block {
                 updateAll(level, pos, 1, first, false);
             }
         } else {
-            List<BlockState> sideblocks = getNeighborBlocks(level, pos);
-            BlockPos neighborPos = getNeighborShutterPos(level, pos);
+            BlockPos neighborPos = getNeighborShutterPos(pos, doorType, facing);
 
-             if (stateTwoPossibleDouble(level, pos, first)) {
+             if (stateTwoPossibleDouble(level, pos, first, doorType, facing)) {
                 updateAll(level, pos, 2, first, true);
-                updateAll(level, neighborPos, 2, first, true);
+                updateAll(level, neighborPos, 2, false, true);
 
             } else {
                 updateAll(level, pos, 1, first, true);
-                updateAll(level, neighborPos, 1, first, true);
+                updateAll(level, neighborPos, 1, false, true);
             }
         }
     }
@@ -110,11 +109,12 @@ abstract class AbstractShutter extends Block {
     }
 
     boolean stateTwoPossibleDouble(Level level, BlockPos pos, boolean first) {
-        boolean thisCanUpdate = stateTwoPossible(level, pos, first, true);
-        ShutterDouble doorType = level.getBlockState(pos).getValue(DOUBLE_DOOR);
+        return stateTwoPossibleDouble(level, pos, first, level.getBlockState(pos).getValue(DOUBLE_DOOR), level.getBlockState(pos).getValue(FACING));
+    }
 
-        List<BlockState> sideblocks = getNeighborBlocks(level, pos);
-        BlockPos neighborPos = getNeighborShutterPos(level, pos);
+    boolean stateTwoPossibleDouble(Level level, BlockPos pos, boolean first, ShutterDouble shutterDouble, Direction facing) {
+        boolean thisCanUpdate = stateTwoPossible(level, pos, first, true);
+        BlockPos neighborPos = getNeighborShutterPos(pos, shutterDouble, facing);
 
         return thisCanUpdate && stateTwoPossible(level, neighborPos, first, true);
     }
@@ -222,11 +222,14 @@ abstract class AbstractShutter extends Block {
     }
 
     BlockPos getNeighborShutterPos(Level level, BlockPos pos) {
-        return getNeighborShutterPos(level, pos, level.getBlockState(pos).getValue(DOUBLE_DOOR));
+        return getNeighborShutterPos(pos, level.getBlockState(pos));
     }
 
-    BlockPos getNeighborShutterPos(Level level, BlockPos pos, ShutterDouble shutterDouble) {
-        Direction facing = level.getBlockState(pos).getValue(FACING);
+    BlockPos getNeighborShutterPos(BlockPos pos, BlockState state) {
+        return getNeighborShutterPos(pos, state.getValue(DOUBLE_DOOR), state.getValue(FACING));
+    }
+
+    BlockPos getNeighborShutterPos(BlockPos pos, ShutterDouble shutterDouble, Direction facing) {
 
         switch (facing) {
             case SOUTH -> {
