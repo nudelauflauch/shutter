@@ -1,6 +1,6 @@
 {
     "pack": {
-        "description": "examplemod resources",
-        "pack_format": 9
+        "description": "resources for shutters",
+        "pack_format": 15
     }
 }

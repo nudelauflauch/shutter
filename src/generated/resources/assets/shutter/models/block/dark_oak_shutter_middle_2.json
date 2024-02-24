@@ -1,0 +1,7 @@
+{
+  "parent": "shutter:block/template_shutter_2",
+  "textures": {
+    "particle": "minecraft:block/dark_oak_planks",
+    "texture": "shutter:block/dark_oak_shutter_middle"
+  }
+}

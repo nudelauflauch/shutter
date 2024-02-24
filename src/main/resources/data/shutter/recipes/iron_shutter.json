@@ -5,15 +5,15 @@
         "#_#"
     ],
     "key": {
-        "_": {
-            "item": "minecraft:iron_nugget"
-        },
         "#": {
-        	"item": "minecraft:iron_ingot"
+            "item": "minecraft:iron_ingot"
+        },
+        "_": {
+        	"item": "minecraft:iron_nugget"
         }
     },
     "result": {
         "item": "shutter:iron_shutter",
-        "count": 1
+        "count": 2
     }
 }

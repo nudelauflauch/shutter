@@ -1,0 +1,7 @@
+{
+  "parent": "shutter:block/template_shutter_1_big_right",
+  "textures": {
+    "particle": "minecraft:block/acacia_planks",
+    "texture": "shutter:block/acacia_shutter_middle_big"
+  }
+}
