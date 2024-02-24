@@ -16,7 +16,6 @@
   "block.shutter.warped_shutter" : "Wirrfensterladen",
   "block.shutter.azuer_shutter" : "Azuerfensterladen",
   "block.shutter.blossom_shutter" : "Blütenfensterladen",
-  "block.shutter.gold_shutter" : "Goldener Fensterladen",
   "block.shutter.lead_shutter" : "Bleierner Fensterladen",
   "block.shutter.netherite_shutter" : "Netheritfensterladen",
   "block.shutter.silver_shutter" : "Silberner Fensterladen",
@@ -33,6 +32,9 @@
   "block.shutter.bamboo_shutter" : "Bambusfensterladen",
   "block.shutter.river_shutter" : "Flussfensterladen",
   "block.shutter.glass_shutter" : "Glasfensterladen",
+  "block.shutter.azalea_quark_shutter" : "Quark Azaleafensterladen",
+  "block.shutter.cypress_shutter" : "Cypressenfensterladen",
+  "block.shutter.muddy_oak_shutter" : "Schlammige Eichenfensterladen",
 
 
 	"itemGroup.shutter_tab":"Fensterläden",

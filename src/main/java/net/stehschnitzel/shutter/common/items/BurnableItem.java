@@ -7,7 +7,7 @@ import net.minecraft.world.level.block.Block;
 
 public class BurnableItem extends BlockItem {
 
-	private int burnTime;
+	private final int burnTime;
 
 	public BurnableItem(Block pBlock, Properties pProperties, int burnTime) {
 		super(pBlock, pProperties);

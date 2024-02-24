@@ -12,9 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stehschnitzel.shutter.ShutterMain;
 import net.stehschnitzel.shutter.common.blocks.GoldShutter;
-import net.stehschnitzel.shutter.common.blocks.LeadShutter;
 import net.stehschnitzel.shutter.common.blocks.Shutter;
-import net.stehschnitzel.shutter.common.blocks.SilverShutter;
 import net.stehschnitzel.shutter.common.items.BurnableItem;
 
 public class BlockInit {
@@ -59,6 +57,9 @@ public class BlockInit {
 			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
 
 	public static final DeferredRegister<Item> ITEMS_UPGRADE_AQUATTIC = DeferredRegister
+			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+
+	public static final DeferredRegister<Item> ITEMS_GOODENDING = DeferredRegister
 			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
 
 
@@ -215,6 +216,15 @@ public class BlockInit {
 //	public static final RegistryObject<Shutter> RIVER_SHUTTER = registerBlock(
 //			"river_shutter", () -> new Shutter(
 //					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_UPGRADE_AQUATTIC);
+
+	//goodending
+	public static final RegistryObject<Shutter> CYPRESS_SHUTTER = registerBlock(
+			"cypress_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_GOODENDING);
+
+	public static final RegistryObject<Shutter> MUDDY_OAK_SHUTTER = registerBlock(
+			"muddy_oak_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_GOODENDING);
 
 	// Block
 	private static <T extends Block> RegistryObject<T> registerBlock(

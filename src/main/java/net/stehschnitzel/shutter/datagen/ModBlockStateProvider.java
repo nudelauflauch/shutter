@@ -30,6 +30,9 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
         shutterBuilder(BlockInit.CHERRY_ENV_SHUTTER);
         shutterBuilder(BlockInit.WILLOW_SHUTTER);
         shutterBuilder(BlockInit.WISTERIA_SHUTTER);
+        shutterBuilder(BlockInit.CYPRESS_SHUTTER);
+        shutterBuilder(BlockInit.MUDDY_OAK_SHUTTER);
+
 
         shutterBuilder(BlockInit.ACACIA_SHUTTER, "block/acacia_planks");
         shutterBuilder(BlockInit.BAMBOO_SHUTTER, "block/bamboo_planks");
@@ -52,10 +55,6 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
         shutterBuilder(BlockInit.NETHERITE_SHUTTER, "block/netherite_block");
 
         shutterBuilder(BlockInit.STRIPPED_BAMBOO_SHUTTER, "block/bamboo_planks");
-
-
-
-        //
     }
 
     private void shutterBuilderWithRenderTyp(RegistryObject<Shutter> block, String renderType) {

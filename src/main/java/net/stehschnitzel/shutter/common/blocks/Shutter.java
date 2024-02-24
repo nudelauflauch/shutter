@@ -117,36 +117,42 @@ public class Shutter extends AbstractShutter {
 	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
 		BlockPos blockpos = pContext.getClickedPos();
 		Level level = pContext.getLevel();
-		Direction direction = pContext.getHorizontalDirection();
+
 		int open_state = 0;
+		Direction direction = pContext.getHorizontalDirection();
+		List<BlockState> sideblocks = getNeighborBlocks(level, blockpos, direction);
+		ShutterDouble isdoubleDoor = ShutterDouble.NONE;
+		boolean neighbor_has_signal = level.hasNeighborSignal(blockpos) || level.hasNeighborSignal(blockpos.above());
+
+		//get if the neighbours are also shutters
+		if (sideblocks.get(0).getBlock() instanceof Shutter && sideblocks.get(0).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
+			isdoubleDoor = ShutterDouble.RIGHT;
+			open_state = sideblocks.get(0).getValue(OPEN);
+			if (direction != sideblocks.get(0).getValue(FACING)) {
+				direction = sideblocks.get(0).getValue(FACING);
+				isdoubleDoor = ShutterDouble.LEFT;
+			}
+		} else if (sideblocks.get(1).getBlock() instanceof Shutter && sideblocks.get(1).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
+			isdoubleDoor = ShutterDouble.LEFT;
+			open_state = sideblocks.get(1).getValue(OPEN);
+			if (direction != sideblocks.get(1).getValue(FACING)) {
+				direction = sideblocks.get(1).getValue(FACING);
+				isdoubleDoor = ShutterDouble.RIGHT;
+			}
+		}
 
 		if (this.getBlockBelow(blockpos, level) instanceof Shutter) {
 			open_state = level.getBlockState(blockpos.below()).getValue(OPEN);
 			direction = level.getBlockState(blockpos.below()).getValue(FACING);
-
 		} else if (this.getBlockAbove(blockpos, level) instanceof Shutter) {
 			open_state = level.getBlockState(blockpos.above()).getValue(OPEN);
 			direction = level.getBlockState(blockpos.above()).getValue(FACING);
-
+		} else if (pContext.getPlayer().isShiftKeyDown() && isdoubleDoor == ShutterDouble.NONE){
+			direction = direction.getOpposite();
 		}
-
-		List<BlockState> sideblocks = getNeighborBlocks(level, blockpos, direction);
-
-		//get if the neighbours are also shutters
-		ShutterDouble isdoubleDoor = ShutterDouble.NONE;
-		if (sideblocks.get(0).getBlock() instanceof Shutter && sideblocks.get(0).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
-			isdoubleDoor = ShutterDouble.RIGHT;
-		} else if (sideblocks.get(1).getBlock() instanceof Shutter && sideblocks.get(1).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
-			isdoubleDoor = ShutterDouble.LEFT;
-		}
-
-		boolean neighbor_has_signal = level.hasNeighborSignal(blockpos)
-				|| level.hasNeighborSignal(blockpos.above());
-
 
 		if (neighbor_has_signal) {
 			open_state = isdoubleDoor == ShutterDouble.NONE ? this.stateTwoPossible(level, blockpos, true, true) ? 2 : 1 : this.stateTwoPossibleDouble (level, blockpos, true, isdoubleDoor, direction) ? 2 : 1;
-
 			updateRedstone(level, blockpos, true, isdoubleDoor, direction);
 		}
 
