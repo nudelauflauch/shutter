@@ -90,21 +90,19 @@ abstract class AbstractShutter extends Block {
     }
 
     private void updateDoubleDoor(Level level, BlockPos pos, int state, boolean first, ShutterDouble doorType) {
-        List<BlockState> sideblocks = getNeighborBlocks(level, pos);
-
         BlockPos neighborPos = getNeighborShutterPos(level, pos);
 
         if (state < 2) {
             updateAll(level, pos, state, first, true);
-            updateAll(level, neighborPos, state, first, true);
+            updateAll(level, neighborPos, state, false, true);
 
         } else if (state == 2 && stateTwoPossibleDouble(level, pos, first)) {
             updateAll(level, pos, 2, first, true);
-            updateAll(level, neighborPos, 2, first, true);
+            updateAll(level, neighborPos, 2, false, true);
 
         } else {
             updateAll(level, pos, 0, first, true);
-            updateAll(level, neighborPos, 0, first, true);
+            updateAll(level, neighborPos, 0, false, true);
         }
     }
 

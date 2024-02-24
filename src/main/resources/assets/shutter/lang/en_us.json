@@ -16,7 +16,7 @@
   "block.shutter.warped_shutter" : "Warped Shutter",
   "block.shutter.cherry_shutter" : "Cherry Shutter",
   "block.shutter.azuer_shutter" : "Azuer Shutter",
-  "block.shutter.blossom_shutter" : "Blossom Shutter",
+  "block.shutter.blossom_shutter" : "Trumpet Shutter",
   "block.shutter.lead_shutter" : "Lead Shutter",
   "block.shutter.netherite_shutter" : "Netherite Shutter",
   "block.shutter.silver_shutter" : "Silver Shutter",
@@ -29,11 +29,13 @@
   "block.shutter.gingerbread_shutter" : "Gingerbread Shutter",
   "block.shutter.driftwood_shutter" : "Driftwood Shutter",
   "block.shutter.mangrove_shutter" : "Mangrove Shutter",
-  "block.shutter.ancient_shutter" : "Ancient Shutter",
+  "block.shutter.ancient_shutter" : "Ashen Shutter",
   "block.shutter.bamboo_shutter" : "Bamboo Shutter",
   "block.shutter.river_shutter" : "River Shutter",
   "block.shutter.glass_shutter" : "Glass Shutter",
   "block.shutter.azalea_quark_shutter" : "Quark Azalea Shutter",
+  "block.shutter.cypress_shutter" : "Cypress Shutter",
+  "block.shutter.muddy_oak_shutter" : "Muddy Oak Shutter",
 
 	"itemGroup.shutter_tab":"Shutters",
 

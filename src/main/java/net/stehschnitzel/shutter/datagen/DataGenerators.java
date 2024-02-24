@@ -24,6 +24,7 @@ public class DataGenerators {
 
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeServer(), LootTableProvider.create(packOutput));
+        generator.addProvider(event.includeClient(), new ModItemModelGenerator(packOutput, existingFileHelper));
 
         generator.run();
     }
