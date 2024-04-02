@@ -109,7 +109,8 @@ dependencies {
     
     
     // quark, autoreglib
-    // runtimeOnly fg.deobf("curse.maven:quark-243121:3840125")
+    compileOnly fg.deobf("curse.maven:supplementaries-412082:5154529")
+
     // runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3642382")
     
     // JEI

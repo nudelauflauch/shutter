@@ -144,7 +144,7 @@ public class BlockInit {
 
 	public static final RegistryObject<Shutter> NETHERITE_SHUTTER = registerBlock(
 			"netherite_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK), true), MINECRAFT_ITEMS, false);
+					BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)), MINECRAFT_ITEMS, false);
 
 	public static final RegistryObject<Shutter> GLASS_SHUTTER = registerBlock(
 			"glass_shutter", () -> new Shutter(
