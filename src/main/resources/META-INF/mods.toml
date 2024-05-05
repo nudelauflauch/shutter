@@ -1,13 +1,16 @@
 modLoader="javafml"
-loaderVersion="43"
-license="MIT license "
-[[mods]]
-modId="shutter"
-version="2.0.0"
-displayName="Shutter"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/nudelauflauch/shutter/issues"
 
-credits="nudelauflauch for the textures"
-authors="stehschnitzel"
+[[mods]]
+
+modId="${mod_id}" #mandatory
+version="${mod_version}" #mandatory
+displayName="${mod_name}" #mandatory
+
+credits="Thanks go to Nudelauflauch for the textures"
+authors= "${mod_authors}"
 
 logoFile= "assets/shutter/textures/gui/main.png"
 
@@ -15,14 +18,10 @@ description='''
 Adds Shutters for minecraft and different mods
 '''
 
-[[dependencies.shutter]]
-    modId="forge"
-    mandatory=true
-    versionRange="[47,)"
-    side="BOTH"
-
-[[dependencies.shutter]]
+[[dependencies.${mod_id}]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.1]"
+
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
     side="BOTH"

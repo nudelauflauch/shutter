@@ -1,26 +1,18 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://maven.parchmentmc.org' }
-        maven { url 'https://repo.spongepowered.org/repository/maven-public/' }
-        
-        mavenCentral()
-    }
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-        classpath 'org.parchmentmc:librarian:1.+'
-    	classpath 'org.spongepowered:mixingradle:0.7.+'
-    }
+plugins {
+    id 'eclipse'
+    id 'idea'
+    id 'maven-publish'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT' apply true
 }
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'org.spongepowered.mixin'
-apply plugin: 'org.parchmentmc.librarian.forgegradle'
-// Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
-apply plugin: 'maven-publish'
 
-version = '2.0.2-1.20.1'
-group = 'net.stehschnitzel.shutter' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'shutters'
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
@@ -37,7 +29,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                shutter {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
@@ -51,7 +43,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                shutter {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
@@ -67,7 +59,7 @@ minecraft {
             args '--mod', 'examplemod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                shutter {
+                "${mod_id}" {
                     source sourceSets.main
                 }
             }
@@ -87,7 +79,7 @@ repositories {
         url = "https://modmaven.dev"
     }
     maven {
-    	url = "https://www.cursemaven.com"
+        url = "https://www.cursemaven.com"
     }
 }
 
@@ -101,14 +93,13 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
 	// MINECRAFT
-    minecraft 'net.minecraftforge:forge:1.20.1-47.2.20'
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
     
     // Mixins
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
-    
-    
-    // quark, autoreglib
-    compileOnly fg.deobf("curse.maven:supplementaries-412082:5154529")
+
+
+    compileOnly fg.deobf("curse.maven:supplementaries-412082:5225134")
 
     compileOnly fg.deobf("curse.maven:effortless-building-302113:4979130")
     
@@ -119,16 +110,32 @@ dependencies {
     runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
 }
 
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors: mod_authors, mod_description: mod_description,
+            jei_version: jei_version
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
+    }
+}
+
 jar {
     manifest {
         attributes([
-            "Specification-Title": "shutter",
-            "Specification-Vendor": "shutter",
-            "Specification-Version": "1", // We are version 1 of ourselves
-            "Implementation-Title": project.name,
-            "Implementation-Version": "${version}",
-            "Implementation-Vendor" :"shutter",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : '1', // We are version 1 of ourselves
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
@@ -146,4 +153,8 @@ publishing {
             url "file:///${project.projectDir}/mcmodsrepo"
         }
     }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
