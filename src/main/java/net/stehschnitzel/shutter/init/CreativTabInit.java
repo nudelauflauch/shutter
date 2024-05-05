@@ -68,6 +68,9 @@ public class CreativTabInit{
 		if(ModList.get().isLoaded("goodending")) {
 			registerGoodEnding(pItems);
 		}
+		if (ModList.get().isLoaded("beachparty")) {
+			registerBeachParty(pItems);
+		}
 		if (!FMLLoader.isProduction()) {
 			registerCreate(pItems);
 			registerEcologics(pItems);
@@ -81,6 +84,7 @@ public class CreativTabInit{
 			registerSnowySpirit(pItems);
 			registerUpdateAquatic(pItems);
 			registerGoodEnding(pItems);
+			registerBeachParty(pItems);
 		}
 	}
 
@@ -162,6 +166,10 @@ public class CreativTabInit{
 		items.accept(BlockInit.MUDDY_OAK_SHUTTER.get());
 	}
 
+	private static void registerBeachParty(CreativeModeTab.Output items) {
+		items.accept(BlockInit.PALM_SHUTTER.get());
+	}
+
 	public static void registerDeferredItemRegister(IEventBus bus){
 		Map<String, DeferredRegister<Item>> modItems = new HashMap<>();
 		modItems.put("autumnity", BlockInit.ITEMS_AUTUMNITY);
@@ -177,6 +185,7 @@ public class CreativTabInit{
 		modItems.put("snowyspirit", BlockInit.ITEMS_SNOWY_SPIRIT);
 		modItems.put("upgrade_aquatic", BlockInit.ITEMS_UPGRADE_AQUATTIC);
 		modItems.put("goodending", BlockInit.ITEMS_GOODENDING);
+		modItems.put("beachparty", BlockInit.ITEMS_BEACHPARTY);
 
 		for (Map.Entry<String, DeferredRegister<Item>> entry : modItems.entrySet()) {
 			String modId = entry.getKey();

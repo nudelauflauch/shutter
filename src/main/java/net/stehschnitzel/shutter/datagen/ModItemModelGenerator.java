@@ -49,6 +49,7 @@ public class ModItemModelGenerator extends ItemModelProvider {
         simpleItem(BlockInit.STRIPPED_BAMBOO_SHUTTER);
         simpleItem(BlockInit.CYPRESS_SHUTTER);
         simpleItem(BlockInit.MUDDY_OAK_SHUTTER);
+        simpleItem(BlockInit.PALM_SHUTTER);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Shutter> item) {

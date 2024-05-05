@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-22T12:07:47.6531275	Item Models: shutter
+// 1.20.1	2024-05-05T16:40:21.4827521	Item Models: shutter
 dbb49dc1d7a3ed509e79ab53c58ad1854543b040 assets/shutter/models/item/acacia_shutter.json
 a24340d94f285b0857be88bcda8212794978d7e3 assets/shutter/models/item/ancient_shutter.json
 4870447599d41ecdee7c56b332682efdc67ea06d assets/shutter/models/item/azalea_quark_shutter.json
@@ -23,6 +23,7 @@ b63d5e82078dbccb78f1a425a9096ef9e5947b0b assets/shutter/models/item/maple_shutte
 06eabf1a44314797e2fb8e7a4e6a0c289f10d476 assets/shutter/models/item/muddy_oak_shutter.json
 ba42f0b1c3ab0536502276a217bc9602054bc418 assets/shutter/models/item/netherite_shutter.json
 6929d3d8f8a8b8c8b99a83731b11f8cf67fbff61 assets/shutter/models/item/oak_shutter.json
+44d654a0078222a0855797eeddc7ac3d2c12b0c4 assets/shutter/models/item/palm_shutter.json
 14f14c1fc30b6e0def7cae86f67f76155d6f117b assets/shutter/models/item/spruce_shutter.json
 8449849adfb4563c43d036e0b4114bd1b8abe0c8 assets/shutter/models/item/stripped_bamboo_shutter.json
 723e3c924ed580fcbb6f447a9a87be44136d48c6 assets/shutter/models/item/walnut_shutter.json

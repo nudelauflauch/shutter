@@ -1,0 +1,7 @@
+{
+  "parent": "shutter:block/template_shutter_0_big_right",
+  "textures": {
+    "particle": "shutter:block/palm_shutter_normal",
+    "texture": "shutter:block/palm_shutter_upper_big"
+  }
+}
