@@ -6,11 +6,19 @@
     ],
     "key": {
         "_": {
+<<<<<<< Updated upstream
             "item": "ecologics:flowering_azalea_slab"
+=======
+            "item": "ecologics:flowering_azalea_shutter"
+>>>>>>> Stashed changes
         }
     },
     "result": {
         "item": "shutter:flowering_azalea_shutter",
+<<<<<<< Updated upstream
         "count": 4
+=======
+        "count": 2
+>>>>>>> Stashed changes
     }
 }

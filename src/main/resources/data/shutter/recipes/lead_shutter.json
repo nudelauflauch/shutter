@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "___",
+        "___"
+    ],
+    "key": {
+        "_": {
+            "item": "supplementaries:lead_block"
+        }
+    },
+    "result": {
+        "item": "shutter:lead_shutter",
+        "count": 2
+    }
+}

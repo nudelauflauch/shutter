@@ -1,6 +1,13 @@
 {
+<<<<<<< Updated upstream:src/generated/resources/assets/shutter/models/item/flowering_azalea_shutter.json
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "shutter:item/flowering_azalea_shutter"
   }
+=======
+	"parent":"item/generated",
+	"textures": {
+		"layer0": "shutter:item/flowering_azalea_shutter"
+	}
+>>>>>>> Stashed changes:src/main/resources/assets/shutter/models/item/flowering_azalea_shutter.json
 }

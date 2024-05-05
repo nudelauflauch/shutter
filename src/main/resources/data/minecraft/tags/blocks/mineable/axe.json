@@ -9,11 +9,15 @@
 		"shutter:jungle_shutter",
 		"shutter:spruce_shutter",
 		"shutter:warped_shutter",
+<<<<<<< Updated upstream
 		"shutter:mangrove_shutter",
+=======
+>>>>>>> Stashed changes
 		"shutter:azalea_shutter",
 		"shutter:coconut_shutter",
 		"shutter:flowering_azalea_shutter",
 		"shutter:walnut_shutter",
+<<<<<<< Updated upstream
 		"shutter:blossom_shutter",
 		"shutter:stripped_bamboo_shutter",
 		"shutter:cherry_shutter",
@@ -27,5 +31,10 @@
 		"shutter:gingerbread_shutter",
 		"shutter:cypress_shutter",
 		"shutter:muddy_oak_shutter"
+=======
+		"shutter:poise_shutter",
+		"shutter:blossom_shutter",
+		"shutter:stripped_bamboo_shutter"
+>>>>>>> Stashed changes
 	]
 }

@@ -1,6 +1,13 @@
 {
+<<<<<<< Updated upstream:src/generated/resources/assets/shutter/models/item/netherite_shutter.json
   "parent": "minecraft:item/generated",
   "textures": {
     "layer0": "shutter:item/netherite_shutter"
   }
+=======
+	"parent":"item/generated",
+	"textures": {
+		"layer0": "shutter:item/netherite_shutter"
+	}
+>>>>>>> Stashed changes:src/main/resources/assets/shutter/models/item/netherite_shutter.json
 }

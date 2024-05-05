@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream:src/generated/resources/data/shutter/loot_tables/blocks/birch_shutter.json
 {
   "type": "minecraft:block",
   "pools": [
@@ -19,3 +20,6 @@
   ],
   "random_sequence": "shutter:blocks/birch_shutter"
 }
+=======
+{"type": "minecraft:block","pools": [{"rolls": 1,"entries": [{"type": "minecraft:item","name": "shutter:birch_shutter"}]}]}
+>>>>>>> Stashed changes:src/main/resources/data/shutter/loot_tables/blocks/birch_shutter.json

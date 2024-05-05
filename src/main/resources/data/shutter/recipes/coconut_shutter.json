@@ -6,11 +6,19 @@
     ],
     "key": {
         "_": {
+<<<<<<< Updated upstream
             "item": "ecologics:coconut_slab"
+=======
+            "item": "ecologics:coconut_planks"
+>>>>>>> Stashed changes
         }
     },
     "result": {
         "item": "shutter:coconut_shutter",
+<<<<<<< Updated upstream
         "count": 4
+=======
+        "count": 2
+>>>>>>> Stashed changes
     }
 }

@@ -3,24 +3,43 @@ buildscript {
         maven { url = 'https://maven.minecraftforge.net' }
         maven { url = 'https://maven.parchmentmc.org' }
         maven { url 'https://repo.spongepowered.org/repository/maven-public/' }
+<<<<<<< Updated upstream
         
         mavenCentral()
+=======
+>>>>>>> Stashed changes
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
         classpath 'org.parchmentmc:librarian:1.+'
+<<<<<<< Updated upstream
     	classpath 'org.spongepowered:mixingradle:0.7.+'
+=======
+        classpath 'org.apache.logging.log4j:log4j-api:2.11.2'
+    	classpath 'org.apache.logging.log4j:log4j-core:2.11.2'
+
+    	classpath group: 'org.spongepowered', name: 'mixingradle', version: '0.7-SNAPSHOT'
+>>>>>>> Stashed changes
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'org.spongepowered.mixin'
 apply plugin: 'org.parchmentmc.librarian.forgegradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
+<<<<<<< Updated upstream
 apply plugin: 'maven-publish'
 
 version = '2.0.2-1.20.1'
 group = 'net.stehschnitzel.shutter' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'shutters'
+=======
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+
+version = '1.0.0-1.18.2'
+group = 'net.stehschnitzel.shutters' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'shutter'
+>>>>>>> Stashed changes
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17) // Mojang ships Java 8 to end users, so your mod should target Java 8.
 
@@ -103,6 +122,7 @@ dependencies {
 	// MINECRAFT
     minecraft 'net.minecraftforge:forge:1.20.1-47.2.20'
     
+<<<<<<< Updated upstream
     // Mixins
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
     
@@ -117,6 +137,12 @@ dependencies {
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
     // at runtime, use the full JEI jar for Forge
     runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+=======
+    annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
+    
+    runtimeOnly fg.deobf("curse.maven:quark-243121:3840125")
+    runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3642382")
+>>>>>>> Stashed changes
 }
 
 jar {

@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "___",
+        "___"
+    ],
+    "key": {
+        "_": {
+            "item": "endergedic:poise_planks"
+        }
+    },
+    "result": {
+        "item": "shutter:poise_shutter",
+        "count": 2
+    }
+}

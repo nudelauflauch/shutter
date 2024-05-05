@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "___",
+        "___"
+    ],
+    "key": {
+        "_": {
+            "item": "supplementaries:silver_ingots"
+        }
+    },
+    "result": {
+        "item": "shutter:silver_shutter",
+        "count": 2
+    }
+}
