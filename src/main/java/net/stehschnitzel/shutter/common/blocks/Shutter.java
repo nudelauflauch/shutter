@@ -113,6 +113,8 @@ public class Shutter extends AbstractShutter {
 		}
 	}
 
+
+
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
 		BlockPos blockpos = pContext.getClickedPos();
@@ -147,7 +149,7 @@ public class Shutter extends AbstractShutter {
 		} else if (this.getBlockAbove(blockpos, level) instanceof Shutter) {
 			open_state = level.getBlockState(blockpos.above()).getValue(OPEN);
 			direction = level.getBlockState(blockpos.above()).getValue(FACING);
-		} else if (pContext.getPlayer().isShiftKeyDown() && isdoubleDoor == ShutterDouble.NONE){
+		} else if (pContext.getPlayer() != null && pContext.getPlayer().isShiftKeyDown() && isdoubleDoor == ShutterDouble.NONE){
 			direction = direction.getOpposite();
 		}
 

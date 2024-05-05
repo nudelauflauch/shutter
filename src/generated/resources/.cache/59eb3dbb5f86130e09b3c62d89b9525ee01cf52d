@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-22T12:07:47.6551233	Loot Tables
+// 1.20.1	2024-05-05T16:40:21.4842755	Loot Tables
 7ba43da151555721c7b810e4cd2695fa37735eab data/shutter/loot_tables/blocks/acacia_shutter.json
 bcdf7dc6e1123681cb4c5b51be646a6c8b784268 data/shutter/loot_tables/blocks/ancient_shutter.json
 c4ea45743514f3cc00fe2a275284a90008d0846c data/shutter/loot_tables/blocks/azalea_quark_shutter.json
@@ -23,6 +23,7 @@ c7c68e536be6fd2e51888cd181b0939d3743e901 data/shutter/loot_tables/blocks/iron_sh
 3c4bf7f6c6f1329fee18ecad1a7392490807194f data/shutter/loot_tables/blocks/muddy_oak_shutter.json
 3086a59c2788b3a8124e0183ccb100fdedba8665 data/shutter/loot_tables/blocks/netherite_shutter.json
 d2bf3f84433746e8ba5ad207efbba5146f3d4e0b data/shutter/loot_tables/blocks/oak_shutter.json
+53e822a5c314d50685a33ec56ba2402b4740caa4 data/shutter/loot_tables/blocks/palm_shutter.json
 745f999929185cc7db9e49d765799c2307282bd1 data/shutter/loot_tables/blocks/spruce_shutter.json
 78d39eeec73d5e970e4e9557f2a5ff6a3f503e02 data/shutter/loot_tables/blocks/stripped_bamboo_shutter.json
 57e57f66721de5bb3a130d41d4d7ca8235a20ea5 data/shutter/loot_tables/blocks/walnut_shutter.json

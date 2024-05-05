@@ -62,6 +62,9 @@ public class BlockInit {
 	public static final DeferredRegister<Item> ITEMS_GOODENDING = DeferredRegister
 			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
 
+	public static final DeferredRegister<Item> ITEMS_BEACHPARTY = DeferredRegister
+			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+
 
 	// ecologics
 	public static final RegistryObject<Shutter> AZALEA_SHUTTER = registerBlock("azalea_shutter", () -> new Shutter(
@@ -144,7 +147,7 @@ public class BlockInit {
 
 	public static final RegistryObject<Shutter> NETHERITE_SHUTTER = registerBlock(
 			"netherite_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK), true), MINECRAFT_ITEMS, false);
+					BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)), MINECRAFT_ITEMS, false);
 
 	public static final RegistryObject<Shutter> GLASS_SHUTTER = registerBlock(
 			"glass_shutter", () -> new Shutter(
@@ -225,6 +228,10 @@ public class BlockInit {
 	public static final RegistryObject<Shutter> MUDDY_OAK_SHUTTER = registerBlock(
 			"muddy_oak_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_GOODENDING);
+
+	public static final RegistryObject<Shutter> PALM_SHUTTER = registerBlock(
+			"palm_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_BEACHPARTY);
 
 	// Block
 	private static <T extends Block> RegistryObject<T> registerBlock(

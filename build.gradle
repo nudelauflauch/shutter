@@ -102,18 +102,21 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 dependencies {
 	// MINECRAFT
     minecraft 'net.minecraftforge:forge:1.20.1-47.2.20'
-    //minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
     
     // Mixins
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
     
     
     // quark, autoreglib
-    // runtimeOnly fg.deobf("curse.maven:quark-243121:3840125")
-    // runtimeOnly fg.deobf("curse.maven:autoreglib-250363:3642382")
+    compileOnly fg.deobf("curse.maven:supplementaries-412082:5154529")
+
+    compileOnly fg.deobf("curse.maven:effortless-building-302113:4979130")
     
     // JEI
-    //compileOnly fg.deobf("mezz.jei:jei-1.20.2:16.0.0.28:api")
+    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
+    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
+    // at runtime, use the full JEI jar for Forge
+    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
 }
 
 jar {
