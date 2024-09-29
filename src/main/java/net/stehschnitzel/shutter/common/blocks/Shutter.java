@@ -41,12 +41,10 @@ public class Shutter extends AbstractShutter {
 	}
 
 	@Override
-	public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos,
-								 Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+	public InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
 		if (!pPlayer.mayBuild()) {
 			return InteractionResult.PASS;
 		} else if (!pPlayer.isCrouching()
-				&& pHand.equals(InteractionHand.MAIN_HAND)
 				&& !this.isMetal) {
 
 			this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);

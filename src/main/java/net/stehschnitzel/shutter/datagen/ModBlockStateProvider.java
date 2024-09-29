@@ -60,7 +60,7 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
     }
 
     private void shutterBuilderWithRenderTyp(RegistryObject<Shutter> block, String renderType) {
-        shutterBuilderWithRenderTyp(block, new ResourceLocation(ShutterMain.MODID, "block/" + block.getId().getPath() + "_normal").toString(), renderType);
+        shutterBuilderWithRenderTyp(block, ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + block.getId().getPath() + "_normal").toString(), renderType);
     }
 
     private void shutterBuilderWithRenderTyp(RegistryObject<Shutter> block, String particle, String renderType) {
@@ -135,7 +135,7 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
     }
 
     private void shutterBuilder(RegistryObject<Shutter> block) {
-        shutterBuilder(block, new ResourceLocation(ShutterMain.MODID, "block/" + block.getId().getPath() + "_normal").toString());
+        shutterBuilder(block, ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + block.getId().getPath() + "_normal").toString());
     }
 
     private void shutterBuilder(RegistryObject<Shutter> block, String particle) {

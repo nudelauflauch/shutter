@@ -17,13 +17,11 @@ public class LeadShutter extends Shutter {
 	}
 
 	@Override
-	public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos,
-			Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+	public InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
 		if (!pPlayer.mayBuild()) {
 
 			return InteractionResult.PASS;
-		} else if (!pPlayer.isCrouching()
-				&& pHand.equals(InteractionHand.MAIN_HAND)) {
+		} else if (!pPlayer.isCrouching()) {
 			int rand = new Random().nextInt(100);
 			if (rand < 35 && !pLevel.isClientSide()) {
 				super.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);

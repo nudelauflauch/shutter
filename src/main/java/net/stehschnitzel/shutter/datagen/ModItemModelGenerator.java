@@ -54,8 +54,8 @@ public class ModItemModelGenerator extends ItemModelProvider {
 
     private ItemModelBuilder simpleItem(RegistryObject<Shutter> item) {
         return withExistingParent(item.getId().getPath(),
-                new ResourceLocation("item/generated")).texture("layer0",
-                new ResourceLocation(ShutterMain.MODID,"item/" + item.getId().getPath()));
+                ResourceLocation.withDefaultNamespace("item/generated")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID,"item/" + item.getId().getPath()));
     }
 
 }

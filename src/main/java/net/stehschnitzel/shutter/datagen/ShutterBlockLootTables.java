@@ -1,5 +1,6 @@
 package net.stehschnitzel.shutter.datagen;
 
+import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
@@ -9,8 +10,8 @@ import net.stehschnitzel.shutter.init.BlockInit;
 import java.util.Set;
 
 public class ShutterBlockLootTables extends BlockLootSubProvider {
-    protected ShutterBlockLootTables() {
-        super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+    protected ShutterBlockLootTables(HolderLookup.Provider pRegistries) {
+        super(Set.of(), FeatureFlags.REGISTRY.allFlags(), pRegistries);
     }
 
     @Override

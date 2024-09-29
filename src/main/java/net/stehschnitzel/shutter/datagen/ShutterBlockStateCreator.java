@@ -59,26 +59,26 @@ public class ShutterBlockStateCreator extends BlockStateProvider {
     }
 
     public ModelBuilder shutter_big_right(String name, String template, String shutter, int cnt, String particle) {
-        ResourceLocation shutter_texture = new ResourceLocation(ShutterMain.MODID, "block/" + name + shutter);
+        ResourceLocation shutter_texture = ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + name + shutter);
 
-        return models().withExistingParent(name + shutter + "_right_" + cnt, new ResourceLocation(ShutterMain.MODID, "block/" + template))
+        return models().withExistingParent(name + shutter + "_right_" + cnt, ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + template))
                 .texture("texture", shutter_texture)
                 .texture("particle", ResourceLocation.tryParse(particle));
     }
 
     public ModelBuilder shutter_big_left(String name, String template, String shutter, int cnt, String particle) {
-        ResourceLocation shutter_texture = new ResourceLocation(ShutterMain.MODID, "block/" + name + shutter);
+        ResourceLocation shutter_texture = ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + name + shutter);
 
-        return models().withExistingParent(name + shutter + "_left_" + cnt, new ResourceLocation(ShutterMain.MODID, "block/" + template))
+        return models().withExistingParent(name + shutter + "_left_" + cnt, ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + template))
                 .texture("texture", shutter_texture)
                 .texture("particle", ResourceLocation.tryParse(particle));
     }
 
 
     public ModelBuilder shutter(String name, String template, String shutter, int cnt, String particle) {
-        ResourceLocation shutter_texture = new ResourceLocation(ShutterMain.MODID, "block/" + name + shutter);
+        ResourceLocation shutter_texture = ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + name + shutter);
 
-        ModelBuilder model =  models().withExistingParent(name + shutter + "_" + cnt, new ResourceLocation(ShutterMain.MODID, "block/" + template))
+        ModelBuilder model =  models().withExistingParent(name + shutter + "_" + cnt, ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + template))
                 .texture("texture", shutter_texture)
                 .texture("particle", ResourceLocation.tryParse(particle));
 
