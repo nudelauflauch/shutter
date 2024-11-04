@@ -44,7 +44,7 @@
 
 	"itemGroup.shutter_tab":"Panjurlar",
 
-	"sounds.shutter.shutter_open_half": "Panjur Yarım Açıldı",
-	"sounds.shutter.shutter_open_full": "Panjur Tamamen Açıldı",
+	"sounds.shutter.shutter_open_half": "Panjur Yarı Açıldı",
+	"sounds.shutter.shutter_open_full": "Panjur Tam Açıldı",
 	"sounds.shutter.shutter_close": "Panjur Kapandı"
 }
