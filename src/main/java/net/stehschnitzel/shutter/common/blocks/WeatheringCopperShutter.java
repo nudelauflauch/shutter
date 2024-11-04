@@ -11,11 +11,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.stehschnitzel.shutter.common.blocks.properties.WeatheringShutter;
 
 public class WeatheringCopperShutter extends Shutter implements WeatheringShutter {
     public static final MapCodec<WeatheringCopperShutter> CODEC = RecordCodecBuilder.mapCodec(
-            p_311462_ -> p_311462_.group(WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state").forGetter(ChangeOverTimeBlock::getAge), propertiesCodec())
-                    .apply(p_311462_, WeatheringCopperShutter::new)
+            weatheringState -> weatheringState.group(WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state").forGetter(ChangeOverTimeBlock::getAge), propertiesCodec())
+                    .apply(weatheringState, WeatheringCopperShutter::new)
     );
     WeatheringCopper.WeatherState weatherState;
 
@@ -46,12 +47,10 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
     @Override
     protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         this.changeOverTime(pState, pLevel, pPos, pRandom);
-        System.out.println("Update");
     }
 
     @Override
     protected boolean isRandomlyTicking(BlockState pState) {
-        System.out.println(WeatheringCopper.getNext(pState.getBlock()).isPresent());
         return WeatheringShutter.getNext(pState.getBlock()).isPresent();
     }
 

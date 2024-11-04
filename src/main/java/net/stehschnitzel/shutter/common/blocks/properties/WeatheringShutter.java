@@ -1,4 +1,4 @@
-package net.stehschnitzel.shutter.common.blocks;
+package net.stehschnitzel.shutter.common.blocks.properties;
 
 import com.google.common.base.Suppliers;
 import com.google.common.collect.BiMap;
