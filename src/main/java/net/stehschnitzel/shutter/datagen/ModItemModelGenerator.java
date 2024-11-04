@@ -33,6 +33,10 @@ public class ModItemModelGenerator extends ItemModelProvider {
         simpleItem(BlockInit.BIRCH_SHUTTER);
         simpleItem(BlockInit.CRIMSON_SHUTTER);
         simpleItem(BlockInit.OAK_SHUTTER);
+        simpleItem(BlockInit.COPPER_SHUTTER);
+        simpleItem(BlockInit.OXIDIZED_COPPER_SHUTTER);
+        simpleItem(BlockInit.WEATHERED_COPPER_SHUTTER);
+        simpleItem(BlockInit.EXPOSED_COPPER_SHUTTER);
         simpleItem(BlockInit.DARK_OAK_SHUTTER);
         simpleItem(BlockInit.MANGROVE_SHUTTER);
         simpleItem(BlockInit.JUNGLE_SHUTTER);

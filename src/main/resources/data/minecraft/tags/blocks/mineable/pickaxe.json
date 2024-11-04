@@ -3,6 +3,10 @@
 	"values": [
 		"shutter:iron_shutter",
 		"shutter:gold_shutter",
-		"shutter:netherite_shutter"
+		"shutter:netherite_shutter",
+		"shutter:copper_shutter",
+		"shutter:exposed_copper_shutter",
+		"shutter:oxidized_copper_shutter",
+		"shutter:weathered_copper_shutter"
 	]
 }

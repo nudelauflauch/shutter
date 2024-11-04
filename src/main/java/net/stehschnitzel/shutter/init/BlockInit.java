@@ -6,11 +6,13 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stehschnitzel.shutter.ShutterMain;
+import net.stehschnitzel.shutter.common.blocks.WeatheringCopperShutter;
 import net.stehschnitzel.shutter.common.blocks.GoldShutter;
 import net.stehschnitzel.shutter.common.blocks.Shutter;
 import net.stehschnitzel.shutter.common.items.BurnableItem;
@@ -139,6 +141,23 @@ public class BlockInit {
 	public static final RegistryObject<Shutter> CHERRY_SHUTTER = registerBlock(
 			"cherry_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)), MINECRAFT_ITEMS);
+
+	public static final RegistryObject<Shutter> COPPER_SHUTTER = registerBlock(
+			"copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED,
+					BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)), MINECRAFT_ITEMS);
+
+	public static final RegistryObject<Shutter> EXPOSED_COPPER_SHUTTER = registerBlock(
+			"exposed_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED,
+					BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)), MINECRAFT_ITEMS);
+
+	public static final RegistryObject<Shutter> OXIDIZED_COPPER_SHUTTER = registerBlock(
+			"oxidized_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED,
+					BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)), MINECRAFT_ITEMS);
+
+	public static final RegistryObject<Shutter> WEATHERED_COPPER_SHUTTER = registerBlock(
+			"weathered_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED,
+					BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK)), MINECRAFT_ITEMS);
+
 
 	//mc but not really
 	public static final RegistryObject<Shutter> GOLD_SHUTTER = registerBlock(

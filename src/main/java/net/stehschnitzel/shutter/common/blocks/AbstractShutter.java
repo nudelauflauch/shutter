@@ -228,7 +228,6 @@ abstract class AbstractShutter extends Block {
     }
 
     BlockPos getNeighborShutterPos(BlockPos pos, ShutterDouble shutterDouble, Direction facing) {
-
         switch (facing) {
             case SOUTH -> {
                 return shutterDouble == ShutterDouble.RIGHT ? pos.west() : pos.east();
@@ -318,21 +317,21 @@ abstract class AbstractShutter extends Block {
 
     private boolean canUpdateDouble(ShutterDouble shutterDouble, List<BlockState> sideblocks) {
         if (shutterDouble == ShutterDouble.RIGHT) {
-            return isValidBlockForUpdate(sideblocks.get(1).getBlock());
+            return canOpenInto(sideblocks.get(1).getBlock());
         }
-        return isValidBlockForUpdate(sideblocks.get(0).getBlock());
+        return canOpenInto(sideblocks.get(0).getBlock());
     }
 
     boolean canUpdateSingle(List<BlockState> sideblocks) {
-        for (BlockState block1 : sideblocks) {
-            if (!isValidBlockForUpdate(block1.getBlock())) {
+        for (BlockState block : sideblocks) {
+            if (!canOpenInto(block.getBlock())) {
                 return false;
             }
         }
         return true;
     }
 
-    private boolean isValidBlockForUpdate(Block block) {
+    public boolean canOpenInto(Block block) {
         return block == Blocks.AIR
                 || block instanceof IPlantable
                 || block instanceof FenceBlock

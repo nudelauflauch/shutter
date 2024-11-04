@@ -47,6 +47,10 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
         shutterBuilder(BlockInit.WARPED_SHUTTER, "block/warped_planks");
         shutterBuilder(BlockInit.IRON_SHUTTER, "block/iron_block");
         shutterBuilder(BlockInit.SPRUCE_SHUTTER, "block/spruce_planks");
+        shutterBuilder(BlockInit.COPPER_SHUTTER, "block/copper_block");
+        shutterBuilder(BlockInit.EXPOSED_COPPER_SHUTTER, "block/exposed_copper");
+        shutterBuilder(BlockInit.OXIDIZED_COPPER_SHUTTER, "block/oxidized_copper");
+        shutterBuilder(BlockInit.WEATHERED_COPPER_SHUTTER, "block/weathered_copper");
 
         shutterBuilder(BlockInit.BLOSSOM_SHUTTER);
         shutterBuilder(BlockInit.ANCIENT_SHUTTER);
