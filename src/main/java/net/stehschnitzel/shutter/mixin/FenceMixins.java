@@ -14,7 +14,7 @@ public class FenceMixins {
 
 	@Inject(method = "isExceptionForConnection", at = @At("RETURN"), cancellable = true)
 	private static void dontConnect(BlockState pState,
-			CallbackInfoReturnable<Boolean> cir) {
+									CallbackInfoReturnable<Boolean> cir) {
 		cir.setReturnValue(cir.getReturnValue() || pState.getBlock() instanceof Shutter);
 	}
 

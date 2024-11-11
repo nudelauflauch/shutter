@@ -7,6 +7,10 @@
 		"shutter:copper_shutter",
 		"shutter:exposed_copper_shutter",
 		"shutter:oxidized_copper_shutter",
-		"shutter:weathered_copper_shutter"
+		"shutter:weathered_copper_shutter",
+		"shutter:waxed_copper_shutter",
+		"shutter:waxed_exposed_copper_shutter",
+		"shutter:waxed_oxidized_copper_shutter",
+		"shutter:waxed_weathered_copper_shutter"
 	]
 }

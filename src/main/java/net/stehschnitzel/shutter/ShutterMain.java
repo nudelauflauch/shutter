@@ -15,16 +15,14 @@ public class ShutterMain {
 	public static final String MODID = "shutter";
 	public static final Logger LOGGER = LogUtils.getLogger();
 
-	public ShutterMain() {
-		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+	public ShutterMain(FMLJavaModLoadingContext context) {
+		IEventBus bus = context.getModEventBus();
+		MinecraftForge.EVENT_BUS.register(this);
 
+		CreativTabInit.CREATIVE_MODE_TABS.register(bus);
 		BlockInit.MINECRAFT_ITEMS.register(bus);
 		BlockInit.BLOCKS.register(bus);
-		SoundInit.register(bus);
-		CreativTabInit.TABS.register(bus);
+		SoundInit.SOUND_EVENTS.register(bus);
 		CreativTabInit.registerDeferredItemRegister(bus);
-
-		MinecraftForge.EVENT_BUS.register(this);
 	}
-
 }

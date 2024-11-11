@@ -19,6 +19,10 @@
   "block.shutter.exposed_copper_shutter" : "Exposed Copper Shutter",
   "block.shutter.oxidized_copper_shutter" : "Oxidized Copper Shutter",
   "block.shutter.weathered_copper_shutter" : "Weathered Copper Shutter",
+  "block.shutter.waxed_copper_shutter" : "Waxed Copper Shutter",
+  "block.shutter.waxed_exposed_copper_shutter" : "Waxed Exposed Copper Shutter",
+  "block.shutter.waxed_oxidized_copper_shutter" : "Waxed Oxidized Copper Shutter",
+  "block.shutter.waxed_weathered_copper_shutter" : "Waxed Weathered Copper Shutter",
   "block.shutter.azuer_shutter" : "Azuer Shutter",
   "block.shutter.blossom_shutter" : "Trumpet Shutter",
   "block.shutter.lead_shutter" : "Lead Shutter",
@@ -42,7 +46,7 @@
   "block.shutter.muddy_oak_shutter" : "Muddy Oak Shutter",
   "block.shutter.palm_shutter" : "Palm Shutter",
 
-	"itemGroup.shutter_tab":"Shutters",
+	"creativetab.shutter.shutter_tab":"Shutters",
 
 	"sounds.shutter.shutter_open_half": "Shutter Open Half",
 	"sounds.shutter.shutter_open_full": "Shutter Open Full",

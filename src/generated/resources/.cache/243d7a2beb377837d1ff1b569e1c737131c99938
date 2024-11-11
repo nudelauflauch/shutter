@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-03T17:47:18.8881798	Block States: shutter
+// 1.21.1	2024-11-05T12:12:00.6470046	Block States: shutter
 b794652b453735c9dba79e43fef1432a8a927005 assets/shutter/blockstates/acacia_shutter.json
 31da4a3a374b875dff0fee93f376665ef885e703 assets/shutter/blockstates/ancient_shutter.json
 ed579a8d03dd6be3a89911b855d7a7aa263b33e9 assets/shutter/blockstates/azalea_quark_shutter.json
@@ -31,6 +31,10 @@ d572fc32d8aecafa35814d787bbefed1c3c2265e assets/shutter/blockstates/palm_shutter
 a0c0b380bc151d5d4970a575202c2ad4fcc0f0cc assets/shutter/blockstates/stripped_bamboo_shutter.json
 e70606a33362c5004dfe0b9c65f1c5ffe7635b13 assets/shutter/blockstates/walnut_shutter.json
 09d1d516eed44c80d1f3e78944d014b631017929 assets/shutter/blockstates/warped_shutter.json
+dbe9f0a8246a1fe421dde3b6139096ff7977b0e6 assets/shutter/blockstates/waxed_copper_shutter.json
+49a73146a67ecc9caff3a7ea8650439f53fb8a65 assets/shutter/blockstates/waxed_exposed_copper_shutter.json
+e1771d41bc742342e5eaa5b42b992978db0738c0 assets/shutter/blockstates/waxed_oxidized_copper_shutter.json
+5a282f7edfc47486ef7e27a1a11f53d09e9eace0 assets/shutter/blockstates/waxed_weathered_copper_shutter.json
 5a282f7edfc47486ef7e27a1a11f53d09e9eace0 assets/shutter/blockstates/weathered_copper_shutter.json
 a6c1b44bc66e9b61980ed19528654248e75f1998 assets/shutter/blockstates/willow_shutter.json
 deb58eab086cb28dca9c382b5dd3654172caff24 assets/shutter/blockstates/wisteria_shutter.json

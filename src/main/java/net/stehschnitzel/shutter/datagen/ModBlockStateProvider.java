@@ -1,7 +1,10 @@
 package net.stehschnitzel.shutter.datagen;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.BlockModelGenerators;
+import net.minecraft.data.models.model.TexturedModel;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -47,10 +50,18 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
         shutterBuilder(BlockInit.WARPED_SHUTTER, "block/warped_planks");
         shutterBuilder(BlockInit.IRON_SHUTTER, "block/iron_block");
         shutterBuilder(BlockInit.SPRUCE_SHUTTER, "block/spruce_planks");
+
+
+
         shutterBuilder(BlockInit.COPPER_SHUTTER, "block/copper_block");
         shutterBuilder(BlockInit.EXPOSED_COPPER_SHUTTER, "block/exposed_copper");
         shutterBuilder(BlockInit.OXIDIZED_COPPER_SHUTTER, "block/oxidized_copper");
         shutterBuilder(BlockInit.WEATHERED_COPPER_SHUTTER, "block/weathered_copper");
+
+        shutterBuilder(BlockInit.WAXED_COPPER_SHUTTER, BlockInit.COPPER_SHUTTER,"block/copper_block");
+        shutterBuilder(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER, BlockInit.EXPOSED_COPPER_SHUTTER,"block/exposed_copper");
+        shutterBuilder(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER, BlockInit.OXIDIZED_COPPER_SHUTTER, "block/oxidized_copper");
+        shutterBuilder(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER, BlockInit.WEATHERED_COPPER_SHUTTER, "block/weathered_copper");
 
         shutterBuilder(BlockInit.BLOSSOM_SHUTTER);
         shutterBuilder(BlockInit.ANCIENT_SHUTTER);
@@ -62,6 +73,8 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
 
         shutterBuilder(BlockInit.STRIPPED_BAMBOO_SHUTTER, "block/bamboo_planks");
     }
+
+
 
     private void shutterBuilderWithRenderTyp(RegistryObject<Shutter> block, String renderType) {
         shutterBuilderWithRenderTyp(block, ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + block.getId().getPath() + "_normal").toString(), renderType);
@@ -138,13 +151,19 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
         );
     }
 
+    private void shutterBuilder(RegistryObject<Shutter> originalModel, RegistryObject<Shutter> model, String particle) {
+        shutterBuilder(originalModel, particle, model.getId().getPath());
+    }
+
     private void shutterBuilder(RegistryObject<Shutter> block) {
         shutterBuilder(block, ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + block.getId().getPath() + "_normal").toString());
     }
 
     private void shutterBuilder(RegistryObject<Shutter> block, String particle) {
-        String name = block.getId().getPath();
+        shutterBuilder(block, particle, block.getId().getPath());
+    }
 
+    private void shutterBuilder(RegistryObject<Shutter> block, String particle, String name) {
         ModelFile n_0 = shutter_0(name, "_normal", particle);
         ModelFile n_1 = shutter_1(name, "_normal", particle);
         ModelFile n_2 = shutter_2(name, "_normal", particle);

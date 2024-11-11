@@ -21,6 +21,25 @@ public interface WeatheringShutter extends WeatheringCopper {
     );
     Supplier<BiMap<Block, Block>> PREVIOUS_BY_BLOCK_SHUTTER = Suppliers.memoize(() -> NEXT_BY_BLOCK_SHUTTER.get().inverse());
 
+    Supplier<BiMap<Block, Block>> SWITCH_TO_WAXED_BLOCK = Suppliers.memoize(
+            () -> ImmutableBiMap.<Block, Block>builder()
+                    .put(BlockInit.COPPER_SHUTTER.get(), BlockInit.WAXED_COPPER_SHUTTER.get())
+                    .put(BlockInit.WEATHERED_COPPER_SHUTTER.get(), BlockInit.WAXED_WEATHERED_COPPER_SHUTTER.get())
+                    .put(BlockInit.EXPOSED_COPPER_SHUTTER.get(), BlockInit.WAXED_EXPOSED_COPPER_SHUTTER.get())
+                    .put(BlockInit.OXIDIZED_COPPER_SHUTTER.get(), BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER.get())
+                    .build()
+    );
+
+    Supplier<BiMap<Block, Block>> SWITCH_TO_UNWAXED_BLOCK = Suppliers.memoize(() -> SWITCH_TO_WAXED_BLOCK.get().inverse());
+
+    static Optional<Block>  getUnwaxedBlock(Block block) {
+        return Optional.ofNullable(SWITCH_TO_UNWAXED_BLOCK.get().get(block));
+    }
+
+    static Optional<Block>  getWaxedBlock(Block block) {
+        return Optional.ofNullable(SWITCH_TO_WAXED_BLOCK.get().get(block));
+    }
+
     static Optional<Block> getPrevious(Block pBlock) {
         return Optional.ofNullable(PREVIOUS_BY_BLOCK_SHUTTER.get().get(pBlock));
     }

@@ -1,4 +1,4 @@
-// 1.21.1	2024-11-03T17:47:18.8871876	Loot Tables
+// 1.21.1	2024-11-05T12:12:00.6464584	Loot Tables
 7ba43da151555721c7b810e4cd2695fa37735eab data/shutter/loot_table/blocks/acacia_shutter.json
 bcdf7dc6e1123681cb4c5b51be646a6c8b784268 data/shutter/loot_table/blocks/ancient_shutter.json
 c4ea45743514f3cc00fe2a275284a90008d0846c data/shutter/loot_table/blocks/azalea_quark_shutter.json
@@ -31,6 +31,10 @@ d2bf3f84433746e8ba5ad207efbba5146f3d4e0b data/shutter/loot_table/blocks/oak_shut
 78d39eeec73d5e970e4e9557f2a5ff6a3f503e02 data/shutter/loot_table/blocks/stripped_bamboo_shutter.json
 57e57f66721de5bb3a130d41d4d7ca8235a20ea5 data/shutter/loot_table/blocks/walnut_shutter.json
 3f2dec0cbefc17f66f2c8d4a50680678c5add2e6 data/shutter/loot_table/blocks/warped_shutter.json
+0e832ca7da39d595e94937b9c6b7d441f23ae45e data/shutter/loot_table/blocks/waxed_copper_shutter.json
+459e17f698814f9c4175f753fc49e52590b219d8 data/shutter/loot_table/blocks/waxed_exposed_copper_shutter.json
+572a1a85cb621533a8405fd27b02b31bded26f82 data/shutter/loot_table/blocks/waxed_oxidized_copper_shutter.json
+8ac2452cd051176b18bca1234719eb6958142dbc data/shutter/loot_table/blocks/waxed_weathered_copper_shutter.json
 2f1a9657aa5b3e7fac66a08d3dbae220e1e34166 data/shutter/loot_table/blocks/weathered_copper_shutter.json
 ae55cd1530c07f9500c1e847a110e58a84ec2193 data/shutter/loot_table/blocks/willow_shutter.json
 03c6b0029755dc628a7309687be179dfc07161a1 data/shutter/loot_table/blocks/wisteria_shutter.json

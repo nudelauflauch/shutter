@@ -1,5 +1,6 @@
 package net.stehschnitzel.shutter.init;
 
+
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -18,11 +19,11 @@ import java.util.Map;
 
 public class CreativTabInit{
 
-	public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ShutterMain.MODID);
+	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ShutterMain.MODID);
 
-	public static final RegistryObject<CreativeModeTab> SHUTTER_TAB = TABS.register("shutter_tab",
+	public static final RegistryObject<CreativeModeTab> SHUTTER_TAB = CREATIVE_MODE_TABS.register("shutter_tab",
 			() -> CreativeModeTab.builder()
-					.title(Component.translatable("itemGroup.shutter_tab"))
+					.title(Component.translatable("creativetab.shutter.shutter_tab"))
 					.icon(() -> new ItemStack(BlockInit.OAK_SHUTTER.get()))
 					.displayItems((pParameters, pOutput) -> {
 						CreativTabInit.fillItemList(pOutput);
@@ -89,27 +90,32 @@ public class CreativTabInit{
 	}
 
 	private static void registerMinecraftShutters(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.ACACIA_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.BIRCH_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.CRIMSON_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.DARK_OAK_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.IRON_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.JUNGLE_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.OAK_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.SPRUCE_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.WARPED_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.MANGROVE_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.BAMBOO_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.CHERRY_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.COPPER_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.EXPOSED_COPPER_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.WEATHERED_COPPER_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.OXIDIZED_COPPER_SHUTTER.get()));
+		items.accept(BlockInit.ACACIA_SHUTTER.get());
+		items.accept(BlockInit.BIRCH_SHUTTER.get());
+		items.accept(BlockInit.CRIMSON_SHUTTER.get());
+		items.accept(BlockInit.DARK_OAK_SHUTTER.get());
+		items.accept(BlockInit.IRON_SHUTTER.get());
+		items.accept(BlockInit.JUNGLE_SHUTTER.get());
+		items.accept(BlockInit.OAK_SHUTTER.get());
+		items.accept(BlockInit.SPRUCE_SHUTTER.get());
+		items.accept(BlockInit.WARPED_SHUTTER.get());
+		items.accept(BlockInit.MANGROVE_SHUTTER.get());
+		items.accept(BlockInit.BAMBOO_SHUTTER.get());
+		items.accept(BlockInit.CHERRY_SHUTTER.get());
+		items.accept(BlockInit.COPPER_SHUTTER.get());
+		items.accept(BlockInit.EXPOSED_COPPER_SHUTTER.get());
+		items.accept(BlockInit.WEATHERED_COPPER_SHUTTER.get());
+		items.accept(BlockInit.OXIDIZED_COPPER_SHUTTER.get());
+
+		items.accept(BlockInit.WAXED_COPPER_SHUTTER.get());
+		items.accept(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER.get());
+		items.accept(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER.get());
+		items.accept(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER.get());
 
 		//mc but not really
-		items.accept(new ItemStack(BlockInit.GOLD_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.NETHERITE_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.GLASS_SHUTTER.get()));
+		items.accept(BlockInit.GOLD_SHUTTER.get());
+		items.accept(BlockInit.NETHERITE_SHUTTER.get());
+		items.accept(BlockInit.GLASS_SHUTTER.get());
 	}
 
 	private static void registerCreate(CreativeModeTab.Output items) {
@@ -117,52 +123,52 @@ public class CreativTabInit{
 	}
 
 	private static void registerEcologics(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.AZALEA_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.COCONUT_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.FLOWERING_AZALEA_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.WALNUT_SHUTTER.get()));
+		items.accept(BlockInit.AZALEA_SHUTTER.get());
+		items.accept(BlockInit.COCONUT_SHUTTER.get());
+		items.accept(BlockInit.FLOWERING_AZALEA_SHUTTER.get());
+		items.accept(BlockInit.WALNUT_SHUTTER.get());
 	}
 
 	private static void registerEndergetic(CreativeModeTab.Output items) {
-//		items.accept(new ItemStack(BlockInit.POISE_SHUTTER.get()));
+//		items.accept(BlockInit.POISE_SHUTTER.get());
 	}
 
 	private static void registerOuterEnd(CreativeModeTab.Output items) {
-//		items.accept(new ItemStack(BlockInit.AZURE_SHUTTER.get()));
+//		items.accept(BlockInit.AZURE_SHUTTER.get());
 	}
 
 	private static void registerQuark(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.ANCIENT_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.AZALEA_QUARK_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.BLOSSOM_SHUTTER.get()));
+		items.accept(BlockInit.ANCIENT_SHUTTER.get());
+		items.accept(BlockInit.AZALEA_QUARK_SHUTTER.get());
+		items.accept(BlockInit.BLOSSOM_SHUTTER.get());
 	}
 
 	private static void registerSupplementaries(CreativeModeTab.Output items) {
-//		items.accept(new ItemStack(BlockInit.LEAD_SHUTTER.get()));
-//		items.accept(new ItemStack(BlockInit.SILVER_SHUTTER.get()));
+//		items.accept(BlockInit.LEAD_SHUTTER.get());
+//		items.accept(BlockInit.SILVER_SHUTTER.get());
 	}
 
 	private static void registerTwigs(CreativeModeTab.Output items) {
-//		items.accept(new ItemStack(BlockInit.STRIPPED_BAMBOO_SHUTTER.get()));
+//		items.accept(BlockInit.STRIPPED_BAMBOO_SHUTTER.get());
 	}
 
 	private static void registerAutumnity(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.MAPLE_SHUTTER.get()));
+		items.accept(BlockInit.MAPLE_SHUTTER.get());
 	}
 
 	private static void registerEnvironmental(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.CHERRY_ENV_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.WILLOW_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.WISTERIA_SHUTTER.get()));
+		items.accept(BlockInit.CHERRY_ENV_SHUTTER.get());
+		items.accept(BlockInit.WILLOW_SHUTTER.get());
+		items.accept(BlockInit.WISTERIA_SHUTTER.get());
 	}
 
 	private static void registerSnowySpirit(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.GINGERBREAD_SHUTTER.get()));
+		items.accept(BlockInit.GINGERBREAD_SHUTTER.get());
 	}
 
 	private static void registerUpdateAquatic(CreativeModeTab.Output items) {
-//		items.accept(new ItemStack(BlockInit.DRIFTWOOD_SHUTTER.get()));
-//		items.accept(new ItemStack(BlockInit.RIVER_SHUTTER.get()));
+//		items.accept(BlockInit.DRIFTWOOD_SHUTTER.get());
+//		items.accept(BlockInit.RIVER_SHUTTER.get());
 	}
 
 	private static void registerGoodEnding(CreativeModeTab.Output items) {
@@ -195,13 +201,13 @@ public class CreativTabInit{
 			String modId = entry.getKey();
 			DeferredRegister<Item> itemSupplier = entry.getValue();
 			itemSupplier.register(bus);
-//			if (ModList.get().isLoaded(modId)) {
-//				itemSupplier.register(bus);
-//			}
-//
-//			if (!FMLLoader.isProduction()) {
-//
-//			}
+			if (ModList.get().isLoaded(modId)) {
+				itemSupplier.register(bus);
+			}
+
+			if (!FMLLoader.isProduction()) {
+
+			}
 		}
 	}
 }

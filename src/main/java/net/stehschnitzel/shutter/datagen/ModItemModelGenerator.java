@@ -33,10 +33,17 @@ public class ModItemModelGenerator extends ItemModelProvider {
         simpleItem(BlockInit.BIRCH_SHUTTER);
         simpleItem(BlockInit.CRIMSON_SHUTTER);
         simpleItem(BlockInit.OAK_SHUTTER);
+
         simpleItem(BlockInit.COPPER_SHUTTER);
         simpleItem(BlockInit.OXIDIZED_COPPER_SHUTTER);
         simpleItem(BlockInit.WEATHERED_COPPER_SHUTTER);
         simpleItem(BlockInit.EXPOSED_COPPER_SHUTTER);
+
+        simpleItem(BlockInit.WAXED_COPPER_SHUTTER, BlockInit.COPPER_SHUTTER);
+        simpleItem(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER, BlockInit.OXIDIZED_COPPER_SHUTTER);
+        simpleItem(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER, BlockInit.WEATHERED_COPPER_SHUTTER);
+        simpleItem(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER, BlockInit.EXPOSED_COPPER_SHUTTER);
+
         simpleItem(BlockInit.DARK_OAK_SHUTTER);
         simpleItem(BlockInit.MANGROVE_SHUTTER);
         simpleItem(BlockInit.JUNGLE_SHUTTER);
@@ -54,6 +61,12 @@ public class ModItemModelGenerator extends ItemModelProvider {
         simpleItem(BlockInit.CYPRESS_SHUTTER);
         simpleItem(BlockInit.MUDDY_OAK_SHUTTER);
         simpleItem(BlockInit.PALM_SHUTTER);
+    }
+
+    private ItemModelBuilder simpleItem(RegistryObject<Shutter> item, RegistryObject<Shutter> originalItem) {
+        return withExistingParent(item.getId().getPath(),
+                ResourceLocation.withDefaultNamespace("item/generated")).texture("layer0",
+                ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID,"item/" + originalItem.getId().getPath()));
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Shutter> item) {

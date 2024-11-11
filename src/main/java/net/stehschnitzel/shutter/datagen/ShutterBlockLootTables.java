@@ -35,6 +35,10 @@ public class ShutterBlockLootTables extends BlockLootSubProvider {
         dropSelf(BlockInit.OXIDIZED_COPPER_SHUTTER.get());
         dropSelf(BlockInit.EXPOSED_COPPER_SHUTTER.get());
         dropSelf(BlockInit.WEATHERED_COPPER_SHUTTER.get());
+        dropSelf(BlockInit.WAXED_COPPER_SHUTTER.get());
+        dropSelf(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER.get());
+        dropSelf(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER.get());
+        dropSelf(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER.get());
         dropSelf(BlockInit.MANGROVE_SHUTTER.get());
         dropSelf(BlockInit.JUNGLE_SHUTTER.get());
         dropSelf(BlockInit.WARPED_SHUTTER.get());
