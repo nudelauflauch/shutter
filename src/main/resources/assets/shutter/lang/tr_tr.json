@@ -42,9 +42,9 @@
   "block.shutter.muddy_oak_shutter" : "Çamurlu Meşe Panjur",
   "block.shutter.palm_shutter" : "Palmiye Panjur",
 
-	"itemGroup.shutter_tab":"Panjurlar",
+  "itemGroup.shutter_tab":"Panjurlar",
 
-	"sounds.shutter.shutter_open_half": "Panjur Yarı Açıldı",
-	"sounds.shutter.shutter_open_full": "Panjur Tam Açıldı",
-	"sounds.shutter.shutter_close": "Panjur Kapandı"
+  "sounds.shutter.shutter_open_half": "Panjur Yarı Açıldı",
+  "sounds.shutter.shutter_open_full": "Panjur Tam Açıldı",
+  "sounds.shutter.shutter_close": "Panjur Kapandı"
 }
