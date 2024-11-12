@@ -36,6 +36,19 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
     }
 
     @Override
+    public InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+        if (!pPlayer.mayBuild()) {
+            return InteractionResult.PASS;
+        } else if (!pPlayer.isCrouching()) {
+            this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
+
+            this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
+            return InteractionResult.sidedSuccess(pLevel.isClientSide);
+        }
+        return InteractionResult.FAIL;
+    }
+
+    @Override
     public ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
         if (pStack.getItem() instanceof HoneycombItem) {
             Optional<Block> waxed = WeatheringShutter.getWaxedBlock(pState.getBlock());
@@ -45,11 +58,9 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
                     pStack.shrink(1);
                 }
                 pLevel.levelEvent(pPlayer, 3003, pPos, 0);
-                return ItemInteractionResult.CONSUME_PARTIAL;
+                return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
             }
-        }
-
-        if (pStack.getItem() instanceof AxeItem) {
+        } else if (pStack.getItem() instanceof AxeItem) {
             Optional<Block> unwaxed = WeatheringShutter.getUnwaxedBlock(pState.getBlock());
             Optional<Block> previous = WeatheringShutter.getPrevious(pState.getBlock());
             if (unwaxed.isPresent()) {
@@ -65,25 +76,10 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
             }
             if ((unwaxed.isPresent() || previous.isPresent()) && !pPlayer.isCreative()) {
                 pStack.hurtAndBreak(1, pPlayer, LivingEntity.getSlotForHand(pHand));
+                return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
             }
-            return ItemInteractionResult.SUCCESS;
         }
-
-        return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
-    }
-
-    @Override
-    public InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
-        if (!pPlayer.mayBuild()) {
-            return InteractionResult.PASS;
-        } else if (!pPlayer.isCrouching()) {
-
-            this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
-
-            this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
-        }
-        return InteractionResult.FAIL;
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Override

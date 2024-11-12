@@ -9,13 +9,13 @@ modId="${mod_id}" #mandatory
 version="${mod_version}" #mandatory
 displayName="${mod_name}" #mandatory
 
-credits="Thanks go to Nudelauflauch for the textures"
+credits="Thanks go to Nudelauflauch for the textures and to all who translated the mod to different languages"
 authors= "${mod_authors}"
 
 logoFile= "assets/shutter/textures/gui/main.png"
 
 description='''
-Adds Shutters for minecraft and different mods
+${mod_description}
 '''
 
 [[dependencies.${mod_id}]]

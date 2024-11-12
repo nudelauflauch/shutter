@@ -8,21 +8,29 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.stehschnitzel.shutter.init.BlockInit;
 import net.stehschnitzel.shutter.init.CreativTabInit;
 import net.stehschnitzel.shutter.init.SoundInit;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import org.slf4j.Logger;
 
-@Mod(ShutterMain.MODID)
+@Mod(ShutterMain.MOD_ID)
 public class ShutterMain {
-	public static final String MODID = "shutter";
+	public static final String MOD_ID = "shutter";
 	public static final Logger LOGGER = LogUtils.getLogger();
 
 	public ShutterMain(FMLJavaModLoadingContext context) {
 		IEventBus bus = context.getModEventBus();
+		bus.addListener(this::commonSetup);
 		MinecraftForge.EVENT_BUS.register(this);
 
-		CreativTabInit.CREATIVE_MODE_TABS.register(bus);
-		BlockInit.MINECRAFT_ITEMS.register(bus);
-		BlockInit.BLOCKS.register(bus);
-		SoundInit.SOUND_EVENTS.register(bus);
+		CreativTabInit.register(bus);
+
 		CreativTabInit.registerDeferredItemRegister(bus);
+		BlockInit.registerBlockItem(bus);
+		BlockInit.registerBlock(bus);
+		SoundInit.register(bus);
 	}
+
+	private void commonSetup(final FMLCommonSetupEvent event)  {
+
+	}
+
 }

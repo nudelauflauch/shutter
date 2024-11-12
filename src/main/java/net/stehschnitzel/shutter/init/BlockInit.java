@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -20,52 +21,52 @@ import net.stehschnitzel.shutter.common.items.BurnableItem;
 public class BlockInit {
 
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister
-			.create(ForgeRegistries.BLOCKS, ShutterMain.MODID);
+			.create(ForgeRegistries.BLOCKS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> MINECRAFT_ITEMS = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_CREATE = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_ECOLOGICS = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_ENDERGETIC = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_OUTER_END = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_QUARK = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_SUPPLEMENTARIES = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_OREGANIZED = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_TWIGS = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_AUTUMNITY = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_ENVIRONMENTAL = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_SNOWY_SPIRIT = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_UPGRADE_AQUATTIC = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_GOODENDING = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 	public static final DeferredRegister<Item> ITEMS_BEACHPARTY = DeferredRegister
-			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 
 	// ecologics
@@ -290,5 +291,13 @@ public class BlockInit {
 		} else {
 			return item_reg.register(name, () -> new BlockItem(registered_block.get(), new Item.Properties()));
 		}
+	}
+
+	public static void registerBlockItem(IEventBus bus) {
+		MINECRAFT_ITEMS.register(bus);
+	}
+
+	public static void registerBlock(IEventBus bus) {
+		BLOCKS.register(bus);
 	}
 }

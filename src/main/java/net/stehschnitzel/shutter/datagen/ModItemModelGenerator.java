@@ -2,7 +2,6 @@ package net.stehschnitzel.shutter.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -14,7 +13,7 @@ import net.stehschnitzel.shutter.init.BlockInit;
 public class ModItemModelGenerator extends ItemModelProvider {
 
     public ModItemModelGenerator(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, ShutterMain.MODID, existingFileHelper);
+        super(output, ShutterMain.MOD_ID, existingFileHelper);
     }
 
     @Override
@@ -66,13 +65,13 @@ public class ModItemModelGenerator extends ItemModelProvider {
     private ItemModelBuilder simpleItem(RegistryObject<Shutter> item, RegistryObject<Shutter> originalItem) {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.withDefaultNamespace("item/generated")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID,"item/" + originalItem.getId().getPath()));
+                ResourceLocation.fromNamespaceAndPath(ShutterMain.MOD_ID,"item/" + originalItem.getId().getPath()));
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Shutter> item) {
         return withExistingParent(item.getId().getPath(),
                 ResourceLocation.withDefaultNamespace("item/generated")).texture("layer0",
-                ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID,"item/" + item.getId().getPath()));
+                ResourceLocation.fromNamespaceAndPath(ShutterMain.MOD_ID,"item/" + item.getId().getPath()));
     }
 
 }

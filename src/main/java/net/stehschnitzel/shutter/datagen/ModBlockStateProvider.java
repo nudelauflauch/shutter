@@ -1,10 +1,7 @@
 package net.stehschnitzel.shutter.datagen;
 
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.models.BlockModelGenerators;
-import net.minecraft.data.models.model.TexturedModel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -18,7 +15,7 @@ import net.stehschnitzel.shutter.init.BlockInit;
 public class ModBlockStateProvider extends ShutterBlockStateCreator {
 
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, ShutterMain.MODID, exFileHelper);
+        super(output, ShutterMain.MOD_ID, exFileHelper);
         registerStatesAndModels();
     }
 
@@ -77,7 +74,7 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
 
 
     private void shutterBuilderWithRenderTyp(RegistryObject<Shutter> block, String renderType) {
-        shutterBuilderWithRenderTyp(block, ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + block.getId().getPath() + "_normal").toString(), renderType);
+        shutterBuilderWithRenderTyp(block, ResourceLocation.fromNamespaceAndPath(ShutterMain.MOD_ID, "block/" + block.getId().getPath() + "_normal").toString(), renderType);
     }
 
     private void shutterBuilderWithRenderTyp(RegistryObject<Shutter> block, String particle, String renderType) {
@@ -156,7 +153,7 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
     }
 
     private void shutterBuilder(RegistryObject<Shutter> block) {
-        shutterBuilder(block, ResourceLocation.fromNamespaceAndPath(ShutterMain.MODID, "block/" + block.getId().getPath() + "_normal").toString());
+        shutterBuilder(block, ResourceLocation.fromNamespaceAndPath(ShutterMain.MOD_ID, "block/" + block.getId().getPath() + "_normal").toString());
     }
 
     private void shutterBuilder(RegistryObject<Shutter> block, String particle) {

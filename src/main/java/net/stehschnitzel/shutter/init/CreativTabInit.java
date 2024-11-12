@@ -1,6 +1,5 @@
 package net.stehschnitzel.shutter.init;
 
-
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -19,9 +18,9 @@ import java.util.Map;
 
 public class CreativTabInit{
 
-	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ShutterMain.MODID);
+	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ShutterMain.MOD_ID);
 
-	public static final RegistryObject<CreativeModeTab> SHUTTER_TAB = CREATIVE_MODE_TABS.register("shutter_tab",
+	public static final RegistryObject<CreativeModeTab> SHUTTER_TAB = CREATIVE_MODE_TAB.register("shutter_tab",
 			() -> CreativeModeTab.builder()
 					.title(Component.translatable("creativetab.shutter.shutter_tab"))
 					.icon(() -> new ItemStack(BlockInit.OAK_SHUTTER.get()))
@@ -210,4 +209,9 @@ public class CreativTabInit{
 			}
 		}
 	}
+
+	public static void register(IEventBus eventBus) {
+		CREATIVE_MODE_TAB.register(eventBus);
+	}
+
 }

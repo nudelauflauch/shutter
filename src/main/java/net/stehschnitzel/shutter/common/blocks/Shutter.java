@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -33,6 +34,12 @@ public class Shutter extends AbstractShutter {
 				.setValue(OPEN, 0)
 				.setValue(POS, ShutterPos.NORMAL)
 				.setValue(DOUBLE_DOOR, ShutterDouble.NONE));
+	}
+
+	@Override
+	protected BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pPos, BlockPos pNeighborPos) {
+//		System.out.println(pState + " " + pDirection + " " + pNeighborState + " " + pLevel + " " + pPos + " " + pNeighborPos);
+		return super.updateShape(pState, pDirection, pNeighborState, pLevel, pPos, pNeighborPos);
 	}
 
 	@Override
@@ -91,7 +98,7 @@ public class Shutter extends AbstractShutter {
 			updatePosNeighborHelper(pLevel, pPos);
 		}
 
-		// resets the shutter to 0 when i cant be in state 2
+		// resets the shutter to 0 when it cant be in state 2
 		if (!pLevel.isClientSide && pState.getValue(OPEN) == 2
 				&& !canUpdate(pLevel, pPos)) {
 			this.update(pLevel, pPos, 0, false);
