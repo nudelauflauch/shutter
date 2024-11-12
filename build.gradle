@@ -18,7 +18,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17) // Mojang ships Java
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings channel: 'parchment', version: '2023.09.03-1.20.1'
+    mappings channel: mapping_channel, version: mapping_version
     //mappings channel: 'official', version: '1.18.2'
     runs {
         client {
@@ -68,6 +68,7 @@ minecraft {
 }
 
 repositories {
+    mavenCentral()
     maven {
         // location of the maven that hosts JEI files
         name = "Progwml6 maven"
@@ -98,8 +99,8 @@ dependencies {
     // Mixins
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
+    //runtimeOnly fg.deobf("curse.maven:supplementaries-412082:5225134")
 
-    compileOnly fg.deobf("curse.maven:supplementaries-412082:5225134")
 
     compileOnly fg.deobf("curse.maven:effortless-building-302113:4979130")
     

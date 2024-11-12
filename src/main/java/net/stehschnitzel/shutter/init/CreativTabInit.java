@@ -190,14 +190,14 @@ public class CreativTabInit{
 		for (Map.Entry<String, DeferredRegister<Item>> entry : modItems.entrySet()) {
 			String modId = entry.getKey();
 			DeferredRegister<Item> itemSupplier = entry.getValue();
-
-			if (ModList.get().isLoaded(modId)) {
-				itemSupplier.register(bus);
-			}
-
-			if (!FMLLoader.isProduction()) {
-				itemSupplier.register(bus);
-			}
+			itemSupplier.register(bus);
+//			if (ModList.get().isLoaded(modId)) {
+//				itemSupplier.register(bus);
+//			}
+//
+//			if (!FMLLoader.isProduction()) {
+//
+//			}
 		}
 	}
 }

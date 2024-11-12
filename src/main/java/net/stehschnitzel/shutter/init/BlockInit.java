@@ -146,7 +146,7 @@ public class BlockInit {
 					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), MINECRAFT_ITEMS, false);
 
 	public static final RegistryObject<Shutter> NETHERITE_SHUTTER = registerBlock(
-			"netherite_shutter", () -> new Shutter(
+			"netherite_shutter", () -> new GoldShutter(
 					BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK)), MINECRAFT_ITEMS, false);
 
 	public static final RegistryObject<Shutter> GLASS_SHUTTER = registerBlock(
