@@ -48,10 +48,10 @@ public class CreativTabInit{
 			registerQuark(pItems);
 		}
 		if(ModList.get().isLoaded("supplementaries")) {
-			registerSupplementaries(pItems);
+			registerOreganized(pItems);
 		}
 		if(ModList.get().isLoaded("twigs")) {
-//			registerTwigs(pItems);
+			registerTwigs(pItems);
 		}
 		if(ModList.get().isLoaded("autumnity")) {
 			registerAutumnity(pItems);
@@ -77,7 +77,7 @@ public class CreativTabInit{
 			registerEndergetic(pItems);
 			registerOuterEnd(pItems);
 			registerQuark(pItems);
-			registerSupplementaries(pItems);
+			registerOreganized(pItems);
 			registerTwigs(pItems);
 			registerAutumnity(pItems);
 			registerEnvironmental(pItems);
@@ -120,11 +120,11 @@ public class CreativTabInit{
 	}
 
 	private static void registerEndergetic(CreativeModeTab.Output items) {
-//		items.accept(new ItemStack(BlockInit.POISE_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.POISE_SHUTTER.get()));
 	}
 
 	private static void registerOuterEnd(CreativeModeTab.Output items) {
-//		items.accept(new ItemStack(BlockInit.AZURE_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.AZURE_SHUTTER.get()));
 	}
 
 	private static void registerQuark(CreativeModeTab.Output items) {
@@ -133,13 +133,13 @@ public class CreativTabInit{
 		items.accept(new ItemStack(BlockInit.BLOSSOM_SHUTTER.get()));
 	}
 
-	private static void registerSupplementaries(CreativeModeTab.Output items) {
-//		items.accept(new ItemStack(BlockInit.LEAD_SHUTTER.get()));
-//		items.accept(new ItemStack(BlockInit.SILVER_SHUTTER.get()));
+	private static void registerOreganized(CreativeModeTab.Output items) {
+		items.accept(new ItemStack(BlockInit.LEAD_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.SILVER_SHUTTER.get()));
 	}
 
 	private static void registerTwigs(CreativeModeTab.Output items) {
-//		items.accept(new ItemStack(BlockInit.STRIPPED_BAMBOO_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.STRIPPED_BAMBOO_SHUTTER.get()));
 	}
 
 	private static void registerAutumnity(CreativeModeTab.Output items) {
@@ -157,8 +157,8 @@ public class CreativTabInit{
 	}
 
 	private static void registerUpdateAquatic(CreativeModeTab.Output items) {
-//		items.accept(new ItemStack(BlockInit.DRIFTWOOD_SHUTTER.get()));
-//		items.accept(new ItemStack(BlockInit.RIVER_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.DRIFTWOOD_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.RIVER_SHUTTER.get()));
 	}
 
 	private static void registerGoodEnding(CreativeModeTab.Output items) {

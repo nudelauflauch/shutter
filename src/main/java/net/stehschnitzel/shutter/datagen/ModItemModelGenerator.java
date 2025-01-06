@@ -25,9 +25,9 @@ public class ModItemModelGenerator extends ItemModelProvider {
         simpleItem(BlockInit.COCONUT_SHUTTER);
         simpleItem(BlockInit.FLOWERING_AZALEA_SHUTTER);
         simpleItem(BlockInit.WALNUT_SHUTTER);
-        simpleItem(BlockInit.CHERRY_ENV_SHUTTER);
-        simpleItem(BlockInit.WILLOW_SHUTTER);
-        simpleItem(BlockInit.WISTERIA_SHUTTER);
+//        simpleItem(BlockInit.CHERRY_ENV_SHUTTER);
+//        simpleItem(BlockInit.WILLOW_SHUTTER);
+//        simpleItem(BlockInit.WISTERIA_SHUTTER);
         simpleItem(BlockInit.ACACIA_SHUTTER);
         simpleItem(BlockInit.BAMBOO_SHUTTER);
         simpleItem(BlockInit.BIRCH_SHUTTER);
@@ -50,6 +50,12 @@ public class ModItemModelGenerator extends ItemModelProvider {
         simpleItem(BlockInit.CYPRESS_SHUTTER);
         simpleItem(BlockInit.MUDDY_OAK_SHUTTER);
         simpleItem(BlockInit.PALM_SHUTTER);
+        simpleItem(BlockInit.AZURE_SHUTTER);
+        simpleItem(BlockInit.DRIFTWOOD_SHUTTER);
+        simpleItem(BlockInit.RIVER_SHUTTER);
+//        simpleItem(BlockInit.SILVER_SHUTTER);
+//        simpleItem(BlockInit.LEAD_SHUTTER);
+
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Shutter> item) {

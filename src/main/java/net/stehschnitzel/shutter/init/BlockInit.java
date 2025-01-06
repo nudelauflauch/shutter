@@ -12,7 +12,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stehschnitzel.shutter.ShutterMain;
 import net.stehschnitzel.shutter.common.blocks.GoldShutter;
+import net.stehschnitzel.shutter.common.blocks.LeadShutter;
 import net.stehschnitzel.shutter.common.blocks.Shutter;
+import net.stehschnitzel.shutter.common.blocks.SilverShutter;
 import net.stehschnitzel.shutter.common.items.BurnableItem;
 
 public class BlockInit {
@@ -83,9 +85,9 @@ public class BlockInit {
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
 
 	// endergetic
-//	public static final RegistryObject<Shutter> POISE_SHUTTER = registerBlock(
-//			"poise_shutter", () -> new Shutter(
-//					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENDERGETIC);
+	public static final RegistryObject<Shutter> POISE_SHUTTER = registerBlock(
+			"poise_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENDERGETIC);
 
 
 	// minecraft
@@ -155,9 +157,9 @@ public class BlockInit {
 			MINECRAFT_ITEMS, false);
 
 	// outer_end
-//	public static final RegistryObject<Shutter> AZURE_SHUTTER = registerBlock(
-//			"azure_shutter", () -> new Shutter(
-//					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_OUTER_END);
+	public static final RegistryObject<Shutter> AZURE_SHUTTER = registerBlock(
+			"azure_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_OUTER_END);
 
 
 	// quark
@@ -173,14 +175,14 @@ public class BlockInit {
 			"azalea_quark_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
 
-	// supplementaries
-//	public static final RegistryObject<Shutter> LEAD_SHUTTER = registerBlock(
-//			"lead_shutter", () -> new LeadShutter(
-//					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
-//
-//	public static final RegistryObject<Shutter> SILVER_SHUTTER = registerBlock(
-//			"silver_shutter", () -> new SilverShutter(
-//					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
+	// Oreganized
+	public static final RegistryObject<Shutter> LEAD_SHUTTER = registerBlock(
+			"lead_shutter", () -> new LeadShutter(
+					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
+
+	public static final RegistryObject<Shutter> SILVER_SHUTTER = registerBlock(
+			"silver_shutter", () -> new SilverShutter(
+					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
 
 	// twigs
 	public static final RegistryObject<Shutter> STRIPPED_BAMBOO_SHUTTER = registerBlock(
@@ -212,13 +214,13 @@ public class BlockInit {
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_SNOWY_SPIRIT);
 
 	//update_aquatic
-//	public static final RegistryObject<Shutter> DRIFTWOOD_SHUTTER = registerBlock(
-//			"driftwood_shutter", () -> new Shutter(
-//					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_UPGRADE_AQUATTIC);
-//
-//	public static final RegistryObject<Shutter> RIVER_SHUTTER = registerBlock(
-//			"river_shutter", () -> new Shutter(
-//					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_UPGRADE_AQUATTIC);
+	public static final RegistryObject<Shutter> DRIFTWOOD_SHUTTER = registerBlock(
+			"driftwood_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_UPGRADE_AQUATTIC);
+
+	public static final RegistryObject<Shutter> RIVER_SHUTTER = registerBlock(
+			"river_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_UPGRADE_AQUATTIC);
 
 	//goodending
 	public static final RegistryObject<Shutter> CYPRESS_SHUTTER = registerBlock(
@@ -229,6 +231,7 @@ public class BlockInit {
 			"muddy_oak_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_GOODENDING);
 
+	//beachparty
 	public static final RegistryObject<Shutter> PALM_SHUTTER = registerBlock(
 			"palm_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_BEACHPARTY);

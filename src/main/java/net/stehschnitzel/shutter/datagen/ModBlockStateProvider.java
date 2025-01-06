@@ -27,9 +27,9 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
         shutterBuilder(BlockInit.COCONUT_SHUTTER);
         shutterBuilder(BlockInit.FLOWERING_AZALEA_SHUTTER);
         shutterBuilder(BlockInit.WALNUT_SHUTTER);
-        shutterBuilder(BlockInit.CHERRY_ENV_SHUTTER);
-        shutterBuilder(BlockInit.WILLOW_SHUTTER);
-        shutterBuilder(BlockInit.WISTERIA_SHUTTER);
+//        shutterBuilder(BlockInit.CHERRY_ENV_SHUTTER);
+//        shutterBuilder(BlockInit.WILLOW_SHUTTER);
+//        shutterBuilder(BlockInit.WISTERIA_SHUTTER);
         shutterBuilder(BlockInit.CYPRESS_SHUTTER);
         shutterBuilder(BlockInit.MUDDY_OAK_SHUTTER);
 
@@ -48,7 +48,12 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
         shutterBuilder(BlockInit.IRON_SHUTTER, "block/iron_block");
         shutterBuilder(BlockInit.SPRUCE_SHUTTER, "block/spruce_planks");
 
+//        shutterBuilder(BlockInit.LEAD_SHUTTER);
+//        shutterBuilder(BlockInit.SILVER_SHUTTER);
+//        shutterBuilder(BlockInit.RIVER_SHUTTER);
+//        shutterBuilder(BlockInit.DRIFTWOOD_SHUTTER);
         shutterBuilder(BlockInit.BLOSSOM_SHUTTER);
+//        shutterBuilder(BlockInit.AZURE_SHUTTER);
         shutterBuilder(BlockInit.ANCIENT_SHUTTER);
         shutterBuilder(BlockInit.AZALEA_QUARK_SHUTTER);
         shutterBuilder(BlockInit.GINGERBREAD_SHUTTER);

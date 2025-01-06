@@ -99,10 +99,23 @@ dependencies {
     // Mixins
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
-    //runtimeOnly fg.deobf("curse.maven:supplementaries-412082:5225134")
+    implementation fg.deobf("curse.maven:lets-do-beachparty-858691:5320668")
+    implementation fg.deobf("curse.maven:outer_end-430404:5812948")
+    implementation fg.deobf("curse.maven:quark-243121:5594847")
+    implementation fg.deobf("curse.maven:ecologics-570463:4857272")
+    implementation fg.deobf("curse.maven:oreganized-769203:5890510")
+    implementation fg.deobf("curse.maven:twigs-496913:4998195")
+    implementation fg.deobf("curse.maven:autumnity-365045:5292346")
+    implementation fg.deobf("curse.maven:snowy-spirit-566142:5928029")
+    implementation fg.deobf("curse.maven:upgrade-aquatic-326895:5615651")
+    implementation fg.deobf("curse.maven:good-ending-690161:5024405")
+    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+    implementation fg.deobf("curse.maven:zeta-968868:5597406")
+    implementation fg.deobf("curse.maven:do-api-864599:5468182")
+    implementation fg.deobf("curse.maven:selene-499980:6034621")
+    implementation fg.deobf("curse.maven:blueprint-382216:5292242")
+    implementation fg.deobf("curse.maven:effortless-building-302113:4979130")
 
-
-    compileOnly fg.deobf("curse.maven:effortless-building-302113:4979130")
     
     // JEI
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
