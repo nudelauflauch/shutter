@@ -1,0 +1,14 @@
+{
+  "mappings": {
+    "net/stehschnitzel/shutter/mixin/FenceMixins": {
+      "isExceptionForConnection": "Lnet/minecraft/world/level/block/Block;m_152463_(Lnet/minecraft/world/level/block/state/BlockState;)Z"
+    }
+  },
+  "data": {
+    "searge": {
+      "net/stehschnitzel/shutter/mixin/FenceMixins": {
+        "isExceptionForConnection": "Lnet/minecraft/world/level/block/Block;m_152463_(Lnet/minecraft/world/level/block/state/BlockState;)Z"
+      }
+    }
+  }
+}

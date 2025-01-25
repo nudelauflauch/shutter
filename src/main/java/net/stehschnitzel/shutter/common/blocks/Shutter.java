@@ -188,7 +188,7 @@ public class Shutter extends Block {
 
 	public void playSound(Level level, BlockPos pos) {
 		level.playSound(null, pos, this.getSound(level, pos).get(),
-				SoundSource.BLOCKS, 100F, 100F);
+				SoundSource.BLOCKS, 1F, 1F);
 	}
 
 	private RegistryObject<SoundEvent> getSound(Level level, BlockPos pos) {

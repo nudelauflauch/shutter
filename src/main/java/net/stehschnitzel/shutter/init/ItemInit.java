@@ -130,7 +130,7 @@ public class ItemInit {
 					() -> new BurnableItem(BlockInit.AZURE_SHUTTER.get(),
 							new Item.Properties(),
 							300));
-	
+
 	public static final RegistryObject<BlockItem> BLOSSOM_SHUTTER = ITEMS_CREATE
 			.register("blossom_shutter",
 					() -> new BurnableItem(BlockInit.BLOSSOM_SHUTTER.get(),

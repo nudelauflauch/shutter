@@ -18,7 +18,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'maven-publish'
 
-version = '1.0.6-1.19.3'
+version = '1.0.8-1.19.4'
 group = 'net.stehschnitzel.shutter' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'shutters'
 
@@ -26,7 +26,7 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(17) // Mojang ships Java
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings channel: 'parchment', version: '2023.03.12-1.19.3'
+    mappings channel: 'parchment', version: '2023.06.26-1.19.4'
     //mappings channel: 'official', version: '1.18.2'
     runs {
         client {
@@ -101,7 +101,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 dependencies {
 	// MINECRAFT
-    minecraft 'net.minecraftforge:forge:1.19.3-44.1.23'
+    minecraft 'net.minecraftforge:forge:1.19.4-45.1.16'
     //minecraft 'net.minecraftforge:forge:1.18.2-40.2.0'
     
     // Mixins

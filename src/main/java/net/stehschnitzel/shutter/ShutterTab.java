@@ -5,6 +5,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
@@ -22,6 +23,48 @@ public class ShutterTab{
 				builder -> builder.icon(() -> new ItemStack(ItemInit.OAK_SHUTTER.get())).title(Component.literal("Shutter Tab")).build());
 	}
 
+	public static void loadMods(IEventBus bus) {
+		if (ModList.get().isLoaded("create")) {
+			ItemInit.ITEMS_CREATE.register(bus);
+		}
+
+		if (ModList.get().isLoaded("ecologics")) {
+			ItemInit.ITEMS_ECOLOGICS.register(bus);
+		}
+
+		if (ModList.get().isLoaded("endergetic")) {
+			ItemInit.ITEMS_ENDERGETIC.register(bus);
+		}
+
+		if (ModList.get().isLoaded("outer_end")) {
+			ItemInit.ITEMS_OUTER_END.register(bus);
+		}
+
+		if (ModList.get().isLoaded("quark")) {
+			ItemInit.ITEMS_QUARK.register(bus);
+		}
+
+		if (ModList.get().isLoaded("supplementaries")) {
+			ItemInit.ITEMS_SUPPLEMENTARIES.register(bus);
+		}
+
+		if (ModList.get().isLoaded("twigs")) {
+			ItemInit.ITEMS_TWIGS.register(bus);
+		}
+		if (ModList.get().isLoaded("oreganized")) {
+			ItemInit.ITEMS_OREGANIZED.register(bus);
+		}
+		if (!FMLLoader.isProduction()) {
+			ItemInit.ITEMS_CREATE.register(bus);
+			ItemInit.ITEMS_ECOLOGICS.register(bus);
+			ItemInit.ITEMS_ENDERGETIC.register(bus);
+			ItemInit.ITEMS_OUTER_END.register(bus);
+			ItemInit.ITEMS_QUARK.register(bus);
+			ItemInit.ITEMS_SUPPLEMENTARIES.register(bus);
+			ItemInit.ITEMS_TWIGS.register(bus);
+			ItemInit.ITEMS_OREGANIZED.register(bus);
+		}
+	}
 
 	public static void fillCreativeMenu(CreativeModeTabEvent.BuildContents event) {
 
