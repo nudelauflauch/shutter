@@ -1,6 +1,0 @@
-{
-  "parent": "shutter:block/template_shutter_1",
-  "textures": {
-    "texture": "shutter:block/maple_shutter_middle",
-"particle": "autumnity:block/maple_planks"}
-}
