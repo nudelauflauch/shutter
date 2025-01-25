@@ -13,7 +13,7 @@ public class SoundInit {
     public static final SoundEvent SHUTTER_CLOSE = registerSoundEvent("shutter_close");
 
     private static SoundEvent registerSoundEvent(String name) {
-        Identifier id = new Identifier(ShutterMain.MOD_ID, name);
+        Identifier id = Identifier.of(ShutterMain.MOD_ID, name);
         return Registry.register(Registries.SOUND_EVENT, id, SoundEvent.of(id));
     }
 

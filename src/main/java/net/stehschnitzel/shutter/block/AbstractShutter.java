@@ -371,7 +371,7 @@ abstract class AbstractShutter extends Block {
     }
 
     public void setOpen(World world, BlockPos pos, int state) {
-        world.setBlockState(pos, world.getBlockState(pos).with(OPEN, state), 18);
+        world.setBlockState(pos, world.getBlockState(pos).with(OPEN, state), 3);
     }
 
     Block getBlockAbove(BlockPos pos, WorldAccess world) {

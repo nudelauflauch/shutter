@@ -1,9 +1,7 @@
 package net.stehschnitzel.shutter.init;
 
-import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.render.model.json.ModelOverrideList;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -15,7 +13,7 @@ import net.stehschnitzel.shutter.ShutterMain;
 public class ShutterItemGroup {
 
     public static final ItemGroup SHUTTER_GROUP = Registry.register(Registries.ITEM_GROUP,
-            new Identifier(ShutterMain.MOD_ID, "shutter"),
+            Identifier.of(ShutterMain.MOD_ID, "shutter"),
             FabricItemGroup.builder().displayName(Text.translatable("itemGroup.shutter_tab"))
                     .icon(() -> new ItemStack(BlockInit.OAK_SHUTTER)).entries((displayContext, entries) -> {
                         fillItemList(entries);
@@ -89,6 +87,14 @@ public class ShutterItemGroup {
         items.add(BlockInit.MANGROVE_SHUTTER);
         items.add(BlockInit.BAMBOO_SHUTTER);
         items.add(BlockInit.CHERRY_SHUTTER);
+        items.add(BlockInit.COPPER_SHUTTER);
+        items.add(BlockInit.EXPOSED_COPPER_SHUTTER);
+        items.add(BlockInit.OXIDIZED_COPPER_SHUTTER);
+        items.add(BlockInit.WEATHERED_COPPER_SHUTTER);
+        items.add(BlockInit.WAXED_COPPER_SHUTTER);
+        items.add(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER);
+        items.add(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER);
+        items.add(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER);
 
         items.add(new ItemStack(BlockInit.GOLD_SHUTTER));
         items.add(new ItemStack(BlockInit.NETHERITE_SHUTTER));

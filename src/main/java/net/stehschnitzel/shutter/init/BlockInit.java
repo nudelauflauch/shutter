@@ -3,6 +3,7 @@ package net.stehschnitzel.shutter.init;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.Oxidizable;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -11,6 +12,7 @@ import net.minecraft.util.Identifier;
 import net.stehschnitzel.shutter.ShutterMain;
 import net.stehschnitzel.shutter.block.GoldShutter;
 import net.stehschnitzel.shutter.block.Shutter;
+import net.stehschnitzel.shutter.block.WeatheringCopperShutter;
 
 public class BlockInit {
 
@@ -68,6 +70,39 @@ public class BlockInit {
 
     public static final Block CHERRY_SHUTTER = registerBlock("cherry_shutter",
             new Shutter(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
+
+    public static final Block COPPER_SHUTTER = registerBlock("copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.UNAFFECTED,
+                    FabricBlockSettings.copyOf(Blocks.COPPER_DOOR)));
+
+    public static final Block EXPOSED_COPPER_SHUTTER = registerBlock("exposed_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.EXPOSED,
+                    FabricBlockSettings.copyOf(Blocks.EXPOSED_COPPER_DOOR)));
+
+    public static final Block OXIDIZED_COPPER_SHUTTER = registerBlock("oxidized_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.OXIDIZED,
+                    FabricBlockSettings.copyOf(Blocks.OXIDIZED_COPPER_DOOR)));
+
+    public static final Block WEATHERED_COPPER_SHUTTER = registerBlock("weathered_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.WEATHERED,
+                    FabricBlockSettings.copyOf(Blocks.WEATHERED_COPPER_DOOR)));
+
+    public static final Block WAXED_COPPER_SHUTTER = registerBlock("waxed_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.UNAFFECTED,
+                    FabricBlockSettings.copyOf(Blocks.COPPER_DOOR)));
+
+    public static final Block WAXED_EXPOSED_COPPER_SHUTTER = registerBlock("waxed_exposed_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.EXPOSED,
+                    FabricBlockSettings.copyOf(Blocks.EXPOSED_COPPER_DOOR)));
+
+    public static final Block WAXED_OXIDIZED_COPPER_SHUTTER = registerBlock("waxed_oxidized_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.OXIDIZED,
+                    FabricBlockSettings.copyOf(Blocks.OXIDIZED_COPPER_DOOR)));
+
+    public static final Block WAXED_WEATHERED_COPPER_SHUTTER = registerBlock("waxed_weathered_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.WEATHERED,
+                    FabricBlockSettings.copyOf(Blocks.WEATHERED_COPPER_DOOR)));
+
 
     // Outer End Blocks
 //    public static final Block AZURE_SHUTTER = registerBlock("azure_shutter",
@@ -138,11 +173,11 @@ public class BlockInit {
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, new Identifier(ShutterMain.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, Identifier.of(ShutterMain.MOD_ID, name), block);
     }
 
     private static Item registerBlockItem(String name, Block block) {
-        return Registry.register(Registries.ITEM, new Identifier(ShutterMain.MOD_ID, name),
+        return Registry.register(Registries.ITEM, Identifier.of(ShutterMain.MOD_ID, name),
                 new BlockItem(block, new Item.Settings()));
     }
 

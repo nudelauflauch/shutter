@@ -1,0 +1,34 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/nudelauflauch/shutter/issues"
+
+[[mods]]
+
+modId="${mod_id}" #mandatory
+version="${mod_version}" #mandatory
+displayName="${mod_name}" #mandatory
+
+credits="Thanks go to Nudelauflauch for the textures"
+authors= "${mod_authors}"
+
+logoFile= "assets/shutter/textures/gui/main.png"
+
+description='''
+Adds Shutters for minecraft and different mods
+'''
+
+[[dependencies.${mod_id}]]
+    modId="minecraft"
+    mandatory=true
+
+    versionRange="${minecraft_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.${mod_id}]]
+    modId="forge"
+    mandatory=true
+    versionRange="${forge_version_range}"
+    ordering="NONE"
+    side="BOTH"
