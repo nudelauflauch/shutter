@@ -1,6 +1,0 @@
-{
-  "parent": "shutter:block/template_shutter_1",
-  "textures": {
-    "texture": "shutter:block/coconut_shutter_lower",
-"particle": "ecologics:block/coconut_planks"}
-}

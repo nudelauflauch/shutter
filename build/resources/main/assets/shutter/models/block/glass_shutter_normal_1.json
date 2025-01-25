@@ -1,6 +1,0 @@
-{
-  "parent": "shutter:block/template_shutter_1","render_type": "cutout",
-  "textures": {
-    "texture": "shutter:block/glass_shutter_normal",
-"particle": "minecraft:block/glass"}
-}
