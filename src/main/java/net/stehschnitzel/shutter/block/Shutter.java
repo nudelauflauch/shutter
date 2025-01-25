@@ -12,10 +12,14 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldAccess;
+import net.minecraft.world.WorldView;
+import net.minecraft.world.block.WireOrientation;
+import net.minecraft.world.tick.ScheduledTickView;
 import net.stehschnitzel.shutter.block.properties.ShutterDouble;
 import net.stehschnitzel.shutter.block.properties.ShutterPos;
 import net.stehschnitzel.shutter.block.properties.ShutterVoxels;
@@ -53,56 +57,61 @@ public class Shutter extends AbstractShutter {
             this.update(world, pos, state.get(OPEN) + 1, false);
 
             this.playSound(world, pos, world.getBlockState(pos).get(OPEN));
-            return ActionResult.success(!world.isClient);
+            return ActionResult.SUCCESS_SERVER;
         }
         return ActionResult.FAIL;
     }
 
     @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
+    protected BlockState getStateForNeighborUpdate(BlockState state, WorldView world, ScheduledTickView tickView, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, Random random) {
         redstoneUpdate((World) world, neighborPos, pos);
-        List<BlockState> sideblocks = getNeighborBlocks(world, pos);
+        List<BlockState> sideblocks = getNeighborBlocks((WorldAccess) world, pos);
 
         if (state.get(DOUBLE_DOOR) == ShutterDouble.NONE) {
             BlockPos right = getNeighborShutterPos(pos, ShutterDouble.RIGHT, state.get(FACING));
             BlockPos left = getNeighborShutterPos(pos, ShutterDouble.LEFT, state.get(FACING));
 
 
-            if (sideblocks.get(0).getBlock() instanceof Shutter && pos.equals(getNeighborShutterPos(world, right))) {
-                world.setBlockState(pos, world.getBlockState(pos).with(DOUBLE_DOOR, ShutterDouble.RIGHT), 18);
+            if (sideblocks.get(0).getBlock() instanceof Shutter && pos.equals(getNeighborShutterPos((WorldAccess) world, right))) {
+                ((World) world).setBlockState(pos, world.getBlockState(pos).with(DOUBLE_DOOR, ShutterDouble.RIGHT), 18);
 
-                updatePosNeighborHelper(world, pos);
+                updatePosNeighborHelper((WorldAccess) world, pos);
 
-            } else if (sideblocks.get(1).getBlock() instanceof Shutter && pos.equals(getNeighborShutterPos(world, left))) {
-                world.setBlockState(pos, world.getBlockState(pos).with(DOUBLE_DOOR, ShutterDouble.LEFT), 18);
+            } else if (sideblocks.get(1).getBlock() instanceof Shutter && pos.equals(getNeighborShutterPos((WorldAccess) world, left))) {
+                ((World) world).setBlockState(pos, world.getBlockState(pos).with(DOUBLE_DOOR, ShutterDouble.LEFT), 18);
 
-                updatePosNeighborHelper(world, pos);
+                updatePosNeighborHelper((WorldAccess) world, pos);
             }
         }
 
         //resets it to None, if there are no shutters around
         if (state.get(DOUBLE_DOOR) == ShutterDouble.LEFT && !(sideblocks.get(1).getBlock() instanceof Shutter)) {
-            world.setBlockState(pos, world.getBlockState(pos).with(DOUBLE_DOOR, ShutterDouble.NONE), 18);
+            ((World) world).setBlockState(pos, world.getBlockState(pos).with(DOUBLE_DOOR, ShutterDouble.NONE), 18);
 
-            updatePosNeighborHelper(world, pos);
+            updatePosNeighborHelper((WorldAccess) world, pos);
         }
         if (state.get(DOUBLE_DOOR) == ShutterDouble.RIGHT && !(sideblocks.get(0).getBlock() instanceof Shutter)) {
-            world.setBlockState(pos, world.getBlockState(pos).with(DOUBLE_DOOR, ShutterDouble.NONE), 18);
+            ((World) world).setBlockState(pos, world.getBlockState(pos).with(DOUBLE_DOOR, ShutterDouble.NONE), 18);
 
-            updatePosNeighborHelper(world, pos);
+            updatePosNeighborHelper((WorldAccess) world, pos);
         }
 
         // resets the shutter to 0 when i cant be in state 2
-        if (state.get(OPEN) == 2 && !canUpdate(world, pos)) {
+        if (state.get(OPEN) == 2 && !canUpdate((WorldAccess) world, pos)) {
             this.update((World) world, pos, 0, false);
             this.playSound((World) world, pos, world.getBlockState(pos).get(OPEN));
         }
 
         //update position
         if (pos.up().equals(neighborPos) || pos.down().equals(neighborPos)) {
-            updatePosNeighborHelper(world, pos);
+            updatePosNeighborHelper((WorldAccess) world, pos);
         }
         return state;
+    }
+
+    @Override
+    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
+
     }
 
     private void updatePosNeighborHelper(WorldAccess world, BlockPos pos) {

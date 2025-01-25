@@ -20,7 +20,6 @@ public class ItemInit {
     }
 
     public static void registerModItems() {
-
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(ItemInit::addItemsToIngredientItemGroup);
     }
 

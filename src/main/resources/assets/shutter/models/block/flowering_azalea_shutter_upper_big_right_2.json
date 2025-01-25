@@ -1,7 +1,0 @@
-{
-  "parent": "shutter:block/template_shutter_2_big_right",
-  "textures": {
-    "particle": "shutter:block/flowering_azalea_shutter_normal",
-    "texture": "shutter:block/flowering_azalea_shutter_upper_big"
-  }
-}

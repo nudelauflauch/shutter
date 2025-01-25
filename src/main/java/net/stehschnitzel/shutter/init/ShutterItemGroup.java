@@ -96,9 +96,9 @@ public class ShutterItemGroup {
         items.add(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER);
         items.add(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER);
 
-        items.add(new ItemStack(BlockInit.GOLD_SHUTTER));
-        items.add(new ItemStack(BlockInit.NETHERITE_SHUTTER));
-        items.add(new ItemStack(BlockInit.GLASS_SHUTTER));
+        items.add(BlockInit.GOLD_SHUTTER);
+        items.add(BlockInit.NETHERITE_SHUTTER);
+        items.add(BlockInit.GLASS_SHUTTER);
     }
 
     private static void registerCreate(ItemGroup.Entries items) {
@@ -112,11 +112,11 @@ public class ShutterItemGroup {
     }
 
     private static void registerEndergetic(ItemGroup.Entries items) {
-//        items.add(BlockInit.POISE_SHUTTER);
+        items.add(BlockInit.POISE_SHUTTER);
     }
 
     private static void registerOuterEnd(ItemGroup.Entries items) {
-//        items.add(BlockInit.AZURE_SHUTTER);
+        items.add(BlockInit.AZURE_SHUTTER);
     }
 
     private static void registerQuark(ItemGroup.Entries items) {
@@ -132,12 +132,12 @@ public class ShutterItemGroup {
     }
 
     private static void registerTwigs(ItemGroup.Entries items) {
-        //items.add(BlockInit.STRIPPED_BAMBOO_SHUTTER);
+        items.add(BlockInit.STRIPPED_BAMBOO_SHUTTER);
     }
 
     private static void registerOreganized(ItemGroup.Entries items) {
-//        items.add(BlockInit.SILVER_SHUTTER);
-//        items.add(BlockInit.LEAD_SHUTTER);
+        items.add(BlockInit.SILVER_SHUTTER);
+        items.add(BlockInit.LEAD_SHUTTER);
     }
 
     private static void registerAutumnity(ItemGroup.Entries items) {
@@ -155,8 +155,8 @@ public class ShutterItemGroup {
     }
 
     private static void registerUpdateAquatic(ItemGroup.Entries items) {
-//        items.add(BlockInit.DRIFTWOOD_SHUTTER);
-//        items.add(BlockInit.RIVER_SHUTTER);
+        items.add(BlockInit.DRIFTWOOD_SHUTTER);
+        items.add(BlockInit.RIVER_SHUTTER);
     }
 
     private static void registerGoodEnding(ItemGroup.Entries items) {

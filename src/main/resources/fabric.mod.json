@@ -8,10 +8,11 @@
 		"stehschnitzel"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
+		"homepage": "https://www.curseforge.com/minecraft/mc-mods/lauchs-shutters",
 		"sources": "https://github.com/nudelauflauch/shutter"
 	},
-	"license": "MIT",
+	"license": "Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License",
+	"icon": "assets/shutter/textures/gui/main.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
@@ -19,17 +20,14 @@
 		],
 		"client": [
 			"net.stehschnitzel.shutter.ShutterModClient"
-		],
-		"fabric-datagen": [
-			"net.stehschnitzel.shutter.ShutterDataGenerator"
 		]
 	},
 	"mixins": [
 		"shutter.mixins.json"
 	],
 	"depends": {
-		"fabricloader": ">=0.16.5",
-		"minecraft": "~1.21.1",
+		"fabricloader": ">=0.16.9",
+		"minecraft": "~1.21.4",
 		"java": ">=21",
 		"fabric-api": "*"
 	},

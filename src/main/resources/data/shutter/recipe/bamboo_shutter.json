@@ -1,1 +1,17 @@
-{"type": "minecraft:crafting_shaped", "pattern": ["___", "___"], "key": {"_": {"item": "minecraft:bamboo_slab"}}, "result": {"id": "shutter:bamboo_shutter", "count": 4}}
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:bamboo_slab"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AAA"
+  ],
+  "result": {
+    "count": 4,
+    "id": "shutter:bamboo_shutter"
+  }
+}

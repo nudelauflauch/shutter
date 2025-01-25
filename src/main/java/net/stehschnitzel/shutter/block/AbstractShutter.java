@@ -19,7 +19,7 @@ import java.util.List;
 
 abstract class AbstractShutter extends Block {
 
-    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty POWERED = Properties.POWERED;
     public static final EnumProperty<ShutterPos> POS = EnumProperty
             .of("half", ShutterPos.class);

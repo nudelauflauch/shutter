@@ -1,16 +1,17 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "___",
-        "___"
-    ],
-    "key": {
-        "_": {
-            "item": "minecraft:warped_slab"
-        }
-    },
-    "result": {
-        "id": "shutter:warped_shutter",
-        "count": 4
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:warped_slab"
     }
+  },
+  "pattern": [
+    "AAA",
+    "AAA"
+  ],
+  "result": {
+    "count": 4,
+    "id": "shutter:warped_shutter"
+  }
 }

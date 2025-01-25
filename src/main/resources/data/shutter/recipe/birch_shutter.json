@@ -1,16 +1,17 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "___",
-        "___"
-    ],
-    "key": {
-        "_": {
-            "item": "minecraft:birch_slab"
-        }
-    },
-    "result": {
-        "id": "shutter:birch_shutter",
-        "count": 4
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:birch_slab"
     }
+  },
+  "pattern": [
+    "AAA",
+    "AAA"
+  ],
+  "result": {
+    "count": 4,
+    "id": "shutter:birch_shutter"
+  }
 }

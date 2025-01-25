@@ -1,15 +1,16 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"ingredients": [
-		{
-			"item": "shutter:gold_shutter"
-		},
-		{
-			"item": "minecraft:netherite_scrap"
-		}
-	],
-	"result": {
-		"id": "shutter:netherite_shutter",
-		"count": 1
-	}
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "shutter:gold_shutter"
+    },
+    {
+      "item": "minecraft:netherite_scrap"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "shutter:netherite_shutter"
+  }
 }
