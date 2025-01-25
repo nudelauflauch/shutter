@@ -13,9 +13,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stehschnitzel.shutter.ShutterMain;
-import net.stehschnitzel.shutter.common.blocks.WeatheringCopperShutter;
-import net.stehschnitzel.shutter.common.blocks.GoldShutter;
-import net.stehschnitzel.shutter.common.blocks.Shutter;
+import net.stehschnitzel.shutter.common.blocks.*;
 import net.stehschnitzel.shutter.common.items.BurnableItem;
 
 public class BlockInit {
@@ -69,23 +67,24 @@ public class BlockInit {
 			.create(ForgeRegistries.ITEMS, ShutterMain.MOD_ID);
 
 
-	// ecologics
-	public static final RegistryObject<Shutter> AZALEA_SHUTTER = registerBlock("azalea_shutter", () -> new Shutter(
-			BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
+	// ecologics newest 1.20.1 fabric and forge
+//	public static final RegistryObject<Shutter> AZALEA_SHUTTER = registerBlock("azalea_shutter",
+//			() -> new Shutter(
+//			BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
+//
+//	public static final RegistryObject<Shutter> COCONUT_SHUTTER = registerBlock(
+//			"coconut_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
+//
+//	public static final RegistryObject<Shutter> FLOWERING_AZALEA_SHUTTER = registerBlock(
+//			"flowering_azalea_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
+//
+//	public static final RegistryObject<Shutter> WALNUT_SHUTTER = registerBlock(
+//			"walnut_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
 
-	public static final RegistryObject<Shutter> COCONUT_SHUTTER = registerBlock(
-			"coconut_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
-
-	public static final RegistryObject<Shutter> FLOWERING_AZALEA_SHUTTER = registerBlock(
-			"flowering_azalea_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
-
-	public static final RegistryObject<Shutter> WALNUT_SHUTTER = registerBlock(
-			"walnut_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
-
-	// endergetic
+	// endergetic 1.19.2 forge only
 //	public static final RegistryObject<Shutter> POISE_SHUTTER = registerBlock(
 //			"poise_shutter", () -> new Shutter(
 //					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ENDERGETIC);
@@ -190,26 +189,26 @@ public class BlockInit {
 					BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion()),
 			MINECRAFT_ITEMS, false);
 
-	// outer_end
+	// outer_end 1.20.1 forge
 //	public static final RegistryObject<Shutter> AZURE_SHUTTER = registerBlock(
 //			"azure_shutter", () -> new Shutter(
 //					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_OUTER_END);
 
 
-	// quark
-	public static final RegistryObject<Shutter> BLOSSOM_SHUTTER = registerBlock(
-			"blossom_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
+	// quark 1.20.1 forge only
+//	public static final RegistryObject<Shutter> BLOSSOM_SHUTTER = registerBlock(
+//			"blossom_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
+//
+//	public static final RegistryObject<Shutter> ANCIENT_SHUTTER = registerBlock(
+//			"ancient_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
+//
+//	public static final RegistryObject<Shutter> AZALEA_QUARK_SHUTTER = registerBlock(
+//			"azalea_quark_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
 
-	public static final RegistryObject<Shutter> ANCIENT_SHUTTER = registerBlock(
-			"ancient_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
-
-	public static final RegistryObject<Shutter> AZALEA_QUARK_SHUTTER = registerBlock(
-			"azalea_quark_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
-
-	// supplementaries
+	// Oreganized 1.20.1 forge only
 //	public static final RegistryObject<Shutter> LEAD_SHUTTER = registerBlock(
 //			"lead_shutter", () -> new LeadShutter(
 //					BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
@@ -218,36 +217,36 @@ public class BlockInit {
 //			"silver_shutter", () -> new SilverShutter(
 //					BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
 
-	// twigs
-	public static final RegistryObject<Shutter> STRIPPED_BAMBOO_SHUTTER = registerBlock(
-			"stripped_bamboo_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_TWIGS);
+	// twigs 1.20.1 forge and fabric
+//	public static final RegistryObject<Shutter> STRIPPED_BAMBOO_SHUTTER = registerBlock(
+//			"stripped_bamboo_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_TWIGS);
 
-	//autumnity
-	public static final RegistryObject<Shutter> MAPLE_SHUTTER = registerBlock(
-			"maple_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_AUTUMNITY);
+	//autumnity 1.20.1 forge
+//	public static final RegistryObject<Shutter> MAPLE_SHUTTER = registerBlock(
+//			"maple_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_AUTUMNITY);
 
 
-	//environmental
-	public static final RegistryObject<Shutter> CHERRY_ENV_SHUTTER = registerBlock(
-			"cherry_env_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
+	//environmental 1.19.2 forge only
+//	public static final RegistryObject<Shutter> CHERRY_ENV_SHUTTER = registerBlock(
+//			"cherry_env_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
+//
+//	public static final RegistryObject<Shutter> WILLOW_SHUTTER = registerBlock(
+//			"willow_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
+//
+//	public static final RegistryObject<Shutter> WISTERIA_SHUTTER = registerBlock(
+//			"wisteria_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
 
-	public static final RegistryObject<Shutter> WILLOW_SHUTTER = registerBlock(
-			"willow_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
+	//snowy spirit 1.20.1 forge fabric on version 1.21.1
+//	public static final RegistryObject<Shutter> GINGERBREAD_SHUTTER = registerBlock(
+//			"gingerbread_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_SNOWY_SPIRIT);
 
-	public static final RegistryObject<Shutter> WISTERIA_SHUTTER = registerBlock(
-			"wisteria_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
-
-	//snowy spirit
-	public static final RegistryObject<Shutter> GINGERBREAD_SHUTTER = registerBlock(
-			"gingerbread_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_SNOWY_SPIRIT);
-
-	//update_aquatic
+	//update_aquatic 1.20.1 forge
 //	public static final RegistryObject<Shutter> DRIFTWOOD_SHUTTER = registerBlock(
 //			"driftwood_shutter", () -> new Shutter(
 //					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_UPGRADE_AQUATTIC);
@@ -256,18 +255,18 @@ public class BlockInit {
 //			"river_shutter", () -> new Shutter(
 //					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_UPGRADE_AQUATTIC);
 
-	//goodending
-	public static final RegistryObject<Shutter> CYPRESS_SHUTTER = registerBlock(
-			"cypress_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_GOODENDING);
-
-	public static final RegistryObject<Shutter> MUDDY_OAK_SHUTTER = registerBlock(
-			"muddy_oak_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_GOODENDING);
-
-	public static final RegistryObject<Shutter> PALM_SHUTTER = registerBlock(
-			"palm_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_BEACHPARTY);
+	//goodending 1.20.1 forge and fabric
+//	public static final RegistryObject<Shutter> CYPRESS_SHUTTER = registerBlock(
+//			"cypress_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_GOODENDING);
+//
+//	public static final RegistryObject<Shutter> MUDDY_OAK_SHUTTER = registerBlock(
+//			"muddy_oak_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_GOODENDING);
+	//beachparty
+//	public static final RegistryObject<Shutter> PALM_SHUTTER = registerBlock(
+//			"palm_shutter", () -> new Shutter(
+//					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_BEACHPARTY);
 
 	// Block
 	private static <T extends Block> RegistryObject<T> registerBlock(

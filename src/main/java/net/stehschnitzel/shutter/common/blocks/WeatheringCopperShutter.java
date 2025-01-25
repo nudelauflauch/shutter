@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.stehschnitzel.shutter.common.blocks.properties.WeatheringShutter;
+import net.stehschnitzel.shutter.init.BlockInit;
 
 import java.util.Optional;
 
@@ -74,8 +75,10 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
                 pLevel.playSound(pPlayer, pPos, SoundEvents.AXE_SCRAPE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 pLevel.levelEvent(pPlayer, 3005, pPos, 0);
             }
-            if ((unwaxed.isPresent() || previous.isPresent()) && !pPlayer.isCreative()) {
-                pStack.hurtAndBreak(1, pPlayer, LivingEntity.getSlotForHand(pHand));
+            if ((unwaxed.isPresent() || previous.isPresent())) {
+                if (!pPlayer.isCreative()) {
+                    pStack.hurtAndBreak(1, pPlayer, LivingEntity.getSlotForHand(pHand));
+                }
                 return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
             }
         }
@@ -94,7 +97,7 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
 
     @Override
     protected boolean isRandomlyTicking(BlockState pState) {
-        return WeatheringShutter.getNext(pState.getBlock()).isPresent();
+        return pState.getBlock() != BlockInit.OXIDIZED_COPPER_SHUTTER.get();
     }
 
     @Override

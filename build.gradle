@@ -87,8 +87,10 @@ dependencies {
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
     //addonds for testing
-    //runtimeOnly fg.deobf("curse.maven:supplementaries-412082:${supp_version}")
-    //compileOnly fg.deobf("curse.maven:effortless-building-302113:4979130")
+//    runtimeOnly fg.deobf("curse.maven:ecologics-570463:${ecolo_version}")
+//    runtimeOnly fg.deobf("curse.maven:ecologics-570463:${ecolo_version}")
+//    runtimeOnly fg.deobf("curse.maven:supplementaries-412082:${supp_version}")
+//    compileOnly fg.deobf("curse.maven:effortless-building-302113:4979130")
     
     // JEI
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))

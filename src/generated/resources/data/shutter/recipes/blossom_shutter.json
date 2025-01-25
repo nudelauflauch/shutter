@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "___",
+        "___"
+    ],
+    "key": {
+        "_": {
+            "item": "quark:blossom_planks_slab"
+        }
+    },
+    "result": {
+        "item": "shutter:blossom_shutter",
+        "count": 4
+    }
+}
