@@ -1,0 +1,7 @@
+{
+  "parent": "shutter:block/template_shutter_1_big_left",
+  "textures": {
+    "particle": "minecraft:block/mangrove_planks",
+    "texture": "shutter:block/mangrove_shutter_upper_big"
+  }
+}

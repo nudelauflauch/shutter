@@ -1,0 +1,16 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        "___",
+        "___"
+    ],
+    "key": {
+        "_": {
+            "item": "ecologics:coconut_slab"
+        }
+    },
+    "result": {
+        "item": "shutter:coconut_shutter",
+        "count": 4
+    }
+}

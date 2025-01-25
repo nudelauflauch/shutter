@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"___",
+		"___"
+	],
+	"key": {
+		"_": {
+			"item": "beachparty:palm_slab"
+		}
+	},
+	"result": {
+		"item": "shutter:palm_shutter",
+		"count": 4
+	}
+}
