@@ -3,12 +3,6 @@
 	"values": [
 		"shutter:iron_shutter",
 		"shutter:gold_shutter",
-<<<<<<< Updated upstream
 		"shutter:netherite_shutter"
-=======
-		"shutter:lead_shutter",
-		"shutter:netherite_shutter",
-		"shutter:silver_shutter"
->>>>>>> Stashed changes
 	]
 }

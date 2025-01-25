@@ -1,5 +1,4 @@
 {
-<<<<<<< Updated upstream
 	"type": "minecraft:crafting_shapeless",
 	"ingredients": [
 		{
@@ -13,20 +12,4 @@
 		"item": "shutter:netherite_shutter",
 		"count": 1
 	}
-=======
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "___",
-        "___"
-    ],
-    "key": {
-        "_": {
-            "item": "minecraft:netherite_block"
-        }
-    },
-    "result": {
-        "item": "shutter:netherite_shutter",
-        "count": 2
-    }
->>>>>>> Stashed changes
 }

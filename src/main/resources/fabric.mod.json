@@ -1,0 +1,39 @@
+{
+	"schemaVersion": 1,
+	"id": "shutter",
+	"version": "${version}",
+	"name": "Shutter",
+	"description": "Adds Shutters for minecraft and different mods",
+	"authors": [
+		"stehschnitzel"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/nudelauflauch/shutter"
+	},
+	"license": "MIT",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+          "net.stehschnitzel.shutter.ShutterMain"
+		],
+		"client": [
+			"net.stehschnitzel.shutter.ShutterModClient"
+		],
+		"fabric-datagen": [
+			"net.stehschnitzel.shutter.ShutterDataGenerator"
+		]
+	},
+	"mixins": [
+		"shutter.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.15.1",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

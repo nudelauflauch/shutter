@@ -1,6 +1,7 @@
 {
   "parent": "shutter:block/template_shutter_1",
   "textures": {
-    "texture": "shutter:block/netherite_shutter_lower",
-"particle": "minecraft:block/netherite_block"}
+    "particle": "minecraft:block/netherite_block",
+    "texture": "shutter:block/netherite_shutter_lower"
+  }
 }

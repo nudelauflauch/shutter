@@ -6,19 +6,11 @@
     ],
     "key": {
         "_": {
-<<<<<<< Updated upstream
             "item": "minecraft:glass_pane"
-=======
-            "item": "minecraft:glass"
->>>>>>> Stashed changes
         }
     },
     "result": {
         "item": "shutter:glass_shutter",
-<<<<<<< Updated upstream
         "count": 4
-=======
-        "count": 2
->>>>>>> Stashed changes
     }
 }

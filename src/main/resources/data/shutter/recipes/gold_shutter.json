@@ -1,5 +1,4 @@
 {
-<<<<<<< Updated upstream
 	"type": "minecraft:crafting_shaped",
 	"pattern": [
 		"#g#",
@@ -18,20 +17,3 @@
 		"count": 2
 	}
 }
-=======
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "___",
-        "___"
-    ],
-    "key": {
-        "_": {
-            "item": "minecraft:gold_ingots"
-        }
-    },
-    "result": {
-        "item": "shutter:gold_shutter",
-        "count": 2
-    }
-}
->>>>>>> Stashed changes

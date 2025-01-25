@@ -1,9 +1,5 @@
 {
-<<<<<<< Updated upstream
   "block.shutter.gold_shutter" : "Gold Shutter",
-=======
-	"block.shutter.gold_shutter" : "Gold Shutter",
->>>>>>> Stashed changes
   "block.shutter.azalea_shutter" : "Azalea Shutter",
   "block.shutter.coconut_shutter" : "Coconut Shutter",
   "block.shutter.flowering_azalea_shutter" : "Flowering Azalea Shutter",
@@ -18,19 +14,13 @@
   "block.shutter.oak_shutter" : "Oak Shutter",
   "block.shutter.spruce_shutter" : "Spruce Shutter",
   "block.shutter.warped_shutter" : "Warped Shutter",
-<<<<<<< Updated upstream
   "block.shutter.cherry_shutter" : "Cherry Shutter",
   "block.shutter.azuer_shutter" : "Azuer Shutter",
   "block.shutter.blossom_shutter" : "Trumpet Shutter",
-=======
-  "block.shutter.azuer_shutter" : "Azuer Shutter",
-  "block.shutter.blossom_shutter" : "Blossom Shutter",
->>>>>>> Stashed changes
   "block.shutter.lead_shutter" : "Lead Shutter",
   "block.shutter.netherite_shutter" : "Netherite Shutter",
   "block.shutter.silver_shutter" : "Silver Shutter",
   "block.shutter.stripped_bamboo_shutter" : "Stripped Bamboo Shutter",
-<<<<<<< Updated upstream
   "block.shutter.azure_shutter" : "Azure Shutter",
   "block.shutter.maple_shutter" : "Maple Shutter",
   "block.shutter.cherry_env_shutter" : "Enviromental Cherry Shutter",
@@ -46,11 +36,7 @@
   "block.shutter.azalea_quark_shutter" : "Quark Azalea Shutter",
   "block.shutter.cypress_shutter" : "Cypress Shutter",
   "block.shutter.muddy_oak_shutter" : "Muddy Oak Shutter",
-  "block.shutter.palm_shutter" : "Palm Shutter",
 
-=======
-	
->>>>>>> Stashed changes
 	"itemGroup.shutter_tab":"Shutters",
 
 	"sounds.shutter.shutter_open_half": "Shutter Open Half",

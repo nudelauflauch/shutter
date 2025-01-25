@@ -6,19 +6,11 @@
     ],
     "key": {
         "_": {
-<<<<<<< Updated upstream
             "item": "ecologics:walnut_slab"
-=======
-            "item": "ecologics:walnut_planks"
->>>>>>> Stashed changes
         }
     },
     "result": {
         "item": "shutter:walnut_shutter",
-<<<<<<< Updated upstream
         "count": 4
-=======
-        "count": 2
->>>>>>> Stashed changes
     }
 }
