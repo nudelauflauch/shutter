@@ -17,9 +17,8 @@ public class LeadShutter extends Shutter {
 	}
 
 	@Override
-	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-		if (!player.isSneaking()
-				&& hand.equals(hand.MAIN_HAND)) {
+	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+		if (!player.isSneaking()) {
 			int rand = new Random().nextInt(100);
 			if (rand < 35 && !world.isClient) {
 				super.update(world, pos, state.get(OPEN) + 1, false);

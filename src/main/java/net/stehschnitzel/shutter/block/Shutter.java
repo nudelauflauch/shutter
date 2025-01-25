@@ -47,9 +47,8 @@ public class Shutter extends AbstractShutter {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!player.isSneaking()
-                && hand.equals(hand.MAIN_HAND)
                 && !this.isMetal) {
             this.update(world, pos, state.get(OPEN) + 1, false);
 

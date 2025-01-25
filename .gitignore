@@ -1,6 +1,6 @@
-*.github/*
-*.gradle/*
-*.idea/*
-*build/*
-*run/*
+.github/
+.gradle/
+.idea/
+build/
+run/
 
