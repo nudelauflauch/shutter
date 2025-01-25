@@ -1,0 +1,26 @@
+modLoader="javafml" #mandatory
+loaderVersion="43" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="All rights reserved"
+[[mods]] #mandatory
+modId="shutter" #mandatory
+version="1.1.0" #mandatory
+displayName="Shutter" #mandatorylogoFile="examplemod.png" #optional
+
+credits="nudelauflauch for the textures" #optional
+authors="stehschnitzel" #optional
+
+description='''
+Adds Shutters for different mods
+'''
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.shutter]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[43,)"
+    side="BOTH"
+
+[[dependencies.shutter]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.2]"
+    side="BOTH"

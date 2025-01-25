@@ -1,0 +1,6 @@
+{
+  "parent": "shutter:block/template_shutter_2",
+  "textures": {
+    "texture": "shutter:block/azure_shutter_lower",
+"particle": "outer_end:block/azure_planks"}
+}

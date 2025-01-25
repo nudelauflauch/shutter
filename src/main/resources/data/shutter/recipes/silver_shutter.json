@@ -1,0 +1,19 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"pattern": [
+		"#o#",
+		"#o#"
+	],
+	"key": {
+		"#": {
+			"item": "oreganized:silver_ingot"
+		},
+		"o": {
+			"item": "oreganized:silver_nugget"
+		}
+	},
+	"result": {
+		"item": "shutter:silver_shutter",
+		"count": 1
+	}
+}
