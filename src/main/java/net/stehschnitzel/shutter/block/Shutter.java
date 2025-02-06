@@ -112,6 +112,20 @@ public class Shutter extends AbstractShutter {
         }
     }
 
+    @Override
+    public boolean hasComparatorOutput(BlockState state) {
+        return state.get(OPEN) != 0;
+    }
+
+    @Override
+    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+        switch (state.get(OPEN)) {
+            case 1: return 7;
+            case 2: return 15;
+            default: return 0;
+        }
+    }
+
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
@@ -148,6 +162,10 @@ public class Shutter extends AbstractShutter {
             open_state = level.getBlockState(blockpos.up()).get(OPEN);
             direction = level.getBlockState(blockpos.up()).get(FACING);
         } else if (ctx.getPlayer().isSneaking() && isdoubleDoor == ShutterDouble.NONE){
+            direction = direction.getOpposite();
+        }
+
+        if (ctx.getPlayer() == null) {
             direction = direction.getOpposite();
         }
 

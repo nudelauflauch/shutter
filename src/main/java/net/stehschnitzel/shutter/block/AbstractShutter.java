@@ -139,7 +139,6 @@ abstract class AbstractShutter extends Block {
                         break;
                     }
                     shutter.setOpen(world, newPos, state);
-                    //29 72 16
                 } else {
                     break;
                 }
@@ -367,11 +366,11 @@ abstract class AbstractShutter extends Block {
     }
 
     public void setPowered(World world, BlockPos pos, boolean state) {
-        world.setBlockState(pos, world.getBlockState(pos).with(POWERED, state), 3);
+        world.setBlockState(pos, world.getBlockState(pos).with(POWERED, state));
     }
 
     public void setOpen(World world, BlockPos pos, int state) {
-        world.setBlockState(pos, world.getBlockState(pos).with(OPEN, state), 18);
+        world.setBlockState(pos, world.getBlockState(pos).with(OPEN, state));
     }
 
     Block getBlockAbove(BlockPos pos, WorldAccess world) {
