@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -113,7 +114,34 @@ public class Shutter extends AbstractShutter {
 		}
 	}
 
+	@Override
+	public int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos) {
+		switch (pState.getValue(OPEN)) {
+			case 1: return 7;
+			case 2: return 15;
+			default: return 0;
+		}
+	}
 
+	@Override
+	public boolean hasAnalogOutputSignal(BlockState pState) {
+		return pState.getValue(OPEN) != 0;
+	}
+
+	@Override
+	public int getSignal(BlockState pState, BlockGetter pLevel, BlockPos pPos, Direction pDirection) {
+		return super.getSignal(pState, pLevel, pPos, pDirection);
+	}
+
+	@Override
+	public BlockState rotate(BlockState pState, Rotation pRotation) {
+		return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
+	}
+
+	@Override
+	public BlockState mirror(BlockState pState, Mirror pMirror) {
+		return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
+	}
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
@@ -150,6 +178,14 @@ public class Shutter extends AbstractShutter {
 			open_state = level.getBlockState(blockpos.above()).getValue(OPEN);
 			direction = level.getBlockState(blockpos.above()).getValue(FACING);
 		} else if (pContext.getPlayer() != null && pContext.getPlayer().isShiftKeyDown() && isdoubleDoor == ShutterDouble.NONE){
+			direction = direction.getOpposite();
+		}
+
+		System.err.println(pContext.getPlayer());
+		direction = direction.getOpposite();
+
+		//for bug #21 At world generation the shutter will get placed the opposite way as usually TODO
+		if (pContext.getPlayer() == null) {
 			direction = direction.getOpposite();
 		}
 
