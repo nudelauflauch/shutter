@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "upgrade_aquatic:river_slab"
+      "item": "minecraft:copper_block"
     }
   },
   "pattern": [
@@ -11,8 +11,8 @@
     "AAA"
   ],
   "result": {
-    "count": 2,
-    "item": "shutter:river_shutter"
+    "count": 8,
+    "item": "shutter:copper_shutter"
   },
   "show_notification": true
 }

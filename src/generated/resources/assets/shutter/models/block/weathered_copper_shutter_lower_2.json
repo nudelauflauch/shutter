@@ -1,0 +1,7 @@
+{
+  "parent": "shutter:block/template_shutter_2",
+  "textures": {
+    "particle": "minecraft:block/weathered_copper",
+    "texture": "shutter:block/weathered_copper_shutter_lower"
+  }
+}

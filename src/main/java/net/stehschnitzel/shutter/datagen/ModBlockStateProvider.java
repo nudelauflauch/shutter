@@ -63,7 +63,23 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
         shutterBuilder(BlockInit.NETHERITE_SHUTTER, "block/netherite_block");
 
         shutterBuilder(BlockInit.STRIPPED_BAMBOO_SHUTTER, "block/bamboo_planks");
+
+        shutterBuilder(BlockInit.COPPER_SHUTTER, "block/copper_block");
+        shutterBuilder(BlockInit.EXPOSED_COPPER_SHUTTER, "block/exposed_copper");
+        shutterBuilder(BlockInit.OXIDIZED_COPPER_SHUTTER, "block/oxidized_copper");
+        shutterBuilder(BlockInit.WEATHERED_COPPER_SHUTTER, "block/weathered_copper");
+
+        shutterBuilder(BlockInit.WAXED_COPPER_SHUTTER, BlockInit.COPPER_SHUTTER,"block/copper_block");
+        shutterBuilder(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER, BlockInit.EXPOSED_COPPER_SHUTTER,"block/exposed_copper");
+        shutterBuilder(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER, BlockInit.OXIDIZED_COPPER_SHUTTER, "block/oxidized_copper");
+        shutterBuilder(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER, BlockInit.WEATHERED_COPPER_SHUTTER, "block/weathered_copper");
+
     }
+
+    private void shutterBuilder(RegistryObject<Shutter> originalModel, RegistryObject<Shutter> model, String particle) {
+        shutterBuilder(originalModel, particle, model.getId().getPath());
+    }
+
 
     private void shutterBuilderWithRenderTyp(RegistryObject<Shutter> block, String renderType) {
         shutterBuilderWithRenderTyp(block, new ResourceLocation(ShutterMain.MODID, "block/" + block.getId().getPath() + "_normal").toString(), renderType);
@@ -145,8 +161,10 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
     }
 
     private void shutterBuilder(RegistryObject<Shutter> block, String particle) {
-        String name = block.getId().getPath();
+        shutterBuilder(block, particle, block.getId().getPath());
+    }
 
+    private void shutterBuilder(RegistryObject<Shutter> block, String particle, String name) {
         ModelFile n_0 = shutter_0(name, "_normal", particle);
         ModelFile n_1 = shutter_1(name, "_normal", particle);
         ModelFile n_2 = shutter_2(name, "_normal", particle);

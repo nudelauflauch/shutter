@@ -57,6 +57,22 @@ public class ModItemModelGenerator extends ItemModelProvider {
         simpleItem(BlockInit.SILVER_SHUTTER);
         simpleItem(BlockInit.LEAD_SHUTTER);
 
+        simpleItem(BlockInit.COPPER_SHUTTER);
+        simpleItem(BlockInit.OXIDIZED_COPPER_SHUTTER);
+        simpleItem(BlockInit.WEATHERED_COPPER_SHUTTER);
+        simpleItem(BlockInit.EXPOSED_COPPER_SHUTTER);
+
+        simpleItem(BlockInit.WAXED_COPPER_SHUTTER, BlockInit.COPPER_SHUTTER);
+        simpleItem(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER, BlockInit.OXIDIZED_COPPER_SHUTTER);
+        simpleItem(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER, BlockInit.WEATHERED_COPPER_SHUTTER);
+        simpleItem(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER, BlockInit.EXPOSED_COPPER_SHUTTER);
+
+    }
+
+    private ItemModelBuilder simpleItem(RegistryObject<Shutter> item, RegistryObject<Shutter> originalItem) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(ShutterMain.MODID,"item/" + originalItem.getId().getPath()));
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Shutter> item) {

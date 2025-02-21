@@ -102,6 +102,16 @@ public class CreativTabInit{
 		items.accept(new ItemStack(BlockInit.BAMBOO_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.CHERRY_SHUTTER.get()));
 
+		items.accept(BlockInit.COPPER_SHUTTER.get());
+		items.accept(BlockInit.EXPOSED_COPPER_SHUTTER.get());
+		items.accept(BlockInit.WEATHERED_COPPER_SHUTTER.get());
+		items.accept(BlockInit.OXIDIZED_COPPER_SHUTTER.get());
+
+		items.accept(BlockInit.WAXED_COPPER_SHUTTER.get());
+		items.accept(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER.get());
+		items.accept(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER.get());
+		items.accept(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER.get());
+
 		//mc but not really
 		items.accept(new ItemStack(BlockInit.GOLD_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.NETHERITE_SHUTTER.get()));

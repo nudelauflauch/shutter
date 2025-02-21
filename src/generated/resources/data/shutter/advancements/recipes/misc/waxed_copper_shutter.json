@@ -1,12 +1,24 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_river_slab": {
+    "has_copper_shutter": {
       "conditions": {
         "items": [
           {
             "items": [
-              "upgrade_aquatic:river_slab"
+              "shutter:copper_shutter"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_honeycomb": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:honeycomb"
             ]
           }
         ]
@@ -15,20 +27,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "shutter:river_shutter"
+        "recipe": "shutter:waxed_copper_shutter"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_river_slab",
+      "has_copper_shutter",
+      "has_honeycomb",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "shutter:river_shutter"
+      "shutter:waxed_copper_shutter"
     ]
   },
   "sends_telemetry_event": false
