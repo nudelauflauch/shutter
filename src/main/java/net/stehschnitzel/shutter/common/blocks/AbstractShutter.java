@@ -31,7 +31,6 @@ abstract class AbstractShutter extends Block {
 
     public static final EnumProperty<ShutterDouble> DOUBLE_DOOR = EnumProperty
             .create("double_door", ShutterDouble.class);
-    //	private final BlockState[] sideblocks = new BlockState[2];
     boolean isMetal = false;
 
     public AbstractShutter(Properties properties, boolean isMetal) {
