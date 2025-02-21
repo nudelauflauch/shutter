@@ -23,6 +23,7 @@ abstract class AbstractShutter extends Block {
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<ShutterPos> POS = EnumProperty
             .create("half", ShutterPos.class);
 
@@ -41,7 +42,8 @@ abstract class AbstractShutter extends Block {
                 .setValue(POWERED, false)
                 .setValue(OPEN, 0)
                 .setValue(POS, ShutterPos.NORMAL)
-                .setValue(DOUBLE_DOOR, ShutterDouble.NONE));
+                .setValue(DOUBLE_DOOR, ShutterDouble.NONE)
+                .setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
 
     void updateRedstone(Level level, BlockPos pos, boolean first) {
@@ -395,5 +397,6 @@ abstract class AbstractShutter extends Block {
         pBuilder.add(OPEN);
         pBuilder.add(POWERED);
         pBuilder.add(DOUBLE_DOOR);
+        pBuilder.add(WATERLOGGED);
     }
 }

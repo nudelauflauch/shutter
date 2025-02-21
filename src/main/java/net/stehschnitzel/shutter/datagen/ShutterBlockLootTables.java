@@ -51,6 +51,7 @@ public class ShutterBlockLootTables extends BlockLootSubProvider {
         dropSelf(BlockInit.DRIFTWOOD_SHUTTER.get());
         dropSelf(BlockInit.LEAD_SHUTTER.get());
         dropSelf(BlockInit.SILVER_SHUTTER.get());
+        dropSelf(BlockInit.POISE_SHUTTER.get());
     }
 
     @Override

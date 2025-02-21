@@ -11,6 +11,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -20,7 +22,7 @@ import net.stehschnitzel.shutter.common.blocks.properties.ShutterVoxels;
 
 import java.util.List;
 
-public class Shutter extends AbstractShutter {
+public class Shutter extends AbstractShutter implements SimpleWaterloggedBlock {
 
 	public Shutter(Properties properties) {
 		this(properties, false);
@@ -51,6 +53,9 @@ public class Shutter extends AbstractShutter {
 				&& !this.isMetal) {
 
 			this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
+			if (pState.getValue(WATERLOGGED)) {
+				pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+			}
 
 			this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
 			return InteractionResult.sidedSuccess(pLevel.isClientSide);
@@ -105,6 +110,10 @@ public class Shutter extends AbstractShutter {
 		if (pPos.above().equals(pFromPos) || pPos.below().equals(pFromPos)) {
 			updatePosNeighborHelper(pLevel, pPos);
 		}
+
+		if (pState.getValue(OPEN) != 0 && pState.getValue(WATERLOGGED)) {
+			pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+		}
 	}
 
 	//updates the position so it
@@ -134,6 +143,20 @@ public class Shutter extends AbstractShutter {
 	}
 
 	@Override
+	public FluidState getFluidState(BlockState pState) {
+		return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
+	}
+
+	@Override
+	public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
+		if (pState.getValue(WATERLOGGED)) {
+			pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+		}
+
+		return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+	}
+
+	@Override
 	public BlockState rotate(BlockState pState, Rotation pRotation) {
 		return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
 	}
@@ -145,6 +168,7 @@ public class Shutter extends AbstractShutter {
 
 	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+		FluidState fluidstate = pContext.getLevel().getFluidState(pContext.getClickedPos());
 		BlockPos blockpos = pContext.getClickedPos();
 		Level level = pContext.getLevel();
 
@@ -181,14 +205,6 @@ public class Shutter extends AbstractShutter {
 			direction = direction.getOpposite();
 		}
 
-		System.err.println(pContext.getPlayer());
-		direction = direction.getOpposite();
-
-		//for bug #21 At world generation the shutter will get placed the opposite way as usually TODO
-		if (pContext.getPlayer() == null) {
-			direction = direction.getOpposite();
-		}
-
 		if (neighbor_has_signal) {
 			open_state = isdoubleDoor == ShutterDouble.NONE ? this.stateTwoPossible(level, blockpos, true, true) ? 2 : 1 : this.stateTwoPossibleDouble (level, blockpos, true, isdoubleDoor, direction) ? 2 : 1;
 			updateRedstone(level, blockpos, true, isdoubleDoor, direction);
@@ -199,6 +215,7 @@ public class Shutter extends AbstractShutter {
 				.setValue(POWERED, neighbor_has_signal)
 				.setValue(POS, getPosition(level, blockpos, isdoubleDoor))
 				.setValue(DOUBLE_DOOR, isdoubleDoor)
-				.setValue(OPEN, open_state);
+				.setValue(OPEN, open_state)
+				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 	}
 }

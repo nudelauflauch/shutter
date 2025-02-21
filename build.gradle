@@ -115,6 +115,14 @@ dependencies {
     implementation fg.deobf("curse.maven:selene-499980:6034621")
     implementation fg.deobf("curse.maven:blueprint-382216:5292242")
     implementation fg.deobf("curse.maven:effortless-building-302113:4979130")
+    implementation fg.deobf("curse.maven:endergetic-291509:6157658")
+
+    implementation fg.deobf("curse.maven:environmental-388992:6060255")
+
+
+    implementation fg.deobf("curse.maven:open-loader-354339:5368592")
+
+
 
     
     // JEI
