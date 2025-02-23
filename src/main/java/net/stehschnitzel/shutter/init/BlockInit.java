@@ -206,13 +206,13 @@ public class BlockInit {
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_QUARK);
 
 	// Oreganized
-	public static final RegistryObject<Shutter> LEAD_SHUTTER = registerBlock(
-			"lead_shutter", () -> new LeadShutter(
-					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
-
-	public static final RegistryObject<Shutter> SILVER_SHUTTER = registerBlock(
-			"silver_shutter", () -> new SilverShutter(
-					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
+//	public static final RegistryObject<Shutter> LEAD_SHUTTER = registerBlock(
+//			"lead_shutter", () -> new LeadShutter(
+//					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
+//
+//	public static final RegistryObject<Shutter> SILVER_SHUTTER = registerBlock(
+//			"silver_shutter", () -> new SilverShutter(
+//					BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), ITEMS_SUPPLEMENTARIES, false);
 
 	// twigs
 	public static final RegistryObject<Shutter> STRIPPED_BAMBOO_SHUTTER = registerBlock(
@@ -236,6 +236,10 @@ public class BlockInit {
 
 	public static final RegistryObject<Shutter> WISTERIA_SHUTTER = registerBlock(
 			"wisteria_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
+
+	public static final RegistryObject<Shutter> PINE_SHUTTER = registerBlock(
+			"pine_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
 
 	//snowy spirit

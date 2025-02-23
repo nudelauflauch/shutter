@@ -1,4 +1,4 @@
-// 1.20.1	2025-02-21T19:54:23.0949134	Loot Tables
+// 1.20.1	2025-02-23T12:23:24.9794295	Loot Tables
 7ba43da151555721c7b810e4cd2695fa37735eab data/shutter/loot_tables/blocks/acacia_shutter.json
 bcdf7dc6e1123681cb4c5b51be646a6c8b784268 data/shutter/loot_tables/blocks/ancient_shutter.json
 c4ea45743514f3cc00fe2a275284a90008d0846c data/shutter/loot_tables/blocks/azalea_quark_shutter.json
@@ -22,7 +22,6 @@ e6bf3356b4de7dbf365eb048f22dec500e9714f1 data/shutter/loot_tables/blocks/floweri
 ce0c7df69fc5c23165ce60c8acd38aab83b8d04d data/shutter/loot_tables/blocks/gold_shutter.json
 c7c68e536be6fd2e51888cd181b0939d3743e901 data/shutter/loot_tables/blocks/iron_shutter.json
 7ac2edf8644e666ac8e3e7b050fe06011fbc814b data/shutter/loot_tables/blocks/jungle_shutter.json
-b3b5c7fdb6ecd457f6e80b1b105d7488c32244a3 data/shutter/loot_tables/blocks/lead_shutter.json
 92c48e6b627230c0316b0bd7c01508f68e788c96 data/shutter/loot_tables/blocks/mangrove_shutter.json
 8b4e37b13616b2e5355f7bc0465bfa534882d485 data/shutter/loot_tables/blocks/maple_shutter.json
 3c4bf7f6c6f1329fee18ecad1a7392490807194f data/shutter/loot_tables/blocks/muddy_oak_shutter.json
@@ -30,9 +29,9 @@ b3b5c7fdb6ecd457f6e80b1b105d7488c32244a3 data/shutter/loot_tables/blocks/lead_sh
 d2bf3f84433746e8ba5ad207efbba5146f3d4e0b data/shutter/loot_tables/blocks/oak_shutter.json
 586bb8853bba917ed2444833d98fe102e492ad42 data/shutter/loot_tables/blocks/oxidized_copper_shutter.json
 53e822a5c314d50685a33ec56ba2402b4740caa4 data/shutter/loot_tables/blocks/palm_shutter.json
+7fe8ee3bdeb0295ceff7cf26cc41abf03cb62496 data/shutter/loot_tables/blocks/pine_shutter.json
 1f830f44b676051b021ee98c15cc2db547263bb0 data/shutter/loot_tables/blocks/poise_shutter.json
 d8148b909535c0d06f112ca3c2649cbc517b9e59 data/shutter/loot_tables/blocks/river_shutter.json
-beb1d5a05cf6a181e5e5524cb798db65c7aebcdd data/shutter/loot_tables/blocks/silver_shutter.json
 745f999929185cc7db9e49d765799c2307282bd1 data/shutter/loot_tables/blocks/spruce_shutter.json
 78d39eeec73d5e970e4e9557f2a5ff6a3f503e02 data/shutter/loot_tables/blocks/stripped_bamboo_shutter.json
 57e57f66721de5bb3a130d41d4d7ca8235a20ea5 data/shutter/loot_tables/blocks/walnut_shutter.json

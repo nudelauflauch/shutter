@@ -144,8 +144,8 @@ public class CreativTabInit{
 	}
 
 	private static void registerOreganized(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.LEAD_SHUTTER.get()));
-		items.accept(new ItemStack(BlockInit.SILVER_SHUTTER.get()));
+//		items.accept(new ItemStack(BlockInit.LEAD_SHUTTER.get()));
+//		items.accept(new ItemStack(BlockInit.SILVER_SHUTTER.get()));
 	}
 
 	private static void registerTwigs(CreativeModeTab.Output items) {
@@ -160,6 +160,7 @@ public class CreativTabInit{
 		items.accept(new ItemStack(BlockInit.CHERRY_ENV_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.WILLOW_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.WISTERIA_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.PINE_SHUTTER.get()));
 	}
 
 	private static void registerSnowySpirit(CreativeModeTab.Output items) {

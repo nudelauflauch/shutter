@@ -3,15 +3,21 @@ package net.stehschnitzel.shutter.datagen;
 import blueduck.outer_end.registry.OuterEndBlocks;
 import com.teamabnormals.autumnity.core.registry.AutumnityBlocks;
 import com.teamabnormals.endergetic.core.registry.EEBlocks;
+import com.teamabnormals.environmental.core.registry.EnvironmentalBlocks;
 import com.teamabnormals.upgrade_aquatic.core.registry.UABlocks;
 import net.mehvahdjukaar.snowyspirit.reg.ModRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.AzaleaBlock;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.orcinus.goodending.init.GoodEndingBlocks;
 import net.stehschnitzel.shutter.init.BlockInit;
+import org.violetmoon.quark.content.world.module.AncientWoodModule;
+import org.violetmoon.quark.content.world.module.AzaleaWoodModule;
+import org.violetmoon.quark.content.world.module.BlossomTreesModule;
+import samebutdifferent.ecologics.block.AzaleaLogBlock;
 import samebutdifferent.ecologics.registry.ModBlocks;
 import satisfy.beachparty.registry.ObjectRegistry;
 
@@ -62,6 +68,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('#', ModRegistry.GINGERBREAD_FROSTED_BLOCK.get())
                 .unlockedBy(getHasName(ModRegistry.GINGERBREAD_FROSTED_BLOCK.get()), has(ModRegistry.GINGERBREAD_FROSTED_BLOCK.get()))
                 .save(pWriter);
+
+//        defaultShutter(BlockInit.CHERRY_ENV_SHUTTER.get(), EnvironmentalBlocks.CHERRY_SLAB.get()).save(pWriter);
+        defaultShutter(EnvironmentalBlocks.WILLOW_SLAB.get(), BlockInit.WILLOW_SHUTTER.get()).save(pWriter);
+        defaultShutter(EnvironmentalBlocks.WISTERIA_SLAB.get(), BlockInit.WISTERIA_SHUTTER.get()).save(pWriter);
+        defaultShutter(EnvironmentalBlocks.PINE_SLAB.get(), BlockInit.PINE_SHUTTER.get()).save(pWriter);
+
+        defaultShutter(AncientWoodModule.woodSet.slab, BlockInit.ANCIENT_SHUTTER.get()).save(pWriter);
+        defaultShutter(BlossomTreesModule.woodSet.slab, BlockInit.BLOSSOM_SHUTTER.get()).save(pWriter);
 
 //        defaultShutter(UABlocks.DRIFTWOOD_SLAB.get(), BlockInit.DRIFTWOOD_SHUTTER.get()).save(pWriter);
 //        defaultShutter(UABlocks.RIVER_SLAB.get(), BlockInit.RIVER_SHUTTER.get()).save(pWriter);

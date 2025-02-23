@@ -31,6 +31,7 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
         shutterBuilder(BlockInit.CHERRY_ENV_SHUTTER);
         shutterBuilder(BlockInit.WILLOW_SHUTTER);
         shutterBuilder(BlockInit.WISTERIA_SHUTTER);
+        shutterBuilder(BlockInit.PINE_SHUTTER);
         shutterBuilder(BlockInit.CYPRESS_SHUTTER);
         shutterBuilder(BlockInit.MUDDY_OAK_SHUTTER);
 
