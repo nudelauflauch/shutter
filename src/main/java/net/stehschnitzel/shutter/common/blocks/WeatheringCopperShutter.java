@@ -35,9 +35,10 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
                                  Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pPlayer.mayBuild()) {
             return InteractionResult.PASS;
+        } else if (this.useItemOn(pPlayer.getMainHandItem(), pState, pLevel, pPos, pPlayer, pPlayer.getUsedItemHand(), pHit)) {
+            return InteractionResult.sidedSuccess(pLevel.isClientSide);
         } else if (pHand.equals(InteractionHand.MAIN_HAND)
                 && !pPlayer.isCrouching()
-                && !this.useItemOn(pPlayer.getMainHandItem(), pState, pLevel, pPos, pPlayer, pPlayer.getUsedItemHand(), pHit)
                ) {
             this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 
