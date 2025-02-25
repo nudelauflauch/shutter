@@ -61,7 +61,6 @@ public class Shutter extends AbstractShutter implements SimpleWaterloggedBlock {
 			return InteractionResult.sidedSuccess(pLevel.isClientSide);
 		}
 		return InteractionResult.FAIL;
-
 	}
 
 	@Override

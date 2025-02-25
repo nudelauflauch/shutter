@@ -226,8 +226,8 @@ public class BlockInit {
 
 
 	//environmental
-	public static final RegistryObject<Shutter> CHERRY_ENV_SHUTTER = registerBlock(
-			"cherry_env_shutter", () -> new Shutter(
+	public static final RegistryObject<Shutter> PLUM_SHUTTER = registerBlock(
+			"plum_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ENVIRONMENTAL);
 
 	public static final RegistryObject<Shutter> WILLOW_SHUTTER = registerBlock(

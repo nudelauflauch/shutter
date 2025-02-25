@@ -157,7 +157,7 @@ public class CreativTabInit{
 	}
 
 	private static void registerEnvironmental(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.CHERRY_ENV_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.PLUM_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.WILLOW_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.WISTERIA_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.PINE_SHUTTER.get()));

@@ -2,7 +2,6 @@ package net.stehschnitzel.shutter.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -25,7 +24,7 @@ public class ModItemModelGenerator extends ItemModelProvider {
         simpleItem(BlockInit.COCONUT_SHUTTER);
         simpleItem(BlockInit.FLOWERING_AZALEA_SHUTTER);
         simpleItem(BlockInit.WALNUT_SHUTTER);
-        simpleItem(BlockInit.CHERRY_ENV_SHUTTER);
+        simpleItem(BlockInit.PLUM_SHUTTER);
         simpleItem(BlockInit.WILLOW_SHUTTER);
         simpleItem(BlockInit.WISTERIA_SHUTTER);
         simpleItem(BlockInit.PINE_SHUTTER);

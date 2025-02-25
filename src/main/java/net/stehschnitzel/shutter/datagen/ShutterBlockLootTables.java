@@ -21,7 +21,7 @@ public class ShutterBlockLootTables extends BlockLootSubProvider {
         dropSelf(BlockInit.COCONUT_SHUTTER.get());
         dropSelf(BlockInit.FLOWERING_AZALEA_SHUTTER.get());
         dropSelf(BlockInit.WALNUT_SHUTTER.get());
-        dropSelf(BlockInit.CHERRY_ENV_SHUTTER.get());
+        dropSelf(BlockInit.PLUM_SHUTTER.get());
         dropSelf(BlockInit.WILLOW_SHUTTER.get());
         dropSelf(BlockInit.WISTERIA_SHUTTER.get());
         dropSelf(BlockInit.PINE_SHUTTER.get());

@@ -1,0 +1,7 @@
+{
+  "parent": "shutter:block/template_shutter_0",
+  "textures": {
+    "particle": "minecraft:block/crimson_planks",
+    "texture": "shutter:block/crimson_shutter_upper"
+  }
+}
