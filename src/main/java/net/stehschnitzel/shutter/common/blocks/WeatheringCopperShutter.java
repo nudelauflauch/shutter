@@ -15,6 +15,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.stehschnitzel.shutter.common.blocks.properties.WeatheringShutter;
 import net.stehschnitzel.shutter.init.BlockInit;
@@ -25,7 +26,7 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
     WeatheringCopper.WeatherState weatherState;
 
     public WeatheringCopperShutter(WeatheringCopper.WeatherState weatherState, Properties properties) {
-        super(properties, true);
+        super(properties, false);
         this.weatherState = weatherState;
     }
 
@@ -34,9 +35,15 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
                                  Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pPlayer.mayBuild()) {
             return InteractionResult.PASS;
-        } else if (!this.useItemOn(pPlayer.getMainHandItem(), pState, pLevel, pPos, pPlayer, pPlayer.getUsedItemHand(), pHit)
-                && !pPlayer.isCrouching()) {
+        } else if (pHand.equals(InteractionHand.MAIN_HAND)
+                && !pPlayer.isCrouching()
+                && !this.useItemOn(pPlayer.getMainHandItem(), pState, pLevel, pPos, pPlayer, pPlayer.getUsedItemHand(), pHit)
+               ) {
             this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
+
+            if (pState.getValue(WATERLOGGED)) {
+                pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+            }
 
             this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
             return InteractionResult.sidedSuccess(pLevel.isClientSide);
@@ -78,7 +85,7 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
                 return true;
             }
         }
-        return false;
+        return pLevel.isClientSide();
     }
 
     @Override
