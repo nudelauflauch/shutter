@@ -2,6 +2,8 @@ package net.stehschnitzel.shutter.block;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -24,21 +26,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class Shutter extends AbstractShutter {
-
-
+public class Shutter extends AbstractShutter implements Waterloggable{
     public Shutter(Settings settings) {
         this(settings, false);
     }
 
     public Shutter(Settings settings, boolean isMetal) {
         super(settings, isMetal);
-        this.setDefaultState(this.getStateManager().getDefaultState()
-                .with(FACING, Direction.NORTH)
-                .with(POWERED, false)
-                .with(OPEN, 0)
-                .with(POS, ShutterPos.NORMAL)
-                .with(DOUBLE_DOOR, ShutterDouble.NONE));
     }
 
     @Override
@@ -99,6 +93,10 @@ public class Shutter extends AbstractShutter {
             this.playSound((World) world, pos, world.getBlockState(pos).get(OPEN));
         }
 
+        if (state.get(WATERLOGGED).booleanValue()) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+        }
+
         //update position
         if (pos.up().equals(neighborPos) || pos.down().equals(neighborPos)) {
             updatePosNeighborHelper(world, pos);
@@ -130,6 +128,7 @@ public class Shutter extends AbstractShutter {
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockPos blockpos = ctx.getBlockPos();
+        FluidState fluidstate = ctx.getWorld().getFluidState(blockpos);
         World level = ctx.getWorld();
 
         int open_state = 0;
@@ -179,6 +178,7 @@ public class Shutter extends AbstractShutter {
                 .with(POWERED, neighbor_has_signal)
                 .with(POS, getPosition(level, blockpos, isdoubleDoor))
                 .with(DOUBLE_DOOR, isdoubleDoor)
-                .with(OPEN, open_state);
+                .with(OPEN, open_state)
+                .with(WATERLOGGED, Boolean.valueOf(fluidstate.isOf(Fluids.WATER)));
     }
 }

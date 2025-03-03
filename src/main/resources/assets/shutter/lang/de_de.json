@@ -36,7 +36,12 @@
   "block.shutter.warped_shutter": "Wirrfensterladen",
   "block.shutter.willow_shutter": "Weidenfensterladen",
   "block.shutter.wisteria_shutter": "Glyzinienfensterladen",
+  "block.shutter.palm_shutter": "Palmenfensterladen",
+
+
   "itemGroup.shutter_tab": "Fensterläden",
+
+
   "sounds.shutter.shutter_close": "Geschlossener Fensterladen",
   "sounds.shutter.shutter_open_full": "Offener Fensterladen",
   "sounds.shutter.shutter_open_half": "Halbgeöffneter Fensterladen"

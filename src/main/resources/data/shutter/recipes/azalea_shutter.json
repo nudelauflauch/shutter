@@ -1,16 +1,18 @@
 {
-    "type": "minecraft:crafting_shaped",
-    "pattern": [
-        "___",
-        "___"
-    ],
-    "key": {
-        "_": {
-            "item": "ecologics:azalea_slab"
-        }
-    },
-    "result": {
-        "item": "shutter:azalea_shutter",
-        "count": 4
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "ecologics:azalea_slab"
     }
+  },
+  "pattern": [
+    "AAA",
+    "AAA"
+  ],
+  "result": {
+    "count": 2,
+    "item": "shutter:azalea_shutter"
+  },
+  "show_notification": true
 }

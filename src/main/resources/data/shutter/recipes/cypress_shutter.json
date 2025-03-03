@@ -1,16 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "###",
-    "###"
-  ],
+  "category": "misc",
   "key": {
-    "#": {
+    "A": {
       "item": "goodending:cypress_slab"
     }
   },
+  "pattern": [
+    "AAA",
+    "AAA"
+  ],
   "result": {
-    "item": "shutter:cypress_shutter",
-    "count": 4
-  }
+    "count": 2,
+    "item": "shutter:cypress_shutter"
+  },
+  "show_notification": true
 }

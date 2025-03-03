@@ -1,6 +1,8 @@
 package net.stehschnitzel.shutter.block;
 
 import net.minecraft.block.*;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -21,6 +23,7 @@ abstract class AbstractShutter extends Block {
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty POWERED = Properties.POWERED;
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final EnumProperty<ShutterPos> POS = EnumProperty
             .of("half", ShutterPos.class);
 
@@ -28,7 +31,6 @@ abstract class AbstractShutter extends Block {
 
     public static final EnumProperty<ShutterDouble> DOUBLE_DOOR = EnumProperty
             .of("double_door", ShutterDouble.class);
-    //	private final BlockState[] sideblocks = new BlockState[2];
     boolean isMetal = false;
 
     public AbstractShutter(Settings settings, boolean isMetal) {
@@ -39,7 +41,8 @@ abstract class AbstractShutter extends Block {
                 .with(POWERED, false)
                 .with(OPEN, 0)
                 .with(POS, ShutterPos.NORMAL)
-                .with(DOUBLE_DOOR, ShutterDouble.NONE));
+                .with(DOUBLE_DOOR, ShutterDouble.NONE)
+                .with(WATERLOGGED, false));
     }
 
     void updateRedstone(World world, BlockPos pos, boolean first) {
@@ -382,11 +385,20 @@ abstract class AbstractShutter extends Block {
     }
 
     @Override
+    public FluidState getFluidState(BlockState state) {
+        if (state.get(WATERLOGGED).booleanValue()) {
+            return Fluids.WATER.getStill(false);
+        }
+        return super.getFluidState(state);
+    }
+
+    @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(POS);
         builder.add(FACING);
         builder.add(OPEN);
         builder.add(POWERED);
         builder.add(DOUBLE_DOOR);
+        builder.add(WATERLOGGED);
     }
 }

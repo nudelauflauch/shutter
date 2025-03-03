@@ -73,6 +73,7 @@ public class ShutterItemGroup {
             registerSnowySpirit(items);
             registerUpdateAquatic(items);
             registerGoodEnding(items);
+            registerBeachParty(items);
         }
     }
 
@@ -89,6 +90,15 @@ public class ShutterItemGroup {
         items.add(BlockInit.MANGROVE_SHUTTER);
         items.add(BlockInit.BAMBOO_SHUTTER);
         items.add(BlockInit.CHERRY_SHUTTER);
+        items.add(BlockInit.COPPER_SHUTTER);
+        items.add(BlockInit.EXPOSED_COPPER_SHUTTER);
+        items.add(BlockInit.OXIDIZED_COPPER_SHUTTER);
+        items.add(BlockInit.WEATHERED_COPPER_SHUTTER);
+        items.add(BlockInit.WAXED_COPPER_SHUTTER);
+        items.add(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER);
+        items.add(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER);
+        items.add(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER);
+
 
         items.add(new ItemStack(BlockInit.GOLD_SHUTTER));
         items.add(new ItemStack(BlockInit.NETHERITE_SHUTTER));
@@ -114,9 +124,9 @@ public class ShutterItemGroup {
     }
 
     private static void registerQuark(ItemGroup.Entries items) {
-        items.add(BlockInit.ANCIENT_SHUTTER);
-        items.add(BlockInit.AZALEA_QUARK_SHUTTER);
-        items.add(BlockInit.BLOSSOM_SHUTTER);
+//        items.add(BlockInit.ANCIENT_SHUTTER);
+//        items.add(BlockInit.AZALEA_QUARK_SHUTTER);
+//        items.add(BlockInit.BLOSSOM_SHUTTER);
 
     }
 
@@ -126,7 +136,7 @@ public class ShutterItemGroup {
     }
 
     private static void registerTwigs(ItemGroup.Entries items) {
-        //items.add(BlockInit.STRIPPED_BAMBOO_SHUTTER);
+        items.add(BlockInit.STRIPPED_BAMBOO_SHUTTER);
     }
 
     private static void registerOreganized(ItemGroup.Entries items) {
@@ -135,13 +145,13 @@ public class ShutterItemGroup {
     }
 
     private static void registerAutumnity(ItemGroup.Entries items) {
-        items.add(BlockInit.MAPLE_SHUTTER);
+//        items.add(BlockInit.MAPLE_SHUTTER);
     }
 
     private static void registerEnvironmental(ItemGroup.Entries items) {
-        items.add(BlockInit.CHERRY_ENV_SHUTTER);
-        items.add(BlockInit.WILLOW_SHUTTER);
-        items.add(BlockInit.WISTERIA_SHUTTER);
+//        items.add(BlockInit.CHERRY_ENV_SHUTTER);
+//        items.add(BlockInit.WILLOW_SHUTTER);
+//        items.add(BlockInit.WISTERIA_SHUTTER);
     }
 
     private static void registerSnowySpirit(ItemGroup.Entries items) {
@@ -158,6 +168,9 @@ public class ShutterItemGroup {
         items.add(BlockInit.MUDDY_OAK_SHUTTER);
     }
 
+    private static void registerBeachParty(ItemGroup.Entries items) {
+        items.add(BlockInit.PALM_SHUTTER);
+    }
 
     public static void registerItemGroups() {
 

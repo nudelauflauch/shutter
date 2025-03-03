@@ -19,5 +19,6 @@ public class ShutterMain implements ModInitializer {
 		ItemInit.registerModItems();
 		BlockInit.registerModBlocks();
 		SoundInit.registerSound();
+		BlockInit.registerOxidizables();
 	}
 }

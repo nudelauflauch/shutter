@@ -1,16 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "##",
-    "##"
-  ],
+  "category": "misc",
   "key": {
     "#": {
       "item": "snowyspirit:gingerbread_frosted"
     }
   },
+  "pattern": [
+    "##",
+    "##"
+  ],
   "result": {
-    "item": "shutter:gingerbread_shutter",
-    "count": 4
-  }
+    "count": 4,
+    "item": "shutter:gingerbread_shutter"
+  },
+  "show_notification": true
 }

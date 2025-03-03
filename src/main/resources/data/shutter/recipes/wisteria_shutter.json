@@ -1,1 +1,18 @@
-{"type": "minecraft:crafting_shaped", "pattern": ["___", "___"], "key": {"_": {"item": "environmental:wisteria_slab"}}, "result": {"item": "shutter:wisteria_shutter", "count": 4}}
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "environmental:wisteria_slab"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "AAA"
+  ],
+  "result": {
+    "count": 2,
+    "item": "shutter:wisteria_shutter"
+  },
+  "show_notification": true
+}
