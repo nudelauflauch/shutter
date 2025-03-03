@@ -17,12 +17,11 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterDouble;
-import net.stehschnitzel.shutter.common.blocks.properties.ShutterPos;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterVoxels;
 
 import java.util.List;
 
-public class Shutter extends AbstractShutter implements SimpleWaterloggedBlock {
+public class Shutter extends AbstractShutter {
 
 	public Shutter(Properties properties) {
 		this(properties, false);
@@ -30,12 +29,6 @@ public class Shutter extends AbstractShutter implements SimpleWaterloggedBlock {
 
 	public Shutter(Properties properties, boolean isMetal) {
 		super(properties, isMetal);
-		this.registerDefaultState(this.defaultBlockState()
-				.setValue(FACING, Direction.NORTH)
-				.setValue(POWERED, false)
-				.setValue(OPEN, 0)
-				.setValue(POS, ShutterPos.NORMAL)
-				.setValue(DOUBLE_DOOR, ShutterDouble.NONE));
 	}
 
 	@Override

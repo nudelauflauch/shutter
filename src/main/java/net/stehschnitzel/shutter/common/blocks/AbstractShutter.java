@@ -19,7 +19,7 @@ import net.stehschnitzel.shutter.init.SoundInit;
 
 import java.util.List;
 
-abstract class AbstractShutter extends Block {
+abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;

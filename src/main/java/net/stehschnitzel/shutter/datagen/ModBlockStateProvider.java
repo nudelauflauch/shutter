@@ -315,10 +315,9 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
                     if (open==2&&doubleDoor==ShutterDouble.RIGHT)  { model = nbr_2; break; }
             }
 
-
             return ConfiguredModel.builder().modelFile(model)
                     .rotationY(yRot)
                     .build();
-        }, Shutter.POWERED);
+        }, Shutter.POWERED, Shutter.WATERLOGGED);
     }
 }
