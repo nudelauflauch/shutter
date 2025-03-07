@@ -15,6 +15,14 @@
   "block.shutter.spruce_shutter" : "Spruce Shutter",
   "block.shutter.warped_shutter" : "Warped Shutter",
   "block.shutter.cherry_shutter" : "Cherry Shutter",
+  "block.shutter.copper_shutter" : "Copper Shutter",
+  "block.shutter.exposed_copper_shutter" : "Exposed Copper Shutter",
+  "block.shutter.oxidized_copper_shutter" : "Oxidized Copper Shutter",
+  "block.shutter.weathered_copper_shutter" : "Weathered Copper Shutter",
+  "block.shutter.waxed_copper_shutter" : "Waxed Copper Shutter",
+  "block.shutter.waxed_exposed_copper_shutter" : "Waxed Exposed Copper Shutter",
+  "block.shutter.waxed_oxidized_copper_shutter" : "Waxed Oxidized Copper Shutter",
+  "block.shutter.waxed_weathered_copper_shutter" : "Waxed Weathered Copper Shutter",
   "block.shutter.azuer_shutter" : "Azuer Shutter",
   "block.shutter.blossom_shutter" : "Trumpet Shutter",
   "block.shutter.lead_shutter" : "Lead Shutter",
@@ -23,9 +31,10 @@
   "block.shutter.stripped_bamboo_shutter" : "Stripped Bamboo Shutter",
   "block.shutter.azure_shutter" : "Azure Shutter",
   "block.shutter.maple_shutter" : "Maple Shutter",
-  "block.shutter.cherry_env_shutter" : "Enviromental Cherry Shutter",
+  "block.shutter.plum_shutter" : "Plum Shutter",
   "block.shutter.willow_shutter" : "Willow Shutter",
   "block.shutter.wisteria_shutter" : "Wisteria Shutter",
+  "block.shutter.pine_shutter" : "Pine Shutter",
   "block.shutter.gingerbread_shutter" : "Gingerbread Shutter",
   "block.shutter.driftwood_shutter" : "Driftwood Shutter",
   "block.shutter.mangrove_shutter" : "Mangrove Shutter",
@@ -38,9 +47,9 @@
   "block.shutter.muddy_oak_shutter" : "Muddy Oak Shutter",
   "block.shutter.palm_shutter" : "Palm Shutter",
 
-	"itemGroup.shutter_tab":"Shutters",
+  "itemGroup.shutter_tab":"Shutters",
 
-	"sounds.shutter.shutter_open_half": "Shutter Open Half",
-	"sounds.shutter.shutter_open_full": "Shutter Open Full",
-	"sounds.shutter.shutter_close": "Shutter Close"
+  "sounds.shutter.shutter_open_half": "Shutter Open Half",
+  "sounds.shutter.shutter_open_full": "Shutter Open Full",
+  "sounds.shutter.shutter_close": "Shutter Close"
 }
