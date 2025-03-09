@@ -10,9 +10,9 @@ import net.stehschnitzel.shutter.ShutterMain;
 import net.stehschnitzel.shutter.common.blocks.Shutter;
 import net.stehschnitzel.shutter.init.BlockInit;
 
-public class ModItemModelGenerator extends ItemModelProvider {
+public class ShutterItemModelGenerator extends ItemModelProvider {
 
-    public ModItemModelGenerator(PackOutput output, ExistingFileHelper existingFileHelper) {
+    public ShutterItemModelGenerator(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, ShutterMain.MODID, existingFileHelper);
     }
 

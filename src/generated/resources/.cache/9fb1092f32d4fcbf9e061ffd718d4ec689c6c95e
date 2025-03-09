@@ -1,4 +1,4 @@
-// 1.20.1	2025-03-03T17:08:47.0698284	Recipes
+// 1.20.1	2025-03-09T12:46:30.3077767	Recipes
 22ca0b7c64cbd969d3aab0f24536999061267016 data/shutter/advancements/recipes/misc/acacia_shutter.json
 9eb0de25fc14100e4de082fbf4112097a46ff2d7 data/shutter/advancements/recipes/misc/ancient_shutter.json
 8ddb2cac9ce6d5dd4fc41141b8d4c5386c52c81b data/shutter/advancements/recipes/misc/azalea_shutter.json
@@ -10,7 +10,6 @@ b4e7ea84d793173e522b06e4e8b79580567749fd data/shutter/advancements/recipes/misc/
 bbc2a36a2b1d9246942490cd94eb7c54453c5b00 data/shutter/advancements/recipes/misc/coconut_shutter.json
 d6a7d18f50b878347131b6e41183750ab8955e0d data/shutter/advancements/recipes/misc/copper_shutter.json
 b21cbcf17a0ea84a1214609809df7de23b61a2a1 data/shutter/advancements/recipes/misc/crimson_shutter.json
-9ac210f3745998cb01a9e6e0e5576a511dcb5929 data/shutter/advancements/recipes/misc/cypress_shutter.json
 74be9f25d27f346f2cd19e1b980780e142e22cc8 data/shutter/advancements/recipes/misc/dark_oak_shutter.json
 2db1c4f0dcad984d5e2dd3b5ea0cd9d4ab8b3d6e data/shutter/advancements/recipes/misc/flowering_azalea_shutter.json
 a9c62c6712259c8f6b048aec6b89552fae82417c data/shutter/advancements/recipes/misc/gingerbread_shutter.json
@@ -20,7 +19,6 @@ eac8e9bc9a3b69a8095502801194054596e6ee04 data/shutter/advancements/recipes/misc/
 963c5645c416470f3c9cbbd972fe1b7e6b5af216 data/shutter/advancements/recipes/misc/jungle_shutter.json
 dc188dc1d80a4f7c31701b6f48fb6b1e425f68d4 data/shutter/advancements/recipes/misc/mangrove_shutter.json
 29a8e30aa5f622d93279fed2ec46e719dba6b866 data/shutter/advancements/recipes/misc/maple_shutter.json
-b9b2959beb62e003f40445e6e209026526e383ba data/shutter/advancements/recipes/misc/muddy_oak_shutter.json
 a5127a7a331d46ad2172d3c7bd2f00eb840ba7d4 data/shutter/advancements/recipes/misc/netherite_shutter.json
 9d3d0905833a251fb21faffb52368afd88ac1e05 data/shutter/advancements/recipes/misc/oak_shutter.json
 9b5eb463c814a70580ff9be158691168fee371ec data/shutter/advancements/recipes/misc/palm_shutter.json
@@ -48,7 +46,6 @@ af0dbdcf0b27824d8b15df38e43838ecfcbe4252 data/shutter/recipes/blossom_shutter.js
 0b3a8855a9ef9ff8d6504fea94d6c986d9225c41 data/shutter/recipes/coconut_shutter.json
 a59780398772870fdf2503902b61bb7604241da5 data/shutter/recipes/copper_shutter.json
 9cbf62676a80c12331ad6d2d0690716a714b6f8e data/shutter/recipes/crimson_shutter.json
-0a44d22789ed4d89095eb23fac13f5fdb6c94302 data/shutter/recipes/cypress_shutter.json
 b167fdf1e9a50cfa18e985d462f03c83df932e42 data/shutter/recipes/dark_oak_shutter.json
 801cc8c5cd86d7d4e2648819152ffdb461c3fcbd data/shutter/recipes/flowering_azalea_shutter.json
 ba812a5bfb75e46202e7359dc67bacf397f6c89d data/shutter/recipes/gingerbread_shutter.json
@@ -58,7 +55,6 @@ ea83edbde7cd60595fa5d7894a419163de788258 data/shutter/recipes/gold_shutter.json
 03b6471fc1fe38e5d401caf033f955b85619dee9 data/shutter/recipes/jungle_shutter.json
 cddec8acab168a2631d44412fdb8ad76efed8282 data/shutter/recipes/mangrove_shutter.json
 c665b21708f7606c32c89da40a6d30f8b5edfb8a data/shutter/recipes/maple_shutter.json
-d6d431403de612c6c308e9aadee1fd7a9c1e972d data/shutter/recipes/muddy_oak_shutter.json
 f3c2e879012c290450503ec686b773e3f8d1df4f data/shutter/recipes/netherite_shutter.json
 651c9d744166869000becdc3330f0d4d61a35186 data/shutter/recipes/oak_shutter.json
 34e8dbc3fd8ffc9665dff298117f53a00eede64f data/shutter/recipes/palm_shutter.json

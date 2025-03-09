@@ -12,9 +12,9 @@ import net.stehschnitzel.shutter.common.blocks.properties.ShutterDouble;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterPos;
 import net.stehschnitzel.shutter.init.BlockInit;
 
-public class ModBlockStateProvider extends ShutterBlockStateCreator {
+public class ShutterBlockStateProvider extends BlockStateCreator {
 
-    public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
+    public ShutterBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
         super(output, ShutterMain.MODID, exFileHelper);
         registerStatesAndModels();
     }
@@ -250,8 +250,6 @@ public class ModBlockStateProvider extends ShutterBlockStateCreator {
                          ModelFile mb_0, ModelFile mb_1, ModelFile mb_2,
                          ModelFile mbr_0, ModelFile mbr_1, ModelFile mbr_2
     ) {
-
-
         getVariantBuilder(block.get()).forAllStatesExcept(state -> {
             int open = state.getValue(Shutter.OPEN);
             ShutterPos pos = state.getValue(Shutter.POS);

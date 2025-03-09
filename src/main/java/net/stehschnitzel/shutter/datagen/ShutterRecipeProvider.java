@@ -4,27 +4,23 @@ import blueduck.outer_end.registry.OuterEndBlocks;
 import com.teamabnormals.autumnity.core.registry.AutumnityBlocks;
 import com.teamabnormals.endergetic.core.registry.EEBlocks;
 import com.teamabnormals.environmental.core.registry.EnvironmentalBlocks;
-import com.teamabnormals.upgrade_aquatic.core.registry.UABlocks;
 import net.mehvahdjukaar.snowyspirit.reg.ModRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.block.AzaleaBlock;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import net.orcinus.goodending.init.GoodEndingBlocks;
 import net.stehschnitzel.shutter.init.BlockInit;
 import org.violetmoon.quark.content.world.module.AncientWoodModule;
-import org.violetmoon.quark.content.world.module.AzaleaWoodModule;
 import org.violetmoon.quark.content.world.module.BlossomTreesModule;
-import samebutdifferent.ecologics.block.AzaleaLogBlock;
 import samebutdifferent.ecologics.registry.ModBlocks;
 import satisfy.beachparty.registry.ObjectRegistry;
 
 import java.util.function.Consumer;
 
-public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public ModRecipeProvider(PackOutput pOutput) {
+public class ShutterRecipeProvider extends RecipeProvider implements IConditionBuilder {
+    public ShutterRecipeProvider(PackOutput pOutput) {
         super(pOutput);
     }
 
@@ -79,8 +75,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 //        defaultShutter(UABlocks.DRIFTWOOD_SLAB.get(), BlockInit.DRIFTWOOD_SHUTTER.get()).save(pWriter);
 //        defaultShutter(UABlocks.RIVER_SLAB.get(), BlockInit.RIVER_SHUTTER.get()).save(pWriter);
-        defaultShutter(GoodEndingBlocks.CYPRESS_SLAB.get(), BlockInit.CYPRESS_SHUTTER.get()).save(pWriter);
-        defaultShutter(GoodEndingBlocks.MUDDY_OAK_SLAB.get(), BlockInit.MUDDY_OAK_SHUTTER.get()).save(pWriter);
+//        defaultShutter(GoodEndingBlocks.CYPRESS_SLAB.get(), BlockInit.CYPRESS_SHUTTER.get()).save(pWriter);   //TODO doesnt work because of Good Ending
+//        defaultShutter(GoodEndingBlocks.MUDDY_OAK_SLAB.get(), BlockInit.MUDDY_OAK_SHUTTER.get()).save(pWriter);
         defaultShutter(ObjectRegistry.PALM_SLAB.get(), BlockInit.PALM_SHUTTER.get()).save(pWriter);
         defaultShutter(EEBlocks.POISE_SLAB.get(), BlockInit.POISE_SHUTTER.get()).save(pWriter);
 
