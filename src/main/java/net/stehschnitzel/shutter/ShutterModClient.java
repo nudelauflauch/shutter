@@ -1,7 +1,7 @@
 package net.stehschnitzel.shutter;
 
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.*;
 import net.minecraft.client.render.RenderLayer;
 import net.stehschnitzel.shutter.init.BlockInit;
 

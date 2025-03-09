@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.6-SNAPSHOT'
+	id 'fabric-loom' version '1.10-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -11,11 +11,10 @@ base {
 }
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
+	maven { url = 'https://maven.minecraftforge.net/' }
+	maven {
+		url = "https://www.cursemaven.com"
+	}
 }
 
 fabricApi {
@@ -30,18 +29,24 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	
-	// Uncomment the following line to enable the deprecated Fabric API modules. 
-	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 
-	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
+//	// forge/neoforge/fabric 1.20.1
+//	modImplementation "curse.maven:lets-do-beachparty-858691:5320667"
+//	// forge/neoforge/fabric 1.20.1
+//	modImplementation "curse.maven:ecologics-570463:4857271"
+//	// forge/X/fabric 1.20.1
+//	modImplementation "curse.maven:twigs-496913:4603805"
+//	// forge/neoforge/fabric 1.21.1
+//	modImplementation "curse.maven:snowy-spirit-566142:5928028"
+//	// forge/X/fabric 1.20.1
+//	modImplementation "curse.maven:good-ending-690161:5024404"
 }
 
 processResources {
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand "version": inputs.properties.version
 	}
 }
 
@@ -68,7 +73,8 @@ jar {
 // configure the maven publication
 publishing {
 	publications {
-		mavenJava(MavenPublication) {
+		create("mavenJava", MavenPublication) {
+			artifactId = project.archives_base_name
 			from components.java
 		}
 	}
