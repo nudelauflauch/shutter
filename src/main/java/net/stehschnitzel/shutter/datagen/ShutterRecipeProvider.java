@@ -2,6 +2,7 @@ package net.stehschnitzel.shutter.datagen;
 
 import blueduck.outer_end.registry.OuterEndBlocks;
 import com.teamabnormals.autumnity.core.registry.AutumnityBlocks;
+import com.teamabnormals.caverns_and_chasms.core.registry.CCBlocks;
 import com.teamabnormals.endergetic.core.registry.EEBlocks;
 import com.teamabnormals.environmental.core.registry.EnvironmentalBlocks;
 import net.mehvahdjukaar.snowyspirit.reg.ModRegistry;
@@ -10,7 +11,6 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
-import net.orcinus.goodending.init.GoodEndingBlocks;
 import net.stehschnitzel.shutter.init.BlockInit;
 import org.violetmoon.quark.content.world.module.AncientWoodModule;
 import org.violetmoon.quark.content.world.module.BlossomTreesModule;
@@ -79,6 +79,7 @@ public class ShutterRecipeProvider extends RecipeProvider implements IConditionB
 //        defaultShutter(GoodEndingBlocks.MUDDY_OAK_SLAB.get(), BlockInit.MUDDY_OAK_SHUTTER.get()).save(pWriter);
         defaultShutter(ObjectRegistry.PALM_SLAB.get(), BlockInit.PALM_SHUTTER.get()).save(pWriter);
         defaultShutter(EEBlocks.POISE_SLAB.get(), BlockInit.POISE_SHUTTER.get()).save(pWriter);
+        defaultShutter(CCBlocks.AZALEA_SLAB.get(), BlockInit.CAVERN_AZALEA_SHUTTER.get()).save(pWriter);
 
         defaultShutter(Items.COPPER_BLOCK, BlockInit.COPPER_SHUTTER.get(), 8).save(pWriter);
         defaultShutter(Items.WEATHERED_COPPER, BlockInit.WEATHERED_COPPER_SHUTTER.get(), 8).save(pWriter);

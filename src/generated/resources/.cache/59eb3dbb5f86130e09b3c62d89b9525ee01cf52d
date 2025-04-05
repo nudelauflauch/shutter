@@ -1,4 +1,4 @@
-// 1.20.1	2025-03-03T17:08:47.0683404	Loot Tables
+// 1.20.1	2025-04-05T20:40:27.7071717	Loot Tables
 7ba43da151555721c7b810e4cd2695fa37735eab data/shutter/loot_tables/blocks/acacia_shutter.json
 bcdf7dc6e1123681cb4c5b51be646a6c8b784268 data/shutter/loot_tables/blocks/ancient_shutter.json
 c4ea45743514f3cc00fe2a275284a90008d0846c data/shutter/loot_tables/blocks/azalea_quark_shutter.json
@@ -7,6 +7,7 @@ f11ff3f8af4d35f7d47eccbbc263a7867cd61f6f data/shutter/loot_tables/blocks/azure_s
 e73435bb4b8ac4c0cb0e9130b7f1e714ea0e3a7f data/shutter/loot_tables/blocks/bamboo_shutter.json
 65a2ee8a65e9874acc0be178a6feb065585b3acd data/shutter/loot_tables/blocks/birch_shutter.json
 8f72fcbc7890644132ca89dc3effaa6a10476bee data/shutter/loot_tables/blocks/blossom_shutter.json
+db39a2280141f8821d6cb6e5bb9b2f3c53753c59 data/shutter/loot_tables/blocks/cavern_azalea_shutter.json
 8b6325789eb41dac069fcd7a6bf67f86c5c3abd2 data/shutter/loot_tables/blocks/cherry_shutter.json
 b385f28c6ca1b6d2a03322bc0282f69b30adbfc3 data/shutter/loot_tables/blocks/coconut_shutter.json
 e7c13bed05f97f7a62f3a12e2742fb3db7a15723 data/shutter/loot_tables/blocks/copper_shutter.json

@@ -39,5 +39,16 @@
   "itemGroup.shutter_tab": "Cтавни",
   "sounds.shutter.shutter_close": "Ставни закрылись",
   "sounds.shutter.shutter_open_full": "Ставни открыли полностью",
-  "sounds.shutter.shutter_open_half": "Ставни открыли на половину"
+  "sounds.shutter.shutter_open_half": "Ставни открыли на половину",
+  "block.shutter.copper_shutter": "Copper Shutter",
+  "block.shutter.exposed_copper_shutter": "Exposed Copper Shutter",
+  "block.shutter.oxidized_copper_shutter": "Oxidized Copper Shutter",
+  "block.shutter.weathered_copper_shutter": "Weathered Copper Shutter",
+  "block.shutter.waxed_copper_shutter": "Waxed Copper Shutter",
+  "block.shutter.waxed_exposed_copper_shutter": "Waxed Exposed Copper Shutter",
+  "block.shutter.waxed_oxidized_copper_shutter": "Waxed Oxidized Copper Shutter",
+  "block.shutter.waxed_weathered_copper_shutter": "Waxed Weathered Copper Shutter",
+  "block.shutter.pine_shutter": "Pine Shutter",
+  "block.shutter.palm_shutter": "Palm Shutter",
+  "block.shutter.cavern_azalea_shutter": "caverns Azalea Shutter"
 }

@@ -1,6 +1,5 @@
 {
   "values": [
-    "shutter:azalea_shutter",
     "shutter:coconut_shutter",
     "shutter:flowering_azalea_shutter",
     "shutter:walnut_shutter",
@@ -30,6 +29,7 @@
     "shutter:river_shutter",
     "shutter:cypress_shutter",
     "shutter:muddy_oak_shutter",
+    "shutter:cavern_azalea_shutter",
     "shutter:palm_shutter"
   ]
 }

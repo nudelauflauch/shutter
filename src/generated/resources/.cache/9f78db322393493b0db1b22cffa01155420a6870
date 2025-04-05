@@ -1,4 +1,4 @@
-// 1.20.1	2025-03-03T17:08:47.0663564	Item Models: shutter
+// 1.20.1	2025-04-05T20:40:27.7061675	Item Models: shutter
 dbb49dc1d7a3ed509e79ab53c58ad1854543b040 assets/shutter/models/item/acacia_shutter.json
 a24340d94f285b0857be88bcda8212794978d7e3 assets/shutter/models/item/ancient_shutter.json
 4870447599d41ecdee7c56b332682efdc67ea06d assets/shutter/models/item/azalea_quark_shutter.json
@@ -7,6 +7,7 @@ a24340d94f285b0857be88bcda8212794978d7e3 assets/shutter/models/item/ancient_shut
 4898a3334ee5212780159f917998353a284ac3ce assets/shutter/models/item/bamboo_shutter.json
 0fcb398c72197413e8f70a7a9f683052b7602c33 assets/shutter/models/item/birch_shutter.json
 2513312e4727269acbab2bc545de1c5f907a0997 assets/shutter/models/item/blossom_shutter.json
+5dab64d7dded733f9b7190b073e08776d108cb05 assets/shutter/models/item/cavern_azalea_shutter.json
 fe74264840e3ffc673fe7e8632b539dfa15e80ba assets/shutter/models/item/cherry_shutter.json
 f0ce7507b0e501ce71623ce79a7a668bad874651 assets/shutter/models/item/coconut_shutter.json
 7c6ab6877db19cf403ecd46c620a26d3f871f3b8 assets/shutter/models/item/copper_shutter.json

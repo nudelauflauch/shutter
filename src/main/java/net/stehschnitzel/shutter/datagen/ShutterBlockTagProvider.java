@@ -32,7 +32,6 @@ public class ShutterBlockTagProvider extends BlockTagsProvider {
                 .add(BlockInit.NETHERITE_SHUTTER.get());
 
         tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(BlockInit.AZALEA_SHUTTER.get())
                 .add(BlockInit.COCONUT_SHUTTER.get())
                 .add(BlockInit.FLOWERING_AZALEA_SHUTTER.get())
                 .add(BlockInit.WALNUT_SHUTTER.get())
@@ -62,6 +61,7 @@ public class ShutterBlockTagProvider extends BlockTagsProvider {
                 .add(BlockInit.RIVER_SHUTTER.get())
                 .add(BlockInit.CYPRESS_SHUTTER.get())
                 .add(BlockInit.MUDDY_OAK_SHUTTER.get())
+                .add(BlockInit.CAVERN_AZALEA_SHUTTER.get())
                 .add(BlockInit.PALM_SHUTTER.get());
     }
 }

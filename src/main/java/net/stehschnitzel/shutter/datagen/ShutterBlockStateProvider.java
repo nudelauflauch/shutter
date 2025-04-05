@@ -59,6 +59,7 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
         shutterBuilder(BlockInit.ANCIENT_SHUTTER);
         shutterBuilder(BlockInit.AZALEA_QUARK_SHUTTER);
         shutterBuilder(BlockInit.GINGERBREAD_SHUTTER);
+        shutterBuilder(BlockInit.CAVERN_AZALEA_SHUTTER);
         shutterBuilder(BlockInit.CHERRY_SHUTTER, "block/cherry_planks");
         shutterBuilder(BlockInit.GOLD_SHUTTER, "block/gold_block");
         shutterBuilder(BlockInit.NETHERITE_SHUTTER, "block/netherite_block");
@@ -313,7 +314,8 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
                     if (open==2&&doubleDoor==ShutterDouble.RIGHT)  { model = nbr_2; break; }
             }
 
-            return ConfiguredModel.builder().modelFile(model)
+            return ConfiguredModel.builder()
+                    .modelFile(model)
                     .rotationY(yRot)
                     .build();
         }, Shutter.POWERED, Shutter.WATERLOGGED);

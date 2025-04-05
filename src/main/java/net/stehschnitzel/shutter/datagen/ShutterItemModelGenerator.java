@@ -54,6 +54,7 @@ public class ShutterItemModelGenerator extends ItemModelProvider {
         simpleItem(BlockInit.DRIFTWOOD_SHUTTER);
         simpleItem(BlockInit.RIVER_SHUTTER);
         simpleItem(BlockInit.POISE_SHUTTER);
+        simpleItem(BlockInit.CAVERN_AZALEA_SHUTTER);
 //        simpleItem(BlockInit.SILVER_SHUTTER);
 //        simpleItem(BlockInit.LEAD_SHUTTER);
 

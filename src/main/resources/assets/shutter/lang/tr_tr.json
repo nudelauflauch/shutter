@@ -46,5 +46,11 @@
 
   "sounds.shutter.shutter_open_half": "Panjur Yarı Açıldı",
   "sounds.shutter.shutter_open_full": "Panjur Tam Açıldı",
-  "sounds.shutter.shutter_close": "Panjur Kapandı"
+  "sounds.shutter.shutter_close": "Panjur Kapandı",
+  "block.shutter.waxed_copper_shutter": "Waxed Copper Shutter",
+  "block.shutter.waxed_exposed_copper_shutter": "Waxed Exposed Copper Shutter",
+  "block.shutter.waxed_oxidized_copper_shutter": "Waxed Oxidized Copper Shutter",
+  "block.shutter.waxed_weathered_copper_shutter": "Waxed Weathered Copper Shutter",
+  "block.shutter.pine_shutter": "Pine Shutter",
+  "block.shutter.cavern_azalea_shutter": "caverns Azalea Shutter"
 }

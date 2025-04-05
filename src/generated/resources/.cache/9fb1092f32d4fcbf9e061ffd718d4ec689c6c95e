@@ -1,4 +1,4 @@
-// 1.20.1	2025-03-09T12:46:30.3077767	Recipes
+// 1.20.1	2025-04-05T20:40:27.7087696	Recipes
 22ca0b7c64cbd969d3aab0f24536999061267016 data/shutter/advancements/recipes/misc/acacia_shutter.json
 9eb0de25fc14100e4de082fbf4112097a46ff2d7 data/shutter/advancements/recipes/misc/ancient_shutter.json
 8ddb2cac9ce6d5dd4fc41141b8d4c5386c52c81b data/shutter/advancements/recipes/misc/azalea_shutter.json
@@ -6,6 +6,7 @@ af3a1e992dfe23f66e3090b731753f6c1a0d2bb6 data/shutter/advancements/recipes/misc/
 8bac1804752dea998132d312d049b67309751107 data/shutter/advancements/recipes/misc/bamboo_shutter.json
 f4d5e31fe2dc0399cc86cdd11b22fc1d57f7bc37 data/shutter/advancements/recipes/misc/birch_shutter.json
 b4e7ea84d793173e522b06e4e8b79580567749fd data/shutter/advancements/recipes/misc/blossom_shutter.json
+b2d7df1a1eea81793c80b49e1635830ef425acac data/shutter/advancements/recipes/misc/cavern_azalea_shutter.json
 4ce7520f7471018d1bdb25a45ae7029ae0cbf7b0 data/shutter/advancements/recipes/misc/cherry_shutter.json
 bbc2a36a2b1d9246942490cd94eb7c54453c5b00 data/shutter/advancements/recipes/misc/coconut_shutter.json
 d6a7d18f50b878347131b6e41183750ab8955e0d data/shutter/advancements/recipes/misc/copper_shutter.json
@@ -42,6 +43,7 @@ bdccaacdf52436843b6e3ef673887ddbc3ae63c7 data/shutter/recipes/azure_shutter.json
 946b3e8a734e3d1e5e0df20065bef120dfd2397c data/shutter/recipes/bamboo_shutter.json
 0d7947cf8e2720c4434b65f4720c083612d9fa75 data/shutter/recipes/birch_shutter.json
 af0dbdcf0b27824d8b15df38e43838ecfcbe4252 data/shutter/recipes/blossom_shutter.json
+6cdfa42de961f45fb74d9a12e06b7a2aab89a627 data/shutter/recipes/cavern_azalea_shutter.json
 296040ad3d4fe47f8c32d627885f003b03cd9119 data/shutter/recipes/cherry_shutter.json
 0b3a8855a9ef9ff8d6504fea94d6c986d9225c41 data/shutter/recipes/coconut_shutter.json
 a59780398772870fdf2503902b61bb7604241da5 data/shutter/recipes/copper_shutter.json

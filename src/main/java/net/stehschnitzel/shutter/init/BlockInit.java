@@ -65,6 +65,9 @@ public class BlockInit {
 	public static final DeferredRegister<Item> ITEMS_BEACHPARTY = DeferredRegister
 			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
 
+	public static final DeferredRegister<Item> ITEMS_CAVES_CHASMS = DeferredRegister
+			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
+
 
 	// ecologics
 	public static final RegistryObject<Shutter> AZALEA_SHUTTER = registerBlock("azalea_shutter", () -> new Shutter(
@@ -269,6 +272,11 @@ public class BlockInit {
 	public static final RegistryObject<Shutter> PALM_SHUTTER = registerBlock(
 			"palm_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_BEACHPARTY);
+
+	//Caverns & Chasms
+	public static final RegistryObject<Shutter> CAVERN_AZALEA_SHUTTER = registerBlock(
+			"cavern_azalea_shutter", () -> new Shutter(
+					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_CAVES_CHASMS);
 
 	// Block
 	private static <T extends Block> RegistryObject<T> registerBlock(

@@ -71,6 +71,9 @@ public class CreativTabInit{
 		if (ModList.get().isLoaded("beachparty")) {
 			registerBeachParty(pItems);
 		}
+		if (ModList.get().isLoaded("caverns_and_chasms")) {
+			registerBeachParty(pItems);
+		}
 		if (!FMLLoader.isProduction()) {
 			registerCreate(pItems);
 			registerEcologics(pItems);
@@ -85,6 +88,7 @@ public class CreativTabInit{
 			registerUpdateAquatic(pItems);
 			registerGoodEnding(pItems);
 			registerBeachParty(pItems);
+			registerCavernsChasms(pItems);
 		}
 	}
 
@@ -123,7 +127,7 @@ public class CreativTabInit{
 	}
 
 	private static void registerEcologics(CreativeModeTab.Output items) {
-		items.accept(new ItemStack(BlockInit.AZALEA_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.CAVERN_AZALEA_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.COCONUT_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.FLOWERING_AZALEA_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.WALNUT_SHUTTER.get()));
@@ -181,6 +185,10 @@ public class CreativTabInit{
 		items.accept(BlockInit.PALM_SHUTTER.get());
 	}
 
+	private static void registerCavernsChasms(CreativeModeTab.Output items) {
+		items.accept(BlockInit.CAVERN_AZALEA_SHUTTER.get());
+	}
+
 	public static void registerDeferredItemRegister(IEventBus bus){
 		Map<String, DeferredRegister<Item>> modItems = new HashMap<>();
 		modItems.put("autumnity", BlockInit.ITEMS_AUTUMNITY);
@@ -197,6 +205,7 @@ public class CreativTabInit{
 		modItems.put("upgrade_aquatic", BlockInit.ITEMS_UPGRADE_AQUATTIC);
 		modItems.put("goodending", BlockInit.ITEMS_GOODENDING);
 		modItems.put("beachparty", BlockInit.ITEMS_BEACHPARTY);
+		modItems.put("caverns_and_chasms", BlockInit.ITEMS_CAVES_CHASMS);
 
 		for (Map.Entry<String, DeferredRegister<Item>> entry : modItems.entrySet()) {
 			String modId = entry.getKey();
