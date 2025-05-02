@@ -46,7 +46,7 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
                 pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
             }
 
-            this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
+            this.playSound(pLevel, pPos);
             return InteractionResult.sidedSuccess(pLevel.isClientSide);
         }
         return InteractionResult.FAIL;

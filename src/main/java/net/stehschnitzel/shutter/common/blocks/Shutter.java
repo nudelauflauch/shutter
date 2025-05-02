@@ -50,7 +50,7 @@ public class Shutter extends AbstractShutter {
 				pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
 			}
 
-			this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
+			this.playSound(pLevel, pPos);
 			return InteractionResult.sidedSuccess(pLevel.isClientSide);
 		}
 		return InteractionResult.FAIL;
@@ -91,11 +91,12 @@ public class Shutter extends AbstractShutter {
 			updatePosNeighborHelper(pLevel, pPos);
 		}
 
-		// resets the shutter to 0 when i cant be in state 2
+		// resets the shutter to 0 when it cant be in state 2
 		if (!pLevel.isClientSide && pState.getValue(OPEN) == 2
 				&& !canUpdate(pLevel, pPos)) {
-			this.update(pLevel, pPos, 0, false);
-			this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
+			int open = hasRedstonePower(pLevel, pPos) ? 1 : 0;
+			this.update(pLevel, pPos, open, false);
+			this.playSound(pLevel, pPos);
 		}
 
 		//update position
@@ -166,23 +167,22 @@ public class Shutter extends AbstractShutter {
 
 		int open_state = 0;
 		Direction direction = pContext.getHorizontalDirection();
-		List<BlockState> sideblocks = getNeighborBlocks(level, blockpos, direction);
+		List<BlockState> sideBlocks = getNeighborBlocks(level, blockpos, direction);
 		ShutterDouble isdoubleDoor = ShutterDouble.NONE;
-		boolean neighbor_has_signal = level.hasNeighborSignal(blockpos) || level.hasNeighborSignal(blockpos.above());
 
 		//get if the neighbours are also shutters
-		if (sideblocks.get(0).getBlock() instanceof Shutter && sideblocks.get(0).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
+		if (sideBlocks.get(0).getBlock() instanceof Shutter && sideBlocks.get(0).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
 			isdoubleDoor = ShutterDouble.RIGHT;
-			open_state = sideblocks.get(0).getValue(OPEN);
-			if (direction != sideblocks.get(0).getValue(FACING)) {
-				direction = sideblocks.get(0).getValue(FACING);
+			open_state = sideBlocks.get(0).getValue(OPEN);
+			if (direction != sideBlocks.get(0).getValue(FACING)) {
+				direction = sideBlocks.get(0).getValue(FACING);
 				isdoubleDoor = ShutterDouble.LEFT;
 			}
-		} else if (sideblocks.get(1).getBlock() instanceof Shutter && sideblocks.get(1).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
+		} else if (sideBlocks.get(1).getBlock() instanceof Shutter && sideBlocks.get(1).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
 			isdoubleDoor = ShutterDouble.LEFT;
-			open_state = sideblocks.get(1).getValue(OPEN);
-			if (direction != sideblocks.get(1).getValue(FACING)) {
-				direction = sideblocks.get(1).getValue(FACING);
+			open_state = sideBlocks.get(1).getValue(OPEN);
+			if (direction != sideBlocks.get(1).getValue(FACING)) {
+				direction = sideBlocks.get(1).getValue(FACING);
 				isdoubleDoor = ShutterDouble.RIGHT;
 			}
 		}
@@ -197,6 +197,8 @@ public class Shutter extends AbstractShutter {
 			direction = direction.getOpposite();
 		}
 
+		boolean neighbor_has_signal = hasRedstonePower(level, blockpos, direction);
+
 		if (neighbor_has_signal) {
 			open_state = isdoubleDoor == ShutterDouble.NONE ? this.stateTwoPossible(level, blockpos, true, true) ? 2 : 1 : this.stateTwoPossibleDouble (level, blockpos, true, isdoubleDoor, direction) ? 2 : 1;
 			updateRedstone(level, blockpos, true, isdoubleDoor, direction);
@@ -204,7 +206,7 @@ public class Shutter extends AbstractShutter {
 
 		return this.defaultBlockState()
 				.setValue(FACING, direction)
-				.setValue(POWERED, neighbor_has_signal)
+				.setValue(POWERED, Boolean.valueOf(neighbor_has_signal))
 				.setValue(POS, getPosition(level, blockpos, isdoubleDoor))
 				.setValue(DOUBLE_DOOR, isdoubleDoor)
 				.setValue(OPEN, open_state)
