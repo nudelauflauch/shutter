@@ -10,13 +10,14 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
+import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.registries.RegistryObject;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterDouble;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterPos;
 import net.stehschnitzel.shutter.init.BlockInit;
 import net.stehschnitzel.shutter.init.SoundInit;
 
 import java.util.List;
-import java.util.function.Supplier;
 
 abstract class AbstractShutter extends Block {
 
@@ -210,7 +211,7 @@ abstract class AbstractShutter extends Block {
         level.playSound(null, pos, this.getSound(state).get(), SoundSource.BLOCKS, 1F, 1F);
     }
 
-    private Supplier<SoundEvent> getSound(int state) {
+    private RegistryObject<SoundEvent> getSound(int state) {
         return state == 0
                 ? SoundInit.SHUTTER_CLOSE
                 : state == 2
@@ -332,7 +333,7 @@ abstract class AbstractShutter extends Block {
 
     public boolean canOpenInto(Block block) {
         return block == Blocks.AIR
-                || block instanceof BushBlock
+                || block instanceof IPlantable
                 || block instanceof FenceBlock
                 || block instanceof FenceGateBlock
                 || block == Blocks.WATER || block == Blocks.LAVA
