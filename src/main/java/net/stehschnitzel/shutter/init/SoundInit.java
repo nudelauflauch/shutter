@@ -1,22 +1,24 @@
 package net.stehschnitzel.shutter.init;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import net.stehschnitzel.shutter.ShutterMain;
+
+import java.util.function.Supplier;
 
 public class SoundInit {
 	
-	public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ShutterMain.MOD_ID);
+	public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
+			DeferredRegister.create(BuiltInRegistries.SOUND_EVENT, ShutterMain.MOD_ID);
 	
-	public static final RegistryObject<SoundEvent> SHUTTER_OPEN_HALF = registerSoundEvent("shutter_open_half");
-	public static final RegistryObject<SoundEvent> SHUTTER_OPEN_FULL = registerSoundEvent("shutter_open_full");
-	public static final RegistryObject<SoundEvent> SHUTTER_CLOSE = registerSoundEvent("shutter_close");
+	public static final Supplier<SoundEvent> SHUTTER_OPEN_HALF = registerSoundEvent("shutter_open_half");
+	public static final Supplier<SoundEvent> SHUTTER_OPEN_FULL = registerSoundEvent("shutter_open_full");
+	public static final Supplier<SoundEvent> SHUTTER_CLOSE = registerSoundEvent("shutter_close");
 
-	private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
+	private static Supplier<SoundEvent> registerSoundEvent(String name) {
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(ShutterMain.MOD_ID, name)));
     }
 

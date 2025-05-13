@@ -5,11 +5,11 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.ModList;
-import net.minecraftforge.fml.loading.FMLLoader;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.ModList;
+import net.neoforged.fml.loading.FMLLoader;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 import net.stehschnitzel.shutter.ShutterMain;
 
 import java.util.HashMap;
@@ -20,7 +20,7 @@ public class CreativTabInit{
 
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ShutterMain.MOD_ID);
 
-	public static final RegistryObject<CreativeModeTab> SHUTTER_TAB = CREATIVE_MODE_TAB.register("shutter_tab",
+	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SHUTTER_TAB = CREATIVE_MODE_TAB.register("shutter_tab",
 			() -> CreativeModeTab.builder()
 					.title(Component.translatable("creativetab.shutter.shutter_tab"))
 					.icon(() -> new ItemStack(BlockInit.OAK_SHUTTER.get()))

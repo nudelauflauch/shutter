@@ -1,14 +1,13 @@
 package net.stehschnitzel.shutter.common.blocks;
 
-import java.util.Random;
-
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+
+import java.util.Random;
 
 public class LeadShutter extends Shutter {
 
@@ -26,7 +25,7 @@ public class LeadShutter extends Shutter {
 			if (rand < 35 && !pLevel.isClientSide()) {
 				super.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 
-				super.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
+				super.playSound(pLevel, pPos);
 			}
 			return InteractionResult.sidedSuccess(pLevel.isClientSide);
 		}

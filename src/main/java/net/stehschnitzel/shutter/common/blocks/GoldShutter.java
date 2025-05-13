@@ -1,7 +1,6 @@
 package net.stehschnitzel.shutter.common.blocks;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -21,7 +20,7 @@ public class GoldShutter extends Shutter {
 		} else if (!pPlayer.isCrouching()
 				&& !pLevel.getBlockState(pPos).getValue(Shutter.POWERED)) {
 			this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
-			this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
+			this.playSound(pLevel, pPos);
 			return InteractionResult.sidedSuccess(pLevel.isClientSide);
 		}
 		return InteractionResult.FAIL;

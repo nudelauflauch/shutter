@@ -16,7 +16,9 @@ import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.HoneycombItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ChangeOverTimeBlock;
+import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.stehschnitzel.shutter.common.blocks.properties.WeatheringShutter;
@@ -43,7 +45,7 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
         } else if (!pPlayer.isCrouching()) {
             this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 
-            this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
+            this.playSound(pLevel, pPos);
             return InteractionResult.sidedSuccess(pLevel.isClientSide);
         }
         return InteractionResult.FAIL;
