@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:honeycomb"
+    },
+    {
+      "item": "shutter:copper_shutter"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "shutter:waxed_copper_shutter"
+  }
+}

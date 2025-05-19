@@ -10,6 +10,7 @@ import net.stehschnitzel.shutter.init.BlockInit;
 import java.util.Set;
 
 public class ShutterBlockLootTables extends BlockLootSubProvider {
+    
     protected ShutterBlockLootTables(HolderLookup.Provider pRegistries) {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags(), pRegistries);
     }
@@ -22,23 +23,16 @@ public class ShutterBlockLootTables extends BlockLootSubProvider {
 //        dropSelf(BlockInit.COCONUT_SHUTTER.get());
 //        dropSelf(BlockInit.FLOWERING_AZALEA_SHUTTER.get());
 //        dropSelf(BlockInit.WALNUT_SHUTTER.get());
-//        dropSelf(BlockInit.CHERRY_ENV_SHUTTER.get());
+//        dropSelf(BlockInit.PLUM_SHUTTER.get());
 //        dropSelf(BlockInit.WILLOW_SHUTTER.get());
 //        dropSelf(BlockInit.WISTERIA_SHUTTER.get());
+//        dropSelf(BlockInit.PINE_SHUTTER.get());
         dropSelf(BlockInit.ACACIA_SHUTTER.get());
         dropSelf(BlockInit.BAMBOO_SHUTTER.get());
         dropSelf(BlockInit.BIRCH_SHUTTER.get());
         dropSelf(BlockInit.CRIMSON_SHUTTER.get());
         dropSelf(BlockInit.OAK_SHUTTER.get());
         dropSelf(BlockInit.DARK_OAK_SHUTTER.get());
-        dropSelf(BlockInit.COPPER_SHUTTER.get());
-        dropSelf(BlockInit.OXIDIZED_COPPER_SHUTTER.get());
-        dropSelf(BlockInit.EXPOSED_COPPER_SHUTTER.get());
-        dropSelf(BlockInit.WEATHERED_COPPER_SHUTTER.get());
-        dropSelf(BlockInit.WAXED_COPPER_SHUTTER.get());
-        dropSelf(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER.get());
-        dropSelf(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER.get());
-        dropSelf(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER.get());
         dropSelf(BlockInit.MANGROVE_SHUTTER.get());
         dropSelf(BlockInit.JUNGLE_SHUTTER.get());
         dropSelf(BlockInit.WARPED_SHUTTER.get());
@@ -55,8 +49,24 @@ public class ShutterBlockLootTables extends BlockLootSubProvider {
 //        dropSelf(BlockInit.CYPRESS_SHUTTER.get());
 //        dropSelf(BlockInit.MUDDY_OAK_SHUTTER.get());
 //        dropSelf(BlockInit.PALM_SHUTTER.get());
-//        dropSelf(BlockInit.SILVER_SHUTTER.get());
+//        dropSelf(BlockInit.AZURE_SHUTTER.get());
+//        dropSelf(BlockInit.RIVER_SHUTTER.get());
+//        dropSelf(BlockInit.DRIFTWOOD_SHUTTER.get());
 //        dropSelf(BlockInit.LEAD_SHUTTER.get());
+//        dropSelf(BlockInit.SILVER_SHUTTER.get());
+//        dropSelf(BlockInit.POISE_SHUTTER.get());
+
+        dropSelf(BlockInit.COPPER_SHUTTER.get());
+        dropSelf(BlockInit.EXPOSED_COPPER_SHUTTER.get());
+        dropSelf(BlockInit.OXIDIZED_COPPER_SHUTTER.get());
+        dropSelf(BlockInit.WEATHERED_COPPER_SHUTTER.get());
+        dropSelf(BlockInit.WAXED_COPPER_SHUTTER.get());
+        dropSelf(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER.get());
+        dropSelf(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER.get());
+        dropSelf(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER.get());
+//        dropSelf(BlockInit.CAVERN_AZALEA_SHUTTER.get());
+
+
     }
 
     @Override
