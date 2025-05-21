@@ -23,48 +23,6 @@ public class BlockInit {
 	public static final DeferredRegister<Item> MINECRAFT_ITEMS = DeferredRegister
 			.createItems(ShutterMain.MOD_ID);
 
-	public static final DeferredRegister<Item> ITEMS_CREATE = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_ECOLOGICS = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_ENDERGETIC = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_OUTER_END = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_QUARK = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_SUPPLEMENTARIES = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_OREGANIZED = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_TWIGS = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_AUTUMNITY = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_ENVIRONMENTAL = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_SNOWY_SPIRIT = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_UPGRADE_AQUATTIC = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_GOODENDING = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
-	public static final DeferredRegister<Item> ITEMS_BEACHPARTY = DeferredRegister
-			.createItems(ShutterMain.MOD_ID);
-
 
 	// ecologics newest 1.20.1 fabric and forge
 //	public static final DeferredBlock<Shutter> AZALEA_SHUTTER = registerBlock("azalea_shutter",
@@ -93,100 +51,100 @@ public class BlockInit {
 	public static final DeferredBlock<Shutter> ACACIA_SHUTTER = registerBlock(
 			"acacia_shutter",
 			() -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)));
 
 	public static final DeferredBlock<Shutter> BIRCH_SHUTTER = registerBlock(
 			"birch_shutter",
 			() -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)));
 
 	public static final DeferredBlock<Shutter> CRIMSON_SHUTTER = registerBlock(
 			"crimson_shutter",
 			() -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_PLANKS)), MINECRAFT_ITEMS, false);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_PLANKS)), false);
 
 	public static final DeferredBlock<Shutter> DARK_OAK_SHUTTER = registerBlock(
 			"dark_oak_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)));
 
 	public static final DeferredBlock<Shutter> IRON_SHUTTER = registerBlock(
 			"iron_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR), true), MINECRAFT_ITEMS, false);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR), true), false);
 
 	public static final DeferredBlock<Shutter> JUNGLE_SHUTTER = registerBlock(
 			"jungle_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)));
 
 	public static final DeferredBlock<Shutter> OAK_SHUTTER = registerBlock(
 			"oak_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)));
 
 	public static final DeferredBlock<Shutter> SPRUCE_SHUTTER = registerBlock(
 			"spruce_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)));
 
 	public static final DeferredBlock<Shutter> WARPED_SHUTTER = registerBlock(
 			"warped_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_PLANKS)), MINECRAFT_ITEMS, false);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_PLANKS)), false);
 
 	public static final DeferredBlock<Shutter> MANGROVE_SHUTTER = registerBlock(
 			"mangrove_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)));
 
 	public static final DeferredBlock<Shutter> BAMBOO_SHUTTER = registerBlock(
 			"bamboo_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
 
 	public static final DeferredBlock<Shutter> CHERRY_SHUTTER = registerBlock(
 			"cherry_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)));
 
 	public static final DeferredBlock<Shutter> COPPER_SHUTTER = registerBlock(
 			"copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR)));
 
 	public static final DeferredBlock<Shutter> EXPOSED_COPPER_SHUTTER = registerBlock(
 			"exposed_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR)));
 
 	public static final DeferredBlock<Shutter> OXIDIZED_COPPER_SHUTTER = registerBlock(
 			"oxidized_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR)));
 
 	public static final DeferredBlock<Shutter> WEATHERED_COPPER_SHUTTER = registerBlock(
 			"weathered_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR)));
 
 	public static final DeferredBlock<Shutter> WAXED_COPPER_SHUTTER = registerBlock(
 			"waxed_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR)));
 
 	public static final DeferredBlock<Shutter> WAXED_EXPOSED_COPPER_SHUTTER = registerBlock(
 			"waxed_exposed_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR)));
 
 	public static final DeferredBlock<Shutter> WAXED_OXIDIZED_COPPER_SHUTTER = registerBlock(
 			"waxed_oxidized_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR)));
 
 	public static final DeferredBlock<Shutter> WAXED_WEATHERED_COPPER_SHUTTER = registerBlock(
 			"waxed_weathered_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR)));
 
 
 	//mc but not really
 	public static final DeferredBlock<Shutter> GOLD_SHUTTER = registerBlock(
 			"gold_shutter", () -> new GoldShutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR)), MINECRAFT_ITEMS, false);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR)), false);
 
 	public static final DeferredBlock<Shutter> NETHERITE_SHUTTER = registerBlock(
 			"netherite_shutter", () -> new GoldShutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK)), MINECRAFT_ITEMS, false);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK)), false);
 
 	public static final DeferredBlock<Shutter> GLASS_SHUTTER = registerBlock(
 			"glass_shutter", () -> new Shutter(
 					BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion()),
-			MINECRAFT_ITEMS, false);
+			 false);
 
 	// outer_end 1.20.1 forge
 //	public static final DeferredBlock<Shutter> AZURE_SHUTTER = registerBlock(
@@ -269,25 +227,25 @@ public class BlockInit {
 
 	// Block
 	private static <T extends Block> DeferredBlock<T> registerBlock(
-			String name, Supplier<T> block, DeferredRegister<Item> item_reg) {
+			String name, Supplier<T> block) {
 		DeferredBlock<T> to_return = BLOCKS.register(name, block);
-		registerBlockItem(name, item_reg, to_return, true);
+		registerBlockItem(name, to_return, true);
 		return to_return;
 	}
 
 	private static <T extends Block> DeferredBlock<T> registerBlock(
-			String name, Supplier<T> block, DeferredRegister<Item> item_reg, boolean burnAble) {
+			String name, Supplier<T> block, boolean burnAble) {
 		DeferredBlock<T> registryBlock = BLOCKS.register(name, block);
-		registerBlockItem(name, item_reg, registryBlock, burnAble);
+		registerBlockItem(name, registryBlock, burnAble);
 		return registryBlock;
 	}
 
 	private static <T extends Block> DeferredHolder<Item, BlockItem> registerBlockItem(
-			String name, DeferredRegister<Item> item_reg, DeferredBlock<T> registeredBlock, boolean burnAble) {
+			String name, DeferredBlock<T> registeredBlock, boolean burnAble) {
 		if (burnAble) {
-			return item_reg.register(name, () -> new BurnableItem(registeredBlock.get(), new Item.Properties(), 300));
+			return MINECRAFT_ITEMS.register(name, () -> new BurnableItem(registeredBlock.get(), new Item.Properties(), 300));
 		} else {
-			return item_reg.register(name, () -> new BlockItem(registeredBlock.get(), new Item.Properties()));
+			return MINECRAFT_ITEMS.register(name, () -> new BlockItem(registeredBlock.get(), new Item.Properties()));
 		}
 	}
 

@@ -179,36 +179,36 @@ public class CreativTabInit{
 //		items.accept(BlockInit.PALM_SHUTTER.get());
 	}
 
-	public static void registerDeferredItemRegister(IEventBus bus){
-		Map<String, DeferredRegister<Item>> modItems = new HashMap<>();
-		modItems.put("autumnity", BlockInit.ITEMS_AUTUMNITY);
-		modItems.put("create", BlockInit.ITEMS_CREATE);
-		modItems.put("ecologics", BlockInit.ITEMS_ECOLOGICS);
-		modItems.put("endergetic", BlockInit.ITEMS_ENDERGETIC);
-		modItems.put("outer_end", BlockInit.ITEMS_OUTER_END);
-		modItems.put("quark", BlockInit.ITEMS_QUARK);
-		modItems.put("supplementaries", BlockInit.ITEMS_SUPPLEMENTARIES);
-		modItems.put("twigs", BlockInit.ITEMS_TWIGS);
-		modItems.put("oreganized", BlockInit.ITEMS_OREGANIZED);
-		modItems.put("environmental", BlockInit.ITEMS_ENVIRONMENTAL);
-		modItems.put("snowyspirit", BlockInit.ITEMS_SNOWY_SPIRIT);
-		modItems.put("upgrade_aquatic", BlockInit.ITEMS_UPGRADE_AQUATTIC);
-		modItems.put("goodending", BlockInit.ITEMS_GOODENDING);
-		modItems.put("beachparty", BlockInit.ITEMS_BEACHPARTY);
-
-		for (Map.Entry<String, DeferredRegister<Item>> entry : modItems.entrySet()) {
-			String modId = entry.getKey();
-			DeferredRegister<Item> itemSupplier = entry.getValue();
-			itemSupplier.register(bus);
-			if (ModList.get().isLoaded(modId)) {
-				itemSupplier.register(bus);
-			}
-
-			if (!FMLLoader.isProduction()) {
-
-			}
-		}
-	}
+//	public static void registerDeferredItemRegister(IEventBus bus){
+//		Map<String, DeferredRegister<Item>> modItems = new HashMap<>();
+//		modItems.put("autumnity", BlockInit.ITEMS_AUTUMNITY);
+//		modItems.put("create", BlockInit.ITEMS_CREATE);
+//		modItems.put("ecologics", BlockInit.ITEMS_ECOLOGICS);
+//		modItems.put("endergetic", BlockInit.ITEMS_ENDERGETIC);
+//		modItems.put("outer_end", BlockInit.ITEMS_OUTER_END);
+//		modItems.put("quark", BlockInit.ITEMS_QUARK);
+//		modItems.put("supplementaries", BlockInit.ITEMS_SUPPLEMENTARIES);
+//		modItems.put("twigs", BlockInit.ITEMS_TWIGS);
+//		modItems.put("oreganized", BlockInit.ITEMS_OREGANIZED);
+//		modItems.put("environmental", BlockInit.ITEMS_ENVIRONMENTAL);
+//		modItems.put("snowyspirit", BlockInit.ITEMS_SNOWY_SPIRIT);
+//		modItems.put("upgrade_aquatic", BlockInit.ITEMS_UPGRADE_AQUATTIC);
+//		modItems.put("goodending", BlockInit.ITEMS_GOODENDING);
+//		modItems.put("beachparty", BlockInit.ITEMS_BEACHPARTY);
+//
+//		for (Map.Entry<String, DeferredRegister<Item>> entry : modItems.entrySet()) {
+//			String modId = entry.getKey();
+//			DeferredRegister<Item> itemSupplier = entry.getValue();
+//
+//			if (ModList.get().isLoaded(modId)) {
+//				itemSupplier.register(bus);
+//			}
+//
+//			if (FMLLoader.isProduction()) {
+//				itemSupplier.register(bus);
+//			}
+//		}
+//	}
 
 	public static void register(IEventBus eventBus) {
 		CREATIVE_MODE_TAB.register(eventBus);

@@ -23,7 +23,7 @@ public class ShutterMain {
 
 		CreativTabInit.register(bus);
 
-		CreativTabInit.registerDeferredItemRegister(bus);
+//		CreativTabInit.registerDeferredItemRegister(bus);
 		BlockInit.registerBlockItem(bus);
 		BlockInit.registerBlock(bus);
 		SoundInit.register(bus);
