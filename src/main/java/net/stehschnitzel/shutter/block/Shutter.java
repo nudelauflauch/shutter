@@ -47,7 +47,7 @@ public class Shutter extends AbstractShutter implements Waterloggable{
                 && !this.isMetal) {
             this.update(world, pos, state.get(OPEN) + 1, false);
 
-            this.playSound(world, pos, world.getBlockState(pos).get(OPEN));
+            this.playSound(world, pos);
             return ActionResult.success(!world.isClient);
         }
         return ActionResult.FAIL;
@@ -89,8 +89,9 @@ public class Shutter extends AbstractShutter implements Waterloggable{
 
         // resets the shutter to 0 when i cant be in state 2
         if (state.get(OPEN) == 2 && !canUpdate(world, pos)) {
-            this.update((World) world, pos, 0, false);
-            this.playSound((World) world, pos, world.getBlockState(pos).get(OPEN));
+            int open = hasRedstonePower((World) world, pos) ? 1 : 0;
+            this.update((World) world, pos, open, false);
+            this.playSound((World) world, pos);
         }
 
         if (state.get(WATERLOGGED).booleanValue()) {

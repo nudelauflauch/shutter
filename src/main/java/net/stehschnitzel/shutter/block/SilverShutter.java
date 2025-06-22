@@ -19,7 +19,7 @@ public class SilverShutter extends Shutter {
 		if (!player.isSneaking() && hand.equals(hand.MAIN_HAND)
 				&& world.getBlockState(pos).get(Shutter.POWERED)) {
 			this.update(world, pos, state.get(OPEN) + 1, false);
-			this.playSound(world, pos, world.getBlockState(pos).get(OPEN));
+			this.playSound(world, pos);
 		}
 		return ActionResult.FAIL;
 	}

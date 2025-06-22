@@ -209,16 +209,20 @@ abstract class AbstractShutter extends Block {
         }
     }
 
+    public void playSound(World world, BlockPos pos) {
+        playSound(world, pos, world.getBlockState(pos).get(OPEN));
+    }
+
     public void playSound(World world, BlockPos pos, int state) {
         world.playSound(null, pos, this.getSound(state), SoundCategory.BLOCKS, 1F, 1F);
     }
 
     private SoundEvent getSound(int state) {
-        return state == 0
-                ? SoundInit.SHUTTER_CLOSE
-                : state == 2
-                ? SoundInit.SHUTTER_OPEN_HALF
-                : SoundInit.SHUTTER_OPEN_FULL;
+        switch (state) {
+            case 0: return SoundInit.SHUTTER_CLOSE;
+            case 1: return SoundInit.SHUTTER_OPEN_HALF;
+            default: return SoundInit.SHUTTER_OPEN_FULL;
+        }
     }
 
     BlockPos getNeighborShutterPos(WorldAccess world, BlockPos pos) {
@@ -246,21 +250,46 @@ abstract class AbstractShutter extends Block {
         }
     }
 
+    public boolean hasRedstonePower(World world, BlockPos pos) {
+        return hasRedstonePower(world, pos, world.getBlockState(pos).get(FACING));
+    }
+
+    public boolean hasRedstonePower(World world, BlockPos pos, Direction facing) {
+        boolean hasSignal;
+
+        if (facing == Direction.WEST || facing == Direction.EAST) {
+            hasSignal = world.isReceivingRedstonePower(pos.north()) || world.isReceivingRedstonePower(pos.south());
+        } else {
+            hasSignal = world.isReceivingRedstonePower(pos.east()) || world.isReceivingRedstonePower(pos.west());
+        }
+
+        return hasSignal;
+    }
+
     public void redstoneUpdate(World pWorld, BlockPos pFromPos, BlockPos pPos) {
         // For redstone or power
         if (!(pWorld.getBlockState(pFromPos).getBlock() instanceof Shutter)) {
             // opening
-            if ((pWorld.isReceivingRedstonePower(pPos) || pWorld.isReceivingRedstonePower(pPos.up())) && !pWorld.getBlockState(pPos).get(POWERED)) {
+            if (hasRedstonePower(pWorld, pPos)
+                    && !pWorld.getBlockState(pPos).get(POWERED)) {
                 setPowered(pWorld, pPos, true);
                 updateRedstone(pWorld, pPos, false);
-                this.playSound(pWorld, pPos, pWorld.getBlockState(pPos).get(OPEN));
+                this.playSound(pWorld, pPos);
 
             // closing
-            } else if (!pWorld.isReceivingRedstonePower(pPos)
+            } else if (!hasRedstonePower(pWorld, pPos)
                     && pWorld.getBlockState(pPos).get(POWERED)) {
                 setPowered(pWorld, pPos, false);
                 this.update(pWorld, pPos, 0, false);
-                this.playSound(pWorld, pPos, 0);
+                this.playSound(pWorld, pPos);
+            }
+
+            // for the shutter fully opens when it can
+            if (pWorld.getBlockState(pPos).get(OPEN) == 1
+                    && pWorld.getBlockState(pPos).get(POWERED)
+                    && canUpdate(pWorld,pPos)) {
+                updateRedstone(pWorld, pPos, false);
+                this.playSound(pWorld, pPos);
             }
         }
     }

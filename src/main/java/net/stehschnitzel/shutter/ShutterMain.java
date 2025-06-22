@@ -16,8 +16,10 @@ public class ShutterMain implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ShutterItemGroup.registerItemGroups();
+
 		ItemInit.registerModItems();
 		BlockInit.registerModBlocks();
+
 		SoundInit.registerSound();
 		BlockInit.registerOxidizables();
 	}

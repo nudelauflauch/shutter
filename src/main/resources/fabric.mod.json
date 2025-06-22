@@ -11,7 +11,7 @@
 		"homepage": "https://fabricmc.net/",
 		"sources": "https://github.com/nudelauflauch/shutter"
 	},
-	"license": "MIT",
+	"license": "LICENSE.md",
 	"environment": "*",
 	"entrypoints": {
 		"main": [

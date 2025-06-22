@@ -12,6 +12,5 @@ public class ShutterDataGenerator implements DataGeneratorEntrypoint {
 
 		pack.addProvider(ShutterBlockTagProvider::new);
 		pack.addProvider(ShutterRecipeProvider::new);
-		System.out.println("JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 	}
 }

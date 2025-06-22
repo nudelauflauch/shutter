@@ -24,7 +24,7 @@ public class LeadShutter extends Shutter {
 			if (rand < 35 && !world.isClient) {
 				super.update(world, pos, state.get(OPEN) + 1, false);
 
-				super.playSound(world, pos, world.getBlockState(pos).get(OPEN));
+				super.playSound(world, pos);
 			}
 			return ActionResult.success(!world.isClient);
 		}

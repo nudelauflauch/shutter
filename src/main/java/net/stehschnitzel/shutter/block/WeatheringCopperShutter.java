@@ -27,7 +27,7 @@ public class WeatheringCopperShutter extends Shutter implements Oxidizable {
                 && !this.isMetal) {
             this.update(world, pos, state.get(OPEN) + 1, false);
 
-            this.playSound(world, pos, world.getBlockState(pos).get(OPEN));
+            this.playSound(world, pos);
             return ActionResult.success(!world.isClient);
         }
         return ActionResult.FAIL;

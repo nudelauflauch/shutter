@@ -126,7 +126,7 @@ public class BlockInit {
     public static final Block STRIPPED_BAMBOO_SHUTTER = registerBlock("stripped_bamboo_shutter",
             new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
 
-    // Snowy Spirit Blocks
+    // Snowy Spirit
     public static final Block GINGERBREAD_SHUTTER = registerBlock("gingerbread_shutter",
             new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
 

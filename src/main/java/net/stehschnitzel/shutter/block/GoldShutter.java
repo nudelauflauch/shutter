@@ -20,7 +20,7 @@ public class GoldShutter extends Shutter {
 				&& hand.equals(hand.MAIN_HAND)
 				&& !state.get(POWERED)) {
 			super.update(world, pos, state.get(OPEN) + 1, false);
-			this.playSound(world, pos, world.getBlockState(pos).get(OPEN));
+			this.playSound(world, pos);
 			return ActionResult.success(!world.isClient);
 		}
 		return ActionResult.FAIL;
