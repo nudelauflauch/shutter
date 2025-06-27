@@ -21,7 +21,7 @@ import java.util.function.Supplier;
 
 abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
 
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final EnumProperty<ShutterPos> POS = EnumProperty
