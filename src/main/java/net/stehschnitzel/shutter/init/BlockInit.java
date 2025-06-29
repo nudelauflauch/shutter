@@ -1,6 +1,8 @@
 package net.stehschnitzel.shutter.init;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Oxidizable;
@@ -15,11 +17,18 @@ import net.stehschnitzel.shutter.block.Shutter;
 import net.stehschnitzel.shutter.block.WeatheringCopperShutter;
 
 public class BlockInit {
+    public static void registerOxidizables() {
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(BlockInit.COPPER_SHUTTER, BlockInit.EXPOSED_COPPER_SHUTTER);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(BlockInit.EXPOSED_COPPER_SHUTTER, BlockInit.WEATHERED_COPPER_SHUTTER);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(BlockInit.WEATHERED_COPPER_SHUTTER, BlockInit.OXIDIZED_COPPER_SHUTTER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(BlockInit.COPPER_SHUTTER, BlockInit.WAXED_COPPER_SHUTTER);
 
-    public static final Block GLASS_SHUTTER = registerBlock("glass_shutter",
-            new Shutter(FabricBlockSettings.copyOf(Blocks.GLASS).nonOpaque()));
+        OxidizableBlocksRegistry.registerWaxableBlockPair(BlockInit.WEATHERED_COPPER_SHUTTER, BlockInit.WAXED_WEATHERED_COPPER_SHUTTER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(BlockInit.EXPOSED_COPPER_SHUTTER, BlockInit.WAXED_EXPOSED_COPPER_SHUTTER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(BlockInit.OXIDIZED_COPPER_SHUTTER, BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER);
+    }
 
-    // Additional Fabric Block Registries
+    // ecologics
     public static final Block AZALEA_SHUTTER = registerBlock("azalea_shutter",
             new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
 
@@ -32,9 +41,7 @@ public class BlockInit {
     public static final Block WALNUT_SHUTTER = registerBlock("walnut_shutter",
             new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
 
-//    public static final Block POISE_SHUTTER = registerBlock("poise_shutter",
-//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
-
+    //minecraft
     public static final Block ACACIA_SHUTTER = registerBlock("acacia_shutter",
             new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
 
@@ -71,96 +78,55 @@ public class BlockInit {
     public static final Block CHERRY_SHUTTER = registerBlock("cherry_shutter",
             new Shutter(FabricBlockSettings.copyOf(Blocks.CHERRY_PLANKS)));
 
-    public static final Block COPPER_SHUTTER = registerBlock("copper_shutter",
-            new WeatheringCopperShutter(Oxidizable.OxidationLevel.UNAFFECTED,
-                    FabricBlockSettings.copyOf(Blocks.COPPER_DOOR)));
+    public static final Block COPPER_SHUTTER = registerBlock(
+            "copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.UNAFFECTED, AbstractBlock.Settings.copy(Blocks.COPPER_BLOCK)));
 
-    public static final Block EXPOSED_COPPER_SHUTTER = registerBlock("exposed_copper_shutter",
-            new WeatheringCopperShutter(Oxidizable.OxidationLevel.EXPOSED,
-                    FabricBlockSettings.copyOf(Blocks.EXPOSED_COPPER_DOOR)));
+    public static final Block EXPOSED_COPPER_SHUTTER = registerBlock(
+            "exposed_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.EXPOSED, AbstractBlock.Settings.copy(Blocks.EXPOSED_COPPER)));
 
-    public static final Block OXIDIZED_COPPER_SHUTTER = registerBlock("oxidized_copper_shutter",
-            new WeatheringCopperShutter(Oxidizable.OxidationLevel.OXIDIZED,
-                    FabricBlockSettings.copyOf(Blocks.OXIDIZED_COPPER_DOOR)));
+    public static final Block OXIDIZED_COPPER_SHUTTER = registerBlock(
+            "oxidized_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.OXIDIZED, AbstractBlock.Settings.copy(Blocks.OXIDIZED_COPPER)));
 
-    public static final Block WEATHERED_COPPER_SHUTTER = registerBlock("weathered_copper_shutter",
-            new WeatheringCopperShutter(Oxidizable.OxidationLevel.WEATHERED,
-                    FabricBlockSettings.copyOf(Blocks.WEATHERED_COPPER_DOOR)));
+    public static final Block WEATHERED_COPPER_SHUTTER = registerBlock(
+            "weathered_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.WEATHERED, AbstractBlock.Settings.copy(Blocks.WEATHERED_COPPER)));
 
-    public static final Block WAXED_COPPER_SHUTTER = registerBlock("waxed_copper_shutter",
-            new WeatheringCopperShutter(Oxidizable.OxidationLevel.UNAFFECTED,
-                    FabricBlockSettings.copyOf(Blocks.COPPER_DOOR)));
+    public static final Block WAXED_COPPER_SHUTTER = registerBlock(
+            "waxed_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.UNAFFECTED, AbstractBlock.Settings.copy(Blocks.COPPER_BLOCK)));
 
-    public static final Block WAXED_EXPOSED_COPPER_SHUTTER = registerBlock("waxed_exposed_copper_shutter",
-            new WeatheringCopperShutter(Oxidizable.OxidationLevel.EXPOSED,
-                    FabricBlockSettings.copyOf(Blocks.EXPOSED_COPPER_DOOR)));
+    public static final Block WAXED_EXPOSED_COPPER_SHUTTER = registerBlock(
+            "waxed_exposed_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.EXPOSED, AbstractBlock.Settings.copy(Blocks.EXPOSED_COPPER)));
 
-    public static final Block WAXED_OXIDIZED_COPPER_SHUTTER = registerBlock("waxed_oxidized_copper_shutter",
-            new WeatheringCopperShutter(Oxidizable.OxidationLevel.OXIDIZED,
-                    FabricBlockSettings.copyOf(Blocks.OXIDIZED_COPPER_DOOR)));
+    public static final Block WAXED_OXIDIZED_COPPER_SHUTTER = registerBlock(
+            "waxed_oxidized_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.OXIDIZED, AbstractBlock.Settings.copy(Blocks.OXIDIZED_COPPER)));
 
-    public static final Block WAXED_WEATHERED_COPPER_SHUTTER = registerBlock("waxed_weathered_copper_shutter",
-            new WeatheringCopperShutter(Oxidizable.OxidationLevel.WEATHERED,
-                    FabricBlockSettings.copyOf(Blocks.WEATHERED_COPPER_DOOR)));
+    public static final Block WAXED_WEATHERED_COPPER_SHUTTER = registerBlock(
+            "waxed_weathered_copper_shutter",
+            new WeatheringCopperShutter(Oxidizable.OxidationLevel.WEATHERED, AbstractBlock.Settings.copy(Blocks.WEATHERED_COPPER)));
 
-
-    // Outer End Blocks
-//    public static final Block AZURE_SHUTTER = registerBlock("azure_shutter",
-//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
-
-    // Quark Blocks
-    public static final Block BLOSSOM_SHUTTER = registerBlock("blossom_shutter",
-            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
-
-    public static final Block ANCIENT_SHUTTER = registerBlock("ancient_shutter",
-            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
-
-    public static final Block AZALEA_QUARK_SHUTTER = registerBlock(
-            "azalea_quark_shutter", new Shutter(
-                    FabricBlockSettings.copy(Blocks.ACACIA_WOOD)));
-
-    // Supplementaries Blocks
+    //mc but not really
     public static final Block GOLD_SHUTTER = registerBlock("gold_shutter",
             new GoldShutter(FabricBlockSettings.copyOf(Blocks.IRON_DOOR)));
 
+    public static final Block GLASS_SHUTTER = registerBlock("glass_shutter",
+            new Shutter(FabricBlockSettings.copyOf(Blocks.GLASS).nonOpaque()));
+
     public static final Block NETHERITE_SHUTTER = registerBlock("netherite_shutter",
             new Shutter(FabricBlockSettings.copyOf(Blocks.IRON_DOOR).strength(5.0F)));
-
-//    public static final Block LEAD_SHUTTER = registerBlock("lead_shutter",
-//            new LeadShutter(FabricBlockSettings.copyOf(Blocks.IRON_DOOR)));
-//
-//    public static final Block SILVER_SHUTTER = registerBlock("silver_shutter",
-//            new SilverShutter(FabricBlockSettings.copyOf(Blocks.IRON_DOOR)));
 
     // Twigs Blocks
     public static final Block STRIPPED_BAMBOO_SHUTTER = registerBlock("stripped_bamboo_shutter",
             new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
 
-    // Autumnity Blocks
-    public static final Block MAPLE_SHUTTER = registerBlock("maple_shutter",
-            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
-
-    // Environmental Blocks
-    public static final Block CHERRY_ENV_SHUTTER = registerBlock("cherry_env_shutter",
-            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
-
-    public static final Block WILLOW_SHUTTER = registerBlock("willow_shutter",
-            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
-
-    public static final Block WISTERIA_SHUTTER = registerBlock("wisteria_shutter",
-            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
-
-    // Snowy Spirit Blocks
+    // Snowy Spirit
     public static final Block GINGERBREAD_SHUTTER = registerBlock("gingerbread_shutter",
             new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
-
-    // Update Aquatic Blocks
-//    public static final Block DRIFTWOOD_SHUTTER = registerBlock("driftwood_shutter",
-//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
-//
-//    public static final Block RIVER_SHUTTER = registerBlock("river_shutter",
-//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
-
 
     //goodending
     public static final Block CYPRESS_SHUTTER = registerBlock(
@@ -170,6 +136,58 @@ public class BlockInit {
     public static final Block MUDDY_OAK_SHUTTER = registerBlock(
             "muddy_oak_shutter", new Shutter(
                     FabricBlockSettings.copy(Blocks.ACACIA_WOOD)));
+
+    //beachparty
+    public static final Block PALM_SHUTTER = registerBlock(
+            "palm_shutter", new Shutter(
+                    FabricBlockSettings.copy(Blocks.ACACIA_WOOD)));
+
+    //endergetic
+//    public static final Block POISE_SHUTTER = registerBlock("poise_shutter",
+//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
+
+    // Outer End Blocks
+//    public static final Block AZURE_SHUTTER = registerBlock("azure_shutter",
+//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
+
+    // Quark Blocks
+//    public static final Block BLOSSOM_SHUTTER = registerBlock("blossom_shutter",
+//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
+//
+//    public static final Block ANCIENT_SHUTTER = registerBlock("ancient_shutter",
+//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
+//
+//    public static final Block AZALEA_QUARK_SHUTTER = registerBlock(
+//            "azalea_quark_shutter", new Shutter(
+//                    FabricBlockSettings.copy(Blocks.ACACIA_WOOD)));
+
+    // Supplementaries
+//    public static final Block LEAD_SHUTTER = registerBlock("lead_shutter",
+//            new LeadShutter(FabricBlockSettings.copyOf(Blocks.IRON_DOOR)));
+//
+//    public static final Block SILVER_SHUTTER = registerBlock("silver_shutter",
+//            new SilverShutter(FabricBlockSettings.copyOf(Blocks.IRON_DOOR)));
+
+    // Autumnity Blocks
+//    public static final Block MAPLE_SHUTTER = registerBlock("maple_shutter",
+//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
+
+    // Environmental Blocks
+//    public static final Block CHERRY_ENV_SHUTTER = registerBlock("cherry_env_shutter",
+//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
+//
+//    public static final Block WILLOW_SHUTTER = registerBlock("willow_shutter",
+//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
+//
+//    public static final Block WISTERIA_SHUTTER = registerBlock("wisteria_shutter",
+//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
+
+    // Update Aquatic Blocks
+//    public static final Block DRIFTWOOD_SHUTTER = registerBlock("driftwood_shutter",
+//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
+//
+//    public static final Block RIVER_SHUTTER = registerBlock("river_shutter",
+//            new Shutter(FabricBlockSettings.copyOf(Blocks.ACACIA_DOOR)));
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);

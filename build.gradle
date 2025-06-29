@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.7-SNAPSHOT'
+	id 'fabric-loom' version '1.10-SNAPSHOT'
 	id 'maven-publish'
 }
 
@@ -11,15 +11,35 @@ base {
 }
 
 repositories {
-	// Add repositories to retrieve artifacts from in here.
-	// You should only use this when depending on other mods because
-	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
-	// for more information about repositories.
+	maven {
+		url = "https://www.cursemaven.com"
+	}
+	maven {
+		name = 'TerraformersMC'
+		url = 'https://maven.terraformersmc.com/'
+	}
+	maven { url = 'https://maven.minecraftforge.net/' }
+}
+
+
+loom {
+//	splitEnvironmentSourceSets()
+
+//	mods {
+//		"shutter" {
+//			sourceSet sourceSets.main
+//			sourceSet sourceSets.client
+//		}
+//	}
+
 }
 
 fabricApi {
-	configureDataGeneration()
+	configureDataGeneration {
+		client = true
+		createSourceSet = true
+		modId = "shutter"
+	}
 }
 
 dependencies {
@@ -30,18 +50,35 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	
-	// Uncomment the following line to enable the deprecated Fabric API modules. 
-	// These are included in the Fabric API production distribution and allow you to update your mod to the latest modules at a later more convenient time.
 
-	// modImplementation "net.fabricmc.fabric-api:fabric-api-deprecated:${project.fabric_version}"
+//	implementation(
+//			files(
+//					"$rootDir/run/mods/ecologics-fabric-1.20.1-2.2.0.jar",
+//			)
+//	)
+
+//	 X/X/X 1.21.1
+//	modImplementation  ("curse.maven:lets-do-beachparty-858691:5320667")
+//	// X/X/X 1.21.1
+//	modImplementation("curse.maven:ecologics-570463:4857271")
+//	// X/X/X 1.21.1
+//	modImplementation  "curse.maven:twigs-496913:4603805"
+//	// forge/neoforge/fabric 1.21.1
+	modImplementation "curse.maven:snowy-spirit-566142:5983881"
+//	// X/X/X 1.21.1
+//	modImplementation  ("curse.maven:good-ending-690161:5024404")
+
+//	modImplementation ("curse.maven:architectury-api-419699:5137936")
+	modImplementation ("curse.maven:moonlight-lib-499980:6699384")
+//	modImplementation ("curse.maven:doapi-864599:5468180")
+//	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:7.0.2"
 }
 
 processResources {
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand "version": inputs.properties.version
 	}
 }
 
@@ -60,15 +97,18 @@ java {
 }
 
 jar {
+	inputs.property "archivesName", project.base.archivesName
+
 	from("LICENSE") {
-		rename { "${it}_${project.base.archivesName.get()}"}
+		rename { "${it}_${inputs.properties.archivesName}"}
 	}
 }
 
 // configure the maven publication
 publishing {
 	publications {
-		mavenJava(MavenPublication) {
+		create("mavenJava", MavenPublication) {
+			artifactId = project.archives_base_name
 			from components.java
 		}
 	}

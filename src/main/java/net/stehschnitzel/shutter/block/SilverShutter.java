@@ -17,9 +17,10 @@ public class SilverShutter extends Shutter {
 	@Override
 	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
 		if (!player.isSneaking()
+				&& player.getActiveHand().equals(Hand.MAIN_HAND)
 				&& world.getBlockState(pos).get(Shutter.POWERED)) {
 			this.update(world, pos, state.get(OPEN) + 1, false);
-			this.playSound(world, pos, world.getBlockState(pos).get(OPEN));
+			this.playSound(world, pos);
 		}
 		return ActionResult.FAIL;
 	}

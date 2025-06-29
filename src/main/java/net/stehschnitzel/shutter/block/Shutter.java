@@ -2,6 +2,8 @@ package net.stehschnitzel.shutter.block;
 
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
@@ -24,21 +26,13 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class Shutter extends AbstractShutter {
-
-
+public class Shutter extends AbstractShutter implements Waterloggable{
     public Shutter(Settings settings) {
         this(settings, false);
     }
 
     public Shutter(Settings settings, boolean isMetal) {
         super(settings, isMetal);
-        this.setDefaultState(this.getStateManager().getDefaultState()
-                .with(FACING, Direction.NORTH)
-                .with(POWERED, false)
-                .with(OPEN, 0)
-                .with(POS, ShutterPos.NORMAL)
-                .with(DOUBLE_DOOR, ShutterDouble.NONE));
     }
 
     @Override
@@ -47,12 +41,13 @@ public class Shutter extends AbstractShutter {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!player.isSneaking()
+                && player.getActiveHand().equals(Hand.MAIN_HAND)
                 && !this.isMetal) {
             this.update(world, pos, state.get(OPEN) + 1, false);
 
-            this.playSound(world, pos, world.getBlockState(pos).get(OPEN));
+            this.playSound(world, pos);
             return ActionResult.success(!world.isClient);
         }
         return ActionResult.FAIL;
@@ -94,8 +89,13 @@ public class Shutter extends AbstractShutter {
 
         // resets the shutter to 0 when i cant be in state 2
         if (state.get(OPEN) == 2 && !canUpdate(world, pos)) {
-            this.update((World) world, pos, 0, false);
-            this.playSound((World) world, pos, world.getBlockState(pos).get(OPEN));
+            int open = hasRedstonePower((World) world, pos) ? 1 : 0;
+            this.update((World) world, pos, open, false);
+            this.playSound((World) world, pos);
+        }
+
+        if (state.get(WATERLOGGED).booleanValue()) {
+            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
         }
 
         //update position
@@ -111,10 +111,25 @@ public class Shutter extends AbstractShutter {
         }
     }
 
+    @Override
+    public boolean hasComparatorOutput(BlockState state) {
+        return state.get(OPEN) != 0;
+    }
+
+    @Override
+    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+        switch (state.get(OPEN)) {
+            case 1: return 7;
+            case 2: return 15;
+            default: return 0;
+        }
+    }
+
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         BlockPos blockpos = ctx.getBlockPos();
+        FluidState fluidstate = ctx.getWorld().getFluidState(blockpos);
         World level = ctx.getWorld();
 
         int open_state = 0;
@@ -150,6 +165,10 @@ public class Shutter extends AbstractShutter {
             direction = direction.getOpposite();
         }
 
+        if (ctx.getPlayer() == null) {
+            direction = direction.getOpposite();
+        }
+
         if (neighbor_has_signal) {
             open_state = isdoubleDoor == ShutterDouble.NONE ? this.stateTwoPossible(level, blockpos, true, true) ? 2 : 1 : this.stateTwoPossibleDouble(level, blockpos, true, isdoubleDoor, direction) ? 2 : 1;
             updateRedstone(level, blockpos, true, isdoubleDoor, direction);
@@ -160,6 +179,7 @@ public class Shutter extends AbstractShutter {
                 .with(POWERED, neighbor_has_signal)
                 .with(POS, getPosition(level, blockpos, isdoubleDoor))
                 .with(DOUBLE_DOOR, isdoubleDoor)
-                .with(OPEN, open_state);
+                .with(OPEN, open_state)
+                .with(WATERLOGGED, Boolean.valueOf(fluidstate.isOf(Fluids.WATER)));
     }
 }
