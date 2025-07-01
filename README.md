@@ -21,5 +21,5 @@ This Mod supports several mods like Supplementaries, Quark, Ecologics and Create
 Other Mods are: Environmental, Upgrade Aquatic, Snowy Spirit, Autumnity, Oreganized, GoodEnding
 This mod is supported by Every Compat.
 
-If you have a issue feel free to open a [new Issue on Github](https://github.com/nudelauflauch/shutter/issues).
+If you have any issues, feel free to open a [new Issue on Github](https://github.com/nudelauflauch/shutter/issues).
 If you have a problem with the fabric version open a issue [here](https://github.com/nudelauflauch/Shutter-Fabric/issues)
