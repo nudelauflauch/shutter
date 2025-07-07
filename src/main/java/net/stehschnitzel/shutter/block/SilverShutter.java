@@ -1,5 +1,6 @@
 package net.stehschnitzel.shutter.block;
 
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ActionResult;
@@ -19,21 +20,27 @@ public class SilverShutter extends Shutter {
 		if (!player.isSneaking()
 				&& player.getActiveHand().equals(Hand.MAIN_HAND)
 				&& world.getBlockState(pos).get(Shutter.POWERED)) {
-			this.update(world, pos, state.get(OPEN) + 1, false);
+			if (this.update(world, pos, state.get(OPEN) + 1, false)) {
+				return ActionResult.PASS;
+			}
 			this.playSound(world, pos);
+			return ActionResult.SUCCESS_SERVER;
 		}
 		return ActionResult.FAIL;
 	}
 
 	@Override
-	public void update(World world, BlockPos pos, int state, boolean first) {
+	public boolean update(World world, BlockPos pos, int state, boolean first) {
+		if (hasPoweredGoldShutter(world, pos)) return false;
+
 		if (world.getBlockState(pos).get(Shutter.POWERED)) {
 			super.update(world, pos, state, first);
 		}
+		return true;
 	}
 
 	@Override
-	public void redstoneUpdate(World world, BlockPos neighborPos, BlockPos pos) {
+	public void redstoneUpdate(World world, BlockPos pos) {
 		if (world.isReceivingRedstonePower(pos)) {
 			world.setBlockState(pos,
 					world.getBlockState(pos).with(Shutter.POWERED, true));

@@ -26,7 +26,7 @@ public class LeadShutter extends Shutter {
 
 				super.playSound(world, pos);
 			}
-			return ActionResult.success(!world.isClient);
+			return ActionResult.SUCCESS_SERVER;
 		}
 		return ActionResult.FAIL;
 	}

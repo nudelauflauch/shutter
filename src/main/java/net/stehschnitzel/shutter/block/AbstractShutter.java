@@ -3,7 +3,6 @@ package net.stehschnitzel.shutter.block;
 import net.minecraft.block.*;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.state.StateManager;
@@ -15,13 +14,12 @@ import net.minecraft.world.WorldAccess;
 import net.stehschnitzel.shutter.block.properties.ShutterDouble;
 import net.stehschnitzel.shutter.block.properties.ShutterPos;
 import net.stehschnitzel.shutter.init.SoundInit;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 abstract class AbstractShutter extends Block {
 
-    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty POWERED = Properties.POWERED;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
     public static final EnumProperty<ShutterPos> POS = EnumProperty
@@ -70,7 +68,9 @@ abstract class AbstractShutter extends Block {
         }
     }
 
-    public void update(World world, BlockPos pos, int state, boolean first) {
+    public boolean update(World world, BlockPos pos, int state, boolean first) {
+        //returns if it has a gold shutter wich blocks all the other shutters
+        if (hasPoweredGoldShutter(world, pos)) return false;
         ShutterDouble doorType = world.getBlockState(pos).get(DOUBLE_DOOR);
 
         if (doorType == ShutterDouble.NONE) {
@@ -78,6 +78,7 @@ abstract class AbstractShutter extends Block {
         } else {
             updateDoubleDoor(world, pos, state, first, doorType);
         }
+        return true;
     }
 
     private void updateSingleDoor(World world, BlockPos pos, int state, boolean first) {
@@ -107,6 +108,28 @@ abstract class AbstractShutter extends Block {
             updateAll(world, pos, 0, first, true);
             updateAll(world, neighborPos, 0, first, true);
         }
+    }
+
+    // if a powered gold shutter is inbetween the others all the shutters connected cant update
+    boolean hasPoweredGoldShutter(World world, BlockPos pos) {
+        boolean[] arr = {true, false};
+
+        for (boolean up : arr) {
+            int y = pos.getY();
+
+            while (y > -70 && y < 330) {
+                BlockPos newPos = new BlockPos(pos.getX(), y, pos.getZ());
+                Block block = world.getBlockState(newPos).getBlock();
+
+                if (block instanceof GoldShutter && world.getBlockState(newPos).get(POWERED)) {
+                    return true;
+                } if (!(block instanceof Shutter)) break;
+
+                y = up ? y + 1 : y - 1;
+            }
+        }
+
+        return false;
     }
 
     boolean stateTwoPossibleDouble(World world, BlockPos pos, boolean first) {
@@ -266,9 +289,8 @@ abstract class AbstractShutter extends Block {
         return hasSignal;
     }
 
-    public void redstoneUpdate(World pWorld, BlockPos pFromPos, BlockPos pPos) {
+    public void redstoneUpdate(World pWorld, BlockPos pPos) {
         // For redstone or power
-        if (!(pWorld.getBlockState(pFromPos).getBlock() instanceof Shutter)) {
             // opening
             if (hasRedstonePower(pWorld, pPos)
                     && !pWorld.getBlockState(pPos).get(POWERED)) {
@@ -291,7 +313,7 @@ abstract class AbstractShutter extends Block {
                 updateRedstone(pWorld, pPos, false);
                 this.playSound(pWorld, pPos);
             }
-        }
+
     }
 
     ShutterPos getPosition(WorldAccess pWorld, BlockPos pPos) {

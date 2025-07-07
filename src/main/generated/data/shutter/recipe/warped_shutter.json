@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": {
-      "item": "minecraft:warped_slab"
-    }
+    "A": "minecraft:warped_slab"
   },
   "pattern": [
     "AAA",

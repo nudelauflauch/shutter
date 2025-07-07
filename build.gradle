@@ -1,5 +1,5 @@
 plugins {
-	id 'fabric-loom' version '1.10-SNAPSHOT'
+	id 'fabric-loom' version "${loom_version}"
 	id 'maven-publish'
 }
 
@@ -21,24 +21,11 @@ repositories {
 	maven { url = 'https://maven.minecraftforge.net/' }
 }
 
-
-loom {
-//	splitEnvironmentSourceSets()
-
-//	mods {
-//		"shutter" {
-//			sourceSet sourceSets.main
-//			sourceSet sourceSets.client
-//		}
-//	}
-
-}
-
 fabricApi {
 	configureDataGeneration {
 		client = true
-		createSourceSet = true
-		modId = "shutter"
+//		createSourceSet = true
+//		modId = "shutter"
 	}
 }
 
@@ -64,12 +51,12 @@ dependencies {
 //	// X/X/X 1.21.1
 //	modImplementation  "curse.maven:twigs-496913:4603805"
 //	// forge/neoforge/fabric 1.21.1
-	modImplementation "curse.maven:snowy-spirit-566142:5983881"
+//	modImplementation "curse.maven:snowy-spirit-566142:5983881"
 //	// X/X/X 1.21.1
 //	modImplementation  ("curse.maven:good-ending-690161:5024404")
 
 //	modImplementation ("curse.maven:architectury-api-419699:5137936")
-	modImplementation ("curse.maven:moonlight-lib-499980:6699384")
+//	modImplementation ("curse.maven:moonlight-lib-499980:6699384")
 //	modImplementation ("curse.maven:doapi-864599:5468180")
 //	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:7.0.2"
 }

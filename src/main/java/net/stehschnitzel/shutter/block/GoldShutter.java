@@ -7,6 +7,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldAccess;
 
 public class GoldShutter extends Shutter {
 
@@ -21,13 +22,13 @@ public class GoldShutter extends Shutter {
 				&& !state.get(POWERED)) {
 			super.update(world, pos, state.get(OPEN) + 1, false);
 			this.playSound(world, pos);
-			return ActionResult.success(!world.isClient);
+			return ActionResult.SUCCESS_SERVER;
 		}
 		return ActionResult.FAIL;
 	}
 
 	@Override
-	public void redstoneUpdate(World world, BlockPos neighborPos, BlockPos pos) {
+	public void redstoneUpdate(World world, BlockPos pos) {
 		if (world.isReceivingRedstonePower(pos)) {
 			world.setBlockState(pos,
 					world.getBlockState(pos).with(Shutter.POWERED, true));
@@ -36,5 +37,10 @@ public class GoldShutter extends Shutter {
 			world.setBlockState(pos, world.getBlockState(pos)
 					.with(Shutter.POWERED, false));
 		}
+	}
+
+	@Override
+	public boolean canUpdate(WorldAccess world, BlockPos pos) {
+		return super.canUpdate(world, pos);
 	}
 }
