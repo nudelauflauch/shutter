@@ -9,7 +9,7 @@ public enum ShutterDouble implements StringRepresentable {
     RIGHT("right");
 
     private final String name;
-    private ShutterDouble(String name) {
+    ShutterDouble(String name) {
         this.name = name;
     }
 

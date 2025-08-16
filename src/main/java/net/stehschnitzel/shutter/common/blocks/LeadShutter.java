@@ -27,7 +27,7 @@ public class LeadShutter extends Shutter {
 
 				super.playSound(pLevel, pPos);
 			}
-			return InteractionResult.sidedSuccess(pLevel.isClientSide);
+			return InteractionResult.SUCCESS_SERVER;
 		}
 		return InteractionResult.FAIL;
 	}

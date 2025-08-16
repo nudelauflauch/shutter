@@ -1,7 +1,8 @@
 {
   "parent": "shutter:block/template_shutter_2",
+  "render_type": "minecraft:solid",
   "textures": {
-    "particle": "minecraft:block/oak_planks",
-    "texture": "shutter:block/oak_shutter_normal"
+    "base": "shutter:block/oak_shutter",
+    "particle": "minecraft:block/oak_planks"
   }
 }

@@ -1,13 +1,9 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
+  "category": "building",
   "ingredients": [
-    {
-      "item": "shutter:gold_shutter"
-    },
-    {
-      "item": "minecraft:netherite_scrap"
-    }
+    "shutter:gold_shutter",
+    "minecraft:netherite_scrap"
   ],
   "result": {
     "count": 1,

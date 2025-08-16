@@ -1,13 +1,9 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
+  "category": "building",
   "ingredients": [
-    {
-      "item": "minecraft:honeycomb"
-    },
-    {
-      "item": "shutter:oxidized_copper_shutter"
-    }
+    "minecraft:honeycomb",
+    "shutter:oxidized_copper_shutter"
   ],
   "result": {
     "count": 1,

@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
@@ -21,7 +22,7 @@ public class GoldShutter extends Shutter {
 				&& !pLevel.getBlockState(pPos).getValue(Shutter.POWERED)) {
 			this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 			this.playSound(pLevel, pPos);
-			return InteractionResult.sidedSuccess(pLevel.isClientSide);
+			return InteractionResult.SUCCESS_SERVER;
 		}
 		return InteractionResult.FAIL;
 	}
@@ -34,7 +35,7 @@ public class GoldShutter extends Shutter {
 	}
 
 	@Override
-	public void redstoneUpdate(Level pLevel, BlockPos pFromPos, BlockPos pPos) {
+	public void redstoneUpdate(Level pLevel, Block neigborBlock, BlockPos pPos) {
 		if (pLevel.hasNeighborSignal(pPos)) {
 			pLevel.setBlockAndUpdate(pPos,
 					pLevel.getBlockState(pPos).setValue(Shutter.POWERED, true));

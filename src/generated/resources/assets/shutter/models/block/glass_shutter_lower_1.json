@@ -2,7 +2,7 @@
   "parent": "shutter:block/template_shutter_1",
   "render_type": "minecraft:cutout",
   "textures": {
-    "particle": "minecraft:block/glass",
-    "texture": "shutter:block/glass_shutter_lower"
+    "base": "shutter:block/glass_shutter",
+    "particle": "minecraft:block/glass"
   }
 }

@@ -1,10 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "building",
   "key": {
-    "A": {
-      "item": "minecraft:glass_pane"
-    }
+    "A": "minecraft:glass_pane"
   },
   "pattern": [
     "AAA",

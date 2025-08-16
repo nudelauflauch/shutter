@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
@@ -31,7 +32,7 @@ public class SilverShutter extends Shutter {
 	}
 
 	@Override
-	public void redstoneUpdate(Level pLevel, BlockPos pFromPos, BlockPos pPos) {
+	public void redstoneUpdate(Level pLevel, Block neighborBlock, BlockPos pPos) {
 		if (pLevel.hasNeighborSignal(pPos)) {
 			pLevel.setBlockAndUpdate(pPos,
 					pLevel.getBlockState(pPos).setValue(Shutter.POWERED, true));

@@ -1,10 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "building",
   "key": {
-    "A": {
-      "item": "minecraft:weathered_copper"
-    }
+    "A": "minecraft:weathered_copper"
   },
   "pattern": [
     "AAA",

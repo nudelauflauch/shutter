@@ -13,10 +13,10 @@ public class BurnableItem extends BlockItem {
 		super(pBlock, pProperties);
 		this.burnTime = burnTime;
 	}
-	
-	@Override
-	public int getBurnTime(ItemStack itemStack, RecipeType<?> recipeType) {
-		return this.burnTime;
-	}
+
+//	@Override
+//	public int getBurnTime(ItemStack itemStack, RecipeType<?> recipeType) {
+//		return this.burnTime;
+//	}
 
 }
