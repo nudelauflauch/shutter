@@ -3,19 +3,15 @@ package net.stehschnitzel.shutter.datagen;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.ModelProvider;
-import net.minecraft.client.data.models.model.ItemModelUtils;
-import net.minecraft.client.data.models.model.ModelTemplate;
-import net.minecraft.client.data.models.model.ModelTemplates;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Blocks;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import net.stehschnitzel.shutter.ShutterMain;
 import net.stehschnitzel.shutter.datagen.blocks.ShutterBlockModelGenerators;
 import net.stehschnitzel.shutter.init.BlockInit;
 
-public class ShutterBlockModelProvider extends ModelProvider {
+public class ShutterModelProvider extends ModelProvider {
 
-    public ShutterBlockModelProvider(PackOutput output) {
+    public ShutterModelProvider(PackOutput output) {
         super(output, ShutterMain.MOD_ID);
     }
 

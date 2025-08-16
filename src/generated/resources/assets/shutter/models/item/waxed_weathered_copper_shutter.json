@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "shutter:block/weathered_copper_shutter"
+    "layer0": "shutter:item/weathered_copper_shutter"
   }
 }

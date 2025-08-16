@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "shutter:block/bamboo_shutter"
+    "layer0": "shutter:item/bamboo_shutter"
   }
 }

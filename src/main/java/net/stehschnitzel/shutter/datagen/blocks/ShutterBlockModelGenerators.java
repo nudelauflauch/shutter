@@ -1,5 +1,6 @@
 package net.stehschnitzel.shutter.datagen.blocks;
 
+import it.unimi.dsi.fastutil.objects.Object2ReferenceArrayMap;
 import net.minecraft.client.data.models.BlockModelGenerators;
 import net.minecraft.client.data.models.ItemModelOutput;
 import net.minecraft.client.data.models.MultiVariant;
@@ -38,17 +39,26 @@ public class ShutterBlockModelGenerators extends BlockModelGenerators{
                 .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(particle));
     }
 
+    //default shutter call that takes in the block the particle and the renderType
     public void createShutter(BlockModelGenerators blockModels, DeferredBlock<?> deferredBlock, Block particleBlock, String renderType) {
+        //creates the shutter model
         TextureMapping texturemapping = shutterMapping(deferredBlock.get(), particleBlock);
         createShutter(blockModels, deferredBlock, texturemapping, renderType);
-        blockModels.registerSimpleFlatItemModel(deferredBlock.get());
+
+        //registers the item model for the shutter
+        this.registerSimpleItemModel(deferredBlock.get(),
+                createFlatItemModel(deferredBlock.get().asItem()));
     }
 
     //for blocks that look like a different block for example waxed shutters dont have their own textures
     public void createShutter(BlockModelGenerators blockModels, DeferredBlock<?> deferredBlock, DeferredBlock<?> usedTextureBlock, Block particleBlock) {
+        //creates the shutter model
         TextureMapping texturemapping = shutterMapping(usedTextureBlock.get(), particleBlock);
         createShutter(blockModels, deferredBlock, texturemapping, "solid");
-        this.registerSimpleItemModel(deferredBlock.get(), this.createFlatItemModelWithBlockTexture(deferredBlock.get().asItem(), usedTextureBlock.get()));
+
+        //copies the item model form the #usedTextureBlock as the model for the #deferredBlock
+        this.registerSimpleItemModel(deferredBlock.get(),
+                ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(deferredBlock.get().asItem()), TextureMapping.layer0(usedTextureBlock.get().asItem()), this.modelOutput));
     }
 
     //the particle texture is the same as the block texture
@@ -58,15 +68,20 @@ public class ShutterBlockModelGenerators extends BlockModelGenerators{
 
     //uses specific textures for the particle but are all solid
     public void createShutter(BlockModelGenerators blockModels, DeferredBlock<?> deferredBlock, Block particleBlock) {
+        //creates the shutter model
         TextureMapping texturemapping = shutterMapping(deferredBlock.get(), particleBlock);
         createShutter(blockModels, deferredBlock, texturemapping, "solid");
-        blockModels.registerSimpleFlatItemModel(deferredBlock.get());
+
+        //registers the item model for the shutter
+        this.registerSimpleItemModel(deferredBlock.get(),
+                createFlatItemModel(deferredBlock.get().asItem()));
     }
 
     //creates a shutter model and a blockstate for blocks
     public void createShutter(BlockModelGenerators blockModels, DeferredBlock<?> deferredBlock, TextureMapping texturemapping, String renderType) {
         Block shutterBlock = deferredBlock.get();
 
+        //all the different models for every state
         MultiVariant normal_0 = plainVariant(ShutterTemplates.SHUTTER_NORMAL_0
                 .extend().renderType(renderType).build()
                 .create(shutterBlock, texturemapping, modelOutput));
@@ -176,6 +191,7 @@ public class ShutterBlockModelGenerators extends BlockModelGenerators{
                 .extend().renderType(renderType).build()
                 .create(shutterBlock, texturemapping, modelOutput));
 
+        //buildes the blockstate file
         blockModels.blockStateOutput.accept(
                 createShutter(
                         shutterBlock,
@@ -198,6 +214,7 @@ public class ShutterBlockModelGenerators extends BlockModelGenerators{
         );
     }
 
+    //creates the block state fill using the different models and returns the final blockstate
     public static BlockModelDefinitionGenerator createShutter(
             Block block,
             MultiVariant lower_0, MultiVariant lower_1, MultiVariant lower_2,
@@ -224,7 +241,8 @@ public class ShutterBlockModelGenerators extends BlockModelGenerators{
                                     Shutter.DOUBLE_DOOR,
                                     Shutter.OPEN
 
-                                ).generate ((direction, shutterPos, shutterDouble, open) -> {
+                                ).generate (
+                                        (direction, shutterPos, shutterDouble, open) -> {
 
                                     MultiVariant model = null;
                                     switch (shutterPos) {
@@ -278,6 +296,7 @@ public class ShutterBlockModelGenerators extends BlockModelGenerators{
                                             if (open==2 && shutterDouble==ShutterDouble.RIGHT)  { model = normal_right_2; break; }
                                     }
 
+                                    //turns the model using the direction property
                                     switch (direction) {
                                         case Direction.SOUTH: return model.with(Y_ROT_180);
                                         case Direction.EAST: return model.with(Y_ROT_90);
@@ -287,9 +306,5 @@ public class ShutterBlockModelGenerators extends BlockModelGenerators{
                                 }
                         )
                 );
-    }
-
-    public static TextureMapping door(Block block) {
-        return new TextureMapping().put(TextureSlot.TOP, TextureMapping.getBlockTexture(block, "_top")).put(TextureSlot.BOTTOM, TextureMapping.getBlockTexture(block, "_bottom"));
     }
 }
