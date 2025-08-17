@@ -250,35 +250,21 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         }
     }
 
-    public boolean hasRedstonePower(Level level, BlockPos pos) {
-        return hasRedstonePower(level, pos, level.getBlockState(pos).getValue(FACING));
-    }
-
-    public boolean hasRedstonePower(Level level, BlockPos pos, Direction facing) {
-        boolean hasSignal = level.hasNeighborSignal(pos);
-
-        if (facing == Direction.WEST || facing == Direction.EAST) {
-            hasSignal = level.hasNeighborSignal(pos.north()) || level.hasNeighborSignal(pos.south());
-        } else {
-            hasSignal = level.hasNeighborSignal(pos.east()) || level.hasNeighborSignal(pos.west());
-        }
-
-        return hasSignal;
-    }
-
     public void redstoneUpdate(Level pLevel, Block neighborBlock, BlockPos pPos) {
         // For redstone or power
         if (!(neighborBlock instanceof Shutter)) {
             // opening
-            if (hasRedstonePower(pLevel, pPos)
-                    && !pLevel.getBlockState(pPos).getValue(POWERED)) {
+            if (pLevel.hasNeighborSignal(pPos)
+                    && !pLevel.getBlockState(pPos).getValue(POWERED)
+                    && pLevel.getBlockState(pPos).getValue(OPEN) != 2) {
                 setPowered(pLevel, pPos, true);
                 updateRedstone(pLevel, pPos, false);
                 this.playSound(pLevel, pPos);
 
                 // closing
-            } else if (!hasRedstonePower(pLevel, pPos)
-                    && pLevel.getBlockState(pPos).getValue(POWERED)) {
+            } else if (!pLevel.hasNeighborSignal(pPos)
+                    && pLevel.getBlockState(pPos).getValue(POWERED)
+                    && pLevel.getBlockState(pPos).getValue(OPEN) != 0) {
                 setPowered(pLevel, pPos, false);
                 this.update(pLevel, pPos, 0, false);
                 this.playSound(pLevel, pPos, 0);
