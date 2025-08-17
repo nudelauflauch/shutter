@@ -27,9 +27,12 @@ import java.util.Optional;
 
 public class WeatheringCopperShutter extends Shutter implements WeatheringShutter {
     public static final MapCodec<WeatheringCopperShutter> CODEC = RecordCodecBuilder.mapCodec(
-            weatheringState -> weatheringState.group(WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state").forGetter(ChangeOverTimeBlock::getAge), propertiesCodec())
+            weatheringState -> weatheringState.group(
+                    WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state")
+                            .forGetter(ChangeOverTimeBlock::getAge), propertiesCodec())
                     .apply(weatheringState, WeatheringCopperShutter::new)
     );
+
     WeatheringCopper.WeatherState weatherState;
 
     public WeatheringCopperShutter(WeatheringCopper.WeatherState weatherState, Properties properties) {
@@ -39,9 +42,7 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
 
     @Override
     public InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
-        if (!pPlayer.mayBuild()) {
-            return InteractionResult.PASS;
-        } else if (!pPlayer.isCrouching()) {
+        if (!pPlayer.isCrouching()) {
             this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 
             this.playSound(pLevel, pPos);
@@ -83,7 +84,7 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
                 return InteractionResult.FAIL;
             }
         }
-        return InteractionResult.FAIL;
+        return InteractionResult.TRY_WITH_EMPTY_HAND;
     }
 
     @Override

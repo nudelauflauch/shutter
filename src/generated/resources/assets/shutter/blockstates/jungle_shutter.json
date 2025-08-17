@@ -1,183 +1,183 @@
 {
   "variants": {
     "double_door=left,facing=east,half=lower,open=0": {
-      "model": "shutter:block/jungle_shutter_lower_left_0",
+      "model": "shutter:block/jungle_shutter_left_lower_0",
       "y": 90
     },
     "double_door=left,facing=east,half=lower,open=1": {
-      "model": "shutter:block/jungle_shutter_lower_left_1",
+      "model": "shutter:block/jungle_shutter_left_lower_1",
       "y": 90
     },
     "double_door=left,facing=east,half=lower,open=2": {
-      "model": "shutter:block/jungle_shutter_lower_left_2",
+      "model": "shutter:block/jungle_shutter_left_lower_2",
       "y": 90
     },
     "double_door=left,facing=east,half=middle,open=0": {
-      "model": "shutter:block/jungle_shutter_middle_left_0",
+      "model": "shutter:block/jungle_shutter_left_middle_0",
       "y": 90
     },
     "double_door=left,facing=east,half=middle,open=1": {
-      "model": "shutter:block/jungle_shutter_middle_left_1",
+      "model": "shutter:block/jungle_shutter_left_middle_1",
       "y": 90
     },
     "double_door=left,facing=east,half=middle,open=2": {
-      "model": "shutter:block/jungle_shutter_middle_left_2",
+      "model": "shutter:block/jungle_shutter_left_middle_2",
       "y": 90
     },
     "double_door=left,facing=east,half=normal,open=0": {
-      "model": "shutter:block/jungle_shutter_normal_left_0",
+      "model": "shutter:block/jungle_shutter_left_normal_0",
       "y": 90
     },
     "double_door=left,facing=east,half=normal,open=1": {
-      "model": "shutter:block/jungle_shutter_normal_left_1",
+      "model": "shutter:block/jungle_shutter_left_normal_1",
       "y": 90
     },
     "double_door=left,facing=east,half=normal,open=2": {
-      "model": "shutter:block/jungle_shutter_normal_left_2",
+      "model": "shutter:block/jungle_shutter_left_normal_2",
       "y": 90
     },
     "double_door=left,facing=east,half=upper,open=0": {
-      "model": "shutter:block/jungle_shutter_upper_left_0",
+      "model": "shutter:block/jungle_shutter_left_upper_0",
       "y": 90
     },
     "double_door=left,facing=east,half=upper,open=1": {
-      "model": "shutter:block/jungle_shutter_upper_left_1",
+      "model": "shutter:block/jungle_shutter_left_upper_1",
       "y": 90
     },
     "double_door=left,facing=east,half=upper,open=2": {
-      "model": "shutter:block/jungle_shutter_upper_left_2",
+      "model": "shutter:block/jungle_shutter_left_upper_2",
       "y": 90
     },
     "double_door=left,facing=north,half=lower,open=0": {
-      "model": "shutter:block/jungle_shutter_lower_left_0"
+      "model": "shutter:block/jungle_shutter_left_lower_0"
     },
     "double_door=left,facing=north,half=lower,open=1": {
-      "model": "shutter:block/jungle_shutter_lower_left_1"
+      "model": "shutter:block/jungle_shutter_left_lower_1"
     },
     "double_door=left,facing=north,half=lower,open=2": {
-      "model": "shutter:block/jungle_shutter_lower_left_2"
+      "model": "shutter:block/jungle_shutter_left_lower_2"
     },
     "double_door=left,facing=north,half=middle,open=0": {
-      "model": "shutter:block/jungle_shutter_middle_left_0"
+      "model": "shutter:block/jungle_shutter_left_middle_0"
     },
     "double_door=left,facing=north,half=middle,open=1": {
-      "model": "shutter:block/jungle_shutter_middle_left_1"
+      "model": "shutter:block/jungle_shutter_left_middle_1"
     },
     "double_door=left,facing=north,half=middle,open=2": {
-      "model": "shutter:block/jungle_shutter_middle_left_2"
+      "model": "shutter:block/jungle_shutter_left_middle_2"
     },
     "double_door=left,facing=north,half=normal,open=0": {
-      "model": "shutter:block/jungle_shutter_normal_left_0"
+      "model": "shutter:block/jungle_shutter_left_normal_0"
     },
     "double_door=left,facing=north,half=normal,open=1": {
-      "model": "shutter:block/jungle_shutter_normal_left_1"
+      "model": "shutter:block/jungle_shutter_left_normal_1"
     },
     "double_door=left,facing=north,half=normal,open=2": {
-      "model": "shutter:block/jungle_shutter_normal_left_2"
+      "model": "shutter:block/jungle_shutter_left_normal_2"
     },
     "double_door=left,facing=north,half=upper,open=0": {
-      "model": "shutter:block/jungle_shutter_upper_left_0"
+      "model": "shutter:block/jungle_shutter_left_upper_0"
     },
     "double_door=left,facing=north,half=upper,open=1": {
-      "model": "shutter:block/jungle_shutter_upper_left_1"
+      "model": "shutter:block/jungle_shutter_left_upper_1"
     },
     "double_door=left,facing=north,half=upper,open=2": {
-      "model": "shutter:block/jungle_shutter_upper_left_2"
+      "model": "shutter:block/jungle_shutter_left_upper_2"
     },
     "double_door=left,facing=south,half=lower,open=0": {
-      "model": "shutter:block/jungle_shutter_lower_left_0",
+      "model": "shutter:block/jungle_shutter_left_lower_0",
       "y": 180
     },
     "double_door=left,facing=south,half=lower,open=1": {
-      "model": "shutter:block/jungle_shutter_lower_left_1",
+      "model": "shutter:block/jungle_shutter_left_lower_1",
       "y": 180
     },
     "double_door=left,facing=south,half=lower,open=2": {
-      "model": "shutter:block/jungle_shutter_lower_left_2",
+      "model": "shutter:block/jungle_shutter_left_lower_2",
       "y": 180
     },
     "double_door=left,facing=south,half=middle,open=0": {
-      "model": "shutter:block/jungle_shutter_middle_left_0",
+      "model": "shutter:block/jungle_shutter_left_middle_0",
       "y": 180
     },
     "double_door=left,facing=south,half=middle,open=1": {
-      "model": "shutter:block/jungle_shutter_middle_left_1",
+      "model": "shutter:block/jungle_shutter_left_middle_1",
       "y": 180
     },
     "double_door=left,facing=south,half=middle,open=2": {
-      "model": "shutter:block/jungle_shutter_middle_left_2",
+      "model": "shutter:block/jungle_shutter_left_middle_2",
       "y": 180
     },
     "double_door=left,facing=south,half=normal,open=0": {
-      "model": "shutter:block/jungle_shutter_normal_left_0",
+      "model": "shutter:block/jungle_shutter_left_normal_0",
       "y": 180
     },
     "double_door=left,facing=south,half=normal,open=1": {
-      "model": "shutter:block/jungle_shutter_normal_left_1",
+      "model": "shutter:block/jungle_shutter_left_normal_1",
       "y": 180
     },
     "double_door=left,facing=south,half=normal,open=2": {
-      "model": "shutter:block/jungle_shutter_normal_left_2",
+      "model": "shutter:block/jungle_shutter_left_normal_2",
       "y": 180
     },
     "double_door=left,facing=south,half=upper,open=0": {
-      "model": "shutter:block/jungle_shutter_upper_left_0",
+      "model": "shutter:block/jungle_shutter_left_upper_0",
       "y": 180
     },
     "double_door=left,facing=south,half=upper,open=1": {
-      "model": "shutter:block/jungle_shutter_upper_left_1",
+      "model": "shutter:block/jungle_shutter_left_upper_1",
       "y": 180
     },
     "double_door=left,facing=south,half=upper,open=2": {
-      "model": "shutter:block/jungle_shutter_upper_left_2",
+      "model": "shutter:block/jungle_shutter_left_upper_2",
       "y": 180
     },
     "double_door=left,facing=west,half=lower,open=0": {
-      "model": "shutter:block/jungle_shutter_lower_left_0",
+      "model": "shutter:block/jungle_shutter_left_lower_0",
       "y": 270
     },
     "double_door=left,facing=west,half=lower,open=1": {
-      "model": "shutter:block/jungle_shutter_lower_left_1",
+      "model": "shutter:block/jungle_shutter_left_lower_1",
       "y": 270
     },
     "double_door=left,facing=west,half=lower,open=2": {
-      "model": "shutter:block/jungle_shutter_lower_left_2",
+      "model": "shutter:block/jungle_shutter_left_lower_2",
       "y": 270
     },
     "double_door=left,facing=west,half=middle,open=0": {
-      "model": "shutter:block/jungle_shutter_middle_left_0",
+      "model": "shutter:block/jungle_shutter_left_middle_0",
       "y": 270
     },
     "double_door=left,facing=west,half=middle,open=1": {
-      "model": "shutter:block/jungle_shutter_middle_left_1",
+      "model": "shutter:block/jungle_shutter_left_middle_1",
       "y": 270
     },
     "double_door=left,facing=west,half=middle,open=2": {
-      "model": "shutter:block/jungle_shutter_middle_left_2",
+      "model": "shutter:block/jungle_shutter_left_middle_2",
       "y": 270
     },
     "double_door=left,facing=west,half=normal,open=0": {
-      "model": "shutter:block/jungle_shutter_normal_left_0",
+      "model": "shutter:block/jungle_shutter_left_normal_0",
       "y": 270
     },
     "double_door=left,facing=west,half=normal,open=1": {
-      "model": "shutter:block/jungle_shutter_normal_left_1",
+      "model": "shutter:block/jungle_shutter_left_normal_1",
       "y": 270
     },
     "double_door=left,facing=west,half=normal,open=2": {
-      "model": "shutter:block/jungle_shutter_normal_left_2",
+      "model": "shutter:block/jungle_shutter_left_normal_2",
       "y": 270
     },
     "double_door=left,facing=west,half=upper,open=0": {
-      "model": "shutter:block/jungle_shutter_upper_left_0",
+      "model": "shutter:block/jungle_shutter_left_upper_0",
       "y": 270
     },
     "double_door=left,facing=west,half=upper,open=1": {
-      "model": "shutter:block/jungle_shutter_upper_left_1",
+      "model": "shutter:block/jungle_shutter_left_upper_1",
       "y": 270
     },
     "double_door=left,facing=west,half=upper,open=2": {
-      "model": "shutter:block/jungle_shutter_upper_left_2",
+      "model": "shutter:block/jungle_shutter_left_upper_2",
       "y": 270
     },
     "double_door=none,facing=east,half=lower,open=0": {
@@ -361,183 +361,183 @@
       "y": 270
     },
     "double_door=right,facing=east,half=lower,open=0": {
-      "model": "shutter:block/jungle_shutter_lower_right_0",
+      "model": "shutter:block/jungle_shutter_right_lower_0",
       "y": 90
     },
     "double_door=right,facing=east,half=lower,open=1": {
-      "model": "shutter:block/jungle_shutter_lower_right_1",
+      "model": "shutter:block/jungle_shutter_right_lower_1",
       "y": 90
     },
     "double_door=right,facing=east,half=lower,open=2": {
-      "model": "shutter:block/jungle_shutter_lower_right_2",
+      "model": "shutter:block/jungle_shutter_right_lower_2",
       "y": 90
     },
     "double_door=right,facing=east,half=middle,open=0": {
-      "model": "shutter:block/jungle_shutter_middle_right_0",
+      "model": "shutter:block/jungle_shutter_right_middle_0",
       "y": 90
     },
     "double_door=right,facing=east,half=middle,open=1": {
-      "model": "shutter:block/jungle_shutter_middle_right_1",
+      "model": "shutter:block/jungle_shutter_right_middle_1",
       "y": 90
     },
     "double_door=right,facing=east,half=middle,open=2": {
-      "model": "shutter:block/jungle_shutter_middle_right_2",
+      "model": "shutter:block/jungle_shutter_right_middle_2",
       "y": 90
     },
     "double_door=right,facing=east,half=normal,open=0": {
-      "model": "shutter:block/jungle_shutter_normal_right_0",
+      "model": "shutter:block/jungle_shutter_right_normal_0",
       "y": 90
     },
     "double_door=right,facing=east,half=normal,open=1": {
-      "model": "shutter:block/jungle_shutter_normal_right_1",
+      "model": "shutter:block/jungle_shutter_right_normal_1",
       "y": 90
     },
     "double_door=right,facing=east,half=normal,open=2": {
-      "model": "shutter:block/jungle_shutter_normal_right_2",
+      "model": "shutter:block/jungle_shutter_right_normal_2",
       "y": 90
     },
     "double_door=right,facing=east,half=upper,open=0": {
-      "model": "shutter:block/jungle_shutter_upper_right_0",
+      "model": "shutter:block/jungle_shutter_right_upper_0",
       "y": 90
     },
     "double_door=right,facing=east,half=upper,open=1": {
-      "model": "shutter:block/jungle_shutter_upper_right_1",
+      "model": "shutter:block/jungle_shutter_right_upper_1",
       "y": 90
     },
     "double_door=right,facing=east,half=upper,open=2": {
-      "model": "shutter:block/jungle_shutter_upper_right_2",
+      "model": "shutter:block/jungle_shutter_right_upper_2",
       "y": 90
     },
     "double_door=right,facing=north,half=lower,open=0": {
-      "model": "shutter:block/jungle_shutter_lower_right_0"
+      "model": "shutter:block/jungle_shutter_right_lower_0"
     },
     "double_door=right,facing=north,half=lower,open=1": {
-      "model": "shutter:block/jungle_shutter_lower_right_1"
+      "model": "shutter:block/jungle_shutter_right_lower_1"
     },
     "double_door=right,facing=north,half=lower,open=2": {
-      "model": "shutter:block/jungle_shutter_lower_right_2"
+      "model": "shutter:block/jungle_shutter_right_lower_2"
     },
     "double_door=right,facing=north,half=middle,open=0": {
-      "model": "shutter:block/jungle_shutter_middle_right_0"
+      "model": "shutter:block/jungle_shutter_right_middle_0"
     },
     "double_door=right,facing=north,half=middle,open=1": {
-      "model": "shutter:block/jungle_shutter_middle_right_1"
+      "model": "shutter:block/jungle_shutter_right_middle_1"
     },
     "double_door=right,facing=north,half=middle,open=2": {
-      "model": "shutter:block/jungle_shutter_middle_right_2"
+      "model": "shutter:block/jungle_shutter_right_middle_2"
     },
     "double_door=right,facing=north,half=normal,open=0": {
-      "model": "shutter:block/jungle_shutter_normal_right_0"
+      "model": "shutter:block/jungle_shutter_right_normal_0"
     },
     "double_door=right,facing=north,half=normal,open=1": {
-      "model": "shutter:block/jungle_shutter_normal_right_1"
+      "model": "shutter:block/jungle_shutter_right_normal_1"
     },
     "double_door=right,facing=north,half=normal,open=2": {
-      "model": "shutter:block/jungle_shutter_normal_right_2"
+      "model": "shutter:block/jungle_shutter_right_normal_2"
     },
     "double_door=right,facing=north,half=upper,open=0": {
-      "model": "shutter:block/jungle_shutter_upper_right_0"
+      "model": "shutter:block/jungle_shutter_right_upper_0"
     },
     "double_door=right,facing=north,half=upper,open=1": {
-      "model": "shutter:block/jungle_shutter_upper_right_1"
+      "model": "shutter:block/jungle_shutter_right_upper_1"
     },
     "double_door=right,facing=north,half=upper,open=2": {
-      "model": "shutter:block/jungle_shutter_upper_right_2"
+      "model": "shutter:block/jungle_shutter_right_upper_2"
     },
     "double_door=right,facing=south,half=lower,open=0": {
-      "model": "shutter:block/jungle_shutter_lower_right_0",
+      "model": "shutter:block/jungle_shutter_right_lower_0",
       "y": 180
     },
     "double_door=right,facing=south,half=lower,open=1": {
-      "model": "shutter:block/jungle_shutter_lower_right_1",
+      "model": "shutter:block/jungle_shutter_right_lower_1",
       "y": 180
     },
     "double_door=right,facing=south,half=lower,open=2": {
-      "model": "shutter:block/jungle_shutter_lower_right_2",
+      "model": "shutter:block/jungle_shutter_right_lower_2",
       "y": 180
     },
     "double_door=right,facing=south,half=middle,open=0": {
-      "model": "shutter:block/jungle_shutter_middle_right_0",
+      "model": "shutter:block/jungle_shutter_right_middle_0",
       "y": 180
     },
     "double_door=right,facing=south,half=middle,open=1": {
-      "model": "shutter:block/jungle_shutter_middle_right_1",
+      "model": "shutter:block/jungle_shutter_right_middle_1",
       "y": 180
     },
     "double_door=right,facing=south,half=middle,open=2": {
-      "model": "shutter:block/jungle_shutter_middle_right_2",
+      "model": "shutter:block/jungle_shutter_right_middle_2",
       "y": 180
     },
     "double_door=right,facing=south,half=normal,open=0": {
-      "model": "shutter:block/jungle_shutter_normal_right_0",
+      "model": "shutter:block/jungle_shutter_right_normal_0",
       "y": 180
     },
     "double_door=right,facing=south,half=normal,open=1": {
-      "model": "shutter:block/jungle_shutter_normal_right_1",
+      "model": "shutter:block/jungle_shutter_right_normal_1",
       "y": 180
     },
     "double_door=right,facing=south,half=normal,open=2": {
-      "model": "shutter:block/jungle_shutter_normal_right_2",
+      "model": "shutter:block/jungle_shutter_right_normal_2",
       "y": 180
     },
     "double_door=right,facing=south,half=upper,open=0": {
-      "model": "shutter:block/jungle_shutter_upper_right_0",
+      "model": "shutter:block/jungle_shutter_right_upper_0",
       "y": 180
     },
     "double_door=right,facing=south,half=upper,open=1": {
-      "model": "shutter:block/jungle_shutter_upper_right_1",
+      "model": "shutter:block/jungle_shutter_right_upper_1",
       "y": 180
     },
     "double_door=right,facing=south,half=upper,open=2": {
-      "model": "shutter:block/jungle_shutter_upper_right_2",
+      "model": "shutter:block/jungle_shutter_right_upper_2",
       "y": 180
     },
     "double_door=right,facing=west,half=lower,open=0": {
-      "model": "shutter:block/jungle_shutter_lower_right_0",
+      "model": "shutter:block/jungle_shutter_right_lower_0",
       "y": 270
     },
     "double_door=right,facing=west,half=lower,open=1": {
-      "model": "shutter:block/jungle_shutter_lower_right_1",
+      "model": "shutter:block/jungle_shutter_right_lower_1",
       "y": 270
     },
     "double_door=right,facing=west,half=lower,open=2": {
-      "model": "shutter:block/jungle_shutter_lower_right_2",
+      "model": "shutter:block/jungle_shutter_right_lower_2",
       "y": 270
     },
     "double_door=right,facing=west,half=middle,open=0": {
-      "model": "shutter:block/jungle_shutter_middle_right_0",
+      "model": "shutter:block/jungle_shutter_right_middle_0",
       "y": 270
     },
     "double_door=right,facing=west,half=middle,open=1": {
-      "model": "shutter:block/jungle_shutter_middle_right_1",
+      "model": "shutter:block/jungle_shutter_right_middle_1",
       "y": 270
     },
     "double_door=right,facing=west,half=middle,open=2": {
-      "model": "shutter:block/jungle_shutter_middle_right_2",
+      "model": "shutter:block/jungle_shutter_right_middle_2",
       "y": 270
     },
     "double_door=right,facing=west,half=normal,open=0": {
-      "model": "shutter:block/jungle_shutter_normal_right_0",
+      "model": "shutter:block/jungle_shutter_right_normal_0",
       "y": 270
     },
     "double_door=right,facing=west,half=normal,open=1": {
-      "model": "shutter:block/jungle_shutter_normal_right_1",
+      "model": "shutter:block/jungle_shutter_right_normal_1",
       "y": 270
     },
     "double_door=right,facing=west,half=normal,open=2": {
-      "model": "shutter:block/jungle_shutter_normal_right_2",
+      "model": "shutter:block/jungle_shutter_right_normal_2",
       "y": 270
     },
     "double_door=right,facing=west,half=upper,open=0": {
-      "model": "shutter:block/jungle_shutter_upper_right_0",
+      "model": "shutter:block/jungle_shutter_right_upper_0",
       "y": 270
     },
     "double_door=right,facing=west,half=upper,open=1": {
-      "model": "shutter:block/jungle_shutter_upper_right_1",
+      "model": "shutter:block/jungle_shutter_right_upper_1",
       "y": 270
     },
     "double_door=right,facing=west,half=upper,open=2": {
-      "model": "shutter:block/jungle_shutter_upper_right_2",
+      "model": "shutter:block/jungle_shutter_right_upper_2",
       "y": 270
     }
   }

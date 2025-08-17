@@ -1,8 +1,0 @@
-{
-  "parent": "shutter:block/template_shutter_left_2",
-  "render_type": "minecraft:solid",
-  "textures": {
-    "base": "shutter:block/copper_shutter",
-    "particle": "minecraft:block/copper_block"
-  }
-}

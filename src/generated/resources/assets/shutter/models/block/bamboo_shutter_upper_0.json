@@ -1,5 +1,5 @@
 {
-  "parent": "shutter:block/template_shutter_0",
+  "parent": "shutter:block/template_shutter_upper_0",
   "render_type": "minecraft:solid",
   "textures": {
     "base": "shutter:block/bamboo_shutter",

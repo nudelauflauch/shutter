@@ -1,0 +1,8 @@
+{
+  "parent": "shutter:block/template_shutter_right_normal_0",
+  "render_type": "minecraft:solid",
+  "textures": {
+    "base": "shutter:block/bamboo_shutter",
+    "particle": "minecraft:block/bamboo_block"
+  }
+}
