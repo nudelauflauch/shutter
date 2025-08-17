@@ -40,18 +40,17 @@ public class Shutter extends AbstractShutter {
 
 	@Override
 	protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
-		if (!pPlayer.mayBuild()) {
-			return InteractionResult.PASS;
-		} else if (!pPlayer.isCrouching()
+		if (!pPlayer.isCrouching()
 				&& !this.isMetal) {
 
-			this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
-			if (pState.getValue(WATERLOGGED)) {
-				pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
-			}
+			if (this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false)) {
+				if (pState.getValue(WATERLOGGED)) {
+					pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+				}
 
-			this.playSound(pLevel, pPos);
-			return InteractionResult.SUCCESS_SERVER;
+				this.playSound(pLevel, pPos);
+				return InteractionResult.SUCCESS_SERVER;
+			}
 		}
 		return InteractionResult.FAIL;
 	}

@@ -70,7 +70,8 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         }
     }
 
-    public void update(Level level, BlockPos pos, int state, boolean first) {
+    public boolean update(Level level, BlockPos pos, int state, boolean first) {
+        if (hasPoweredGoldShutter(level, pos)) return false;
         ShutterDouble doorType = level.getBlockState(pos).getValue(DOUBLE_DOOR);
 
         if (doorType == ShutterDouble.NONE) {
@@ -78,6 +79,7 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         } else {
             updateDoubleDoor(level, pos, state, first, doorType);
         }
+        return true;
     }
 
     private void updateSingleDoor(Level level, BlockPos pos, int state, boolean first) {
@@ -185,6 +187,28 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         }
 
         return true;
+    }
+
+    // if a powered gold shutter is inbetween the others all the shutters connected cant update
+    boolean hasPoweredGoldShutter(Level world, BlockPos pos) {
+        boolean[] arr = {true, false};
+
+        for (boolean up : arr) {
+            int y = pos.getY();
+
+            while (y > -70 && y < 330) {
+                BlockPos newPos = new BlockPos(pos.getX(), y, pos.getZ());
+                Block block = world.getBlockState(newPos).getBlock();
+
+                if (block instanceof GoldShutter && world.getBlockState(newPos).getValue(POWERED)) {
+                    return true;
+                } if (!(block instanceof Shutter)) break;
+
+                y = up ? y + 1 : y - 1;
+            }
+        }
+
+        return false;
     }
 
     List<BlockState> getNeighborBlocks(Level level, BlockPos pos) {

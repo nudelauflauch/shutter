@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChangeOverTimeBlock;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.stehschnitzel.shutter.common.blocks.properties.WeatheringShutter;
 import net.stehschnitzel.shutter.init.BlockInit;
@@ -43,10 +44,14 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
     @Override
     public InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
         if (!pPlayer.isCrouching()) {
-            this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
+            if (this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false)) {
+                if (pState.getValue(WATERLOGGED)) {
+                    pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+                }
 
-            this.playSound(pLevel, pPos);
-            return InteractionResult.SUCCESS_SERVER;
+                this.playSound(pLevel, pPos);
+                return InteractionResult.SUCCESS_SERVER;
+            }
         }
         return InteractionResult.FAIL;
     }

@@ -25,10 +25,11 @@ public class SilverShutter extends Shutter {
 	}
 
 	@Override
-	public void update(Level pLevel, BlockPos pPos, int state, boolean first) {
+	public boolean update(Level pLevel, BlockPos pPos, int state, boolean first) {
 		if (pLevel.getBlockState(pPos).getValue(Shutter.POWERED)) {
-			super.update(pLevel, pPos, state, first);
+			return super.update(pLevel, pPos, state, first);
 		}
+		return true;
 	}
 
 	@Override
