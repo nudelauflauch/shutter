@@ -71,7 +71,7 @@ public class BlockInit {
 
 	public static final DeferredBlock<Shutter> IRON_SHUTTER = registerBlock("iron_shutter",
 			registryName -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR).setId(ResourceKey.create(Registries.BLOCK, registryName)), true), false);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR).setId(ResourceKey.create(Registries.BLOCK, registryName)), true, false), false);
 
 	public static final DeferredBlock<Shutter> JUNGLE_SHUTTER = registerBlock("jungle_shutter",
 			registryName -> new Shutter(
@@ -145,7 +145,7 @@ public class BlockInit {
 
 	public static final DeferredBlock<Shutter> GLASS_SHUTTER = registerBlock("glass_shutter",
 			registryName -> new Shutter(BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS)
-					.noOcclusion().setId(ResourceKey.create(Registries.BLOCK, registryName)), false));
+					.noOcclusion().setId(ResourceKey.create(Registries.BLOCK, registryName))));
 
 	// outer_end 1.20.1 forge
 //	public static final DeferredBlock<Shutter> AZURE_SHUTTER = registerBlock(

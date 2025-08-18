@@ -11,7 +11,7 @@ import net.minecraft.world.phys.BlockHitResult;
 public class SilverShutter extends Shutter {
 
 	public SilverShutter(Properties properties) {
-		super(properties, true);
+		super(properties, true, false);
 	}
 
 	@Override

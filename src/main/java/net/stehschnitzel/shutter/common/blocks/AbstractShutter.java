@@ -32,10 +32,12 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
     public static final EnumProperty<ShutterDouble> DOUBLE_DOOR = EnumProperty
             .create("double_door", ShutterDouble.class);
     boolean isMetal = false;
+    private boolean cantupdatebyHand;
 
-    public AbstractShutter(Properties properties, boolean isMetal) {
+    public AbstractShutter(Properties properties, boolean isMetal, boolean cantupdatebyHand) {
         super(properties);
         this.isMetal = isMetal;
+        this.cantupdatebyHand = cantupdatebyHand;
         this.registerDefaultState(this.defaultBlockState()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(POWERED, false)
@@ -45,10 +47,15 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
                 .setValue(WATERLOGGED, Boolean.valueOf(false)));
     }
 
+    public boolean getCantUpdateByHand() {
+        return this.cantupdatebyHand;
+    }
+
     void updateRedstone(Level level, BlockPos pos, boolean first) {
         updateRedstone(level, pos, first, level.getBlockState(pos).getValue(DOUBLE_DOOR), level.getBlockState(pos).getValue(FACING));
     }
 
+    //
     void updateRedstone(Level level, BlockPos pos, boolean first, ShutterDouble doorType, Direction facing) {
         if (doorType == ShutterDouble.NONE) {
             if (stateTwoPossible(level, pos, first, false)) {
@@ -70,8 +77,16 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         }
     }
 
+    //updates the shutters to a give state
     public boolean update(Level level, BlockPos pos, int state, boolean first) {
-        if (hasPoweredGoldShutter(level, pos)) return false;
+        if (cantChangeOpen(level, pos) || cantChangeOpen(level, getNeighborShutterPos(level, pos))) {
+            return false;
+        }
+        return updateWithoutChecks(level, pos, state, first);
+    }
+
+    //updates the shutter no matter if there are gold or metallic shutter in between
+    public boolean updateWithoutChecks(Level level, BlockPos pos, int state, boolean first) {
         ShutterDouble doorType = level.getBlockState(pos).getValue(DOUBLE_DOOR);
 
         if (doorType == ShutterDouble.NONE) {
@@ -164,48 +179,51 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         for (boolean up : arr) {
             int y = pos.getY();
 
-            while (y > -70 && y < 330) {
-                BlockPos newPos = new BlockPos(pos.getX(), y, pos.getZ());
-                Block block = level.getBlockState(newPos).getBlock();
-
-                if (block instanceof Shutter shutter) {
-                    if (isDouble && level.getBlockState(newPos).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
-                        break;
-                    }
-                    if (!isDouble && level.getBlockState(newPos).getValue(DOUBLE_DOOR) != ShutterDouble.NONE) {
-                        break;
-                    }
-                    if (!shutter.canUpdate(level, newPos)) {
-                        return false;
-                    }
-                } else {
+            Block block = level.getBlockState(pos).getBlock();
+            BlockPos newPos = pos;
+            while (block instanceof Shutter) {
+                if (isDouble && level.getBlockState(newPos).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
                     break;
+                }
+                if (!isDouble && level.getBlockState(newPos).getValue(DOUBLE_DOOR) != ShutterDouble.NONE) {
+                    break;
+                }
+                if (!((Shutter) block).canUpdate(level, newPos)) {
+                    return false;
                 }
 
                 y = up ? y + 1 : y - 1;
+                newPos = new BlockPos(pos.getX(), y, pos.getZ());
+                block = level.getBlockState(newPos).getBlock();
             }
         }
 
         return true;
     }
 
-    // if a powered gold shutter is inbetween the others all the shutters connected cant update
-    boolean hasPoweredGoldShutter(Level world, BlockPos pos) {
+    // if a powered gold shutter or a metallic shutter is in between the others all the shutters so all shutters cant that are connected cant update
+    boolean cantChangeOpen(Level level, BlockPos pos) {
         boolean[] arr = {true, false};
 
         for (boolean up : arr) {
             int y = pos.getY();
 
-            while (y > -70 && y < 330) {
-                BlockPos newPos = new BlockPos(pos.getX(), y, pos.getZ());
-                Block block = world.getBlockState(newPos).getBlock();
+            Block block;
+            BlockPos newPos;
+            do {
+                newPos = new BlockPos(pos.getX(), y, pos.getZ());
+                block = level.getBlockState(newPos).getBlock();
 
-                if (block instanceof GoldShutter && world.getBlockState(newPos).getValue(POWERED)) {
+                if ((block instanceof GoldShutter && level.getBlockState(newPos).getValue(POWERED))
+                    || (block instanceof Shutter shutter && !shutter.getCantUpdateByHand())) {
                     return true;
-                } if (!(block instanceof Shutter)) break;
+                }
 
                 y = up ? y + 1 : y - 1;
-            }
+            } while (block instanceof Shutter &&
+                   level.getBlockState(newPos).getValue(POS) != (up ? ShutterPos.UPPER : ShutterPos.LOWER) &&
+                   level.getBlockState(newPos).getValue(POS) != ShutterPos.NORMAL
+            );
         }
 
         return false;
@@ -268,8 +286,11 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
             case EAST -> {
                 return shutterDouble == ShutterDouble.RIGHT ? pos.south() : pos.north();
             }
-            default -> {
+            case WEST-> {
                 return shutterDouble == ShutterDouble.RIGHT ? pos.north() : pos.south();
+            }
+            default -> {
+                return pos;
             }
         }
     }
@@ -290,7 +311,7 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
                     && pLevel.getBlockState(pPos).getValue(POWERED)
                     && pLevel.getBlockState(pPos).getValue(OPEN) != 0) {
                 setPowered(pLevel, pPos, false);
-                this.update(pLevel, pPos, 0, false);
+                this.updateWithoutChecks(pLevel, pPos, 0, false);
                 this.playSound(pLevel, pPos, 0);
             }
 

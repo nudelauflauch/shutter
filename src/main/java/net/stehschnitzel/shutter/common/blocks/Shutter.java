@@ -26,11 +26,11 @@ import java.util.List;
 public class Shutter extends AbstractShutter {
 
 	public Shutter(Properties properties) {
-		this(properties, false);
+		this(properties, false, true);
 	}
 
-	public Shutter(Properties properties, boolean isMetal) {
-		super(properties, isMetal);
+	public Shutter(Properties properties, boolean isMetal, boolean cantUpdateByHand) {
+		super(properties, isMetal, cantUpdateByHand);
 	}
 
 	@Override

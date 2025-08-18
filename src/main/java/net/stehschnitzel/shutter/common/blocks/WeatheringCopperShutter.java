@@ -37,7 +37,7 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
     WeatheringCopper.WeatherState weatherState;
 
     public WeatheringCopperShutter(WeatheringCopper.WeatherState weatherState, Properties properties) {
-        super(properties, true);
+        super(properties, true, true);
         this.weatherState = weatherState;
     }
 
