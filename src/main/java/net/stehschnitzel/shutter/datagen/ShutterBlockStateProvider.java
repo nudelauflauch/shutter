@@ -52,8 +52,8 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
 
 //        shutterBuilder(BlockInit.LEAD_SHUTTER);
 //        shutterBuilder(BlockInit.SILVER_SHUTTER);
-//        shutterBuilder(BlockInit.RIVER_SHUTTER);
-//        shutterBuilder(BlockInit.DRIFTWOOD_SHUTTER);
+        shutterBuilder(BlockInit.RIVER_SHUTTER);
+        shutterBuilder(BlockInit.DRIFTWOOD_SHUTTER);
         shutterBuilder(BlockInit.BLOSSOM_SHUTTER);
         shutterBuilder(BlockInit.AZURE_SHUTTER);
         shutterBuilder(BlockInit.ANCIENT_SHUTTER);
