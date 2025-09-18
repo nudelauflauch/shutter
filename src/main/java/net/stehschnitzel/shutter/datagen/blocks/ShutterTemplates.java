@@ -102,7 +102,6 @@ public class ShutterTemplates {
             "template_shutter_right_upper_2", "_right_upper_2");
 
     public static ModelTemplate create(String name, String suffix) {
-        ExtendedModelTemplateBuilder.builder().renderType("").build();
         return new ModelTemplate(
                 Optional.of(ModelLocationUtils.decorateBlockModelLocation("shutter:" + name)),
                 Optional.of(suffix),
