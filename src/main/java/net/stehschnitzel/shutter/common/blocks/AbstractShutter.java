@@ -295,9 +295,9 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         }
     }
 
-    public void redstoneUpdate(Level pLevel, Block neighborBlock, BlockPos pPos) {
+    public void redstoneUpdate(Level pLevel, BlockPos neighborBlock, BlockPos pPos) {
         // For redstone or power
-        if (!(neighborBlock instanceof Shutter)) {
+        if (!(pLevel.getBlockState(neighborBlock).getBlock() instanceof Shutter)) {
             // opening
             if (pLevel.hasNeighborSignal(pPos)
                     && !pLevel.getBlockState(pPos).getValue(POWERED)

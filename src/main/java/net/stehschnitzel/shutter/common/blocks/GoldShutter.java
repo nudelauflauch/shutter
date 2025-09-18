@@ -41,7 +41,7 @@ public class GoldShutter extends Shutter {
 	}
 
 	@Override
-	public void redstoneUpdate(Level pLevel, Block neigborBlock, BlockPos pPos) {
+	public void redstoneUpdate(Level pLevel, BlockPos neighborBlock, BlockPos pPos) {
 		if (pLevel.hasNeighborSignal(pPos)) {
 			pLevel.setBlockAndUpdate(pPos,
 					pLevel.getBlockState(pPos).setValue(Shutter.POWERED, true));

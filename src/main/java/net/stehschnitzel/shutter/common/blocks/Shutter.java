@@ -10,6 +10,7 @@ import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Mirror;
 import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
@@ -56,9 +57,58 @@ public class Shutter extends AbstractShutter {
 	}
 
 	@Override
-	protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, @Nullable Orientation orientation, boolean movedByPiston) {
+	protected void updateIndirectNeighbourShapes(BlockState state, LevelAccessor level, BlockPos pos, int flags, int recursionLeft) {
+		super.updateIndirectNeighbourShapes(state, level, pos, flags, recursionLeft);
+	}
 
-		redstoneUpdate(level, neighborBlock, pos);
+	@Override
+	protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, @Nullable Orientation orientation, boolean movedByPiston) {
+		super.neighborChanged(state, level, pos, neighborBlock, orientation, movedByPiston);
+	}
+
+	//updates the position so it
+	private void updatePosNeighborHelper(Level level, BlockPos pos) {
+		if (this.getPosition(level, pos) != level.getBlockState(pos).getValue(POS)) {
+			level.setBlock(pos, level.getBlockState(pos).setValue(POS, this.getPosition(level, pos)), 3);
+		}
+	}
+
+	@Override
+	public int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos) {
+		switch (pState.getValue(OPEN)) {
+			case 1: return 7;
+			case 2: return 15;
+			default: return 0;
+		}
+	}
+
+	@Override
+	public boolean hasAnalogOutputSignal(BlockState pState) {
+		return pState.getValue(OPEN) != 0;
+	}
+
+	@Override
+	public int getSignal(BlockState pState, BlockGetter pLevel, BlockPos pPos, Direction pDirection) {
+		return super.getSignal(pState, pLevel, pPos, pDirection);
+	}
+
+	@Override
+	public void onNeighborChange(BlockState state, LevelReader level, BlockPos pos, BlockPos neighbor) {
+		if (state.getValue(OPEN) != 0 && state.getValue(WATERLOGGED)) {
+			((Level) level).scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+		}
+	}
+
+	@Override
+	public FluidState getFluidState(BlockState pState) {
+		return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
+	}
+
+	@Override
+	protected BlockState updateShape(BlockState state, LevelReader pLevel, ScheduledTickAccess scheduledTickAccess,
+									 BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+		Level level = (Level) pLevel;
+		redstoneUpdate(level, neighborPos, pos);
 		List<BlockState> sideblocks = getNeighborBlocks(level, pos);
 
 		//checks if it should update it double block state
@@ -100,48 +150,10 @@ public class Shutter extends AbstractShutter {
 		}
 
 		//update position
-		if (pos.above().equals(neighborBlock) || pos.below().equals(neighborBlock)) {
+		if (pos.above().equals(neighborPos) || pos.below().equals(neighborPos)) {
 			updatePosNeighborHelper(level, pos);
 		}
 
-		if (state.getValue(OPEN) != 0 && state.getValue(WATERLOGGED)) {
-			level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-		}
-	}
-
-	//updates the position so it
-	private void updatePosNeighborHelper(Level level, BlockPos pos) {
-		if (this.getPosition(level, pos) != level.getBlockState(pos).getValue(POS)) {
-			level.setBlock(pos, level.getBlockState(pos).setValue(POS, this.getPosition(level, pos)), 3);
-		}
-	}
-
-	@Override
-	public int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos) {
-		switch (pState.getValue(OPEN)) {
-			case 1: return 7;
-			case 2: return 15;
-			default: return 0;
-		}
-	}
-
-	@Override
-	public boolean hasAnalogOutputSignal(BlockState pState) {
-		return pState.getValue(OPEN) != 0;
-	}
-
-	@Override
-	public int getSignal(BlockState pState, BlockGetter pLevel, BlockPos pPos, Direction pDirection) {
-		return super.getSignal(pState, pLevel, pPos, pDirection);
-	}
-
-	@Override
-	public FluidState getFluidState(BlockState pState) {
-		return pState.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(pState);
-	}
-
-	@Override
-	protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess scheduledTickAccess, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
 		if (state.getValue(WATERLOGGED)) {
 			scheduledTickAccess.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
 		}
