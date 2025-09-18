@@ -16,7 +16,7 @@ public class WeatheringCopperShutter extends Shutter implements Oxidizable {
     private final OxidationLevel oxidationLevel;
 
     public WeatheringCopperShutter(OxidationLevel oxidationLevel, Settings settings) {
-        super(settings, false);
+        super(settings, false, true);
         this.oxidationLevel = oxidationLevel;
     }
 

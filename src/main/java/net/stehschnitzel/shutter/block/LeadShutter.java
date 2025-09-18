@@ -13,7 +13,7 @@ import java.util.Random;
 public class LeadShutter extends Shutter {
 
 	public LeadShutter(Settings settings) {
-		super(settings, true);
+		super(settings, true, false);
 	}
 
 	@Override

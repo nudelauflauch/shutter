@@ -12,7 +12,7 @@ import net.minecraft.world.WorldAccess;
 public class GoldShutter extends Shutter {
 
 	public GoldShutter(Settings settings) {
-		super(settings, true);
+		super(settings, true, true);
 	}
 
 	@Override

@@ -32,11 +32,12 @@ import java.util.List;
 
 public class Shutter extends AbstractShutter implements Waterloggable{
     public Shutter(Settings settings) {
-        this(settings, false);
+        this(settings, false, true);
     }
 
-    public Shutter(Settings settings, boolean isMetal) {
-        super(settings, isMetal);
+
+    public Shutter(Settings settings, boolean isMetal, boolean cantUpdateByHand) {
+        super(settings, isMetal, cantUpdateByHand);
     }
 
     @Override
@@ -49,12 +50,13 @@ public class Shutter extends AbstractShutter implements Waterloggable{
         if (!player.isSneaking()
                 && player.getActiveHand().equals(Hand.MAIN_HAND)
                 && !this.isMetal) {
-            if (!this.update(world, pos, state.get(OPEN) + 1, false)) {
-                return ActionResult.PASS;
+            if (this.update(world, pos, state.get(OPEN) + 1, false)) {
+                if (state.get(WATERLOGGED)) {
+                    world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
+                }
+                this.playSound(world, pos);
+                return ActionResult.SUCCESS_SERVER;
             }
-
-            this.playSound(world, pos);
-            return ActionResult.SUCCESS_SERVER;
         }
         return ActionResult.FAIL;
     }

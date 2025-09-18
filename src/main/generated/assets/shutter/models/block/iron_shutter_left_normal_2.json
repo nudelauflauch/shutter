@@ -1,0 +1,7 @@
+{
+  "parent": "shutter:block/template_shutter_left_normal_2",
+  "textures": {
+    "base": "shutter:block/iron_shutter",
+    "particle": "shutter:block/iron_shutter"
+  }
+}

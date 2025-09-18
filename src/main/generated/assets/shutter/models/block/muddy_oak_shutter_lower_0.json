@@ -1,0 +1,7 @@
+{
+  "parent": "shutter:block/template_shutter_lower_0",
+  "textures": {
+    "base": "shutter:block/muddy_oak_shutter",
+    "particle": "shutter:block/muddy_oak_shutter"
+  }
+}

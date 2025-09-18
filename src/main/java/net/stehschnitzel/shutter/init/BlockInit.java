@@ -58,7 +58,7 @@ public class BlockInit {
             AZALEA_SHUTTER, Shutter::new);
 
     public static final Block IRON_SHUTTER = registerBlock("iron_shutter",
-            Blocks.IRON_DOOR, properties -> new Shutter(properties.strength(5.0F), true));
+            Blocks.IRON_DOOR, properties -> new Shutter(properties.strength(5.0F), true, false));
 
     public static final Block JUNGLE_SHUTTER = registerBlock("jungle_shutter",
             AZALEA_SHUTTER, Shutter::new);

@@ -57,22 +57,22 @@ public class ShutterItemGroup {
         if (FabricLoader.getInstance().isModLoaded("goodending")) {
             registerGoodEnding(items);
         }
-//        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
-//            registerCreate(items);
-//            registerEcologics(items);
-//            registerEndergetic(items);
-//            registerOuterEnd(items);
-//            registerQuark(items);
-//            registerSupplementaries(items);
-//            registerTwigs(items);
-//            registerOreganized(items);
-//            registerAutumnity(items);
-//            registerEnvironmental(items);
-//            registerSnowySpirit(items);
-//            registerUpdateAquatic(items);
-//            registerGoodEnding(items);
-//            registerBeachParty(items);
-//        }
+        if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+            registerCreate(items);
+            registerEcologics(items);
+            registerEndergetic(items);
+            registerOuterEnd(items);
+            registerQuark(items);
+            registerSupplementaries(items);
+            registerTwigs(items);
+            registerOreganized(items);
+            registerAutumnity(items);
+            registerEnvironmental(items);
+            registerSnowySpirit(items);
+            registerUpdateAquatic(items);
+            registerGoodEnding(items);
+            registerBeachParty(items);
+        }
     }
 
     private static void registerMinecraftShutters(ItemGroup.Entries items) {

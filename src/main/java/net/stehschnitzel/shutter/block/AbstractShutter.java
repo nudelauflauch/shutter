@@ -30,10 +30,12 @@ abstract class AbstractShutter extends Block {
     public static final EnumProperty<ShutterDouble> DOUBLE_DOOR = EnumProperty
             .of("double_door", ShutterDouble.class);
     boolean isMetal = false;
+    private boolean cantupdatebyHand;
 
-    public AbstractShutter(Settings settings, boolean isMetal) {
+    public AbstractShutter(Settings settings, boolean isMetal, boolean cantupdatebyHand) {
         super(settings);
         this.isMetal = isMetal;
+        this.cantupdatebyHand = cantupdatebyHand;
         this.setDefaultState(this.getStateManager().getDefaultState()
                 .with(FACING, Direction.NORTH)
                 .with(POWERED, false)
@@ -41,6 +43,10 @@ abstract class AbstractShutter extends Block {
                 .with(POS, ShutterPos.NORMAL)
                 .with(DOUBLE_DOOR, ShutterDouble.NONE)
                 .with(WATERLOGGED, false));
+    }
+
+    public boolean getCantUpdateByHand() {
+        return this.cantupdatebyHand;
     }
 
     void updateRedstone(World world, BlockPos pos, boolean first) {
@@ -68,9 +74,15 @@ abstract class AbstractShutter extends Block {
         }
     }
 
+    //updates the shutters to a give state
     public boolean update(World world, BlockPos pos, int state, boolean first) {
-        //returns if it has a gold shutter wich blocks all the other shutters
-        if (hasPoweredGoldShutter(world, pos)) return false;
+        if (cantChangeOpen(world, pos) || cantChangeOpen(world, getNeighborShutterPos(world, pos))) {
+            return false;
+        }
+        return updateWithoutChecks(world, pos, state, first);
+    }
+
+    public boolean updateWithoutChecks(World world, BlockPos pos, int state, boolean first) {
         ShutterDouble doorType = world.getBlockState(pos).get(DOUBLE_DOOR);
 
         if (doorType == ShutterDouble.NONE) {
@@ -108,28 +120,6 @@ abstract class AbstractShutter extends Block {
             updateAll(world, pos, 0, first, true);
             updateAll(world, neighborPos, 0, first, true);
         }
-    }
-
-    // if a powered gold shutter is inbetween the others all the shutters connected cant update
-    boolean hasPoweredGoldShutter(World world, BlockPos pos) {
-        boolean[] arr = {true, false};
-
-        for (boolean up : arr) {
-            int y = pos.getY();
-
-            while (y > -70 && y < 330) {
-                BlockPos newPos = new BlockPos(pos.getX(), y, pos.getZ());
-                Block block = world.getBlockState(newPos).getBlock();
-
-                if (block instanceof GoldShutter && world.getBlockState(newPos).get(POWERED)) {
-                    return true;
-                } if (!(block instanceof Shutter)) break;
-
-                y = up ? y + 1 : y - 1;
-            }
-        }
-
-        return false;
     }
 
     boolean stateTwoPossibleDouble(World world, BlockPos pos, boolean first) {
@@ -209,6 +199,34 @@ abstract class AbstractShutter extends Block {
         }
 
         return true;
+    }
+
+    // if a powered gold shutter is inbetween the others all the shutters connected cant update
+    boolean cantChangeOpen(World world, BlockPos pos) {
+        boolean[] arr = {true, false};
+
+        for (boolean up : arr) {
+            int y = pos.getY();
+
+            Block block;
+            BlockPos newPos;
+            do {
+                newPos = new BlockPos(pos.getX(), y, pos.getZ());
+                block = world.getBlockState(newPos).getBlock();
+
+                if ((block instanceof GoldShutter && world.getBlockState(newPos).get(POWERED))
+                        || (block instanceof Shutter shutter && !shutter.getCantUpdateByHand())) {
+                    return true;
+                }
+
+                y = up ? y + 1 : y - 1;
+            } while (block instanceof Shutter &&
+                    world.getBlockState(newPos).get(POS) != (up ? ShutterPos.UPPER : ShutterPos.LOWER) &&
+                    world.getBlockState(newPos).get(POS) != ShutterPos.NORMAL
+            );
+        }
+
+        return false;
     }
 
     List<BlockState> getNeighborBlocks(WorldAccess world, BlockPos pos) {

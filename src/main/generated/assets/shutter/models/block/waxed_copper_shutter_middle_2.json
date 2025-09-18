@@ -1,0 +1,7 @@
+{
+  "parent": "shutter:block/template_shutter_middle_2",
+  "textures": {
+    "base": "shutter:block/copper_shutter",
+    "particle": "shutter:block/copper_shutter"
+  }
+}

@@ -1,6 +1,5 @@
 package net.stehschnitzel.shutter.block;
 
-import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.ActionResult;
@@ -12,7 +11,7 @@ import net.minecraft.world.World;
 public class SilverShutter extends Shutter {
 
 	public SilverShutter(Settings settings) {
-		super(settings, true);
+		super(settings, true, false);
 	}
 
 	@Override
@@ -31,8 +30,6 @@ public class SilverShutter extends Shutter {
 
 	@Override
 	public boolean update(World world, BlockPos pos, int state, boolean first) {
-		if (hasPoweredGoldShutter(world, pos)) return false;
-
 		if (world.getBlockState(pos).get(Shutter.POWERED)) {
 			super.update(world, pos, state, first);
 		}

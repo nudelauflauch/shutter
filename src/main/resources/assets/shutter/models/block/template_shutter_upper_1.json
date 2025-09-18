@@ -1,0 +1,45 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"base": "#base",
+		"particle": "#particle"
+	},
+	"elements": [
+		{
+			"from": [14, 0, 0],
+			"to": [16, 16, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [15, 0, 1]},
+			"faces": {
+				"north": {"uv": [0, 0.33333, 0.33333, 3], "texture": "#base"},
+				"east": {"uv": [1.5, 0.33333, 2.83333, 3], "texture": "#base"},
+				"south": {"uv": [2.66667, 0.33333, 3, 3], "texture": "#base"},
+				"west": {"uv": [0.16667, 0.33333, 1.5, 3], "texture": "#base"},
+				"up": {"uv": [1.5, 0, 2.83333, 0.33333], "rotation": 270, "texture": "#base"},
+				"down": {"uv": [1.5, 3, 2.83333, 3.33333], "rotation": 90, "texture": "#base"}
+			}
+		},
+		{
+			"from": [0, 0, 0],
+			"to": [2, 16, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1, 0, 1]},
+			"faces": {
+				"north": {"uv": [0, 0.33333, 0.33333, 3], "texture": "#base"},
+				"east": {"uv": [1.5, 0.33333, 2.83333, 3], "texture": "#base"},
+				"south": {"uv": [2.66667, 0.33333, 3, 3], "texture": "#base"},
+				"west": {"uv": [0.16667, 0.33333, 1.5, 3], "texture": "#base"},
+				"up": {"uv": [0.16667, 0, 1.5, 0.33333], "rotation": 90, "texture": "#base"},
+				"down": {"uv": [0.16667, 3, 1.5, 3.33333], "rotation": 270, "texture": "#base"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "VoxelShapes",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1]
+		}
+	]
+}
