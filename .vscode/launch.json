@@ -1,0 +1,65 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "runClient",
+      "request": "launch",
+      "mainClass": "net.minecraftforge.bootstrap.ForgeBootstrap",
+      "projectName": "shutters1.21.1",
+      "cwd": "${workspaceFolder}\\run",
+      "vmArgs": "-Dforge.logging.console.level\u003ddebug -Dforge.logging.markers\u003dREGISTRIES -Dnet.minecraftforge.gradle.GradleStart.srg.srg-mcp\u003dE:\\dev\\minecraft\\shutter\\shutters1.21.1\\build\\createSrgToMcp\\output.srg -Dmixin.env.remapRefMap\u003dtrue -Dmixin.env.refMapRemappingFile\u003dE:\\dev\\minecraft\\shutter\\shutters1.21.1\\build\\createSrgToMcp\\output.srg -Dforge.enabledGameTestNamespaces\u003dshutter -Dforge.enableGameTest\u003dtrue -Djava.net.preferIPv6Addresses\u003dsystem -XX:HeapDumpPath\u003dMojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump",
+      "args": "--launchTarget forge_userdev_client --version MOD_DEV --assetIndex 17 --assetsDir C:\\Users\\felix\\.gradle\\caches\\forge_gradle\\assets --gameDir . --mixin.config mixins.shutter.json",
+      "env": {
+        "MOD_CLASSES": "${workspaceFolder}\\build\\sourcesSets\\main",
+        "MCP_MAPPINGS": "parchment_2024.11.17-1.21.1"
+      },
+      "preLaunchTask": "prepareRunClientCompile"
+    },
+    {
+      "type": "java",
+      "name": "runData",
+      "request": "launch",
+      "mainClass": "net.minecraftforge.bootstrap.ForgeBootstrap",
+      "projectName": "shutters1.21.1",
+      "cwd": "${workspaceFolder}\\run-data",
+      "vmArgs": "-Dforge.logging.console.level\u003ddebug -Dforge.logging.markers\u003dREGISTRIES -Dnet.minecraftforge.gradle.GradleStart.srg.srg-mcp\u003dE:\\dev\\minecraft\\shutter\\shutters1.21.1\\build\\createSrgToMcp\\output.srg -Dmixin.env.remapRefMap\u003dtrue -Dmixin.env.refMapRemappingFile\u003dE:\\dev\\minecraft\\shutter\\shutters1.21.1\\build\\createSrgToMcp\\output.srg -Djava.net.preferIPv6Addresses\u003dsystem",
+      "args": "--launchTarget forge_userdev_data --assetIndex 17 --assetsDir C:\\Users\\felix\\.gradle\\caches\\forge_gradle\\assets --gameDir . --mod shutter --all --output E:\\dev\\minecraft\\shutter\\shutters1.21.1\\src\\generated\\resources --existing E:\\dev\\minecraft\\shutter\\shutters1.21.1\\src\\main\\resources --mixin.config mixins.shutter.json",
+      "env": {
+        "MOD_CLASSES": "${workspaceFolder}\\build\\sourcesSets\\main",
+        "MCP_MAPPINGS": "parchment_2024.11.17-1.21.1"
+      },
+      "preLaunchTask": "prepareRunDataCompile"
+    },
+    {
+      "type": "java",
+      "name": "runGameTestServer",
+      "request": "launch",
+      "mainClass": "net.minecraftforge.bootstrap.ForgeBootstrap",
+      "projectName": "shutters1.21.1",
+      "cwd": "${workspaceFolder}\\run",
+      "vmArgs": "-Dforge.logging.console.level\u003ddebug -Dforge.logging.markers\u003dREGISTRIES -Dnet.minecraftforge.gradle.GradleStart.srg.srg-mcp\u003dE:\\dev\\minecraft\\shutter\\shutters1.21.1\\build\\createSrgToMcp\\output.srg -Dmixin.env.remapRefMap\u003dtrue -Dmixin.env.refMapRemappingFile\u003dE:\\dev\\minecraft\\shutter\\shutters1.21.1\\build\\createSrgToMcp\\output.srg -Dforge.enabledGameTestNamespaces\u003dshutter -Djava.net.preferIPv6Addresses\u003dsystem",
+      "args": "--launchTarget forge_userdev_server_gametest --gameDir . --mixin.config mixins.shutter.json",
+      "env": {
+        "MOD_CLASSES": "${workspaceFolder}\\build\\sourcesSets\\main",
+        "MCP_MAPPINGS": "parchment_2024.11.17-1.21.1"
+      },
+      "preLaunchTask": "prepareRunGameTestServerCompile"
+    },
+    {
+      "type": "java",
+      "name": "runServer",
+      "request": "launch",
+      "mainClass": "net.minecraftforge.bootstrap.ForgeBootstrap",
+      "projectName": "shutters1.21.1",
+      "cwd": "${workspaceFolder}\\run",
+      "vmArgs": "-Dforge.logging.console.level\u003ddebug -Dforge.logging.markers\u003dREGISTRIES -Dnet.minecraftforge.gradle.GradleStart.srg.srg-mcp\u003dE:\\dev\\minecraft\\shutter\\shutters1.21.1\\build\\createSrgToMcp\\output.srg -Dmixin.env.remapRefMap\u003dtrue -Dmixin.env.refMapRemappingFile\u003dE:\\dev\\minecraft\\shutter\\shutters1.21.1\\build\\createSrgToMcp\\output.srg -Dforge.enabledGameTestNamespaces\u003dshutter -Dforge.enableGameTest\u003dtrue -Djava.net.preferIPv6Addresses\u003dsystem",
+      "args": "--launchTarget forge_userdev_server --gameDir . --nogui --mixin.config mixins.shutter.json",
+      "env": {
+        "MOD_CLASSES": "${workspaceFolder}\\build\\sourcesSets\\main",
+        "MCP_MAPPINGS": "parchment_2024.11.17-1.21.1"
+      },
+      "preLaunchTask": "prepareRunServerCompile"
+    }
+  ]
+}

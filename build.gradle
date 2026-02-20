@@ -19,18 +19,26 @@ java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
     mappings channel: mapping_channel, version: mapping_version
-    //mappings channel: 'official', version: '1.21.1'
     reobf = false
     copyIdeResources = true
-
     runs {
+        // applies to all the run configs below
         configureEach {
             workingDirectory project.file('run')
 
+            // Recommended logging data for a userdev environment
+            // The markers can be added/remove as needed separated by commas.
+            // "SCAN": For mods scan.
+            // "REGISTRIES": For firing of registry events.
+            // "REGISTRYDUMP": For getting the contents of all registries.
             property 'forge.logging.markers', 'REGISTRIES'
 
+            // Recommended logging level for the console
+            // You can set various levels here.
+            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
         }
+
         client {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', mod_id
@@ -41,6 +49,9 @@ minecraft {
             args '--nogui'
         }
 
+        // This run config launches GameTestServer and runs all registered gametests, then exits.
+        // By default, the server will crash when no gametests are provided.
+        // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
             property 'forge.enabledGameTestNamespaces', mod_id
         }
@@ -86,20 +97,49 @@ dependencies {
     // Mixins
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
 
-    //addonds for testing
-//    runtimeOnly fg.deobf("curse.maven:ecologics-570463:${ecolo_version}")
-//    runtimeOnly fg.deobf("curse.maven:ecologics-570463:${ecolo_version}")
-//    runtimeOnly fg.deobf("curse.maven:supplementaries-412082:${supp_version}")
-//    compileOnly fg.deobf("curse.maven:effortless-building-302113:4979130")
-    
-    // JEI
-    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
-    //compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
-    // at runtime, use the full JEI jar for Forge
-    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
+    // X/XX 1.21.1
+//    implementation fg.deobf("curse.maven:lets-do-beachparty-858691:5320668")
+    // X/X/X 1.21.1
+//    implementation fg.deobf("curse.maven:the-outer_end-430404:5812948")
+    // X/X/X 1.21.1
+    //implementation fg.deobf("curse.maven:quark-243121:5594847")
+    // X/X/fabric 1.21.1
+    //implementation fg.deobf("curse.maven:ecologics-570463:4857272")
+    // X/X/X 1.21.1
+//    implementation fg.deobf("curse.maven:oreganized-769203:5890510")
+    // X/X/X 1.21.1
+//    implementation fg.deobf("curse.maven:twigs-496913:4998195")
+    // X/X/X 1.21.1
+//    implementation fg.deobf("curse.maven:autumnity-365045:5292346")
+    // X/X/fabric 1.21.1
+//    implementation fg.deobf("curse.maven:snowy-spirit-566142:5928029")
+    // X/X/X 1.21.1
+//    implementation fg.deobf("curse.maven:upgrade-aquatic-326895:5615651")
+    // X/X/X 1.21.1
+//    compileOnly fg.deobf("curse.maven:good-ending-690161:5024405")
+    // X/X/X 1.21.1
+//    implementation fg.deobf("curse.maven:environmental-388992:6060255")
+    // X/X/X 1.21.1
+//    implementation fg.deobf("curse.maven:endergetic-291509:6157658")
+    // X/X/X 1.21.1
+//    implementation fg.deobf("curse.maven:caverns-and-chasms-438005:6040957")
 
-    //so mc runnins at this version
-    implementation('net.sf.jopt-simple:jopt-simple:5.0.4') { version { strictly '5.0.4' } }
+    //additions for the mods
+//    implementation fg.deobf("curse.maven:architectury-api-419699:5137938")
+//    implementation fg.deobf("curse.maven:zeta-968868:5597406")
+//    implementation fg.deobf("curse.maven:do-api-864599:5468182")
+//    implementation fg.deobf("curse.maven:selene-499980:6034621")
+//    implementation fg.deobf("curse.maven:blueprint-382216:5292242")
+
+    //additions for me
+//    implementation fg.deobf("curse.maven:effortless-building-302113:4979130")
+//    implementation fg.deobf("curse.maven:open-loader-354339:5368592")
+
+    // JEI
+//    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
+//    compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
+    // at runtime, use the full JEI jar for Forge
+//    runtimeOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}"))
 }
 
 tasks.named('processResources', ProcessResources).configure {
@@ -108,7 +148,7 @@ tasks.named('processResources', ProcessResources).configure {
             forge_version: forge_version, forge_version_range: forge_version_range,
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
-            mod_authors: mod_authors, mod_description: mod_description
+            mod_authors: mod_authors, mod_description: mod_description,
     ]
     inputs.properties replaceProperties
 

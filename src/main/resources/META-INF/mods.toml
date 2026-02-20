@@ -5,14 +5,14 @@ issueTrackerURL="https://github.com/nudelauflauch/shutter/issues"
 
 [[mods]]
 
-modId="${mod_id}" #mandatory
-version="${mod_version}" #mandatory
-displayName="${mod_name}" #mandatory
+modId="${mod_id}"
+version="${mod_version}"
+displayName="${mod_name}"
 
 credits="Thanks go to Nudelauflauch for the textures and to all who translated the mod to different languages"
 authors= "${mod_authors}"
 
-logoFile= "assets/shutter/textures/gui/main.png"
+logoFile="assets/shutter/textures/gui/main.png"
 
 description='''
 ${mod_description}
