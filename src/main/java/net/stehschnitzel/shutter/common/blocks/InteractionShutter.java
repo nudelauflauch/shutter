@@ -4,7 +4,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -23,6 +25,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterDouble;
 import net.stehschnitzel.shutter.init.BlockInit;
+
+import java.util.Arrays;
 
 public class InteractionShutter extends Block {
 
@@ -131,13 +135,34 @@ public class InteractionShutter extends Block {
         BlockPos[] neighbourPos = {pPos.north(), pPos.south(), pPos.west(), pPos.east()};
         for (BlockPos localPos : neighbourPos) {
             if (pLevel.getBlockState(localPos).getBlock() instanceof Shutter) {
+                pLevel.addFreshEntity(new ItemEntity(
+                        (Level) pLevel,
+                        localPos.getX(), localPos.getY(), localPos.getZ(),
+                        new ItemStack(pLevel.getBlockState(localPos).getBlock().asItem()),
+                        0, 0.2f, 0));
                 pLevel.setBlock(localPos, Blocks.AIR.defaultBlockState(), 127);
+
+
+                //to destroy the interact shutter on the other side
+                BlockPos[] neighbourOfShutterPos = {localPos.north(), localPos.south(), localPos.west(), localPos.east()};
+                for (BlockPos localPosNew : neighbourOfShutterPos) {
+                    if (pLevel.getBlockState(localPosNew).getBlock() instanceof InteractionShutter) {
+                        pLevel.setBlock(localPosNew, Blocks.AIR.defaultBlockState(), 127);
+                    }
+                }
             }
         }
     }
 
     @Override
     protected void spawnDestroyParticles(Level pLevel, Player pPlayer, BlockPos pPos, BlockState pState) {
+        BlockPos[] neighbourPos = {pPos.north(), pPos.south(), pPos.west(), pPos.east()};
+        for (BlockPos localPos : neighbourPos) {
+
+            if (pLevel.getBlockState(localPos).getBlock() instanceof Shutter shutter) {
+                pLevel.levelEvent(pPlayer, 2001, localPos, getId(pLevel.getBlockState(localPos)));
+            }
+        }
     }
 
     @Override
