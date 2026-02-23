@@ -220,4 +220,8 @@ public class CreativTabInit{
 //			}
 		}
 	}
+
+    public static void register(IEventBus bus) {
+        TABS.register(bus);
+    }
 }

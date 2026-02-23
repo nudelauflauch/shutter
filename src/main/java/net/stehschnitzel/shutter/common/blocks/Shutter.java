@@ -159,7 +159,19 @@ public class Shutter extends AbstractShutter {
 		return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
 	}
 
-	@Override
+    @Override
+    public void destroy(LevelAccessor pLevel, BlockPos pPos, BlockState pState) {
+        if (pState.getValue(OPEN) == 2) {
+            BlockPos[] neighbourPos = {pPos.north(), pPos.south(), pPos.west(), pPos.east()};
+            for (BlockPos localPos : neighbourPos) {
+                if (pLevel.getBlockState(localPos).getBlock() instanceof InteractionShutter) {
+                    pLevel.setBlock(localPos, Blocks.AIR.defaultBlockState(), 127);
+                }
+            }
+        }
+    }
+
+    @Override
 	public BlockState getStateForPlacement(BlockPlaceContext pContext) {
 		FluidState fluidstate = pContext.getLevel().getFluidState(pContext.getClickedPos());
 		BlockPos blockpos = pContext.getClickedPos();
@@ -204,12 +216,18 @@ public class Shutter extends AbstractShutter {
 			updateRedstone(level, blockpos, true, isdoubleDoor, direction);
 		}
 
-		return this.defaultBlockState()
-				.setValue(FACING, direction)
-				.setValue(POWERED, Boolean.valueOf(neighbor_has_signal))
-				.setValue(POS, getPosition(level, blockpos, isdoubleDoor))
-				.setValue(DOUBLE_DOOR, isdoubleDoor)
-				.setValue(OPEN, open_state)
-				.setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+        BlockState returnState = this.defaultBlockState()
+                .setValue(FACING, direction)
+                .setValue(POWERED, Boolean.valueOf(neighbor_has_signal))
+                .setValue(POS, getPosition(level, blockpos, isdoubleDoor))
+                .setValue(DOUBLE_DOOR, isdoubleDoor)
+                .setValue(OPEN, open_state)
+                .setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
+
+        if (open_state == 2) {
+            handleInteractBlock(level, blockpos, returnState, open_state);
+        }
+
+		return returnState;
 	}
 }

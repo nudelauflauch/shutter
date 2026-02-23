@@ -14,12 +14,9 @@ public class ShutterMain {
 	public ShutterMain() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 
-
-		BlockInit.MINECRAFT_ITEMS.register(bus);
-		BlockInit.BLOCKS.register(bus);
+		BlockInit.register(bus);
 		SoundInit.register(bus);
-		CreativTabInit.TABS.register(bus);
-		CreativTabInit.registerDeferredItemRegister(bus);
+        CreativTabInit.register(bus);
 
 		MinecraftForge.EVENT_BUS.register(this);
 	}

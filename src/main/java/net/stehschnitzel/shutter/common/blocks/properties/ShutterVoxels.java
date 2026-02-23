@@ -12,122 +12,86 @@ public class ShutterVoxels {
 				case EAST :
 					switch (shutterDouble) {
 						case NONE:
-							switch (open) {
-								case 0:
-									return shutter_e_closed();
-								case 1:
-									return shutter_e_semi_opened();
-								default:
-									return shutter_e_fully_opened();
-							}
+                            return switch (open) {
+                                case 0 -> shutter_e_closed();
+                                case 1 -> shutter_e_semi_opened();
+                                default -> shutter_e_fully_opened();
+                            };
 						case LEFT:
-							switch (open) {
-								case 0:
-									return shutter_e_closed();
-								case 1:
-									return shutter_s_closed();
-								default:
-									return shutter_e_big_open();
-							}
+                            return switch (open) {
+                                case 0 -> shutter_e_closed();
+                                case 1 -> shutter_s_closed();
+                                default -> shutter_e_big_open();
+                            };
 						default:
-							switch (open) {
-								case 0:
-									return shutter_e_closed();
-								case 1:
-									return shutter_n_closed();
-								default:
-									return shutter_e_big_rigth_open();
-							}
+                            return switch (open) {
+                                case 0 -> shutter_e_closed();
+                                case 1 -> shutter_n_closed();
+                                default -> shutter_e_big_rigth_open();
+                            };
 					}
 				case SOUTH :
 					switch (shutterDouble) {
 						case NONE:
-							switch (open) {
-								case 0:
-									return shutter_s_closed();
-								case 1:
-									return shutter_s_semi_opened();
-								default:
-									return shutter_s_fully_opened();
-							}
+                            return switch (open) {
+                                case 0 -> shutter_s_closed();
+                                case 1 -> shutter_s_semi_opened();
+                                default -> shutter_s_fully_opened();
+                            };
 						case LEFT:
-							switch (open) {
-								case 0:
-									return shutter_s_closed();
-								case 1:
-									return shutter_w_closed();
-								default:
-									return shutter_s_big_open();
-							}
+                            return switch (open) {
+                                case 0 -> shutter_s_closed();
+                                case 1 -> shutter_w_closed();
+                                default -> shutter_s_big_open();
+                            };
 						default:
-							switch (open) {
-								case 0:
-									return shutter_s_closed();
-								case 1:
-									return shutter_e_closed();
-								default:
-									return shutter_s_big_right_open();
-							}
+                            return switch (open) {
+                                case 0 -> shutter_s_closed();
+                                case 1 -> shutter_e_closed();
+                                default -> shutter_s_big_right_open();
+                            };
 					}
 				case WEST :
 					switch (shutterDouble) {
 						case NONE:
-							switch (open) {
-								case 0:
-									return shutter_w_closed();
-								case 1:
-									return shutter_w_semi_opened();
-								default:
-									return shutter_w_fully_opened();
-							}
+                            return switch (open) {
+                                case 0 -> shutter_w_closed();
+                                case 1 -> shutter_w_semi_opened();
+                                default -> shutter_w_fully_opened();
+                            };
 						case LEFT:
-							switch (open) {
-								case 0:
-									return shutter_w_closed();
-								case 1:
-									return shutter_n_closed();
-								default:
-									return shutter_w_big_open();
-							}
+                            return switch (open) {
+                                case 0 -> shutter_w_closed();
+                                case 1 -> shutter_n_closed();
+                                default -> shutter_w_big_open();
+                            };
 						default:
-							switch (open) {
-								case 0:
-									return shutter_w_closed();
-								case 1:
-									return shutter_s_closed();
-								default:
-									return shutter_w_big_right_open();
-							}
+                            return switch (open) {
+                                case 0 -> shutter_w_closed();
+                                case 1 -> shutter_s_closed();
+                                default -> shutter_w_big_right_open();
+                            };
 					}
 				default :
 					switch (shutterDouble) {
 						case NONE:
-						switch (open) {
-							case 0:
-								return shutter_n_closed();
-							case 1:
-								return shutter_n_semi_opened();
-							default:
-								return shutter_n_fully_opened();
-						}
+                            return switch (open) {
+                                case 0 -> shutter_n_closed();
+                                case 1 -> shutter_n_semi_opened();
+                                default -> shutter_n_fully_opened();
+                            };
 						case LEFT:
-							switch (open) {
-								case 0:
-									return shutter_n_closed();
-								case 1:
-									return shutter_e_closed();
-								default:
-									return shutter_n_big_open();
-							}
+                            return switch (open) {
+                                case 0 -> shutter_n_closed();
+                                case 1 -> shutter_e_closed();
+                                default -> shutter_n_big_open();
+                            };
 						default:
-							switch (open) {
-								case 0:
-									return shutter_n_closed();
-								case 1:
-									return shutter_w_closed();
-								default:
-									return shutter_n_big_right_open();
-							}
+                            return switch (open) {
+                                case 0 -> shutter_n_closed();
+                                case 1 -> shutter_w_closed();
+                                default -> shutter_n_big_right_open();
+                            };
 					}
 			}
 	}

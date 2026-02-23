@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -68,8 +69,30 @@ public class BlockInit {
 	public static final DeferredRegister<Item> ITEMS_CAVES_CHASMS = DeferredRegister
 			.create(ForgeRegistries.ITEMS, ShutterMain.MODID);
 
+    //interaction shutters
+    public static final RegistryObject<Block> INTERACTION_SHUTTER_WOOD = registerBlock("interaction_shutter_wood", () -> new InteractionShutter(
+            BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD).noLootTable().replaceable()));
 
-	// ecologics
+    public static final RegistryObject<Block> INTERACTION_SHUTTER_CRIMSON = registerBlock("interaction_shutter_crimson", () -> new InteractionShutter(
+            BlockBehaviour.Properties.copy(Blocks.CRIMSON_DOOR).noLootTable().replaceable()));
+
+    public static final RegistryObject<Block> INTERACTION_SHUTTER_IRON = registerBlock("interaction_shutter_iron", () -> new InteractionShutter(
+            BlockBehaviour.Properties.copy(Blocks.IRON_DOOR).noLootTable().replaceable()));
+
+    public static final RegistryObject<Block> INTERACTION_SHUTTER_WARPED = registerBlock("interaction_shutter_warped", () -> new InteractionShutter(
+            BlockBehaviour.Properties.copy(Blocks.WARPED_DOOR).noLootTable().replaceable()));
+
+    public static final RegistryObject<Block> INTERACTION_SHUTTER_COPPER = registerBlock("interaction_shutter_copper", () -> new InteractionShutter(
+            BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK).noLootTable().replaceable()));
+
+    public static final RegistryObject<Block> INTERACTION_SHUTTER_NETHERITE = registerBlock("interaction_shutter_netherite", () -> new InteractionShutter(
+            BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noLootTable().replaceable()));
+
+    public static final RegistryObject<Block> INTERACTION_SHUTTER_GLASS = registerBlock("interaction_shutter_glass", () -> new InteractionShutter(
+            BlockBehaviour.Properties.copy(Blocks.GLASS).noLootTable().replaceable()));
+
+
+    // ecologics
 	public static final RegistryObject<Shutter> AZALEA_SHUTTER = registerBlock("azalea_shutter", () -> new Shutter(
 			BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
 
@@ -279,19 +302,24 @@ public class BlockInit {
 					BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)), ITEMS_CAVES_CHASMS);
 
 	// Block
-	private static <T extends Block> RegistryObject<T> registerBlock(
-			String name, Supplier<T> block, DeferredRegister<Item> item_reg) {
-		RegistryObject<T> to_return = BLOCKS.register(name, block);
-		registerBlockItem(name, item_reg, to_return, true);
-		return to_return;
-	}
+    private static <T extends Block> RegistryObject<T> registerBlock(
+            String name, Supplier<T> block) {
+        return BLOCKS.register(name, block);
+    }
 
-	private static <T extends Block> RegistryObject<T> registerBlock(
-			String name, Supplier<T> block, DeferredRegister<Item> item_reg, boolean burnAble) {
-		RegistryObject<T> registryBlock = BLOCKS.register(name, block);
-		registerBlockItem(name, item_reg, registryBlock, burnAble);
-		return registryBlock;
-	}
+    private static <T extends Block> RegistryObject<T> registerBlock(
+            String name, Supplier<T> block, DeferredRegister<Item> item_reg) {
+        RegistryObject<T> to_return = registerBlock(name, block);
+        registerBlockItem(name, item_reg, to_return, true);
+        return to_return;
+    }
+
+    private static <T extends Block> RegistryObject<T> registerBlock(
+            String name, Supplier<T> block, DeferredRegister<Item> item_reg, boolean burnAble) {
+        RegistryObject<T> registryBlock = registerBlock(name, block);
+        registerBlockItem(name, item_reg, registryBlock, burnAble);
+        return registryBlock;
+    }
 
 	private static <T extends Block> RegistryObject<Item> registerBlockItem(
 			String name, DeferredRegister<Item> item_reg, RegistryObject<T> registered_block, boolean burnAble) {
@@ -301,4 +329,10 @@ public class BlockInit {
 			return item_reg.register(name, () -> new BlockItem(registered_block.get(), new Item.Properties()));
 		}
 	}
+
+    public static void register(IEventBus eventBus) {
+        BLOCKS.register(eventBus);
+        MINECRAFT_ITEMS.register(eventBus);
+        CreativTabInit.registerDeferredItemRegister(eventBus);
+    }
 }
