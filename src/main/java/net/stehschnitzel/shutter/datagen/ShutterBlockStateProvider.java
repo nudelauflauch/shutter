@@ -1,16 +1,22 @@
 package net.stehschnitzel.shutter.datagen;
 
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.model.ModelLocationUtils;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
 import net.minecraftforge.client.model.generators.*;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.stehschnitzel.shutter.ShutterMain;
 import net.stehschnitzel.shutter.common.blocks.Shutter;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterDouble;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterPos;
 import net.stehschnitzel.shutter.init.BlockInit;
+
+import java.util.function.Function;
 
 public class ShutterBlockStateProvider extends BlockStateCreator {
 
@@ -36,7 +42,6 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
         shutterBuilder(BlockInit.MUDDY_OAK_SHUTTER);
 
         shutterBuilder(BlockInit.PALM_SHUTTER);
-
 
         shutterBuilder(BlockInit.ACACIA_SHUTTER, "block/acacia_planks");
         shutterBuilder(BlockInit.BAMBOO_SHUTTER, "block/bamboo_planks");
@@ -76,6 +81,25 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
         shutterBuilder(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER, BlockInit.OXIDIZED_COPPER_SHUTTER, "block/oxidized_copper");
         shutterBuilder(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER, BlockInit.WEATHERED_COPPER_SHUTTER, "block/weathered_copper");
 
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_WOOD.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_CRIMSON.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_IRON.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_WARPED.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_COPPER.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_NETHERITE.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_GLASS.get());
+    }
+
+    private void emptyBlock(Block block) {
+        simpleBlock(block, models().cubeAll(key(block).getPath(), ModelLocationUtils.getModelLocation(Blocks.COPPER_BLOCK)));
+    }
+
+    private String name(Block block) {
+        return key(block).getPath();
+    }
+
+    private ResourceLocation key(Block block) {
+        return ForgeRegistries.BLOCKS.getKey(block);
     }
 
     private void shutterBuilder(RegistryObject<Shutter> originalModel, RegistryObject<Shutter> model, String particle) {

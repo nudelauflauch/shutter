@@ -7,14 +7,10 @@ import net.minecraftforge.client.model.generators.ModelBuilder;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.stehschnitzel.shutter.ShutterMain;
 
-public class BlockStateCreator extends BlockStateProvider {
+abstract class BlockStateCreator extends BlockStateProvider {
 
     public BlockStateCreator(PackOutput output, String modid, ExistingFileHelper exFileHelper) {
         super(output, modid, exFileHelper);
-    }
-
-    @Override
-    public void registerStatesAndModels() {
     }
 
     public ModelBuilder shutter_0(String name, String shutter, String particle) {

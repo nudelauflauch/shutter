@@ -1,12 +1,12 @@
 package net.stehschnitzel.shutter;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.protocol.game.ServerboundUseItemOnPacket;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.GlassBlock;
-import net.minecraft.world.level.block.IronBarsBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -37,12 +37,14 @@ public class ShutterMain {
         Level level = event.getLevel();
         BlockPos pos = event.getPos();
         Block block = level.getBlockState(pos).getBlock();
-        if (block instanceof GlassBlock || block instanceof IronBarsBlock) {
+        if (!level.isClientSide() &&
+                (block instanceof GlassBlock || block instanceof IronBarsBlock ||
+                block instanceof FenceBlock || block instanceof FenceGateBlock)) {
             Player player = event.getEntity();
             InteractionHand hand = event.getHand();
             BlockHitResult hit = event.getHitVec();
 
-            if (!level.isClientSide) {
+            if (!(player.getItemInHand(event.getHand()).getItem() instanceof BlockItem)) {
                 BlockPos[] neighbourPos = {pos.north(), pos.south(), pos.west(), pos.east()};
                 for (BlockPos localPos : neighbourPos) {
 

@@ -2,19 +2,42 @@
 	"shutter_open_half": {
 		"subtitle": "sounds.shutter.shutter_open_half",
 		"sounds": [
-			"shutter:shutter_open_half"
+			"shutter:shutter_open_half_1",
+			"shutter:shutter_open_half_2"
 		]
 	},
 	"shutter_open_full": {
 		"subtitle": "sounds.shutter.shutter_open_full",
 		"sounds": [
-			"shutter:shutter_open_full"
+			"shutter:shutter_open_full_1",
+			"shutter:shutter_open_full_2",
+			"shutter:shutter_open_full_3"
 		]
 	},
 	"shutter_close": {
 		"subtitle": "sounds.shutter.shutter_close",
 		"sounds": [
-			"shutter:shutter_close"
+			"shutter:shutter_close_1",
+			"shutter:shutter_close_2"
 		]
-	}
+	},
+
+    "shutter_open_half_metal": {
+      "subtitle": "sounds.shutter.shutter_open_half",
+      "sounds": [
+        "shutter:shutter_open_half_metal"
+      ]
+    },
+      "shutter_open_full_metal": {
+        "subtitle": "sounds.shutter.shutter_open_full",
+        "sounds": [
+          "shutter:shutter_open_full_metal"
+        ]
+      },
+      "shutter_close_metal": {
+        "subtitle": "sounds.shutter.shutter_close",
+        "sounds": [
+          "shutter:shutter_close_metal"
+        ]
+      }
 }
