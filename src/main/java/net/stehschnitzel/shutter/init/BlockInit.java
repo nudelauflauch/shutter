@@ -71,25 +71,25 @@ public class BlockInit {
 
     //interaction shutters
     public static final RegistryObject<Block> INTERACTION_SHUTTER_WOOD = registerBlock("interaction_shutter_wood", () -> new InteractionShutter(
-            BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD).noLootTable().replaceable()));
+            BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD).noLootTable().replaceable().noCollission()));
 
     public static final RegistryObject<Block> INTERACTION_SHUTTER_CRIMSON = registerBlock("interaction_shutter_crimson", () -> new InteractionShutter(
-            BlockBehaviour.Properties.copy(Blocks.CRIMSON_DOOR).noLootTable().replaceable()));
+            BlockBehaviour.Properties.copy(Blocks.CRIMSON_DOOR).noLootTable().replaceable().noCollission()));
 
     public static final RegistryObject<Block> INTERACTION_SHUTTER_IRON = registerBlock("interaction_shutter_iron", () -> new InteractionShutter(
-            BlockBehaviour.Properties.copy(Blocks.IRON_DOOR).noLootTable().replaceable()));
+            BlockBehaviour.Properties.copy(Blocks.IRON_DOOR).noLootTable().replaceable().noCollission()));
 
     public static final RegistryObject<Block> INTERACTION_SHUTTER_WARPED = registerBlock("interaction_shutter_warped", () -> new InteractionShutter(
-            BlockBehaviour.Properties.copy(Blocks.WARPED_DOOR).noLootTable().replaceable()));
+            BlockBehaviour.Properties.copy(Blocks.WARPED_DOOR).noLootTable().replaceable().noCollission()));
 
     public static final RegistryObject<Block> INTERACTION_SHUTTER_COPPER = registerBlock("interaction_shutter_copper", () -> new InteractionShutter(
-            BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK).noLootTable().replaceable()));
+            BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK).noLootTable().replaceable().noCollission()));
 
     public static final RegistryObject<Block> INTERACTION_SHUTTER_NETHERITE = registerBlock("interaction_shutter_netherite", () -> new InteractionShutter(
-            BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noLootTable().replaceable()));
+            BlockBehaviour.Properties.copy(Blocks.NETHERITE_BLOCK).noLootTable().replaceable().noCollission()));
 
     public static final RegistryObject<Block> INTERACTION_SHUTTER_GLASS = registerBlock("interaction_shutter_glass", () -> new InteractionShutter(
-            BlockBehaviour.Properties.copy(Blocks.GLASS).noLootTable().replaceable()));
+            BlockBehaviour.Properties.copy(Blocks.GLASS).noLootTable().replaceable().noCollission()));
 
 
     // ecologics

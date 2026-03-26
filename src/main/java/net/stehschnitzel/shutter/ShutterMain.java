@@ -3,6 +3,7 @@ package net.stehschnitzel.shutter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.game.ServerboundUseItemOnPacket;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.level.Level;
@@ -37,7 +38,8 @@ public class ShutterMain {
         Level level = event.getLevel();
         BlockPos pos = event.getPos();
         Block block = level.getBlockState(pos).getBlock();
-        if (!level.isClientSide() &&
+
+        if (
                 (block instanceof GlassBlock || block instanceof IronBarsBlock ||
                 block instanceof FenceBlock || block instanceof FenceGateBlock)) {
             Player player = event.getEntity();
@@ -50,6 +52,7 @@ public class ShutterMain {
 
                     if (level.getBlockState(localPos).getBlock() instanceof Shutter shutter) {
                         shutter.use(level.getBlockState(localPos), level, localPos, player, hand, hit);
+                        player.swing(InteractionHand.MAIN_HAND);
                     }
                 }
             }

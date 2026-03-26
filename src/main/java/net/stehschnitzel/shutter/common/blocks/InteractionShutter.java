@@ -7,12 +7,11 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -25,6 +24,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterDouble;
 import net.stehschnitzel.shutter.init.BlockInit;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 
@@ -163,6 +163,36 @@ public class InteractionShutter extends Block {
                 pLevel.levelEvent(pPlayer, 2001, localPos, getId(pLevel.getBlockState(localPos)));
             }
         }
+    }
+
+    @Override
+    public BlockState rotate(BlockState pState, Rotation pRotation) {
+        return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState pState, Mirror pMirror) {
+        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
+    }
+
+    @Override
+    public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
+        Direction facing = pContext.getHorizontalDirection();
+        BlockPos pos = pContext.getClickedPos();
+        Level level = pContext.getLevel();
+        boolean isDoubleShutter = false;
+
+        BlockPos[] neighbourPos = {pos.north(), pos.south(), pos.west(), pos.east()};
+        for (BlockPos localPos : neighbourPos) {
+
+            if (level.getBlockState(localPos).getBlock() instanceof Shutter) {
+                isDoubleShutter = level.getBlockState(localPos).getValue(Shutter.DOUBLE_DOOR) != ShutterDouble.NONE;
+            }
+        }
+
+        return this.defaultBlockState()
+                .setValue(FACING, facing)
+                .setValue(DOUBLE_SHUTTER, isDoubleShutter);
     }
 
     @Override
