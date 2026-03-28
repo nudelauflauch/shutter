@@ -3,15 +3,15 @@
 		"subtitle": "sounds.shutter.shutter_open_half",
 		"sounds": [
 			"shutter:shutter_open_half_1",
-			"shutter:shutter_open_half_2"
+			"shutter:shutter_open_half_2",
+			"shutter:shutter_open_half_3"
 		]
 	},
 	"shutter_open_full": {
 		"subtitle": "sounds.shutter.shutter_open_full",
 		"sounds": [
 			"shutter:shutter_open_full_1",
-			"shutter:shutter_open_full_2",
-			"shutter:shutter_open_full_3"
+			"shutter:shutter_open_full_2"
 		]
 	},
 	"shutter_close": {

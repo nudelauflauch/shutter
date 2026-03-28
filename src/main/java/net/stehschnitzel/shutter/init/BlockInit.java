@@ -168,35 +168,35 @@ public class BlockInit {
 
 	public static final RegistryObject<Shutter> COPPER_SHUTTER = registerBlock(
 			"copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED,
-					BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), MINECRAFT_ITEMS, false);
 
 	public static final RegistryObject<Shutter> EXPOSED_COPPER_SHUTTER = registerBlock(
 			"exposed_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED,
-					BlockBehaviour.Properties.copy(Blocks.EXPOSED_COPPER)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), MINECRAFT_ITEMS, false);
 
 	public static final RegistryObject<Shutter> OXIDIZED_COPPER_SHUTTER = registerBlock(
 			"oxidized_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED,
-					BlockBehaviour.Properties.copy(Blocks.OXIDIZED_COPPER)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), MINECRAFT_ITEMS, false);
 
 	public static final RegistryObject<Shutter> WEATHERED_COPPER_SHUTTER = registerBlock(
 			"weathered_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED,
-					BlockBehaviour.Properties.copy(Blocks.WEATHERED_COPPER)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), MINECRAFT_ITEMS, false);
 
 	public static final RegistryObject<Shutter> WAXED_COPPER_SHUTTER = registerBlock(
 			"waxed_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED,
-					BlockBehaviour.Properties.copy(Blocks.COPPER_BLOCK)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), MINECRAFT_ITEMS, false);
 
 	public static final RegistryObject<Shutter> WAXED_EXPOSED_COPPER_SHUTTER = registerBlock(
 			"waxed_exposed_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED,
-					BlockBehaviour.Properties.copy(Blocks.EXPOSED_COPPER)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), MINECRAFT_ITEMS, false);
 
 	public static final RegistryObject<Shutter> WAXED_OXIDIZED_COPPER_SHUTTER = registerBlock(
 			"waxed_oxidized_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED,
-					BlockBehaviour.Properties.copy(Blocks.OXIDIZED_COPPER)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), MINECRAFT_ITEMS, false);
 
 	public static final RegistryObject<Shutter> WAXED_WEATHERED_COPPER_SHUTTER = registerBlock(
 			"waxed_weathered_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED,
-					BlockBehaviour.Properties.copy(Blocks.WEATHERED_COPPER)), MINECRAFT_ITEMS);
+					BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)), MINECRAFT_ITEMS, false);
 
 	//mc but not really
 	public static final RegistryObject<Shutter> GOLD_SHUTTER = registerBlock(

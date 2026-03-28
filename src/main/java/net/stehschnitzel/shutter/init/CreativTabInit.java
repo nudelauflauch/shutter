@@ -128,6 +128,7 @@ public class CreativTabInit{
 
 	private static void registerEcologics(CreativeModeTab.Output items) {
 		items.accept(new ItemStack(BlockInit.CAVERN_AZALEA_SHUTTER.get()));
+		items.accept(new ItemStack(BlockInit.AZALEA_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.COCONUT_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.FLOWERING_AZALEA_SHUTTER.get()));
 		items.accept(new ItemStack(BlockInit.WALNUT_SHUTTER.get()));
