@@ -313,19 +313,7 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
     }
 
     public boolean hasRedstonePower(Level level, BlockPos pos) {
-        return hasRedstonePower(level, pos, level.getBlockState(pos).getValue(FACING));
-    }
-
-    public boolean hasRedstonePower(Level level, BlockPos pos, Direction facing) {
-        boolean hasSignal = level.hasNeighborSignal(pos);
-
-        if (facing == Direction.WEST || facing == Direction.EAST) {
-            hasSignal = level.hasNeighborSignal(pos.north()) || level.hasNeighborSignal(pos.south());
-        } else {
-            hasSignal = level.hasNeighborSignal(pos.east()) || level.hasNeighborSignal(pos.west());
-        }
-
-        return hasSignal;
+        return level.hasNeighborSignal(pos) || level.hasNeighborSignal(pos.below());
     }
 
     public void redstoneUpdate(Level pLevel, BlockPos pFromPos, BlockPos pPos) {
