@@ -23,8 +23,30 @@ public class BlockInit {
 	public static final DeferredRegister<Item> MINECRAFT_ITEMS = DeferredRegister
 			.createItems(ShutterMain.MOD_ID);
 
+    //interaction shutters
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_WOOD = registerBlock("interaction_shutter_wood", () -> new InteractionShutter(
+            BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD).noLootTable().replaceable().noCollission()));
 
-	// ecologics newest 1.20.1 fabric and forge
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_CRIMSON = registerBlock("interaction_shutter_crimson", () -> new InteractionShutter(
+            BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_DOOR).noLootTable().replaceable().noCollission()));
+
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_IRON = registerBlock("interaction_shutter_iron", () -> new InteractionShutter(
+            BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR).noLootTable().replaceable().noCollission()));
+
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_WARPED = registerBlock("interaction_shutter_warped", () -> new InteractionShutter(
+            BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_DOOR).noLootTable().replaceable().noCollission()));
+
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_COPPER = registerBlock("interaction_shutter_copper", () -> new InteractionShutter(
+            BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK).noLootTable().replaceable().noCollission()));
+
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_NETHERITE = registerBlock("interaction_shutter_netherite", () -> new InteractionShutter(
+            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK).noLootTable().replaceable().noCollission()));
+
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_GLASS = registerBlock("interaction_shutter_glass", () -> new InteractionShutter(
+            BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noLootTable().replaceable().noCollission()));
+
+
+    // ecologics newest 1.20.1 fabric and forge
 //	public static final DeferredBlock<Shutter> AZALEA_SHUTTER = registerBlock("azalea_shutter",
 //			() -> new Shutter(
 //			BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)), ITEMS_ECOLOGICS);
