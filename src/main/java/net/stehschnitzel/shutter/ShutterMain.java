@@ -1,12 +1,21 @@
 package net.stehschnitzel.shutter;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import net.stehschnitzel.shutter.common.blocks.Shutter;
 import net.stehschnitzel.shutter.init.BlockInit;
 import net.stehschnitzel.shutter.init.CreativTabInit;
 import net.stehschnitzel.shutter.init.SoundInit;
@@ -38,5 +47,32 @@ public class ShutterMain {
 	public void onServerStarting(ServerStartingEvent event) {
 
 	}
+
+    @SubscribeEvent
+    public void rightClickEvent(PlayerInteractEvent.RightClickBlock event) {
+        Level level = event.getLevel();
+        BlockPos pos = event.getPos();
+        Block block = level.getBlockState(pos).getBlock();
+
+
+
+        if (event.getHand().equals(InteractionHand.MAIN_HAND) &&
+                (block instanceof TransparentBlock || block instanceof IronBarsBlock ||
+                    block instanceof FenceBlock || block instanceof FenceGateBlock)) {
+            Player player = event.getEntity();
+            BlockHitResult hit = event.getHitVec();
+
+            if (!(player.getItemInHand(event.getHand()).getItem() instanceof BlockItem)) {
+                BlockPos[] neighbourPos = {pos.north(), pos.south(), pos.west(), pos.east()};
+                for (BlockPos localPos : neighbourPos) {
+
+                    if (level.getBlockState(localPos).getBlock() instanceof Shutter shutter) {
+                        shutter.useWithoutItem(level.getBlockState(localPos), level, localPos, player, hit);
+                        player.swing(InteractionHand.MAIN_HAND);
+                    }
+                }
+            }
+        }
+    }
 
 }

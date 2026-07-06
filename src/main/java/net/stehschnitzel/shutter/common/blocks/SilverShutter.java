@@ -14,7 +14,7 @@ public class SilverShutter extends Shutter {
 	}
 
 	@Override
-	protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+    public InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
 		if (!pPlayer.isCrouching()
 				&& pLevel.getBlockState(pPos).getValue(Shutter.POWERED)) {
 			this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
