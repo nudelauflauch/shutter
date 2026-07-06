@@ -91,7 +91,7 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
     }
 
     private void emptyBlock(Block block) {
-        simpleBlock(block, models().cubeAll(key(block).getPath(), ModelLocationUtils.getModelLocation(Blocks.COPPER_BLOCK)));
+        simpleBlock(block, models().cubeAll(key(block).getPath(), ModelLocationUtils.getModelLocation(Blocks.OAK_PLANKS)));
     }
 
     private String name(Block block) {
