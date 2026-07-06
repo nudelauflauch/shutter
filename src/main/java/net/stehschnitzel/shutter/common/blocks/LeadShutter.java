@@ -25,7 +25,7 @@ public class LeadShutter extends Shutter {
 			if (rand < 35 && !pLevel.isClientSide()) {
 				super.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 
-				super.playSound(pLevel, pPos);
+				super.playSound(pPlayer, pLevel, pPos);
 			}
 			return InteractionResult.sidedSuccess(pLevel.isClientSide);
 		}

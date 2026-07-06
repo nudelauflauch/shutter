@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "shutter:block/interaction_shutter_iron"
+    }
+  }
+}

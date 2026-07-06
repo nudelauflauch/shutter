@@ -1,11 +1,16 @@
 package net.stehschnitzel.shutter.datagen;
 
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.model.ModelLocationUtils;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.DoorBlock;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.stehschnitzel.shutter.ShutterMain;
 import net.stehschnitzel.shutter.common.blocks.Shutter;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterDouble;
@@ -78,6 +83,21 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
         shutterBuilder(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER, BlockInit.OXIDIZED_COPPER_SHUTTER, "block/oxidized_copper");
         shutterBuilder(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER, BlockInit.WEATHERED_COPPER_SHUTTER, "block/weathered_copper");
 
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_WOOD.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_CRIMSON.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_IRON.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_WARPED.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_COPPER.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_NETHERITE.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_GLASS.get());
+    }
+
+    private void emptyBlock(Block block) {
+        simpleBlock(block, models().cubeAll(key(block).getPath(), ModelLocationUtils.getModelLocation(Blocks.OAK_PLANKS)));
+    }
+
+    private ResourceLocation key(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block);
     }
 
     private void shutterBuilder(Supplier<Shutter> originalModel, Supplier<Shutter> model, String particle) {

@@ -50,7 +50,7 @@ public class Shutter extends AbstractShutter {
                 pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
             }
 
-            this.playSound(pLevel, pPos);
+            this.playSound(pPlayer, pLevel, pPos);
             return InteractionResult.sidedSuccess(pLevel.isClientSide);
         }
         return InteractionResult.FAIL;
@@ -96,7 +96,7 @@ public class Shutter extends AbstractShutter {
                 && !canUpdate(pLevel, pPos)) {
             int open = hasRedstonePower(pLevel, pPos) ? 1 : 0;
             this.update(pLevel, pPos, open, false);
-            this.playSound(pLevel, pPos);
+            this.playSound(null, pLevel, pPos);
         }
 
         // update position

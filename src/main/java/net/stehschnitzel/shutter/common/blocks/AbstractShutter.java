@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -15,6 +16,7 @@ import net.stehschnitzel.shutter.common.blocks.properties.ShutterPos;
 import net.stehschnitzel.shutter.init.BlockInit;
 import net.stehschnitzel.shutter.init.SoundInit;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -306,12 +308,14 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         }
     }
 
-    public void playSound(Level level, BlockPos pos) {
-        playSound(level, pos, level.getBlockState(pos).getValue(OPEN));
+    public void playSound(@Nullable Entity entity, Level level, BlockPos pos) {
+        playSound(entity, level, pos, level.getBlockState(pos).getValue(OPEN));
     }
 
-    public void playSound(Level level, BlockPos pos, int state) {
-        level.playSound(null, pos, this.getSound(state).get(), SoundSource.BLOCKS, 1F, 1F);
+    public void playSound(@Nullable Entity entity, Level level, BlockPos pos, int state) {
+        level.playSound(entity, pos, this.getSound(state).get(), SoundSource.BLOCKS,
+                1F,
+                level.getRandom().nextFloat() * 0.1F + 0.9F);
     }
 
     private Supplier<SoundEvent> getSound(int state) {
@@ -367,19 +371,19 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         if (hasRedstonePower(level, pos) && !level.getBlockState(pos).getValue(POWERED)) {
             setPowered(level, pos, true);
             updateRedstone(level, pos, false);
-            this.playSound(level, pos);
+            this.playSound(null, level, pos);
 
         } else if (!hasRedstonePower(level, pos) && level.getBlockState(pos).getValue(POWERED)) {
             setPowered(level, pos, false);
             this.update(level, pos, 0, false);
-            this.playSound(level, pos, 0);
+            this.playSound(null, level, pos, 0);
         }
 
         if (level.getBlockState(pos).getValue(OPEN) == 1
                 && level.getBlockState(pos).getValue(POWERED)
                 && canUpdate(level, pos)) {
             updateRedstone(level, pos, false);
-            this.playSound(level, pos);
+            this.playSound(null, level, pos);
         }
     }
 
