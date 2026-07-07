@@ -24,25 +24,25 @@ public class BlockInit {
 			.createItems(ShutterMain.MOD_ID);
 
     //interaction shutters
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_WOOD = registerBlock("interaction_shutter_wood", () -> new InteractionShutter(
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_WOOD = registerBlockWithoutItem("interaction_shutter_wood", () -> new InteractionShutter(
             BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD).noLootTable().replaceable().noCollission()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_CRIMSON = registerBlock("interaction_shutter_crimson", () -> new InteractionShutter(
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_CRIMSON = registerBlockWithoutItem("interaction_shutter_crimson", () -> new InteractionShutter(
             BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_DOOR).noLootTable().replaceable().noCollission()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_IRON = registerBlock("interaction_shutter_iron", () -> new InteractionShutter(
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_IRON = registerBlockWithoutItem("interaction_shutter_iron", () -> new InteractionShutter(
             BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR).noLootTable().replaceable().noCollission()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_WARPED = registerBlock("interaction_shutter_warped", () -> new InteractionShutter(
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_WARPED = registerBlockWithoutItem("interaction_shutter_warped", () -> new InteractionShutter(
             BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_DOOR).noLootTable().replaceable().noCollission()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_COPPER = registerBlock("interaction_shutter_copper", () -> new InteractionShutter(
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_COPPER = registerBlockWithoutItem("interaction_shutter_copper", () -> new InteractionShutter(
             BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK).noLootTable().replaceable().noCollission()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_NETHERITE = registerBlock("interaction_shutter_netherite", () -> new InteractionShutter(
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_NETHERITE = registerBlockWithoutItem("interaction_shutter_netherite", () -> new InteractionShutter(
             BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK).noLootTable().replaceable().noCollission()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_GLASS = registerBlock("interaction_shutter_glass", () -> new InteractionShutter(
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_GLASS = registerBlockWithoutItem("interaction_shutter_glass", () -> new InteractionShutter(
             BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noLootTable().replaceable().noCollission()));
 
 
@@ -250,17 +250,22 @@ public class BlockInit {
 	// Block
 	private static <T extends Block> DeferredBlock<T> registerBlock(
 			String name, Supplier<T> block) {
-		DeferredBlock<T> to_return = BLOCKS.register(name, block);
+		DeferredBlock<T> to_return = registerBlockWithoutItem(name, block);
 		registerBlockItem(name, to_return, true);
 		return to_return;
 	}
 
-	private static <T extends Block> DeferredBlock<T> registerBlock(
-			String name, Supplier<T> block, boolean burnAble) {
-		DeferredBlock<T> registryBlock = BLOCKS.register(name, block);
-		registerBlockItem(name, registryBlock, burnAble);
-		return registryBlock;
-	}
+    private static <T extends Block> DeferredBlock<T> registerBlock(
+            String name, Supplier<T> block, boolean burnAble) {
+        DeferredBlock<T> registryBlock = registerBlockWithoutItem(name, block);
+        registerBlockItem(name, registryBlock, burnAble);
+        return registryBlock;
+    }
+
+    private static <T extends Block> DeferredBlock<T> registerBlockWithoutItem(
+            String name, Supplier<T> block) {
+        return BLOCKS.register(name, block);
+    }
 
 	private static <T extends Block> DeferredHolder<Item, BlockItem> registerBlockItem(
 			String name, DeferredBlock<T> registeredBlock, boolean burnAble) {

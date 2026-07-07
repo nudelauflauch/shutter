@@ -99,10 +99,10 @@ public class InteractionShutter extends Block {
         else if (shutterBlock == BlockInit.GLASS_SHUTTER.get()) interactionShutter = BlockInit.INTERACTION_SHUTTER_GLASS.get();
         else  interactionShutter = BlockInit.INTERACTION_SHUTTER_WOOD.get();
 
-        level.setBlockAndUpdate(pos, interactionShutter.defaultBlockState()
+        level.setBlock(pos, interactionShutter.defaultBlockState()
                 .setValue(FACING, facing)
                 .setValue(DOUBLE_SHUTTER, !(ShutterDouble.NONE == sDouble))
-                .setValue(LEFT_SHUTTER, isLeft));
+                .setValue(LEFT_SHUTTER, isLeft), 22);
     }
 
     @Override

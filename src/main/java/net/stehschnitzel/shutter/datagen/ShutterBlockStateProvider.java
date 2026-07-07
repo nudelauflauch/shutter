@@ -10,7 +10,6 @@ import net.minecraft.world.level.block.DoorBlock;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import net.stehschnitzel.shutter.ShutterMain;
 import net.stehschnitzel.shutter.common.blocks.Shutter;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterDouble;
@@ -275,7 +274,7 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
     ) {
         getVariantBuilder(block.get()).forAllStatesExcept(state -> {
             int open = state.getValue(Shutter.OPEN);
-            ShutterPos pos = state.getValue(Shutter.POS);
+            ShutterPos pos = state.getValue(Shutter.SHUTTER_POS);
             ShutterDouble doubleDoor = state.getValue(Shutter.DOUBLE_DOOR);
             int yRot = ((int) state.getValue(DoorBlock.FACING).toYRot()) + 180;
 

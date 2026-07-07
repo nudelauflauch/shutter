@@ -19,6 +19,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterDouble;
+import net.stehschnitzel.shutter.common.blocks.properties.ShutterPos;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterVoxels;
 
 import java.util.List;
@@ -68,20 +69,26 @@ public class Shutter extends AbstractShutter {
             BlockPos left = getNeighborShutterPos(pPos, ShutterDouble.LEFT, pState.getValue(FACING));
 
             if (sideblocks.get(0).getBlock() instanceof Shutter && pPos.equals(getNeighborShutterPos(pLevel, right))) {
-                pLevel.setBlock(pPos, pLevel.getBlockState(pPos).setValue(DOUBLE_DOOR, ShutterDouble.RIGHT), 18);
+                pLevel.setBlock(pPos, pLevel.getBlockState(pPos)
+                        .setValue(DOUBLE_DOOR, ShutterDouble.RIGHT),
+                        18);
 
                 updatePosNeighborHelper(pLevel, pPos);
 
             } else if (sideblocks.get(1).getBlock() instanceof Shutter && pPos.equals(getNeighborShutterPos(pLevel, left))) {
-                pLevel.setBlock(pPos, pLevel.getBlockState(pPos).setValue(DOUBLE_DOOR, ShutterDouble.LEFT), 18);
+                pLevel.setBlock(pPos, pLevel.getBlockState(pPos)
+                        .setValue(DOUBLE_DOOR, ShutterDouble.LEFT),
+                        18);
 
                 updatePosNeighborHelper(pLevel, pPos);
             }
         }
 
-        // resets it to None, if there are no shutters around
+        // resets it to None, if there are no shutters left or right
         if (pState.getValue(DOUBLE_DOOR) == ShutterDouble.LEFT && !(sideblocks.get(1).getBlock() instanceof Shutter)) {
-            pLevel.setBlock(pPos, pLevel.getBlockState(pPos).setValue(DOUBLE_DOOR, ShutterDouble.NONE), 18);
+            pLevel.setBlock(pPos, pLevel.getBlockState(pPos)
+                    .setValue(DOUBLE_DOOR, ShutterDouble.NONE),
+                    18);
 
             updatePosNeighborHelper(pLevel, pPos);
         }
@@ -90,6 +97,7 @@ public class Shutter extends AbstractShutter {
 
             updatePosNeighborHelper(pLevel, pPos);
         }
+
 
         // resets the shutter to 0 when it can't be in state 2
         if (!pLevel.isClientSide && pState.getValue(OPEN) == 2
@@ -110,8 +118,8 @@ public class Shutter extends AbstractShutter {
     }
 
     private void updatePosNeighborHelper(Level level, BlockPos pos) {
-        if (this.getPosition(level, pos) != level.getBlockState(pos).getValue(POS)) {
-            level.setBlock(pos, level.getBlockState(pos).setValue(POS, this.getPosition(level, pos)), 3);
+        if (this.getPosition(level, pos) != level.getBlockState(pos).getValue(SHUTTER_POS)) {
+            level.setBlock(pos, level.getBlockState(pos).setValue(SHUTTER_POS, this.getPosition(level, pos)), 3);
         }
     }
 
@@ -178,51 +186,80 @@ public class Shutter extends AbstractShutter {
 
         int open_state = 0;
         Direction direction = pContext.getHorizontalDirection();
-        List<BlockState> sideBlocks = getNeighborBlocks(level, blockpos, direction);
-        ShutterDouble isdoubleDoor = ShutterDouble.NONE;
+        ShutterDouble doubleDoor = ShutterDouble.NONE;
 
-        // get if the neighbours are also shutters
-        if (sideBlocks.get(0).getBlock() instanceof Shutter && sideBlocks.get(0).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
-            isdoubleDoor = ShutterDouble.RIGHT;
-            open_state = sideBlocks.get(0).getValue(OPEN);
-            if (direction != sideBlocks.get(0).getValue(FACING)) {
-                direction = sideBlocks.get(0).getValue(FACING);
-                isdoubleDoor = ShutterDouble.LEFT;
-            }
-        } else if (sideBlocks.get(1).getBlock() instanceof Shutter && sideBlocks.get(1).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
-            isdoubleDoor = ShutterDouble.LEFT;
-            open_state = sideBlocks.get(1).getValue(OPEN);
-            if (direction != sideBlocks.get(1).getValue(FACING)) {
-                direction = sideBlocks.get(1).getValue(FACING);
-                isdoubleDoor = ShutterDouble.RIGHT;
-            }
-        }
 
+        // copies the direction from upper or lower
         if (this.getBlockBelow(blockpos, level) instanceof Shutter) {
-            open_state = level.getBlockState(blockpos.below()).getValue(OPEN);
             direction = level.getBlockState(blockpos.below()).getValue(FACING);
+
         } else if (this.getBlockAbove(blockpos, level) instanceof Shutter) {
-            open_state = level.getBlockState(blockpos.above()).getValue(OPEN);
             direction = level.getBlockState(blockpos.above()).getValue(FACING);
-        } else if (pContext.getPlayer() != null && pContext.getPlayer().isShiftKeyDown() && isdoubleDoor == ShutterDouble.NONE) {
+
+        } else if (pContext.getPlayer() != null && pContext.getPlayer().isShiftKeyDown()) {
             direction = direction.getOpposite();
         }
+
+
+        List<BlockState> sideBlocks = getNeighborBlocks(level, blockpos, direction);
+
+        // sets double
+        if (sideBlocks.get(0).getBlock() instanceof Shutter && sideBlocks.get(0).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
+            doubleDoor = ShutterDouble.RIGHT;
+            open_state = sideBlocks.getFirst().getValue(OPEN);
+
+            if (direction != sideBlocks.getFirst().getValue(FACING)) {
+                direction = sideBlocks.getFirst().getValue(FACING);
+                doubleDoor = ShutterDouble.LEFT;
+            }
+        } else if (sideBlocks.get(1).getBlock() instanceof Shutter && sideBlocks.get(1).getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
+            doubleDoor = ShutterDouble.LEFT;
+
+
+            if (direction != sideBlocks.get(1).getValue(FACING)) {
+                direction = sideBlocks.get(1).getValue(FACING);
+                doubleDoor = ShutterDouble.RIGHT;
+            }
+        }
+
+        ShutterPos shutterPos = getPosition(level, blockpos, doubleDoor);
+
+        //decides what open state the shutter should be
+        //checks if the connected to the lower one > sets open state
+        //if not it sets open state to neighbour one
+        if (shutterPos != ShutterPos.NORMAL) {
+            if (shutterPos == ShutterPos.LOWER) {
+                open_state = level.getBlockState(blockpos.above()).getValue(OPEN);
+            } else if (shutterPos == ShutterPos.MIDDLE) {
+                open_state = level.getBlockState(blockpos.below()).getValue(OPEN);
+                update(level, blockpos, open_state, true, doubleDoor, direction);
+
+            } else if (shutterPos == ShutterPos.UPPER) {
+                open_state = level.getBlockState(blockpos.below()).getValue(OPEN);
+            }
+            if (doubleDoor != ShutterDouble.NONE) {
+                level.setBlockAndUpdate(getNeighborShutterPos(blockpos, doubleDoor, direction),
+                        level.getBlockState(getNeighborShutterPos(blockpos, doubleDoor, direction))
+                                .setValue(OPEN, open_state));
+            }
+        }
+
 
         boolean neighbor_has_signal = hasRedstonePower(level, blockpos, direction);
 
         if (neighbor_has_signal) {
-            open_state = isdoubleDoor == ShutterDouble.NONE
+            open_state = doubleDoor == ShutterDouble.NONE
                     ? this.stateTwoPossible(level, blockpos, true, true) ? 2 : 1
-                    : this.stateTwoPossibleDouble(level, blockpos, true, isdoubleDoor, direction) ? 2 : 1;
+                    : this.stateTwoPossibleDouble(level, blockpos, true, doubleDoor, direction) ? 2 : 1;
 
-            updateRedstone(level, blockpos, true, isdoubleDoor, direction);
+            updateRedstone(level, blockpos, true, doubleDoor, direction);
         }
 
         BlockState returnState = this.defaultBlockState()
                 .setValue(FACING, direction)
                 .setValue(POWERED, Boolean.valueOf(neighbor_has_signal))
-                .setValue(POS, getPosition(level, blockpos, isdoubleDoor))
-                .setValue(DOUBLE_DOOR, isdoubleDoor)
+                .setValue(SHUTTER_POS, shutterPos)
+                .setValue(DOUBLE_DOOR, doubleDoor)
                 .setValue(OPEN, open_state)
                 .setValue(WATERLOGGED, Boolean.valueOf(fluidstate.getType() == Fluids.WATER));
 

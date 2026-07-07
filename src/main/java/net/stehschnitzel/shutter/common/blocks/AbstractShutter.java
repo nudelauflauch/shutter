@@ -26,7 +26,7 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public static final EnumProperty<ShutterPos> POS =
+    public static final EnumProperty<ShutterPos> SHUTTER_POS =
             EnumProperty.create("half", ShutterPos.class);
 
     public static final IntegerProperty OPEN =
@@ -45,7 +45,7 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
                 .setValue(FACING, Direction.NORTH)
                 .setValue(POWERED, false)
                 .setValue(OPEN, 0)
-                .setValue(POS, ShutterPos.NORMAL)
+                .setValue(SHUTTER_POS, ShutterPos.NORMAL)
                 .setValue(DOUBLE_DOOR, ShutterDouble.NONE)
                 .setValue(WATERLOGGED, false));
     }
@@ -81,12 +81,18 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
     }
 
     public void update(Level level, BlockPos pos, int state, boolean first) {
-        ShutterDouble doorType = level.getBlockState(pos).getValue(DOUBLE_DOOR);
+        update(level, pos, state, first, level.getBlockState(pos));
+    }
 
-        if (doorType == ShutterDouble.NONE) {
+    public void update(Level level, BlockPos pos, int state, boolean first, BlockState blockState) {
+        update(level, pos, state, first, blockState.getValue(DOUBLE_DOOR), blockState.getValue(FACING));
+    }
+
+    public void update(Level level, BlockPos pos, int state, boolean first, ShutterDouble shutterDouble, Direction facing) {
+        if (shutterDouble == ShutterDouble.NONE) {
             updateSingleDoor(level, pos, state, first);
         } else {
-            updateDoubleDoor(level, pos, state, first);
+            updateDoubleDoor(level, pos, state, first, shutterDouble, facing);
         }
     }
 
@@ -94,35 +100,25 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         if (state < 2) {
             updateAll(level, pos, state, first, false);
         } else if (state == 2 && stateTwoPossible(level, pos, first, false)) {
-            updateAll(level, pos, 2, first, false);
+            updateAll(level, pos, state, first, false);
         } else {
             updateAll(level, pos, 0, first, false);
         }
     }
 
-    private void updateDoubleDoor(Level level, BlockPos pos, int state, boolean first) {
-        BlockPos neighborPos = getNeighborShutterPos(level, pos);
+    private void updateDoubleDoor(Level level, BlockPos pos, int state, boolean first, ShutterDouble shutterDouble, Direction facing) {
+        BlockPos neighborPos = getNeighborShutterPos(pos, shutterDouble, facing);
 
         if (state < 2) {
             updateAll(level, pos, state, first, true);
             updateAll(level, neighborPos, state, false, true);
-        } else if (state == 2 && stateTwoPossibleDouble(level, pos, first)) {
+        } else if (state == 2 && stateTwoPossibleDouble(level, pos, first, shutterDouble, facing)) {
             updateAll(level, pos, 2, first, true);
             updateAll(level, neighborPos, 2, false, true);
         } else {
             updateAll(level, pos, 0, first, true);
             updateAll(level, neighborPos, 0, false, true);
         }
-    }
-
-    boolean stateTwoPossibleDouble(Level level, BlockPos pos, boolean first) {
-        return stateTwoPossibleDouble(
-                level,
-                pos,
-                first,
-                level.getBlockState(pos).getValue(DOUBLE_DOOR),
-                level.getBlockState(pos).getValue(FACING)
-        );
     }
 
     boolean stateTwoPossibleDouble(Level level, BlockPos pos, boolean first, ShutterDouble shutterDouble, Direction facing) {
@@ -227,6 +223,7 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         handleInteractBlock(level, pos, level.getBlockState(pos), open);
     }
 
+    //creates interaction shutters
     public static void handleInteractBlock(Level level, BlockPos shutterPos, BlockState state, int open) {
         if (open == 0 || open == 1) {
             BlockPos[] neighbourPos = {
@@ -238,7 +235,7 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
 
             for (BlockPos localPos : neighbourPos) {
                 if (level.getBlockState(localPos).getBlock() instanceof InteractionShutter) {
-                    level.setBlockAndUpdate(localPos, Blocks.AIR.defaultBlockState());
+                    level.setBlock(localPos, Blocks.AIR.defaultBlockState(), 22);
                 }
             }
 
@@ -393,10 +390,10 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
 
     ShutterPos getPosition(Level level, BlockPos pos, ShutterDouble shutterDouble) {
         boolean above = this.getBlockAbove(pos, level) instanceof Shutter
-                && ((shutterDouble == ShutterDouble.NONE
-                && level.getBlockState(pos.above()).getValue(DOUBLE_DOOR) == ShutterDouble.NONE)
-                || (shutterDouble != ShutterDouble.NONE
-                && level.getBlockState(pos.above()).getValue(DOUBLE_DOOR) != ShutterDouble.NONE));
+                && (((shutterDouble == ShutterDouble.NONE
+                        && level.getBlockState(pos.above()).getValue(DOUBLE_DOOR) == ShutterDouble.NONE)
+                    || (shutterDouble != ShutterDouble.NONE
+                        && level.getBlockState(pos.above()).getValue(DOUBLE_DOOR) != ShutterDouble.NONE)));
 
         boolean below = this.getBlockBelow(pos, level) instanceof Shutter
                 && ((shutterDouble == ShutterDouble.NONE
@@ -524,7 +521,7 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(POS);
+        builder.add(SHUTTER_POS);
         builder.add(FACING);
         builder.add(OPEN);
         builder.add(POWERED);
