@@ -101,6 +101,8 @@ dependencies {
     implementation "curse.maven:twigs-496913:8191595"
     // neoforge/X 1.21.1
     implementation "curse.maven:upgrade-aquatic-326895:7115763"
+    // neoforge/X 1.21.1
+    implementation "curse.maven:nature-spirit-1044992:6962784"
 
     //additions for the mods
     implementation "curse.maven:architectury-api-419699:5786327"
@@ -111,6 +113,7 @@ dependencies {
     implementation "curse.maven:selene-499980:8343403"
     implementation "curse.maven:blueprint-382216:8048607"
     implementation "curse.maven:gallery-1173553:8159692"
+    implementation "curse.maven:terrablender-940057:6054947"
 
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
     // at runtime, use the full JEI jar for NeoForge
