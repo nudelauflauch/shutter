@@ -75,7 +75,28 @@ public class ShutterBlockTagProvider extends BlockTagsProvider {
                 .add(BlockInit.STRIPPED_BAMBOO_SHUTTER.get())
 
                 .add(BlockInit.DRIFTWOOD_SHUTTER.get())
-                .add(BlockInit.RIVER_SHUTTER.get());
+                .add(BlockInit.RIVER_SHUTTER.get())
+
+               .add(BlockInit.ASPEN_SHUTTER.get())
+               .add(BlockInit.BLOOMING_PAPER_SHUTTER.get())
+               .add(BlockInit.CEDAR_SHUTTER.get())
+               .add(BlockInit.FIR_SHUTTER.get())
+               .add(BlockInit.FRAMED_PAPER_SHUTTER.get())
+               .add(BlockInit.GHAF_SHUTTER.get())
+               .add(BlockInit.JOSHUA_SHUTTER.get())
+               .add(BlockInit.LARCH_SHUTTER.get())
+               .add(BlockInit.MAHOGANY_SHUTTER.get())
+               .add(BlockInit.NAS_COCONUT_SHUTTER.get())
+               .add(BlockInit.NAS_CYPRESS_SHUTTER.get())
+               .add(BlockInit.NAS_MAPLE_SHUTTER.get())
+               .add(BlockInit.NAS_WILLOW_SHUTTER.get())
+               .add(BlockInit.NAS_WISTERIA_SHUTTER.get())
+               .add(BlockInit.OLIVE_SHUTTER.get())
+               .add(BlockInit.PALO_VERDE_SHUTTER.get())
+               .add(BlockInit.PAPER_SHUTTER.get())
+               .add(BlockInit.REDWOOD_SHUTTER.get())
+               .add(BlockInit.SAXAUL_SHUTTER.get())
+               .add(BlockInit.SUGI_SHUTTER.get());
 
     }
 }

@@ -48,6 +48,28 @@
   "block.shutter.palm_shutter" : "Palm Shutter",
   "block.shutter.cavern_azalea_shutter" : "Caverns Azalea Shutter",
 
+  "block.shutter.aspen_shutter" : "Aspen Shutter",
+  "block.shutter.blooming_paper_shutter" : "Blooming Paper Shutter",
+  "block.shutter.cedar_shutter" : "Cedar Shutter",
+  "block.shutter.fir_shutter" : "Fir Shutter",
+  "block.shutter.framed_paper_shutter" : "Framed Paper Shutter",
+  "block.shutter.ghaf_shutter" : "Ghaf Shutter",
+  "block.shutter.joshua_shutter" : "Joshua Shutter",
+  "block.shutter.larch_shutter" : "Larch Shutter",
+  "block.shutter.mahogany_shutter" : "Mahogany Shutter",
+  "block.shutter.nas_coconut_shutter" : "Coconut Shutter",
+  "block.shutter.nas_cypress_shutter" : "Cypress Shutter",
+  "block.shutter.nas_maple_shutter" : "Maple Shutter",
+  "block.shutter.nas_willow_shutter" : "Willow Shutter",
+  "block.shutter.nas_wisteria_shutter" : "Wisteria Shutter",
+  "block.shutter.olive_shutter" : "Olive Shutter",
+  "block.shutter.palo_verde_shutter" : "Palo_verde Shutter",
+  "block.shutter.paper_shutter" : "Paper Shutter",
+  "block.shutter.redwood_shutter" : "Redwood Shutter",
+  "block.shutter.saxaul_shutter" : "Saxaul Shutter",
+  "block.shutter.sugi_shutter" : "Sugi Shutter",
+
+
   "creativetab.shutter.shutter_tab":"Shutters",
 
   "sounds.shutter.shutter_open_half": "Shutter Open Half",

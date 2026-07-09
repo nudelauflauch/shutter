@@ -83,6 +83,27 @@ public class ShutterItemModelGenerator extends ItemModelProvider {
 
         simpleItem(BlockInit.DRIFTWOOD_SHUTTER);
         simpleItem(BlockInit.RIVER_SHUTTER);
+
+        simpleItem(BlockInit.ASPEN_SHUTTER);
+        simpleItem(BlockInit.BLOOMING_PAPER_SHUTTER);
+        simpleItem(BlockInit.CEDAR_SHUTTER);
+        simpleItem(BlockInit.FIR_SHUTTER);
+        simpleItem(BlockInit.FRAMED_PAPER_SHUTTER);
+        simpleItem(BlockInit.GHAF_SHUTTER);
+        simpleItem(BlockInit.JOSHUA_SHUTTER);
+        simpleItem(BlockInit.LARCH_SHUTTER);
+        simpleItem(BlockInit.MAHOGANY_SHUTTER);
+        simpleItem(BlockInit.NAS_COCONUT_SHUTTER);
+        simpleItem(BlockInit.NAS_CYPRESS_SHUTTER);
+        simpleItem(BlockInit.NAS_MAPLE_SHUTTER);
+        simpleItem(BlockInit.NAS_WILLOW_SHUTTER);
+        simpleItem(BlockInit.NAS_WISTERIA_SHUTTER);
+        simpleItem(BlockInit.OLIVE_SHUTTER);
+        simpleItem(BlockInit.PALO_VERDE_SHUTTER);
+        simpleItem(BlockInit.PAPER_SHUTTER);
+        simpleItem(BlockInit.REDWOOD_SHUTTER);
+        simpleItem(BlockInit.SAXAUL_SHUTTER);
+        simpleItem(BlockInit.SUGI_SHUTTER);
     }
 
     private ItemModelBuilder simpleItem(Supplier<Shutter> item, Supplier<Shutter> originalItem) {

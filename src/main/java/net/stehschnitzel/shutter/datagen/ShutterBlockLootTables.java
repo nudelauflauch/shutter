@@ -80,6 +80,27 @@ public class ShutterBlockLootTables extends BlockLootSubProvider {
         dropSelf(BlockInit.DRIFTWOOD_SHUTTER.get());
         dropSelf(BlockInit.RIVER_SHUTTER.get());
 
+        dropSelf(BlockInit.ASPEN_SHUTTER.get());
+        dropSelf(BlockInit.BLOOMING_PAPER_SHUTTER.get());
+        dropSelf(BlockInit.CEDAR_SHUTTER.get());
+        dropSelf(BlockInit.FIR_SHUTTER.get());
+        dropSelf(BlockInit.FRAMED_PAPER_SHUTTER.get());
+        dropSelf(BlockInit.GHAF_SHUTTER.get());
+        dropSelf(BlockInit.JOSHUA_SHUTTER.get());
+        dropSelf(BlockInit.LARCH_SHUTTER.get());
+        dropSelf(BlockInit.MAHOGANY_SHUTTER.get());
+        dropSelf(BlockInit.NAS_COCONUT_SHUTTER.get());
+        dropSelf(BlockInit.NAS_CYPRESS_SHUTTER.get());
+        dropSelf(BlockInit.NAS_MAPLE_SHUTTER.get());
+        dropSelf(BlockInit.NAS_WILLOW_SHUTTER.get());
+        dropSelf(BlockInit.NAS_WISTERIA_SHUTTER.get());
+        dropSelf(BlockInit.OLIVE_SHUTTER.get());
+        dropSelf(BlockInit.PALO_VERDE_SHUTTER.get());
+        dropSelf(BlockInit.PAPER_SHUTTER.get());
+        dropSelf(BlockInit.REDWOOD_SHUTTER.get());
+        dropSelf(BlockInit.SAXAUL_SHUTTER.get());
+        dropSelf(BlockInit.SUGI_SHUTTER.get());
+
 
     }
 

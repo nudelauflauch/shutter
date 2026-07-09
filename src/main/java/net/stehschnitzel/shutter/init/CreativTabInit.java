@@ -3,7 +3,6 @@ package net.stehschnitzel.shutter.init;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
@@ -11,9 +10,6 @@ import net.neoforged.fml.loading.FMLLoader;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import net.stehschnitzel.shutter.ShutterMain;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class CreativTabInit{
@@ -71,6 +67,9 @@ public class CreativTabInit{
         if(ModList.get().isLoaded("upgrade_aquatic")) {
             registerUpdateAquatic(pItems);
         }
+        if(ModList.get().isLoaded("natures_spirit")) {
+            registerNaturesSpirit(pItems);
+        }
 		if (!FMLLoader.isProduction()) {
             registerBeachParty(pItems);
             registerAutumnity(pItems);
@@ -85,6 +84,7 @@ public class CreativTabInit{
             registerOuterEnd(pItems);
             registerTwigs(pItems);
             registerUpdateAquatic(pItems);
+            registerNaturesSpirit(pItems);
 		}
 	}
 
@@ -180,6 +180,28 @@ public class CreativTabInit{
 		items.accept(BlockInit.RIVER_SHUTTER.get());
 	}
 
+    private static void registerNaturesSpirit(CreativeModeTab.Output items) {
+        items.accept(BlockInit.ASPEN_SHUTTER.get());
+        items.accept(BlockInit.BLOOMING_PAPER_SHUTTER.get());
+        items.accept(BlockInit.CEDAR_SHUTTER.get());
+        items.accept(BlockInit.FIR_SHUTTER.get());
+        items.accept(BlockInit.FRAMED_PAPER_SHUTTER.get());
+        items.accept(BlockInit.GHAF_SHUTTER.get());
+        items.accept(BlockInit.JOSHUA_SHUTTER.get());
+        items.accept(BlockInit.LARCH_SHUTTER.get());
+        items.accept(BlockInit.MAHOGANY_SHUTTER.get());
+        items.accept(BlockInit.NAS_COCONUT_SHUTTER.get());
+        items.accept(BlockInit.NAS_CYPRESS_SHUTTER.get());
+        items.accept(BlockInit.NAS_MAPLE_SHUTTER.get());
+        items.accept(BlockInit.NAS_WILLOW_SHUTTER.get());
+        items.accept(BlockInit.NAS_WISTERIA_SHUTTER.get());
+        items.accept(BlockInit.OLIVE_SHUTTER.get());
+        items.accept(BlockInit.PALO_VERDE_SHUTTER.get());
+        items.accept(BlockInit.PAPER_SHUTTER.get());
+        items.accept(BlockInit.REDWOOD_SHUTTER.get());
+        items.accept(BlockInit.SAXAUL_SHUTTER.get());
+        items.accept(BlockInit.SUGI_SHUTTER.get());
+    }
 
 	public static void register(IEventBus eventBus) {
 		CREATIVE_MODE_TAB.register(eventBus);
