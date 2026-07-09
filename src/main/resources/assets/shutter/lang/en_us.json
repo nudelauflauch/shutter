@@ -48,9 +48,9 @@
   "block.shutter.palm_shutter" : "Palm Shutter",
   "block.shutter.cavern_azalea_shutter" : "Caverns Azalea Shutter",
 
-	"itemGroup.shutter_tab":"Shutters",
+  "creativetab.shutter.shutter_tab":"Shutters",
 
-	"sounds.shutter.shutter_open_half": "Shutter Open Half",
-	"sounds.shutter.shutter_open_full": "Shutter Open Full",
-	"sounds.shutter.shutter_close": "Shutter Close"
+  "sounds.shutter.shutter_open_half": "Shutter Open Half",
+  "sounds.shutter.shutter_open_full": "Shutter Open Full",
+  "sounds.shutter.shutter_close": "Shutter Close"
 }

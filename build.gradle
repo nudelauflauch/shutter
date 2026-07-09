@@ -75,45 +75,47 @@ configurations {
     runtimeClasspath.extendsFrom localRuntime
 }
 
+
 dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
-//    // neoforge/fabric 1.21.1
-//    compileOnly "curse.maven:lets-do-beachparty-858691:7672876"
-//    // neoforge/X 1.21.1
-//    implementation "curse.maven:autumnity-365045:7118591"
-//    // neoforge/X 1.21.1
-//    implementation "curse.maven:caverns-and-chasms-438005:8155745"
-//    // neoforge/fabric 1.21.1
-//    implementation "curse.maven:ecologics-570463:8104866"
-//    // neoforge/X 1.21.1
-//    implementation "curse.maven:environmental-388992:7122147"
-//    // neoforge/fabric 1.21.1
-//    compileOnly "curse.maven:good-ending-690161:7387410"
-//    // neoforge/X 1.21.1
+    // neoforge/fabric 1.21.1
+    implementation "curse.maven:lets-do-beachparty-858691:7672876"
+    // neoforge/X 1.21.1
+    implementation "curse.maven:autumnity-365045:7118591"
+    // neoforge/X 1.21.1
+    implementation "curse.maven:caverns-and-chasms-438005:8155745"
+    // neoforge/fabric 1.21.1
+    implementation "curse.maven:ecologics-570463:8104866"
+    // neoforge/X 1.21.1
+    implementation "curse.maven:environmental-388992:7122147"
+    // neoforge/fabric 1.21.1
+    implementation "curse.maven:good-ending-690161:7387410"
+    // neoforge/X 1.21.1
 //    implementation "curse.maven:oreganized-769203:7707160"
-//    // neoforge/X 1.21.1
-//    implementation "curse.maven:quark-243121:8342602"
-//    // neoforge/fabric 1.21.1
-//    implementation "curse.maven:snowy-spirit-566142:8195621"
-//    // neoforge/fabric 1.21.1
-//    implementation "curse.maven:twigs-496913:8191595"
-//    // neoforge/X 1.21.1
-//    implementation "curse.maven:upgrade-aquatic-326895:7115763"
-//
-//    //additions for the mods
-//    implementation "curse.maven:architectury-api-419699:5786327"
-//    implementation "curse.maven:cloth-config-api-348521:5729127"
-//    implementation "curse.maven:zeta-968868:7980010"
-//    implementation "curse.maven:do-api-864599:5730908"
-//    implementation "curse.maven:selene-499980:8343403"
-//    implementation "curse.maven:blueprint-382216:8048607"
+    // neoforge/X 1.21.1
+    implementation "curse.maven:quark-243121:8342602"
+    // neoforge/fabric 1.21.1
+    implementation "curse.maven:snowy-spirit-566142:8195621"
+    // neoforge/fabric 1.21.1
+    implementation "curse.maven:twigs-496913:8191595"
+    // neoforge/X 1.21.1
+    implementation "curse.maven:upgrade-aquatic-326895:7115763"
+
+    //additions for the mods
+    implementation "curse.maven:architectury-api-419699:5786327"
+    implementation "curse.maven:curios-api-309927:6529130"
+    implementation "curse.maven:cloth-config-api-348521:5729127"
+    implementation "curse.maven:zeta-968868:7980010"
+    implementation "curse.maven:do-api-864599:5730908"
+    implementation "curse.maven:selene-499980:8343403"
+    implementation "curse.maven:blueprint-382216:8048607"
+    implementation "curse.maven:gallery-1173553:8159692"
 
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
     // at runtime, use the full JEI jar for NeoForge
     runtimeOnly("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}")
 }
-
 tasks.withType(ProcessResources).configureEach {
     var replaceProperties = [
             minecraft_version      : minecraft_version,

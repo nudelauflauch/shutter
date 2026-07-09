@@ -36,7 +36,7 @@
   "block.shutter.warped_shutter": "Искажённые ставни",
   "block.shutter.willow_shutter": "Ивовые ставни",
   "block.shutter.wisteria_shutter": "Глициненые ставни",
-  "itemGroup.shutter_tab": "Cтавни",
+  "creativetab.shutter.shutter_tab": "Cтавни",
   "sounds.shutter.shutter_close": "Ставни закрылись",
   "sounds.shutter.shutter_open_full": "Ставни открыли полностью",
   "sounds.shutter.shutter_open_half": "Ставни открыли на половину",

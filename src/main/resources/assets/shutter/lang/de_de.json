@@ -47,8 +47,8 @@
   "block.shutter.muddy_oak_shutter": "Schlammige Eichenfensterladen",
   "block.shutter.palm_shutter": "Palmenfensterladen",
   "block.shutter.cavern_azalea_shutter": "Caverns Azaleafensterladen",
-  "itemGroup.shutter_tab": "Fensterläden",
+  "creativetab.shutter.shutter_tab": "Fensterläden",
   "sounds.shutter.shutter_open_half": "Halbgeöffneter Fensterladen",
   "sounds.shutter.shutter_open_full": "Offener Fensterladen",
-  "sounds.shutter.shutter_close": "Geschlossener Fensterladen",
+  "sounds.shutter.shutter_close": "Geschlossener Fensterladen"
 }

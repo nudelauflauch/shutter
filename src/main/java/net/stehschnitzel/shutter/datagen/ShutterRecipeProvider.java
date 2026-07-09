@@ -94,7 +94,7 @@ public class ShutterRecipeProvider extends RecipeProvider implements IConditionB
 
         defaultShutter(BlossomTreesModule.woodSet.slab, BlockInit.BLOSSOM_SHUTTER.get()).save(pWriter);
         defaultShutter(AncientWoodModule.woodSet.slab, BlockInit.ANCIENT_SHUTTER.get()).save(pWriter);
-        defaultShutter(AzaleaWoodModule.woodSet.slab, BlockInit.AZALEA_SHUTTER.get()).save(pWriter);
+        defaultShutter(AzaleaWoodModule.woodSet.slab, BlockInit.AZALEA_QUARK_SHUTTER.get()).save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, BlockInit.GINGERBREAD_SHUTTER.get(), 4)
                 .pattern("##")
