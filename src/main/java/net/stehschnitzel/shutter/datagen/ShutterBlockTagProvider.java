@@ -19,6 +19,8 @@ public class ShutterBlockTagProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
         tag(BlockTags.MINEABLE_WITH_PICKAXE)
+//                .add(BlockInit.LEAD_SHUTTER.get())
+//                .add(BlockInit.SILVER_SHUTTER.get())
                 .add(BlockInit.IRON_SHUTTER.get())
                 .add(BlockInit.COPPER_SHUTTER.get())
                 .add(BlockInit.EXPOSED_COPPER_SHUTTER.get())
@@ -32,10 +34,7 @@ public class ShutterBlockTagProvider extends BlockTagsProvider {
                 .add(BlockInit.NETHERITE_SHUTTER.get());
 
         tag(BlockTags.MINEABLE_WITH_AXE)
-//                .add(BlockInit.COCONUT_SHUTTER.get())
-//                .add(BlockInit.FLOWERING_AZALEA_SHUTTER.get())
-//                .add(BlockInit.WALNUT_SHUTTER.get())
-//                .add(BlockInit.POISE_SHUTTER.get())
+
                 .add(BlockInit.ACACIA_SHUTTER.get())
                 .add(BlockInit.BIRCH_SHUTTER.get())
                 .add(BlockInit.CRIMSON_SHUTTER.get())
@@ -45,23 +44,38 @@ public class ShutterBlockTagProvider extends BlockTagsProvider {
                 .add(BlockInit.SPRUCE_SHUTTER.get())
                 .add(BlockInit.WARPED_SHUTTER.get())
                 .add(BlockInit.MANGROVE_SHUTTER.get())
-                .add(BlockInit.BAMBOO_SHUTTER.get());
+                .add(BlockInit.BAMBOO_SHUTTER.get())
+
+                .add(BlockInit.PALM_SHUTTER.get())
+                .add(BlockInit.MAPLE_SHUTTER.get())
+                .add(BlockInit.CAVERN_AZALEA_SHUTTER.get())
+
+                .add(BlockInit.ACACIA_SHUTTER.get())
+                .add(BlockInit.COCONUT_SHUTTER.get())
+                .add(BlockInit.FLOWERING_AZALEA_SHUTTER.get())
+                .add(BlockInit.WALNUT_SHUTTER.get())
+
+                .add(BlockInit.PLUM_SHUTTER.get())
+                .add(BlockInit.WILLOW_SHUTTER.get())
+                .add(BlockInit.WISTERIA_SHUTTER.get())
+                .add(BlockInit.PINE_SHUTTER.get())
+
+                .add(BlockInit.CYPRESS_SHUTTER.get())
+                .add(BlockInit.MUDDY_OAK_SHUTTER.get())
+
+                .add(BlockInit.BLOSSOM_SHUTTER.get())
+                .add(BlockInit.ANCIENT_SHUTTER.get())
+                .add(BlockInit.AZALEA_QUARK_SHUTTER.get())
+
+                .add(BlockInit.GINGERBREAD_SHUTTER.get())
+
+//                .add(BlockInit.POISE_SHUTTER.get())
 //                .add(BlockInit.AZURE_SHUTTER.get())
-//                .add(BlockInit.BLOSSOM_SHUTTER.get())
-//                .add(BlockInit.ANCIENT_SHUTTER.get())
-//                .add(BlockInit.AZALEA_QUARK_SHUTTER.get())
-//                .add(BlockInit.STRIPPED_BAMBOO_SHUTTER.get())
-//                .add(BlockInit.MAPLE_SHUTTER.get())
-//                .add(BlockInit.PLUM_SHUTTER.get())
-//                .add(BlockInit.WILLOW_SHUTTER.get())
-//                .add(BlockInit.WISTERIA_SHUTTER.get())
-//                .add(BlockInit.PINE_SHUTTER.get())
-//                .add(BlockInit.GINGERBREAD_SHUTTER.get())
-//                .add(BlockInit.DRIFTWOOD_SHUTTER.get())
-//                .add(BlockInit.RIVER_SHUTTER.get())
-//                .add(BlockInit.CYPRESS_SHUTTER.get())
-//                .add(BlockInit.MUDDY_OAK_SHUTTER.get())
-//                .add(BlockInit.CAVERN_AZALEA_SHUTTER.get())
-//                .add(BlockInit.PALM_SHUTTER.get());
+
+                .add(BlockInit.STRIPPED_BAMBOO_SHUTTER.get())
+
+                .add(BlockInit.DRIFTWOOD_SHUTTER.get())
+                .add(BlockInit.RIVER_SHUTTER.get());
+
     }
 }

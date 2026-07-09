@@ -20,45 +20,7 @@ public class ShutterItemModelGenerator extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-//        simpleItem(BlockInit.MAPLE_SHUTTER);
         simpleItem(BlockInit.GLASS_SHUTTER);
-//        simpleItem(BlockInit.AZALEA_SHUTTER);
-//        simpleItem(BlockInit.COCONUT_SHUTTER);
-//        simpleItem(BlockInit.FLOWERING_AZALEA_SHUTTER);
-//        simpleItem(BlockInit.WALNUT_SHUTTER);
-//        simpleItem(BlockInit.PLUM_SHUTTER);
-//        simpleItem(BlockInit.WILLOW_SHUTTER);
-//        simpleItem(BlockInit.WISTERIA_SHUTTER);
-//        simpleItem(BlockInit.PINE_SHUTTER);
-        simpleItem(BlockInit.ACACIA_SHUTTER);
-        simpleItem(BlockInit.BAMBOO_SHUTTER);
-        simpleItem(BlockInit.BIRCH_SHUTTER);
-        simpleItem(BlockInit.CRIMSON_SHUTTER);
-        simpleItem(BlockInit.OAK_SHUTTER);
-        simpleItem(BlockInit.DARK_OAK_SHUTTER);
-        simpleItem(BlockInit.MANGROVE_SHUTTER);
-        simpleItem(BlockInit.JUNGLE_SHUTTER);
-        simpleItem(BlockInit.WARPED_SHUTTER);
-        simpleItem(BlockInit.IRON_SHUTTER);
-        simpleItem(BlockInit.SPRUCE_SHUTTER);
-//        simpleItem(BlockInit.BLOSSOM_SHUTTER);
-//        simpleItem(BlockInit.ANCIENT_SHUTTER);
-//        simpleItem(BlockInit.AZALEA_QUARK_SHUTTER);
-//        simpleItem(BlockInit.GINGERBREAD_SHUTTER);
-        simpleItem(BlockInit.NETHERITE_SHUTTER);
-        simpleItem(BlockInit.GOLD_SHUTTER);
-        simpleItem(BlockInit.CHERRY_SHUTTER);
-//        simpleItem(BlockInit.STRIPPED_BAMBOO_SHUTTER);
-//        simpleItem(BlockInit.CYPRESS_SHUTTER);
-//        simpleItem(BlockInit.MUDDY_OAK_SHUTTER);
-//        simpleItem(BlockInit.PALM_SHUTTER);
-//        simpleItem(BlockInit.AZURE_SHUTTER);
-//        simpleItem(BlockInit.DRIFTWOOD_SHUTTER);
-//        simpleItem(BlockInit.RIVER_SHUTTER);
-//        simpleItem(BlockInit.POISE_SHUTTER);
-//        simpleItem(BlockInit.CAVERN_AZALEA_SHUTTER);
-//        simpleItem(BlockInit.SILVER_SHUTTER);
-//        simpleItem(BlockInit.LEAD_SHUTTER);
 
         simpleItem(BlockInit.COPPER_SHUTTER);
         simpleItem(BlockInit.OXIDIZED_COPPER_SHUTTER);
@@ -70,6 +32,57 @@ public class ShutterItemModelGenerator extends ItemModelProvider {
         simpleItem(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER, BlockInit.WEATHERED_COPPER_SHUTTER);
         simpleItem(BlockInit.WAXED_EXPOSED_COPPER_SHUTTER, BlockInit.EXPOSED_COPPER_SHUTTER);
 
+        simpleItem(BlockInit.ACACIA_SHUTTER);
+        simpleItem(BlockInit.BAMBOO_SHUTTER);
+        simpleItem(BlockInit.BIRCH_SHUTTER);
+        simpleItem(BlockInit.CRIMSON_SHUTTER);
+        simpleItem(BlockInit.OAK_SHUTTER);
+        simpleItem(BlockInit.DARK_OAK_SHUTTER);
+        simpleItem(BlockInit.MANGROVE_SHUTTER);
+        simpleItem(BlockInit.JUNGLE_SHUTTER);
+        simpleItem(BlockInit.WARPED_SHUTTER);
+        simpleItem(BlockInit.IRON_SHUTTER);
+        simpleItem(BlockInit.SPRUCE_SHUTTER);
+
+        simpleItem(BlockInit.NETHERITE_SHUTTER);
+        simpleItem(BlockInit.GOLD_SHUTTER);
+        simpleItem(BlockInit.CHERRY_SHUTTER);
+
+        simpleItem(BlockInit.PALM_SHUTTER);
+
+        simpleItem(BlockInit.MAPLE_SHUTTER);
+
+        simpleItem(BlockInit.CAVERN_AZALEA_SHUTTER);
+
+        simpleItem(BlockInit.AZALEA_SHUTTER);
+        simpleItem(BlockInit.COCONUT_SHUTTER);
+        simpleItem(BlockInit.FLOWERING_AZALEA_SHUTTER);
+        simpleItem(BlockInit.WALNUT_SHUTTER);
+
+        simpleItem(BlockInit.PLUM_SHUTTER);
+        simpleItem(BlockInit.WILLOW_SHUTTER);
+        simpleItem(BlockInit.WISTERIA_SHUTTER);
+        simpleItem(BlockInit.PINE_SHUTTER);
+
+        simpleItem(BlockInit.CYPRESS_SHUTTER);
+        simpleItem(BlockInit.MUDDY_OAK_SHUTTER);
+
+//        simpleItem(BlockInit.LEAD_SHUTTER);
+//        simpleItem(BlockInit.SILVER_SHUTTER);
+
+        simpleItem(BlockInit.BLOSSOM_SHUTTER);
+        simpleItem(BlockInit.ANCIENT_SHUTTER);
+        simpleItem(BlockInit.AZALEA_QUARK_SHUTTER);
+
+        simpleItem(BlockInit.GINGERBREAD_SHUTTER);
+
+//        simpleItem(BlockInit.POISE_SHUTTER);
+//        simpleItem(BlockInit.AZURE_SHUTTER);
+
+        simpleItem(BlockInit.STRIPPED_BAMBOO_SHUTTER);
+
+        simpleItem(BlockInit.DRIFTWOOD_SHUTTER);
+        simpleItem(BlockInit.RIVER_SHUTTER);
     }
 
     private ItemModelBuilder simpleItem(Supplier<Shutter> item, Supplier<Shutter> originalItem) {

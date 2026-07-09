@@ -27,21 +27,15 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
 
     @Override
     public void registerStatesAndModels() {
-//        shutterBuilder(BlockInit.MAPLE_SHUTTER);
-        shutterBuilderWithRenderTyp(BlockInit.GLASS_SHUTTER, "block/glass", "cutout");
-//        shutterBuilder(BlockInit.AZALEA_SHUTTER);
-//        shutterBuilder(BlockInit.COCONUT_SHUTTER);
-//        shutterBuilder(BlockInit.FLOWERING_AZALEA_SHUTTER);
-//        shutterBuilder(BlockInit.WALNUT_SHUTTER);
-//        shutterBuilder(BlockInit.POISE_SHUTTER);
-//        shutterBuilder(BlockInit.PLUM_SHUTTER);
-//        shutterBuilder(BlockInit.WILLOW_SHUTTER);
-//        shutterBuilder(BlockInit.WISTERIA_SHUTTER);
-//        shutterBuilder(BlockInit.PINE_SHUTTER);
-//        shutterBuilder(BlockInit.CYPRESS_SHUTTER);
-//        shutterBuilder(BlockInit.MUDDY_OAK_SHUTTER);
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_WOOD.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_CRIMSON.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_IRON.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_WARPED.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_COPPER.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_NETHERITE.get());
+        emptyBlock(BlockInit.INTERACTION_SHUTTER_GLASS.get());
 
-//        shutterBuilder(BlockInit.PALM_SHUTTER);
+        shutterBuilderWithRenderTyp(BlockInit.GLASS_SHUTTER, "block/glass", "cutout");
 
 
         shutterBuilder(BlockInit.ACACIA_SHUTTER, "block/acacia_planks");
@@ -56,21 +50,10 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
         shutterBuilder(BlockInit.IRON_SHUTTER, "block/iron_block");
         shutterBuilder(BlockInit.SPRUCE_SHUTTER, "block/spruce_planks");
 
-//        shutterBuilder(BlockInit.LEAD_SHUTTER);
-//        shutterBuilder(BlockInit.SILVER_SHUTTER);
-//        shutterBuilder(BlockInit.RIVER_SHUTTER);
-//        shutterBuilder(BlockInit.DRIFTWOOD_SHUTTER);
-//        shutterBuilder(BlockInit.BLOSSOM_SHUTTER);
-//        shutterBuilder(BlockInit.AZURE_SHUTTER);
-//        shutterBuilder(BlockInit.ANCIENT_SHUTTER);
-//        shutterBuilder(BlockInit.AZALEA_QUARK_SHUTTER);
-//        shutterBuilder(BlockInit.GINGERBREAD_SHUTTER);
-//        shutterBuilder(BlockInit.CAVERN_AZALEA_SHUTTER);
         shutterBuilder(BlockInit.CHERRY_SHUTTER, "block/cherry_planks");
         shutterBuilder(BlockInit.GOLD_SHUTTER, "block/gold_block");
         shutterBuilder(BlockInit.NETHERITE_SHUTTER, "block/netherite_block");
 
-//        shutterBuilder(BlockInit.STRIPPED_BAMBOO_SHUTTER, "block/bamboo_planks");
 
         shutterBuilder(BlockInit.COPPER_SHUTTER, "block/copper_block");
         shutterBuilder(BlockInit.EXPOSED_COPPER_SHUTTER, "block/exposed_copper");
@@ -82,13 +65,44 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
         shutterBuilder(BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER, BlockInit.OXIDIZED_COPPER_SHUTTER, "block/oxidized_copper");
         shutterBuilder(BlockInit.WAXED_WEATHERED_COPPER_SHUTTER, BlockInit.WEATHERED_COPPER_SHUTTER, "block/weathered_copper");
 
-        emptyBlock(BlockInit.INTERACTION_SHUTTER_WOOD.get());
-        emptyBlock(BlockInit.INTERACTION_SHUTTER_CRIMSON.get());
-        emptyBlock(BlockInit.INTERACTION_SHUTTER_IRON.get());
-        emptyBlock(BlockInit.INTERACTION_SHUTTER_WARPED.get());
-        emptyBlock(BlockInit.INTERACTION_SHUTTER_COPPER.get());
-        emptyBlock(BlockInit.INTERACTION_SHUTTER_NETHERITE.get());
-        emptyBlock(BlockInit.INTERACTION_SHUTTER_GLASS.get());
+
+
+        shutterBuilder(BlockInit.PALM_SHUTTER);
+
+        shutterBuilder(BlockInit.MAPLE_SHUTTER);
+
+        shutterBuilder(BlockInit.CAVERN_AZALEA_SHUTTER);
+
+        shutterBuilder(BlockInit.AZALEA_SHUTTER);
+        shutterBuilder(BlockInit.COCONUT_SHUTTER);
+        shutterBuilder(BlockInit.FLOWERING_AZALEA_SHUTTER);
+        shutterBuilder(BlockInit.WALNUT_SHUTTER);
+
+        shutterBuilder(BlockInit.PLUM_SHUTTER);
+        shutterBuilder(BlockInit.WILLOW_SHUTTER);
+        shutterBuilder(BlockInit.WISTERIA_SHUTTER);
+        shutterBuilder(BlockInit.PINE_SHUTTER);
+
+        shutterBuilder(BlockInit.CYPRESS_SHUTTER);
+        shutterBuilder(BlockInit.MUDDY_OAK_SHUTTER);
+
+//        shutterBuilder(BlockInit.LEAD_SHUTTER);
+//        shutterBuilder(BlockInit.SILVER_SHUTTER);
+
+        shutterBuilder(BlockInit.BLOSSOM_SHUTTER);
+        shutterBuilder(BlockInit.ANCIENT_SHUTTER);
+        shutterBuilder(BlockInit.AZALEA_QUARK_SHUTTER);
+
+        shutterBuilder(BlockInit.GINGERBREAD_SHUTTER);
+
+//        shutterBuilder(BlockInit.POISE_SHUTTER);
+
+//        shutterBuilder(BlockInit.AZURE_SHUTTER);
+
+        shutterBuilder(BlockInit.STRIPPED_BAMBOO_SHUTTER, "block/bamboo_planks");
+
+        shutterBuilder(BlockInit.DRIFTWOOD_SHUTTER);
+        shutterBuilder(BlockInit.RIVER_SHUTTER);
     }
 
     private void emptyBlock(Block block) {
