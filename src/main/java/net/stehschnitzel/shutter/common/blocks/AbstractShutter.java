@@ -296,8 +296,7 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
                 InteractionShutter.placeInteractionShutter(
                         level,
                         pos1,
-                        state.getValue(FACING),
-                        (Shutter) level.getBlockState(shutterPos).getBlock(),
+                        state,
                         shutterDouble,
                         isLeft
                 );

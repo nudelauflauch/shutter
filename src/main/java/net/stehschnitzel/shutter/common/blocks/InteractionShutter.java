@@ -81,8 +81,9 @@ public class InteractionShutter extends Block {
         }
     }
 
-    public static void placeInteractionShutter(Level level, BlockPos pos, Direction facing, Shutter shutterBlock, ShutterDouble sDouble, boolean isLeft) {
+    public static void placeInteractionShutter(Level level, BlockPos pos, BlockState state, ShutterDouble sDouble, boolean isLeft) {
         Block interactionShutter;
+        Block shutterBlock = state.getBlock();
         if (shutterBlock == BlockInit.CRIMSON_SHUTTER.get()) interactionShutter = BlockInit.INTERACTION_SHUTTER_CRIMSON.get();
         else if (shutterBlock == BlockInit.IRON_SHUTTER.get()) interactionShutter = BlockInit.INTERACTION_SHUTTER_IRON.get();
         else if (shutterBlock == BlockInit.GOLD_SHUTTER.get()) interactionShutter = BlockInit.INTERACTION_SHUTTER_IRON.get();
@@ -97,11 +98,11 @@ public class InteractionShutter extends Block {
         else if (shutterBlock == BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER.get()) interactionShutter = BlockInit.INTERACTION_SHUTTER_COPPER.get();
         else if (shutterBlock == BlockInit.NETHERITE_SHUTTER.get()) interactionShutter = BlockInit.INTERACTION_SHUTTER_NETHERITE.get();
         else if (shutterBlock == BlockInit.GLASS_SHUTTER.get()) interactionShutter = BlockInit.INTERACTION_SHUTTER_GLASS.get();
-        else if (shutterBlock.isMetal) interactionShutter = BlockInit.IRON_SHUTTER.get();
+        else if (shutterBlock instanceof Shutter shutter && shutter.isMetal) interactionShutter = BlockInit.IRON_SHUTTER.get();
         else  interactionShutter = BlockInit.INTERACTION_SHUTTER_WOOD.get();
 
         level.setBlock(pos, interactionShutter.defaultBlockState()
-                .setValue(FACING, facing)
+                .setValue(FACING, state.getValue(FACING))
                 .setValue(DOUBLE_SHUTTER, !(ShutterDouble.NONE == sDouble))
                 .setValue(LEFT_SHUTTER, isLeft), 22);
     }
