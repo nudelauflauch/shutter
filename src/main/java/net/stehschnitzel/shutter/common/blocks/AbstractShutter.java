@@ -278,12 +278,11 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
     }
 
     private RegistryObject<SoundEvent> getSound(int state) {
-        boolean metal = this.isMetal;
-        return switch (state) {
-            case 0 -> metal ? SoundInit.SHUTTER_CLOSE_METAL : SoundInit.SHUTTER_CLOSE;
-            case 1 -> metal ? SoundInit.SHUTTER_OPEN_HALF_METAL : SoundInit.SHUTTER_OPEN_HALF;
-            default -> metal ? SoundInit.SHUTTER_OPEN_FULL_METAL : SoundInit.SHUTTER_OPEN_FULL;
-        };
+        switch (state) {
+            case 0: return this.isMetal ? SoundInit.SHUTTER_CLOSE_METAL : SoundInit.SHUTTER_CLOSE;
+            case 1: return this.isMetal ? SoundInit.SHUTTER_OPEN_HALF_METAL : SoundInit.SHUTTER_OPEN_HALF;
+            default: return this.isMetal ? SoundInit.SHUTTER_OPEN_FULL_METAL : SoundInit.SHUTTER_OPEN_FULL;
+        }
     }
 
     BlockPos getNeighborShutterPos(Level level, BlockPos pos) {
@@ -313,7 +312,19 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
     }
 
     public boolean hasRedstonePower(Level level, BlockPos pos) {
-        return level.hasNeighborSignal(pos) || level.hasNeighborSignal(pos.below());
+        return hasRedstonePower(level, pos, level.getBlockState(pos).getValue(FACING));
+    }
+
+    public boolean hasRedstonePower(Level level, BlockPos pos, Direction facing) {
+        boolean hasSignal = level.hasNeighborSignal(pos);
+
+        if (facing == Direction.WEST || facing == Direction.EAST) {
+            hasSignal = level.hasNeighborSignal(pos.north()) || level.hasNeighborSignal(pos.south());
+        } else {
+            hasSignal = level.hasNeighborSignal(pos.east()) || level.hasNeighborSignal(pos.west());
+        }
+
+        return hasSignal;
     }
 
     public void redstoneUpdate(Level pLevel, BlockPos pFromPos, BlockPos pPos) {
