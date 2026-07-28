@@ -16,7 +16,7 @@ import java.util.concurrent.CompletableFuture;
 public class DataGenerator {
 
     @SubscribeEvent
-    public static void gatherData(GatherDataEvent event) throws IOException {
+    public static void gatherData(GatherDataEvent event) {
         net.minecraft.data.DataGenerator generator = event.getGenerator();
         PackOutput packOutput = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
@@ -27,7 +27,6 @@ public class DataGenerator {
         generator.addProvider(event.includeClient(), new ShutterItemModelGenerator(packOutput, existingFileHelper));
         generator.addProvider(event.includeServer(), new ShutterRecipeProvider(packOutput));
 
-        BlockTagsProvider blockTagsProvider = new ShutterBlockTagProvider(packOutput, lookupProvider, existingFileHelper);
-        generator.addProvider(event.includeServer(), blockTagsProvider);
+        generator.addProvider(event.includeServer(), new ShutterBlockTagProvider(packOutput, lookupProvider, existingFileHelper));
     }
 }

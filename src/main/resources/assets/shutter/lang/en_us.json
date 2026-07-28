@@ -70,7 +70,7 @@
   "block.shutter.sugi_shutter" : "Sugi Shutter",
 
 
-  "creativetab.shutter.shutter_tab":"Shutters",
+  "itemGroup.shutter_tab":"Shutters",
 
   "sounds.shutter.shutter_open_half": "Shutter Open Half",
   "sounds.shutter.shutter_open_full": "Shutter Open Full",

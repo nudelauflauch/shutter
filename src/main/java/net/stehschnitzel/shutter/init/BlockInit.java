@@ -1,7 +1,6 @@
 package net.stehschnitzel.shutter.init;
 
 import com.google.common.base.Supplier;
-
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -28,7 +27,8 @@ public class BlockInit {
     public static final RegistryObject<Block> INTERACTION_SHUTTER_WOOD = registerBlockWithoutItem("interaction_shutter_wood", () -> new InteractionShutter(
             BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD).noLootTable().replaceable().noCollission()));
 
-    public static final RegistryObject<Block> INTERACTION_SHUTTER_CRIMSON = registerBlockWithoutItem("interaction_shutter_crimson", () -> new InteractionShutter(
+    public static final RegistryObject<Block> INTERACTION_SHUTTER_CRIMSON = registerBlockWithoutItem(
+            "interaction_shutter_crimson", () -> new InteractionShutter(
             BlockBehaviour.Properties.copy(Blocks.CRIMSON_DOOR).noLootTable().replaceable().noCollission()));
 
     public static final RegistryObject<Block> INTERACTION_SHUTTER_IRON = registerBlockWithoutItem("interaction_shutter_iron", () -> new InteractionShutter(
@@ -203,13 +203,13 @@ public class BlockInit {
 
 
     // Oreganized 1.20.1 forge only
-    public static final RegistryObject<Shutter> LEAD_SHUTTER = registerBlock(
-            "lead_shutter", () -> new LeadShutter(
-                    BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), false);
-
-    public static final RegistryObject<Shutter> SILVER_SHUTTER = registerBlock(
-            "silver_shutter", () -> new SilverShutter(
-                    BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), false);
+//    public static final RegistryObject<Shutter> LEAD_SHUTTER = registerBlock(
+//            "lead_shutter", () -> new LeadShutter(
+//                    BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), false);
+//
+//    public static final RegistryObject<Shutter> SILVER_SHUTTER = registerBlock(
+//            "silver_shutter", () -> new SilverShutter(
+//                    BlockBehaviour.Properties.copy(Blocks.IRON_DOOR)), false);
 
     // quark
     public static final RegistryObject<Shutter> BLOSSOM_SHUTTER = registerWoodenShutter(
@@ -312,11 +312,9 @@ public class BlockInit {
     public static final RegistryObject<Shutter> SUGI_SHUTTER = registerWoodenShutter(
             "sugi_shutter");
 
-    private static <T extends Block> RegistryObject<T> registerWoodenShutter(
-            String name) {
-        RegistryObject<T> to_return = (RegistryObject<T>) registerBlock(name, () -> new Shutter(
+    private static RegistryObject<Shutter> registerWoodenShutter(String name) {
+        return registerBlock(name, () -> new Shutter(
                 BlockBehaviour.Properties.copy(Blocks.ACACIA_WOOD)));
-        return to_return;
     }
 
 	// Block
@@ -327,16 +325,21 @@ public class BlockInit {
 
     private static <T extends Block> RegistryObject<T> registerBlock(
             String name, Supplier<T> block) {
-        RegistryObject<T> to_return = registerBlock(name, block);
+        RegistryObject<T> to_return = registerNewBlock(name, block);
         registerBlockItem(name, to_return, true);
         return to_return;
     }
 
     private static <T extends Block> RegistryObject<T> registerBlock(
             String name, Supplier<T> block, boolean burnAble) {
-        RegistryObject<T> registryBlock = registerBlock(name, block);
+        RegistryObject<T> registryBlock = registerNewBlock(name, block);
         registerBlockItem(name, registryBlock, burnAble);
         return registryBlock;
+    }
+
+    private static <T extends Block> RegistryObject<T> registerNewBlock(
+            String name, Supplier<T> block) {
+        return BLOCKS.register(name, block);
     }
 
 	private static <T extends Block> RegistryObject<Item> registerBlockItem(
