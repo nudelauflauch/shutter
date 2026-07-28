@@ -5,6 +5,7 @@ import com.teamabnormals.autumnity.core.registry.AutumnityBlocks;
 import com.teamabnormals.caverns_and_chasms.core.registry.CCBlocks;
 import com.teamabnormals.endergetic.core.registry.EEBlocks;
 import com.teamabnormals.environmental.core.registry.EnvironmentalBlocks;
+import net.hibiscus.naturespirit.registration.NSBlocks;
 import net.mehvahdjukaar.snowyspirit.reg.ModRegistry;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -88,7 +89,38 @@ public class ShutterRecipeProvider extends RecipeProvider implements IConditionB
         waxed_shutter(BlockInit.EXPOSED_COPPER_SHUTTER.get(), BlockInit.WAXED_EXPOSED_COPPER_SHUTTER.get()).save(pWriter);
         waxed_shutter(BlockInit.OXIDIZED_COPPER_SHUTTER.get(), BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER.get()).save(pWriter);
         waxed_shutter(BlockInit.WEATHERED_COPPER_SHUTTER.get(), BlockInit.WAXED_WEATHERED_COPPER_SHUTTER.get()).save(pWriter);
+
+        defaultShutter(NSBlocks.ASPEN.getSlab().get(), BlockInit.ASPEN_SHUTTER.get()).save(pWriter);
+        quadroShutter(NSBlocks.BLOOMING_PAPER_BLOCK.get(), BlockInit.BLOOMING_PAPER_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.CEDAR.getSlab().get(), BlockInit.CEDAR_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.FIR.getSlab().get(), BlockInit.FIR_SHUTTER.get()).save(pWriter);
+        quadroShutter(NSBlocks.FRAMED_PAPER_BLOCK.get(), BlockInit.FRAMED_PAPER_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.GHAF.getSlab().get(), BlockInit.GHAF_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.JOSHUA.getSlab().get(), BlockInit.JOSHUA_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.LARCH.getSlab().get(), BlockInit.LARCH_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.MAHOGANY.getSlab().get(), BlockInit.MAHOGANY_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.COCONUT.getSlab().get(), BlockInit.NAS_COCONUT_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.CYPRESS.getSlab().get(), BlockInit.NAS_CYPRESS_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.MAPLE.getSlab().get(), BlockInit.NAS_MAPLE_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.WILLOW.getSlab().get(), BlockInit.NAS_WILLOW_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.WISTERIA.getSlab().get(), BlockInit.NAS_WISTERIA_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.OLIVE.getSlab().get(), BlockInit.OLIVE_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.PALO_VERDE.getSlab().get(), BlockInit.PALO_VERDE_SHUTTER.get()).save(pWriter);
+        quadroShutter(NSBlocks.PAPER_BLOCK.get(), BlockInit.PAPER_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.REDWOOD.getSlab().get(), BlockInit.REDWOOD_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.SAXAUL.getSlab().get(), BlockInit.SAXAUL_SHUTTER.get()).save(pWriter);
+        defaultShutter(NSBlocks.SUGI.getSlab().get(), BlockInit.SUGI_SHUTTER.get()).save(pWriter);
+
     }
+
+    private ShapedRecipeBuilder quadroShutter(ItemLike inputBLock, ItemLike outputShutter) {
+        return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, outputShutter, 4)
+                .pattern("##")
+                .pattern("##")
+                .define('#', inputBLock)
+                .unlockedBy(getHasName(inputBLock), has(inputBLock));
+    }
+
 
     private ShapedRecipeBuilder ingotShutter(ItemLike inputIngot, ItemLike inputNugget, ItemLike outputItem) {
         return ShapedRecipeBuilder.shaped(RecipeCategory.MISC, outputItem, 2)

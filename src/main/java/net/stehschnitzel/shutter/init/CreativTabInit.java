@@ -74,6 +74,9 @@ public class CreativTabInit{
 		if (ModList.get().isLoaded("caverns_and_chasms")) {
 			registerBeachParty(pItems);
 		}
+        if(ModList.get().isLoaded("natures_spirit")) {
+            registerNaturesSpirit(pItems);
+        }
 		if (!FMLLoader.isProduction()) {
 			registerCreate(pItems);
 			registerEcologics(pItems);
@@ -89,6 +92,7 @@ public class CreativTabInit{
 			registerGoodEnding(pItems);
 			registerBeachParty(pItems);
 			registerCavernsChasms(pItems);
+            registerNaturesSpirit(pItems);
 		}
 	}
 
@@ -189,40 +193,31 @@ public class CreativTabInit{
 	private static void registerCavernsChasms(CreativeModeTab.Output items) {
 		items.accept(BlockInit.CAVERN_AZALEA_SHUTTER.get());
 	}
-
-	public static void registerDeferredItemRegister(IEventBus bus){
-		Map<String, DeferredRegister<Item>> modItems = new HashMap<>();
-		modItems.put("autumnity", BlockInit.ITEMS_AUTUMNITY);
-		modItems.put("create", BlockInit.ITEMS_CREATE);
-		modItems.put("ecologics", BlockInit.ITEMS_ECOLOGICS);
-		modItems.put("endergetic", BlockInit.ITEMS_ENDERGETIC);
-		modItems.put("outer_end", BlockInit.ITEMS_OUTER_END);
-		modItems.put("quark", BlockInit.ITEMS_QUARK);
-		modItems.put("supplementaries", BlockInit.ITEMS_SUPPLEMENTARIES);
-		modItems.put("twigs", BlockInit.ITEMS_TWIGS);
-		modItems.put("oreganized", BlockInit.ITEMS_OREGANIZED);
-		modItems.put("environmental", BlockInit.ITEMS_ENVIRONMENTAL);
-		modItems.put("snowyspirit", BlockInit.ITEMS_SNOWY_SPIRIT);
-		modItems.put("upgrade_aquatic", BlockInit.ITEMS_UPGRADE_AQUATTIC);
-		modItems.put("goodending", BlockInit.ITEMS_GOODENDING);
-		modItems.put("beachparty", BlockInit.ITEMS_BEACHPARTY);
-		modItems.put("caverns_and_chasms", BlockInit.ITEMS_CAVES_CHASMS);
-
-		for (Map.Entry<String, DeferredRegister<Item>> entry : modItems.entrySet()) {
-			String modId = entry.getKey();
-			DeferredRegister<Item> itemSupplier = entry.getValue();
-			itemSupplier.register(bus);
-//			if (ModList.get().isLoaded(modId)) {
-//				itemSupplier.register(bus);
-//			}
-//
-//			if (!FMLLoader.isProduction()) {
-//
-//			}
-		}
-	}
-
-    public static void register(IEventBus bus) {
-        TABS.register(bus);
+    private static void registerNaturesSpirit(CreativeModeTab.Output items) {
+        items.accept(BlockInit.ASPEN_SHUTTER.get());
+        items.accept(BlockInit.BLOOMING_PAPER_SHUTTER.get());
+        items.accept(BlockInit.CEDAR_SHUTTER.get());
+        items.accept(BlockInit.FIR_SHUTTER.get());
+        items.accept(BlockInit.FRAMED_PAPER_SHUTTER.get());
+        items.accept(BlockInit.GHAF_SHUTTER.get());
+        items.accept(BlockInit.JOSHUA_SHUTTER.get());
+        items.accept(BlockInit.LARCH_SHUTTER.get());
+        items.accept(BlockInit.MAHOGANY_SHUTTER.get());
+        items.accept(BlockInit.NAS_COCONUT_SHUTTER.get());
+        items.accept(BlockInit.NAS_CYPRESS_SHUTTER.get());
+        items.accept(BlockInit.NAS_MAPLE_SHUTTER.get());
+        items.accept(BlockInit.NAS_WILLOW_SHUTTER.get());
+        items.accept(BlockInit.NAS_WISTERIA_SHUTTER.get());
+        items.accept(BlockInit.OLIVE_SHUTTER.get());
+        items.accept(BlockInit.PALO_VERDE_SHUTTER.get());
+        items.accept(BlockInit.PAPER_SHUTTER.get());
+        items.accept(BlockInit.REDWOOD_SHUTTER.get());
+        items.accept(BlockInit.SAXAUL_SHUTTER.get());
+        items.accept(BlockInit.SUGI_SHUTTER.get());
     }
+
+    public static void register(IEventBus eventBus) {
+        TABS.register(eventBus);
+    }
+
 }

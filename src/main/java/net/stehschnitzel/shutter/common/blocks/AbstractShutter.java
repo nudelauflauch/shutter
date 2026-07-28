@@ -279,11 +279,11 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
 
     private RegistryObject<SoundEvent> getSound(int state) {
         boolean metal = this.isMetal;
-        switch (state) {
-            case 0: return metal ? SoundInit.SHUTTER_CLOSE_METAL : SoundInit.SHUTTER_CLOSE;
-            case 1: return metal ? SoundInit.SHUTTER_OPEN_HALF_METAL : SoundInit.SHUTTER_OPEN_HALF;
-            default: return metal ? SoundInit.SHUTTER_OPEN_FULL_METAL : SoundInit.SHUTTER_OPEN_FULL;
-        }
+        return switch (state) {
+            case 0 -> metal ? SoundInit.SHUTTER_CLOSE_METAL : SoundInit.SHUTTER_CLOSE;
+            case 1 -> metal ? SoundInit.SHUTTER_OPEN_HALF_METAL : SoundInit.SHUTTER_OPEN_HALF;
+            default -> metal ? SoundInit.SHUTTER_OPEN_FULL_METAL : SoundInit.SHUTTER_OPEN_FULL;
+        };
     }
 
     BlockPos getNeighborShutterPos(Level level, BlockPos pos) {

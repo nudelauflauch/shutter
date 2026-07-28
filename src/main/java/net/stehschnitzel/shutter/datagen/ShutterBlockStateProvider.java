@@ -88,10 +88,32 @@ public class ShutterBlockStateProvider extends BlockStateCreator {
         emptyBlock(BlockInit.INTERACTION_SHUTTER_COPPER.get());
         emptyBlock(BlockInit.INTERACTION_SHUTTER_NETHERITE.get());
         emptyBlock(BlockInit.INTERACTION_SHUTTER_GLASS.get());
+
+
+        shutterBuilder(BlockInit.ASPEN_SHUTTER);
+        shutterBuilder(BlockInit.BLOOMING_PAPER_SHUTTER);
+        shutterBuilder(BlockInit.CEDAR_SHUTTER);
+        shutterBuilder(BlockInit.FIR_SHUTTER);
+        shutterBuilder(BlockInit.FRAMED_PAPER_SHUTTER);
+        shutterBuilder(BlockInit.GHAF_SHUTTER);
+        shutterBuilder(BlockInit.JOSHUA_SHUTTER);
+        shutterBuilder(BlockInit.LARCH_SHUTTER);
+        shutterBuilder(BlockInit.MAHOGANY_SHUTTER);
+        shutterBuilder(BlockInit.NAS_COCONUT_SHUTTER);
+        shutterBuilder(BlockInit.NAS_CYPRESS_SHUTTER);
+        shutterBuilder(BlockInit.NAS_MAPLE_SHUTTER);
+        shutterBuilder(BlockInit.NAS_WILLOW_SHUTTER);
+        shutterBuilder(BlockInit.NAS_WISTERIA_SHUTTER);
+        shutterBuilder(BlockInit.OLIVE_SHUTTER);
+        shutterBuilder(BlockInit.PALO_VERDE_SHUTTER);
+        shutterBuilder(BlockInit.PAPER_SHUTTER);
+        shutterBuilder(BlockInit.REDWOOD_SHUTTER);
+        shutterBuilder(BlockInit.SAXAUL_SHUTTER);
+        shutterBuilder(BlockInit.SUGI_SHUTTER);
     }
 
     private void emptyBlock(Block block) {
-        simpleBlock(block, models().cubeAll(key(block).getPath(), ModelLocationUtils.getModelLocation(Blocks.COPPER_BLOCK)));
+        simpleBlock(block, models().cubeAll(key(block).getPath(), ModelLocationUtils.getModelLocation(Blocks.OAK_PLANKS)));
     }
 
     private String name(Block block) {
