@@ -1,38 +1,34 @@
 package net.stehschnitzel.shutter.block;
 
-import net.minecraft.block.*;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.*;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.world.BlockView;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.stehschnitzel.shutter.block.properties.ShutterDouble;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.SimpleWaterloggedBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.stehschnitzel.shutter.block.properties.ShutterPos;
 import net.stehschnitzel.shutter.block.properties.ShutterVoxels;
 import net.stehschnitzel.shutter.init.SoundInit;
 import org.jetbrains.annotations.Nullable;
 
+import javax.swing.text.html.BlockView;
 import java.util.List;
 
-public class Shutter extends AbstractShutter implements Waterloggable{
-    public Shutter(Settings settings) {
+public class Shutter extends AbstractShutter implements SimpleWaterloggedBlock {
+    public Shutter(BlockBehaviour.Properties settings) {
         this(settings, false);
     }
 
-    public Shutter(Settings settings, boolean isMetal) {
+    public Shutter(BlockBehaviour.Properties settings, boolean isMetal) {
         super(settings, isMetal);
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState blockState, Level level, BlockPos blockPos, Player player, BlockHitResult blockHitResult) {
+        return super.useWithoutItem(blockState, level, blockPos, player, blockHitResult);
     }
 
     @Override
@@ -41,7 +37,7 @@ public class Shutter extends AbstractShutter implements Waterloggable{
     }
 
     @Override
-    protected ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
+    protected ActionResult onUse(BlockState state, World world, BlockPos pos, Play player, BlockHitResult hit) {
         if (!player.isSneaking()
                 && player.getActiveHand().equals(Hand.MAIN_HAND)
                 && !this.isMetal) {

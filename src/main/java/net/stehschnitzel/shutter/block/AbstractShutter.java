@@ -1,21 +1,15 @@
 package net.stehschnitzel.shutter.block;
 
-import net.minecraft.block.*;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
+
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.FluidState;
 import net.stehschnitzel.shutter.block.properties.ShutterDouble;
 import net.stehschnitzel.shutter.block.properties.ShutterPos;
 import net.stehschnitzel.shutter.init.SoundInit;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -33,7 +27,7 @@ abstract class AbstractShutter extends Block {
             .of("double_door", ShutterDouble.class);
     boolean isMetal = false;
 
-    public AbstractShutter(Settings settings, boolean isMetal) {
+    public AbstractShutter(BlockBehaviour.Properties settings, boolean isMetal) {
         super(settings);
         this.isMetal = isMetal;
         this.setDefaultState(this.getStateManager().getDefaultState()
@@ -219,9 +213,9 @@ abstract class AbstractShutter extends Block {
 
     private SoundEvent getSound(int state) {
         switch (state) {
-            case 0: return SoundInit.SHUTTER_CLOSE;
-            case 1: return SoundInit.SHUTTER_OPEN_HALF;
-            default: return SoundInit.SHUTTER_OPEN_FULL;
+            case 0: return this.isMetal ? SoundInit.SHUTTER_CLOSE_METAL : SoundInit.SHUTTER_CLOSE;
+            case 1: return this.isMetal ? SoundInit.SHUTTER_OPEN_HALF_METAL : SoundInit.SHUTTER_OPEN_HALF;
+            default: return this.isMetal ? SoundInit.SHUTTER_OPEN_FULL_METAL : SoundInit.SHUTTER_OPEN_FULL;
         }
     }
 

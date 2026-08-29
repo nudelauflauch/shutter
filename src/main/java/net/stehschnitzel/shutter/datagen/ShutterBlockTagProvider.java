@@ -2,8 +2,7 @@ package net.stehschnitzel.shutter.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
-import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.tags.BlockTags;
 import net.stehschnitzel.shutter.init.BlockInit;
 
 import java.util.concurrent.CompletableFuture;
@@ -15,7 +14,7 @@ public class ShutterBlockTagProvider extends FabricTagProvider.BlockTagProvider{
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(BlockInit.IRON_SHUTTER)
                 .add(BlockInit.COPPER_SHUTTER)
                 .add(BlockInit.EXPOSED_COPPER_SHUTTER)
@@ -28,7 +27,7 @@ public class ShutterBlockTagProvider extends FabricTagProvider.BlockTagProvider{
                 .add(BlockInit.GOLD_SHUTTER)
                 .add(BlockInit.NETHERITE_SHUTTER);
 
-        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
                 .add(BlockInit.AZALEA_SHUTTER)
                 .add(BlockInit.COCONUT_SHUTTER)
                 .add(BlockInit.FLOWERING_AZALEA_SHUTTER)
