@@ -102,9 +102,9 @@ public class ShutterRecipeProvider extends RecipeProvider implements IConditionB
         quadroShutter(ModRegistry.GINGERBREAD_FROSTED_BLOCK.get(), BlockInit.GINGERBREAD_SHUTTER.get()).save(pWriter);
 
 
-//        defaultShutter(EEBlocks.POISE_SLAB.get(), BlockInit.POISE_SHUTTER.get()).save(pWriter);
+        defaultShutter(EEBlocks.POISE_SLAB.get(), BlockInit.POISE_SHUTTER.get()).save(pWriter);
 
-//        defaultShutter(OuterEndBlocks.AZURE_SLAB.get(), BlockInit.AZURE_SHUTTER.get()).save(pWriter);
+        defaultShutter(OuterEndBlocks.AZURE_SLAB.get(), BlockInit.AZURE_SHUTTER.get()).save(pWriter);
 
         //idk if thats right TODO
         defaultShutter(TwigsItems.BAMBOO_THATCH_SLAB.get(), BlockInit.STRIPPED_BAMBOO_SHUTTER.get()).save(pWriter);
