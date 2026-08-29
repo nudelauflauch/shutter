@@ -43,7 +43,7 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
         } else if (!pPlayer.isCrouching()) {
             this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 
-            this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
+            this.playSound(pLevel, pPos);
             return InteractionResult.sidedSuccess(pLevel.isClientSide);
         }
         return InteractionResult.FAIL;

@@ -15,11 +15,11 @@ public class SilverShutter extends Shutter {
 	}
 
 	@Override
-	public InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+	protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
 		if (!pPlayer.isCrouching()
 				&& pLevel.getBlockState(pPos).getValue(Shutter.POWERED)) {
 			this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
-			this.playSound(pLevel, pPos, pLevel.getBlockState(pPos).getValue(OPEN));
+			this.playSound(pLevel, pPos);
 		}
 		return InteractionResult.FAIL;
 	}

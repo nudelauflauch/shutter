@@ -1,7 +1,0 @@
-{
-  "parent": "shutter:block/template_shutter_1_big_left",
-  "textures": {
-    "particle": "shutter:block/gingerbread_shutter_normal",
-    "texture": "shutter:block/gingerbread_shutter_lower_big"
-  }
-}
