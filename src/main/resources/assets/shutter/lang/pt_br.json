@@ -1,9 +1,5 @@
 {
-<<<<<<< Updated upstream
   "block.shutter.gold_shutter" : "Postigo de Ouro",
-=======
-	"block.shutter.gold_shutter" : "Postigo de Ouro",
->>>>>>> Stashed changes
   "block.shutter.azalea_shutter" : "Postigo de Azaleia",
   "block.shutter.coconut_shutter" : "Postigo de Coqueiro",
   "block.shutter.flowering_azalea_shutter" : "Postigo de Azaleia Florescente",
@@ -18,24 +14,27 @@
   "block.shutter.oak_shutter" : "Postigo de Carvalho",
   "block.shutter.spruce_shutter" : "Postigo de Abeto",
   "block.shutter.warped_shutter" : "Postigo Distorcido",
-<<<<<<< Updated upstream
   "block.shutter.cherry_shutter" : "Postigo de Cerejeira",
+  "block.shutter.copper_shutter" : "Postigo de Cobre",
+  "block.shutter.exposed_copper_shutter" : "Postigo de Cobre Exposto",
+  "block.shutter.oxidized_copper_shutter" : "Postigo de Cobre Oxidado",
+  "block.shutter.weathered_copper_shutter" : "Postigo de Cobre Desgastado",
+  "block.shutter.waxed_copper_shutter" : "Postigo de Cobre Encerado",
+  "block.shutter.waxed_exposed_copper_shutter" : "Postigo de Cobre Exposto Encerado",
+  "block.shutter.waxed_oxidized_copper_shutter" : "Postigo de Cobre Oxidado Encerado",
+  "block.shutter.waxed_weathered_copper_shutter" : "Postigo de Cobre Desgastado Encerado",
   "block.shutter.azuer_shutter" : "Postigo de Azulina",
   "block.shutter.blossom_shutter" : "Postigo de Ipê",
-=======
-  "block.shutter.azuer_shutter" : "Postigo de Azulina",
-  "block.shutter.blossom_shutter" : "Postigo de Ipê",
->>>>>>> Stashed changes
   "block.shutter.lead_shutter" : "Postigo de Chumbo",
   "block.shutter.netherite_shutter" : "Postigo de Netherita",
   "block.shutter.silver_shutter" : "Postigo de Prata",
   "block.shutter.stripped_bamboo_shutter" : "Postigo de Bambu Descascado",
-<<<<<<< Updated upstream
   "block.shutter.azure_shutter" : "Postigo de Azulina",
   "block.shutter.maple_shutter" : "Postigo de Bordo",
-  "block.shutter.cherry_env_shutter" : "Postigo de Ameixeira",
+  "block.shutter.plum_shutter" : "Postigo de Ameixeira",
   "block.shutter.willow_shutter" : "Postigo de Salgueiro",
   "block.shutter.wisteria_shutter" : "Postigo de Glicínia",
+  "block.shutter.pine_shutter" : "Postigo de Pinheiro",
   "block.shutter.gingerbread_shutter" : "Postigo de Gengibre",
   "block.shutter.driftwood_shutter" : "Postigo de Deriva",
   "block.shutter.mangrove_shutter" : "Postigo de Mangue",
@@ -47,13 +46,33 @@
   "block.shutter.cypress_shutter" : "Postigo de Cipreste",
   "block.shutter.muddy_oak_shutter" : "Postigo de Carvalho Barrento",
   "block.shutter.palm_shutter" : "Postigo de Palmeira",
+  "block.shutter.cavern_azalea_shutter" : "Postigo de Azaleia",
 
-=======
-	
->>>>>>> Stashed changes
-	"itemGroup.shutter_tab":"Shutters (Postigos)",
+  "block.shutter.aspen_shutter" : "Postigo de Álamo-Trêmulo",
+  "block.shutter.blooming_paper_shutter" : "Postigo de Papel Floral",
+  "block.shutter.cedar_shutter" : "Postigo de Cedro",
+  "block.shutter.fir_shutter" : "Postigo de Ábies",
+  "block.shutter.framed_paper_shutter" : "Postigo de Papel Esquadrejado",
+  "block.shutter.ghaf_shutter" : "Postigo de Algaroba",
+  "block.shutter.joshua_shutter" : "Postigo de Josué",
+  "block.shutter.larch_shutter" : "Postigo de Lariço",
+  "block.shutter.mahogany_shutter" : "Postigo de Mogno",
+  "block.shutter.nas_coconut_shutter" : "Postigo de Coqueiro",
+  "block.shutter.nas_cypress_shutter" : "Postigo de Cipreste",
+  "block.shutter.nas_maple_shutter" : "Postigo de Bordo",
+  "block.shutter.nas_willow_shutter" : "Postigo de Salgueiro",
+  "block.shutter.nas_wisteria_shutter" : "Postigo de Glicínia",
+  "block.shutter.olive_shutter" : "Postigo de Oliveira",
+  "block.shutter.palo_verde_shutter" : "Postigo de Palo-Verde",
+  "block.shutter.paper_shutter" : "Postigo de Papel",
+  "block.shutter.redwood_shutter" : "Postigo de Sequoia",
+  "block.shutter.saxaul_shutter" : "Postigo de Saxaul",
+  "block.shutter.sugi_shutter" : "Postigo de Criptoméria",
 
-	"sounds.shutter.shutter_open_half": "Postigo abre pela metade",
-	"sounds.shutter.shutter_open_full": "Postigo abre completamente",
-	"sounds.shutter.shutter_close": "Postigo é fechado"
+
+  "creativetab.shutter.shutter_tab":"Shutters (Postigos)",
+
+  "sounds.shutter.shutter_open_half": "Postigo abre pela metade",
+  "sounds.shutter.shutter_open_full": "Postigo abre completamente",
+  "sounds.shutter.shutter_close": "Postigo é fechado"
 }
