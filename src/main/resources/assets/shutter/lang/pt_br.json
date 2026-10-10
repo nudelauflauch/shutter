@@ -1,0 +1,59 @@
+{
+<<<<<<< Updated upstream
+  "block.shutter.gold_shutter" : "Postigo de Ouro",
+=======
+	"block.shutter.gold_shutter" : "Postigo de Ouro",
+>>>>>>> Stashed changes
+  "block.shutter.azalea_shutter" : "Postigo de Azaleia",
+  "block.shutter.coconut_shutter" : "Postigo de Coqueiro",
+  "block.shutter.flowering_azalea_shutter" : "Postigo de Azaleia Florescente",
+  "block.shutter.walnut_shutter" : "Postigo de Nogueira",
+  "block.shutter.poise_shutter" : "Postigo Pairo",
+  "block.shutter.acacia_shutter" : "Postigo de Acácia",
+  "block.shutter.birch_shutter" : "Postigo de Bétula",
+  "block.shutter.crimson_shutter" : "Postigo Carmesim",
+  "block.shutter.dark_oak_shutter" : "Postigo de Carvalho Escuro",
+  "block.shutter.iron_shutter" : "Postigo de Ferro",
+  "block.shutter.jungle_shutter" : "Postigo da Selva",
+  "block.shutter.oak_shutter" : "Postigo de Carvalho",
+  "block.shutter.spruce_shutter" : "Postigo de Abeto",
+  "block.shutter.warped_shutter" : "Postigo Distorcido",
+<<<<<<< Updated upstream
+  "block.shutter.cherry_shutter" : "Postigo de Cerejeira",
+  "block.shutter.azuer_shutter" : "Postigo de Azulina",
+  "block.shutter.blossom_shutter" : "Postigo de Ipê",
+=======
+  "block.shutter.azuer_shutter" : "Postigo de Azulina",
+  "block.shutter.blossom_shutter" : "Postigo de Ipê",
+>>>>>>> Stashed changes
+  "block.shutter.lead_shutter" : "Postigo de Chumbo",
+  "block.shutter.netherite_shutter" : "Postigo de Netherita",
+  "block.shutter.silver_shutter" : "Postigo de Prata",
+  "block.shutter.stripped_bamboo_shutter" : "Postigo de Bambu Descascado",
+<<<<<<< Updated upstream
+  "block.shutter.azure_shutter" : "Postigo de Azulina",
+  "block.shutter.maple_shutter" : "Postigo de Bordo",
+  "block.shutter.cherry_env_shutter" : "Postigo de Ameixeira",
+  "block.shutter.willow_shutter" : "Postigo de Salgueiro",
+  "block.shutter.wisteria_shutter" : "Postigo de Glicínia",
+  "block.shutter.gingerbread_shutter" : "Postigo de Gengibre",
+  "block.shutter.driftwood_shutter" : "Postigo de Deriva",
+  "block.shutter.mangrove_shutter" : "Postigo de Mangue",
+  "block.shutter.ancient_shutter" : "Postigo de Grisácea",
+  "block.shutter.bamboo_shutter" : "Postigo de Bambu",
+  "block.shutter.river_shutter" : "Postigo de Ribeira",
+  "block.shutter.glass_shutter" : "Postigo de Vidro",
+  "block.shutter.azalea_quark_shutter" : "Postigo de Azaleia",
+  "block.shutter.cypress_shutter" : "Postigo de Cipreste",
+  "block.shutter.muddy_oak_shutter" : "Postigo de Carvalho Barrento",
+  "block.shutter.palm_shutter" : "Postigo de Palmeira",
+
+=======
+	
+>>>>>>> Stashed changes
+	"itemGroup.shutter_tab":"Shutters (Postigos)",
+
+	"sounds.shutter.shutter_open_half": "Postigo abre pela metade",
+	"sounds.shutter.shutter_open_full": "Postigo abre completamente",
+	"sounds.shutter.shutter_close": "Postigo é fechado"
+}
