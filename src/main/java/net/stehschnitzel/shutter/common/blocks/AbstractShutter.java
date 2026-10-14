@@ -135,12 +135,14 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         }
 
         boolean[] directions = {true, false};
+        BlockPos newPos;
 
         for (boolean up : directions) {
             int y = pos.getY() + (up ? 1 : -1);
+            newPos = new BlockPos(pos.getX(), y, pos.getZ());
 
-            while (y > level.getMinSectionY() && y < level.getMaxSectionY()) {
-                BlockPos newPos = new BlockPos(pos.getX(), y, pos.getZ());
+            while (level.isInWorldBounds(newPos)) {
+                newPos = new BlockPos(pos.getX(), y, pos.getZ());
                 Block block = level.getBlockState(newPos).getBlock();
 
                 if (block instanceof Shutter shutter) {
