@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": {
-      "item": "ecologics:coconut_slab"
-    }
+    "A": "ecologics:coconut_slab"
   },
   "pattern": [
     "AAA",

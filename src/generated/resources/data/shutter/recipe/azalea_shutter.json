@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": {
-      "item": "ecologics:azalea_slab"
-    }
+    "A": "ecologics:azalea_slab"
   },
   "pattern": [
     "AAA",
