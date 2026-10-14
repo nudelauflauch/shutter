@@ -22,7 +22,7 @@ import java.util.function.Supplier;
 
 abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
 
-    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
@@ -60,7 +60,7 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         );
     }
 
-    void updateRedstone(Level level, BlockPos pos, boolean first, ShutterDouble doorType, Direction facing) {
+    void updateRedstone(Level level, BlockPos pos, boolean first, ShutterDouble doorType, Direction axis) {
         if (doorType == ShutterDouble.NONE) {
             if (stateTwoPossible(level, pos, first, false)) {
                 updateAll(level, pos, 2, first, false);
@@ -68,9 +68,9 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
                 updateAll(level, pos, 1, first, false);
             }
         } else {
-            BlockPos neighborPos = getNeighborShutterPos(pos, doorType, facing);
+            BlockPos neighborPos = getNeighborShutterPos(pos, doorType, axis);
 
-            if (stateTwoPossibleDouble(level, pos, first, doorType, facing)) {
+            if (stateTwoPossibleDouble(level, pos, first, doorType, axis)) {
                 updateAll(level, pos, 2, first, true);
                 updateAll(level, neighborPos, 2, false, true);
             } else {
@@ -135,12 +135,14 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         }
 
         boolean[] directions = {true, false};
+        BlockPos newPos;
 
         for (boolean up : directions) {
             int y = pos.getY() + (up ? 1 : -1);
+            newPos = new BlockPos(pos.getX(), y, pos.getZ());
 
-            while (y > level.getMinBuildHeight() && y < level.getMaxBuildHeight()) {
-                BlockPos newPos = new BlockPos(pos.getX(), y, pos.getZ());
+            while (level.isInWorldBounds(newPos)) {
+                newPos = new BlockPos(pos.getX(), y, pos.getZ());
                 Block block = level.getBlockState(newPos).getBlock();
 
                 if (block instanceof Shutter shutter) {
@@ -177,7 +179,7 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         for (boolean up : directions) {
             int y = pos.getY();
 
-            while (y > level.getMinBuildHeight() && y < level.getMaxBuildHeight()) {
+            while (y > level.getMinSectionY() && y < level.getMaxSectionY()) {
                 BlockPos newPos = new BlockPos(pos.getX(), y, pos.getZ());
                 Block block = level.getBlockState(newPos).getBlock();
 
@@ -210,8 +212,8 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
         return getNeighborBlocks(level, pos, level.getBlockState(pos).getValue(FACING));
     }
 
-    List<BlockState> getNeighborBlocks(Level level, BlockPos pos, Direction facing) {
-        return switch (facing) {
+    List<BlockState> getNeighborBlocks(Level level, BlockPos pos, Direction axis) {
+        return switch (axis) {
             case NORTH -> List.of(level.getBlockState(pos.east()), level.getBlockState(pos.west()));
             case SOUTH -> List.of(level.getBlockState(pos.west()), level.getBlockState(pos.east()));
             case EAST -> List.of(level.getBlockState(pos.south()), level.getBlockState(pos.north()));

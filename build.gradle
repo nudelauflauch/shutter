@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'net.neoforged.moddev' version '2.0.144'
+    id 'net.neoforged.moddev' version '2.0.148'
     id 'idea'
 }
 
@@ -78,7 +78,7 @@ neoForge {
         }
 
         data {
-            data()
+            clientData()
             // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
             // gameDirectory = project.file('run-data')
 
@@ -118,43 +118,42 @@ configurations {
 
 
 dependencies {
-    implementation "net.neoforged:neoforge:${neo_version}"
 
-    // neoforge/fabric 1.21.1
-    implementation "curse.maven:lets-do-beachparty-858691:7672876"
-    // neoforge/X 1.21.1
-    implementation "curse.maven:autumnity-365045:7118591"
-    // neoforge/X 1.21.1
-    implementation "curse.maven:caverns-and-chasms-438005:8155745"
-    // neoforge/fabric 1.21.1
-    implementation "curse.maven:ecologics-570463:8104866"
-    // neoforge/X 1.21.1
-    implementation "curse.maven:environmental-388992:7122147"
-    // neoforge/fabric 1.21.1
-    implementation "curse.maven:good-ending-690161:7387410"
-    // neoforge/X 1.21.1
-//    implementation "curse.maven:oreganized-769203:7707160"
-    // neoforge/X 1.21.1
-    implementation "curse.maven:quark-243121:8342602"
-    // neoforge/fabric 1.21.1
-    implementation "curse.maven:snowy-spirit-566142:8195621"
-    // neoforge/fabric 1.21.1
-    implementation "curse.maven:twigs-496913:8191595"
-    // neoforge/X 1.21.1
-    implementation "curse.maven:upgrade-aquatic-326895:7115763"
-    // neoforge/X 1.21.1
-    implementation "curse.maven:nature-spirit-1044992:6962784"
-
-    //additions for the mods
-    implementation "curse.maven:architectury-api-419699:5786327"
-    implementation "curse.maven:curios-api-309927:6529130"
-    implementation "curse.maven:cloth-config-api-348521:5729127"
-    implementation "curse.maven:zeta-968868:7980010"
-    implementation "curse.maven:do-api-864599:5730908"
-    implementation "curse.maven:selene-499980:8343403"
-    implementation "curse.maven:blueprint-382216:8048607"
-    implementation "curse.maven:gallery-1173553:8159692"
-    implementation "curse.maven:terrablender-940057:6054947"
+//    // X/X 1.21.11
+//    implementation "curse.maven:lets-do-beachparty-858691:7672876"
+//    // neoforge/X 1.21.1
+//    implementation "curse.maven:autumnity-365045:7118591"
+//    // neoforge/X 1.21.1
+//    implementation "curse.maven:caverns-and-chasms-438005:8155745"
+    // neoforge/fabric 1.21.11
+    implementation "curse.maven:ecologics-570463:8308866"
+//    // neoforge/X 1.21.1
+//    implementation "curse.maven:environmental-388992:7122147"
+//    // neoforge/fabric 1.21.1
+//    implementation "curse.maven:good-ending-690161:7387410"
+//    // neoforge/X 1.21.1
+////    implementation "curse.maven:oreganized-769203:7707160"
+//    // neoforge/X 1.21.1
+//    implementation "curse.maven:quark-243121:8342602"
+//    // neoforge/fabric 1.21.1
+//    implementation "curse.maven:snowy-spirit-566142:8195621"
+//    // neoforge/fabric 1.21.1
+//    implementation "curse.maven:twigs-496913:8191595"
+//    // neoforge/X 1.21.1
+//    implementation "curse.maven:upgrade-aquatic-326895:7115763"
+//    // neoforge/X 1.21.1
+//    implementation "curse.maven:nature-spirit-1044992:6962784"
+//
+//    //additions for the mods
+//    implementation "curse.maven:architectury-api-419699:5786327"
+//    implementation "curse.maven:curios-api-309927:6529130"
+//    implementation "curse.maven:cloth-config-api-348521:5729127"
+//    implementation "curse.maven:zeta-968868:7980010"
+//    implementation "curse.maven:do-api-864599:5730908"
+//    implementation "curse.maven:selene-499980:8343403"
+//    implementation "curse.maven:blueprint-382216:8048607"
+//    implementation "curse.maven:gallery-1173553:8159692"
+//    implementation "curse.maven:terrablender-940057:6054947"
 
     compileOnly("mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}")
     // at runtime, use the full JEI jar for NeoForge
@@ -166,14 +165,12 @@ tasks.withType(ProcessResources).configureEach {
             minecraft_version      : minecraft_version,
             minecraft_version_range: minecraft_version_range,
             neo_version            : neo_version,
-            loader_version_range   : loader_version_range,
             mod_id                 : mod_id,
             mod_name               : mod_name,
             mod_license            : mod_license,
             mod_version            : mod_version,
             mod_authors            : mod_authors,
             mod_description        : mod_description,
-            neo_version_range      : neo_version_range,
     ]
     inputs.properties replaceProperties
 

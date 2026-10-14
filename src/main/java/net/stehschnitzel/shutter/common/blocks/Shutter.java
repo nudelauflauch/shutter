@@ -2,12 +2,11 @@ package net.stehschnitzel.shutter.common.blocks;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.Mirror;
@@ -15,12 +14,14 @@ import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.redstone.Orientation;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterDouble;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterPos;
 import net.stehschnitzel.shutter.common.blocks.properties.ShutterVoxels;
+import org.jspecify.annotations.Nullable;
 
 import java.util.List;
 
@@ -52,68 +53,62 @@ public class Shutter extends AbstractShutter {
             }
 
             this.playSound(pPlayer, pLevel, pPos);
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
+            return InteractionResult.SUCCESS_SERVER;
         }
         return InteractionResult.FAIL;
     }
 
     @Override
-    public void neighborChanged(BlockState pState, Level pLevel, BlockPos pPos, Block pBlock, BlockPos pFromPos, boolean pIsMoving) {
-        redstoneUpdate(pLevel, pFromPos, pPos);
-        List<BlockState> sideblocks = getNeighborBlocks(pLevel, pPos);
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, @Nullable Orientation orientation, boolean movedByPiston) {
+        List<BlockState> sideblocks = getNeighborBlocks(level, pos);
 
         // double shutter
         // checks if it should update its double block state
-        if (pState.getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
-            BlockPos right = getNeighborShutterPos(pPos, ShutterDouble.RIGHT, pState.getValue(FACING));
-            BlockPos left = getNeighborShutterPos(pPos, ShutterDouble.LEFT, pState.getValue(FACING));
+        if (state.getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
+            BlockPos right = getNeighborShutterPos(pos, ShutterDouble.RIGHT, state.getValue(FACING));
+            BlockPos left = getNeighborShutterPos(pos, ShutterDouble.LEFT, state.getValue(FACING));
 
-            if (sideblocks.get(0).getBlock() instanceof Shutter && pPos.equals(getNeighborShutterPos(pLevel, right))) {
-                pLevel.setBlock(pPos, pLevel.getBlockState(pPos)
+            if (sideblocks.get(0).getBlock() instanceof Shutter && pos.equals(getNeighborShutterPos(level, right))) {
+                (level).setBlock(pos, level.getBlockState(pos)
                         .setValue(DOUBLE_DOOR, ShutterDouble.RIGHT),
                         18);
 
-                updatePosNeighborHelper(pLevel, pPos);
+                updatePosNeighborHelper(level, pos);
 
-            } else if (sideblocks.get(1).getBlock() instanceof Shutter && pPos.equals(getNeighborShutterPos(pLevel, left))) {
-                pLevel.setBlock(pPos, pLevel.getBlockState(pPos)
+            } else if (sideblocks.get(1).getBlock() instanceof Shutter && pos.equals(getNeighborShutterPos(level, left))) {
+                (level).setBlock(pos, level.getBlockState(pos)
                         .setValue(DOUBLE_DOOR, ShutterDouble.LEFT),
                         18);
 
-                updatePosNeighborHelper(pLevel, pPos);
+                updatePosNeighborHelper(level, pos);
             }
         }
 
         // resets it to None, if there are no shutters left or right
-        if (pState.getValue(DOUBLE_DOOR) == ShutterDouble.LEFT && !(sideblocks.get(1).getBlock() instanceof Shutter)) {
-            pLevel.setBlock(pPos, pLevel.getBlockState(pPos)
+        if (state.getValue(DOUBLE_DOOR) == ShutterDouble.LEFT && !(sideblocks.get(1).getBlock() instanceof Shutter)) {
+            (level).setBlock(pos, level.getBlockState(pos)
                     .setValue(DOUBLE_DOOR, ShutterDouble.NONE),
                     18);
 
-            updatePosNeighborHelper(pLevel, pPos);
+            updatePosNeighborHelper(level, pos);
         }
-        if (pState.getValue(DOUBLE_DOOR) == ShutterDouble.RIGHT && !(sideblocks.get(0).getBlock() instanceof Shutter)) {
-            pLevel.setBlock(pPos, pLevel.getBlockState(pPos).setValue(DOUBLE_DOOR, ShutterDouble.NONE), 18);
+        if (state.getValue(DOUBLE_DOOR) == ShutterDouble.RIGHT && !(sideblocks.get(0).getBlock() instanceof Shutter)) {
+            (level).setBlock(pos, level.getBlockState(pos).setValue(DOUBLE_DOOR, ShutterDouble.NONE), 18);
 
-            updatePosNeighborHelper(pLevel, pPos);
+            updatePosNeighborHelper(level, pos);
         }
 
 
         // resets the shutter to 0 when it can't be in state 2
-        if (!pLevel.isClientSide && pState.getValue(OPEN) == 2
-                && !canUpdate(pLevel, pPos)) {
-            int open = hasRedstonePower(pLevel, pPos) ? 1 : 0;
-            this.update(pLevel, pPos, open, false);
-            this.playSound(null, pLevel, pPos);
+        if (!level.isClientSide() && state.getValue(OPEN) == 2
+                && !canUpdate(level, pos)) {
+            int open = hasRedstonePower(level, pos) ? 1 : 0;
+            this.update(level, pos, open, false);
+            this.playSound(null, level, pos);
         }
 
-        // update position
-        if (pPos.above().equals(pFromPos) || pPos.below().equals(pFromPos)) {
-            updatePosNeighborHelper(pLevel, pPos);
-        }
-
-        if (pState.getValue(OPEN) != 0 && pState.getValue(WATERLOGGED)) {
-            pLevel.scheduleTick(pPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+        if (state.getValue(OPEN) != 0 && state.getValue(WATERLOGGED)) {
+            (level).scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
     }
 
@@ -124,8 +119,8 @@ public class Shutter extends AbstractShutter {
     }
 
     @Override
-    public int getAnalogOutputSignal(BlockState pState, Level pLevel, BlockPos pPos) {
-        switch (pState.getValue(OPEN)) {
+    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos, Direction direction) {
+        switch (state.getValue(OPEN)) {
             case 1: return 7;
             case 2: return 15;
             default: return 0;
@@ -148,12 +143,20 @@ public class Shutter extends AbstractShutter {
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        if (pState.getValue(WATERLOGGED)) {
-            pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+    protected BlockState updateShape(BlockState state, LevelReader level, ScheduledTickAccess scheduledTickAccess, BlockPos pos,
+                                     Direction direction, BlockPos neighborPos, BlockState neighborState, RandomSource random) {
+        if (state.getValue(WATERLOGGED)) {
+            scheduledTickAccess.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
 
-        return super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
+        redstoneUpdate((Level) level, neighborPos, pos);
+
+        // update position
+        if (pos.above().equals(neighborPos) || pos.below().equals(neighborPos)) {
+            updatePosNeighborHelper((Level) level, pos);
+        }
+
+        return super.updateShape(state, level, scheduledTickAccess, pos, direction, neighborPos, neighborState, random);
     }
 
     @Override
