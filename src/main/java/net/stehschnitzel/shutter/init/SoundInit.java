@@ -1,7 +1,7 @@
 package net.stehschnitzel.shutter.init;
 
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.sounds.SoundEvent;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -24,7 +24,7 @@ public class SoundInit {
 	public static final Supplier<SoundEvent> SHUTTER_CLOSE_METAL = registerSoundEvent("shutter_close_metal");
 
 	private static Supplier<SoundEvent> registerSoundEvent(String name) {
-        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(ShutterMain.MOD_ID, name)));
+        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(Identifier.fromNamespaceAndPath(ShutterMain.MOD_ID, name)));
     }
 
 	public static void register(IEventBus bus) {

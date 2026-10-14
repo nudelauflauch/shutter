@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": {
-      "item": "minecraft:oxidized_copper"
-    }
+    "A": "minecraft:oxidized_copper"
   },
   "pattern": [
     "AAA",

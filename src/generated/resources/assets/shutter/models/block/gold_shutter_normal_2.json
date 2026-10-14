@@ -1,7 +1,7 @@
 {
-  "parent": "shutter:block/template_shutter_2",
+  "parent": "shutter:block/template_shutter_normal_2",
   "textures": {
-    "particle": "minecraft:block/gold_block",
-    "texture": "shutter:block/gold_shutter_normal"
+    "base": "shutter:block/gold_shutter",
+    "particle": "minecraft:block/gold_block"
   }
 }

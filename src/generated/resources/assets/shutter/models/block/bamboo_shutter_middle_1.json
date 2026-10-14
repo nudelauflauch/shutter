@@ -1,7 +1,7 @@
 {
-  "parent": "shutter:block/template_shutter_1",
+  "parent": "shutter:block/template_shutter_middle_1",
   "textures": {
-    "particle": "minecraft:block/bamboo_planks",
-    "texture": "shutter:block/bamboo_shutter_middle"
+    "base": "shutter:block/bamboo_shutter",
+    "particle": "minecraft:block/bamboo_block"
   }
 }

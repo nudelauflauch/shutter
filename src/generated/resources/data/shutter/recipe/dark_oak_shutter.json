@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": {
-      "item": "minecraft:dark_oak_slab"
-    }
+    "A": "minecraft:dark_oak_slab"
   },
   "pattern": [
     "AAA",

@@ -1,7 +1,7 @@
 {
-  "parent": "shutter:block/template_shutter_1",
+  "parent": "shutter:block/template_shutter_normal_1",
   "textures": {
-    "particle": "shutter:block/river_shutter_normal",
-    "texture": "shutter:block/river_shutter_normal"
+    "base": "shutter:block/river_shutter",
+    "particle": "shutter:block/river_shutter"
   }
 }

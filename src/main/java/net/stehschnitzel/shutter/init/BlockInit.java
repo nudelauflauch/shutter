@@ -14,35 +14,37 @@ import net.stehschnitzel.shutter.ShutterMain;
 import net.stehschnitzel.shutter.common.blocks.*;
 import net.stehschnitzel.shutter.common.items.BurnableItem;
 
+import java.util.function.Function;
+
 public class BlockInit {
 
 	public static final DeferredRegister.Blocks BLOCKS = DeferredRegister
 		.createBlocks(ShutterMain.MOD_ID);
 
-	public static final DeferredRegister<Item> MINECRAFT_ITEMS = DeferredRegister
+	public static final DeferredRegister.Items BLOCK_ITEMS = DeferredRegister
 			.createItems(ShutterMain.MOD_ID);
 
     //interaction shutters
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_WOOD = registerBlockWithoutItem("interaction_shutter_wood", () -> new InteractionShutter(
-            BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD).noLootTable().replaceable().noCollission()));
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_WOOD = registerBlockWithoutItem("interaction_shutter_wood",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD).noLootTable().replaceable().noCollision()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_CRIMSON = registerBlockWithoutItem("interaction_shutter_crimson", () -> new InteractionShutter(
-            BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_DOOR).noLootTable().replaceable().noCollission()));
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_CRIMSON = registerBlockWithoutItem("interaction_shutter_crimson",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_DOOR).noLootTable().replaceable().noCollision()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_IRON = registerBlockWithoutItem("interaction_shutter_iron", () -> new InteractionShutter(
-            BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR).noLootTable().replaceable().noCollission()));
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_IRON = registerBlockWithoutItem("interaction_shutter_iron",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR).noLootTable().replaceable().noCollision()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_WARPED = registerBlockWithoutItem("interaction_shutter_warped", () -> new InteractionShutter(
-            BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_DOOR).noLootTable().replaceable().noCollission()));
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_WARPED = registerBlockWithoutItem("interaction_shutter_warped",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_DOOR).noLootTable().replaceable().noCollision()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_COPPER = registerBlockWithoutItem("interaction_shutter_copper", () -> new InteractionShutter(
-            BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK).noLootTable().replaceable().noCollission()));
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_COPPER = registerBlockWithoutItem("interaction_shutter_copper",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK).noLootTable().replaceable().noCollision()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_NETHERITE = registerBlockWithoutItem("interaction_shutter_netherite", () -> new InteractionShutter(
-            BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK).noLootTable().replaceable().noCollission()));
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_NETHERITE = registerBlockWithoutItem("interaction_shutter_netherite",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK).noLootTable().replaceable().noCollision()));
 
-    public static final DeferredBlock<Block> INTERACTION_SHUTTER_GLASS = registerBlockWithoutItem("interaction_shutter_glass", () -> new InteractionShutter(
-            BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noLootTable().replaceable().noCollission()));
+    public static final DeferredBlock<Block> INTERACTION_SHUTTER_GLASS = registerBlockWithoutItem("interaction_shutter_glass",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noLootTable().replaceable().noCollision()));
 
 
 	// minecraft
@@ -55,17 +57,16 @@ public class BlockInit {
 
 
 	public static final DeferredBlock<Shutter> CRIMSON_SHUTTER = registerBlock(
-			"crimson_shutter",
-			() -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_PLANKS)), false);
+			"crimson_shutter", Shutter::new,
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_PLANKS), false);
 
 	public static final DeferredBlock<Shutter> DARK_OAK_SHUTTER = registerWoodenShutter(
 			"dark_oak_shutter");
 
 
 	public static final DeferredBlock<Shutter> IRON_SHUTTER = registerBlock(
-			"iron_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR), true), false);
+			"iron_shutter", properties -> new Shutter(properties, true),
+            () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR)), false);
 
 	public static final DeferredBlock<Shutter> JUNGLE_SHUTTER = registerWoodenShutter(
 			"jungle_shutter");
@@ -80,64 +81,64 @@ public class BlockInit {
 
 
 	public static final DeferredBlock<Shutter> WARPED_SHUTTER = registerBlock(
-			"warped_shutter", () -> new Shutter(
-					BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_PLANKS)), false);
+			"warped_shutter", Shutter::new,
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_PLANKS), false);
 
 	public static final DeferredBlock<Shutter> MANGROVE_SHUTTER = registerWoodenShutter(
 			"mangrove_shutter");
 
 	public static final DeferredBlock<Shutter> BAMBOO_SHUTTER = registerBlock(
-			"bamboo_shutter", () -> new Shutter(
+			"bamboo_shutter", Shutter::new, () -> (
 					BlockBehaviour.Properties.ofFullCopy(Blocks.BAMBOO_PLANKS)));
 
 	public static final DeferredBlock<Shutter> CHERRY_SHUTTER = registerBlock(
-			"cherry_shutter", () -> new Shutter(
+			"cherry_shutter", Shutter::new, () -> (
 					BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)));
 
 	public static final DeferredBlock<Shutter> COPPER_SHUTTER = registerBlock(
-			"copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR)));
+			"copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR));
 
 	public static final DeferredBlock<Shutter> EXPOSED_COPPER_SHUTTER = registerBlock(
-			"exposed_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR)));
+			"exposed_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR));
 
 	public static final DeferredBlock<Shutter> OXIDIZED_COPPER_SHUTTER = registerBlock(
-			"oxidized_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR)));
+			"oxidized_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR));
 
 	public static final DeferredBlock<Shutter> WEATHERED_COPPER_SHUTTER = registerBlock(
-			"weathered_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR)));
+			"weathered_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR));
 
 	public static final DeferredBlock<Shutter> WAXED_COPPER_SHUTTER = registerBlock(
-			"waxed_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR)));
+			"waxed_copper_shutter",properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED,
+                    properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR));
 
 	public static final DeferredBlock<Shutter> WAXED_EXPOSED_COPPER_SHUTTER = registerBlock(
-			"waxed_exposed_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR)));
+			"waxed_exposed_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR));
 
 	public static final DeferredBlock<Shutter> WAXED_OXIDIZED_COPPER_SHUTTER = registerBlock(
-			"waxed_oxidized_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR)));
+			"waxed_oxidized_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR));
 
 	public static final DeferredBlock<Shutter> WAXED_WEATHERED_COPPER_SHUTTER = registerBlock(
-			"waxed_weathered_copper_shutter", () -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED,
-					BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR)));
+			"waxed_weathered_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR));
 
 
 	//mc but not really
 	public static final DeferredBlock<Shutter> GOLD_SHUTTER = registerBlock(
-			"gold_shutter", () -> new GoldShutter(
+			"gold_shutter", GoldShutter::new, () -> (
 					BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK)), false);
 
 	public static final DeferredBlock<Shutter> NETHERITE_SHUTTER = registerBlock(
-			"netherite_shutter", () -> new GoldShutter(
+			"netherite_shutter", GoldShutter::new, () -> (
 					BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK)), false);
 
 	public static final DeferredBlock<Shutter> GLASS_SHUTTER = registerBlock(
-			"glass_shutter", () -> new Shutter(
+			"glass_shutter", Shutter::new, () -> (
 					BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion()),
 			 false);
 
@@ -312,47 +313,60 @@ public class BlockInit {
 
 
 
-    private static <T extends Block> DeferredBlock<T> registerWoodenShutter(
-            String name) {
-        DeferredBlock to_return = registerBlock(name, () -> new Shutter(
-                BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)));
-        return to_return;
+    // Wooden shutter
+    private static DeferredBlock<Shutter> registerWoodenShutter(String name) {
+        return registerBlock(name,
+                Shutter::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)
+        );
     }
 
-	// Block
-	private static <T extends Block> DeferredBlock<T> registerBlock(
-			String name, Supplier<T> block) {
-		DeferredBlock<T> to_return = registerBlockWithoutItem(name, block);
-		registerBlockItem(name, to_return, true);
-		return to_return;
-	}
-
+    // Register block with item (burnable by default)
     private static <T extends Block> DeferredBlock<T> registerBlock(
-            String name, Supplier<T> block, boolean burnAble) {
-        DeferredBlock<T> registryBlock = registerBlockWithoutItem(name, block);
-        registerBlockItem(name, registryBlock, burnAble);
-        return registryBlock;
+            String name,
+            Function<BlockBehaviour.Properties, T> factory,
+            Supplier<BlockBehaviour.Properties> properties) {
+
+        return registerBlock(name, factory, properties, true);
     }
 
+    // Register block with configurable burnability
+    private static <T extends Block> DeferredBlock<T> registerBlock(
+            String name,
+            Function<BlockBehaviour.Properties, T> factory,
+            Supplier<BlockBehaviour.Properties> properties,
+            boolean burnAble) {
+
+        DeferredBlock<T> registeredBlock =
+                registerBlockWithoutItem(name, factory, properties);
+
+        registerBlockItem(name, registeredBlock, burnAble);
+
+        return registeredBlock;
+    }
+
+    // Register block without item
     private static <T extends Block> DeferredBlock<T> registerBlockWithoutItem(
-            String name, Supplier<T> block) {
-        return BLOCKS.register(name, block);
+            String name,
+            Function<BlockBehaviour.Properties, T> factory,
+            Supplier<BlockBehaviour.Properties> properties) {
+
+        return BLOCKS.registerBlock(name, factory, properties);
     }
 
-	private static <T extends Block> void registerBlockItem(
-			String name, DeferredBlock<T> registeredBlock, boolean burnAble) {
-		if (burnAble) {
-            MINECRAFT_ITEMS.register(name, () -> new BurnableItem(registeredBlock.get(), new Item.Properties(), 300));
-        } else {
-            MINECRAFT_ITEMS.register(name, () -> new BlockItem(registeredBlock.get(), new Item.Properties()));
-        }
-	}
+    // Register block item
+    private static <T extends Block> void registerBlockItem(
+            String name, DeferredBlock<T> registeredBlock, boolean burnAble) {
 
-	public static void registerBlockItem(IEventBus bus) {
-		MINECRAFT_ITEMS.register(bus);
-	}
+        if (burnAble) {
+            BLOCK_ITEMS.registerItem(name, (properties) ->
+                    new BurnableItem(registeredBlock.get(), properties.useBlockDescriptionPrefix(), 300));
+        } else {
+            BLOCK_ITEMS.registerItem(name, properties -> new BlockItem(registeredBlock.get(), properties.useBlockDescriptionPrefix()));
+        }
+    }
 
 	public static void registerBlock(IEventBus bus) {
-		BLOCKS.register(bus);
+        BLOCK_ITEMS.register(bus);
+        BLOCKS.register(bus);
 	}
 }

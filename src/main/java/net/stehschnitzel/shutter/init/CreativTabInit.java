@@ -70,7 +70,7 @@ public class CreativTabInit{
         if(ModList.get().isLoaded("natures_spirit")) {
             registerNaturesSpirit(pItems);
         }
-		if (!FMLLoader.isProduction()) {
+		if (!FMLLoader.getCurrent().isProduction()) {
             registerBeachParty(pItems);
             registerAutumnity(pItems);
             registerCavernsChasms(pItems);

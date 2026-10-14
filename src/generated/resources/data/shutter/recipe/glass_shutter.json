@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": {
-      "item": "minecraft:glass_pane"
-    }
+    "A": "minecraft:glass_pane"
   },
   "pattern": [
     "AAA",

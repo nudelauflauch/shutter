@@ -1,0 +1,33 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"base": "#base",
+		"particle": "#particle"
+	},
+	"elements": [
+		{
+			"name": "sas",
+			"from": [13, 0, 0],
+			"to": [29, 16, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [1, 8, -5]},
+			"faces": {
+				"north": {"uv": [10.66667, 13.33333, 13.33333, 16], "texture": "#base"},
+				"east": {"uv": [15.33333, 11, 15.66667, 13.66666], "texture": "#base"},
+				"south": {"uv": [10.66667, 10.66666, 13.33333, 13.33333], "texture": "#base"},
+				"west": {"uv": [13.66667, 11, 14, 13.66666], "texture": "#base"},
+				"up": {"uv": [16, 11, 13.33333, 10.66666], "texture": "#base"},
+				"down": {"uv": [13.33333, 13.66666, 16, 14], "texture": "#base"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "VoxelShapes",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}

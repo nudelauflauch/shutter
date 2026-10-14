@@ -1,0 +1,7 @@
+{
+  "parent": "shutter:block/template_shutter_right_upper_0",
+  "textures": {
+    "base": "shutter:block/river_shutter",
+    "particle": "shutter:block/river_shutter"
+  }
+}

@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": {
-      "item": "minecraft:spruce_slab"
-    }
+    "A": "minecraft:spruce_slab"
   },
   "pattern": [
     "AAA",

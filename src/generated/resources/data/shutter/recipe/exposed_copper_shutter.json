@@ -2,9 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "A": {
-      "item": "minecraft:exposed_copper"
-    }
+    "A": "minecraft:exposed_copper"
   },
   "pattern": [
     "AAA",

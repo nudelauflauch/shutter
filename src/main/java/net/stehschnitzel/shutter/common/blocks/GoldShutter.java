@@ -21,7 +21,7 @@ public class GoldShutter extends Shutter {
 				&& !pLevel.getBlockState(pPos).getValue(Shutter.POWERED)) {
 			this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 			this.playSound(pPlayer, pLevel, pPos);
-			return InteractionResult.sidedSuccess(pLevel.isClientSide);
+			return InteractionResult.SUCCESS_SERVER;
 		}
 		return InteractionResult.FAIL;
 	}

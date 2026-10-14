@@ -1,7 +1,7 @@
 {
-  "parent": "shutter:block/template_shutter_1",
+  "parent": "shutter:block/template_shutter_lower_1",
   "textures": {
-    "particle": "shutter:block/nas_willow_shutter_normal",
-    "texture": "shutter:block/nas_willow_shutter_lower"
+    "base": "shutter:block/nas_willow_shutter",
+    "particle": "shutter:block/nas_willow_shutter"
   }
 }

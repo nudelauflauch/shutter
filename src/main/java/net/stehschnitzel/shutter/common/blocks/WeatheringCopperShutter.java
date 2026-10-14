@@ -9,8 +9,6 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.HoneycombItem;
@@ -46,13 +44,13 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
             this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 
             this.playSound(pPlayer, pLevel, pPos);
-            return InteractionResult.sidedSuccess(pLevel.isClientSide);
+            return InteractionResult.SUCCESS;
         }
         return InteractionResult.FAIL;
     }
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+    public InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
         if (pStack.getItem() instanceof HoneycombItem) {
             Optional<Block> waxed = WeatheringShutter.getWaxedBlock(pState.getBlock());
             if (waxed.isPresent()) {
@@ -61,7 +59,7 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
                     pStack.shrink(1);
                 }
                 pLevel.levelEvent(pPlayer, 3003, pPos, 0);
-                return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+                return InteractionResult.TRY_WITH_EMPTY_HAND;
             }
         } else if (pStack.getItem() instanceof AxeItem) {
             Optional<Block> unwaxed = WeatheringShutter.getUnwaxedBlock(pState.getBlock());
@@ -79,12 +77,12 @@ public class WeatheringCopperShutter extends Shutter implements WeatheringShutte
             }
             if ((unwaxed.isPresent() || previous.isPresent())) {
                 if (!pPlayer.isCreative()) {
-                    pStack.hurtAndBreak(1, pPlayer, LivingEntity.getSlotForHand(pHand));
+                    pStack.hurtAndBreak(1, pPlayer, pPlayer.getUsedItemHand());
                 }
-                return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
+                return InteractionResult.SUCCESS;
             }
         }
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.TRY_WITH_EMPTY_HAND;
     }
 
     @Override

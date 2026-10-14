@@ -1,7 +1,7 @@
 {
-  "parent": "shutter:block/template_shutter_2",
+  "parent": "shutter:block/template_shutter_normal_2",
   "textures": {
-    "particle": "minecraft:block/warped_planks",
-    "texture": "shutter:block/warped_shutter_normal"
+    "base": "shutter:block/warped_shutter",
+    "particle": "minecraft:block/warped_planks"
   }
 }
