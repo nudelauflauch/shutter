@@ -20,13 +20,13 @@ public class ShuttersModelProvider extends ModelProvider {
         ShutterBlockModelGenerators sG =
                 new ShutterBlockModelGenerators(blockModels.blockStateOutput, itemModels.itemModelOutput, itemModels.modelOutput);
 
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_WOOD.get(), Items.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_CRIMSON.get(), Items.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_IRON.get(), Items.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_WARPED.get(), Items.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_COPPER.get(), Items.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_NETHERITE.get(), Items.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_GLASS.get(), Items.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_WOOD.get(), Blocks.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_CRIMSON.get(), Blocks.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_IRON.get(), Blocks.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_WARPED.get(), Blocks.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_COPPER.get(), Blocks.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_NETHERITE.get(), Blocks.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_GLASS.get(), Blocks.AIR);
 
         sG.createShutter(blockModels, BlockInit.GLASS_SHUTTER, Blocks.GLASS);
 
@@ -42,6 +42,7 @@ public class ShuttersModelProvider extends ModelProvider {
         sG.createShutter(blockModels, BlockInit.WARPED_SHUTTER, Blocks.WARPED_PLANKS);
         sG.createShutter(blockModels, BlockInit.IRON_SHUTTER, Blocks.IRON_BLOCK);
         sG.createShutter(blockModels, BlockInit.SPRUCE_SHUTTER, Blocks.SPRUCE_PLANKS);
+        sG.createShutter(blockModels, BlockInit.PALE_OAK_SHUTTER, Blocks.PALE_OAK_PLANKS);
 
         sG.createShutter(blockModels, BlockInit.CHERRY_SHUTTER, Blocks.CHERRY_PLANKS);
         sG.createShutter(blockModels, BlockInit.GOLD_SHUTTER, Blocks.GOLD_BLOCK);

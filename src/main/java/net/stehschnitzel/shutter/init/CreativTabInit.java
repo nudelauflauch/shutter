@@ -101,6 +101,7 @@ public class CreativTabInit{
 		items.accept(BlockInit.MANGROVE_SHUTTER.get());
 		items.accept(BlockInit.BAMBOO_SHUTTER.get());
 		items.accept(BlockInit.CHERRY_SHUTTER.get());
+		items.accept(BlockInit.PALE_OAK_SHUTTER.get());
 		items.accept(BlockInit.COPPER_SHUTTER.get());
 		items.accept(BlockInit.EXPOSED_COPPER_SHUTTER.get());
 		items.accept(BlockInit.WEATHERED_COPPER_SHUTTER.get());

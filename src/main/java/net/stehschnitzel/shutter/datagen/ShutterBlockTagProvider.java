@@ -44,6 +44,8 @@ public class ShutterBlockTagProvider extends BlockTagsProvider {
                 .add(BlockInit.WARPED_SHUTTER.get())
                 .add(BlockInit.MANGROVE_SHUTTER.get())
                 .add(BlockInit.BAMBOO_SHUTTER.get())
+                .add(BlockInit.CHERRY_SHUTTER.get())
+                .add(BlockInit.PALE_OAK_SHUTTER.get())
 
                 .add(BlockInit.PALM_SHUTTER.get())
                 .add(BlockInit.MAPLE_SHUTTER.get())

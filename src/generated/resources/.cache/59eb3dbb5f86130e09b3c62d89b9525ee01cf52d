@@ -1,4 +1,4 @@
-// 1.21.11	2026-10-13T21:14:23.4293255	Loot Tables
+// 1.21.11	2026-10-16T10:42:24.6344235	Loot Tables
 7ba43da151555721c7b810e4cd2695fa37735eab data/shutter/loot_table/blocks/acacia_shutter.json
 bcdf7dc6e1123681cb4c5b51be646a6c8b784268 data/shutter/loot_table/blocks/ancient_shutter.json
 93ef86bb57f9f51b163426839f68ed0fc6cc095e data/shutter/loot_table/blocks/aspen_shutter.json
@@ -42,6 +42,7 @@ ace303b18f07dade6991adf021a8ea037738b1ea data/shutter/loot_table/blocks/larch_sh
 d2bf3f84433746e8ba5ad207efbba5146f3d4e0b data/shutter/loot_table/blocks/oak_shutter.json
 b967a65a6390b07e7816679c77929ff22ddffbb1 data/shutter/loot_table/blocks/olive_shutter.json
 586bb8853bba917ed2444833d98fe102e492ad42 data/shutter/loot_table/blocks/oxidized_copper_shutter.json
+1837569376c9b897b59cd144aa52e06ee905b8f5 data/shutter/loot_table/blocks/pale_oak_shutter.json
 53e822a5c314d50685a33ec56ba2402b4740caa4 data/shutter/loot_table/blocks/palm_shutter.json
 486d1bf35627c7f082b236a88dbf15359c25e2d8 data/shutter/loot_table/blocks/palo_verde_shutter.json
 a046f3d7d888c72c74d26cf95553904559c67a33 data/shutter/loot_table/blocks/paper_shutter.json

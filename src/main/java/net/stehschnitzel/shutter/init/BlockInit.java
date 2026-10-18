@@ -95,7 +95,12 @@ public class BlockInit {
 			"cherry_shutter", Shutter::new, () -> (
 					BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_PLANKS)));
 
-	public static final DeferredBlock<Shutter> COPPER_SHUTTER = registerBlock(
+    public static final DeferredBlock<Shutter> PALE_OAK_SHUTTER = registerBlock(
+            "pale_oak_shutter", Shutter::new, () -> (
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.PALE_OAK_PLANKS)));
+
+
+    public static final DeferredBlock<Shutter> COPPER_SHUTTER = registerBlock(
 			"copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED, properties),
             () -> BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR));
 

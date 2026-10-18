@@ -63,6 +63,7 @@ public class ShutterRecipeProvider extends RecipeProvider {
         defaultShutter(Items.MANGROVE_SLAB, BlockInit.MANGROVE_SHUTTER.get()).save(output);
         defaultShutter(Items.BAMBOO_SLAB, BlockInit.BAMBOO_SHUTTER.get()).save(output);
         defaultShutter(Items.CHERRY_SLAB, BlockInit.CHERRY_SHUTTER.get()).save(output);
+        defaultShutter(Items.PALE_OAK_SLAB, BlockInit.PALE_OAK_SHUTTER.get()).save(output);
         defaultShutter(Items.GLASS_PANE, BlockInit.GLASS_SHUTTER.get()).save(output);
 
         defaultShutter(Items.COPPER_BLOCK, BlockInit.COPPER_SHUTTER.get(), 8).save(output);
