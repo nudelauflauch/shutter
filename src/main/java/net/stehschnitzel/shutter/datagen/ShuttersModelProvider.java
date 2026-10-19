@@ -20,13 +20,13 @@ public class ShuttersModelProvider extends ModelProvider {
         ShutterBlockModelGenerators sG =
                 new ShutterBlockModelGenerators(blockModels.blockStateOutput, itemModels.itemModelOutput, itemModels.modelOutput);
 
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_WOOD.get(), Blocks.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_CRIMSON.get(), Blocks.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_IRON.get(), Blocks.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_WARPED.get(), Blocks.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_COPPER.get(), Blocks.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_NETHERITE.get(), Blocks.AIR);
-        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_GLASS.get(), Blocks.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_WOOD.get(), Items.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_CRIMSON.get(), Items.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_IRON.get(), Items.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_WARPED.get(), Items.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_COPPER.get(), Items.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_NETHERITE.get(), Items.AIR);
+        blockModels.createAirLikeBlock(BlockInit.INTERACTION_SHUTTER_GLASS.get(), Items.AIR);
 
         sG.createShutter(blockModels, BlockInit.GLASS_SHUTTER, Blocks.GLASS);
 
