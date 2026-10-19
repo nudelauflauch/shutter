@@ -1,8 +1,8 @@
 package net.stehschnitzel.shutter.block.properties;
 
-import net.minecraft.util.StringIdentifiable;
+import net.minecraft.util.StringRepresentable;
 
-public enum ShutterDouble implements StringIdentifiable {
+public enum ShutterDouble implements StringRepresentable {
 
     NONE("none"),
     LEFT("left"),
@@ -14,7 +14,7 @@ public enum ShutterDouble implements StringIdentifiable {
     }
 
     @Override
-    public String asString() {
+    public String getSerializedName() {
         return this.name;
     }
 }

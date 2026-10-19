@@ -1,55 +1,108 @@
 package net.stehschnitzel.shutter.block;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Oxidizable;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.World;
+
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
+import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.AxeItem;
+import net.minecraft.world.item.HoneycombItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.ChangeOverTimeBlock;
+import net.minecraft.world.level.block.WeatheringCopper;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.stehschnitzel.shutter.block.properties.WeatheringShutter;
 import net.stehschnitzel.shutter.init.BlockInit;
 
-public class WeatheringCopperShutter extends Shutter implements Oxidizable {
-    private final OxidationLevel oxidationLevel;
+import java.util.Optional;
 
-    public WeatheringCopperShutter(OxidationLevel oxidationLevel, Settings settings) {
-        super(settings, false, true);
-        this.oxidationLevel = oxidationLevel;
+public class WeatheringCopperShutter extends Shutter implements WeatheringShutter {
+    public static final MapCodec<WeatheringCopperShutter> CODEC = RecordCodecBuilder.mapCodec(
+            weatheringState -> weatheringState.group(WeatheringCopper.WeatherState.CODEC.fieldOf("weathering_state").forGetter(ChangeOverTimeBlock::getAge), propertiesCodec())
+                    .apply(weatheringState, WeatheringCopperShutter::new)
+    );
+    WeatheringCopper.WeatherState weatherState;
+
+    public WeatheringCopperShutter(WeatheringCopper.WeatherState weatherState, Properties properties) {
+        super(properties, true);
+        this.weatherState = weatherState;
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-        if (!player.isSneaking()
-                && player.getActiveHand().equals(Hand.MAIN_HAND)
-                && !this.isMetal) {
-            this.update(world, pos, state.get(OPEN) + 1, false);
+    public InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+        if (!pPlayer.mayBuild()) {
+            return InteractionResult.PASS;
+        } else if (!pPlayer.isCrouching()) {
+            this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
 
-            this.playSound(world, pos);
-            return ActionResult.SUCCESS_SERVER;
+            this.playSound(pPlayer, pLevel, pPos);
+            return InteractionResult.SUCCESS;
         }
-        return ActionResult.FAIL;
+        return InteractionResult.FAIL;
     }
 
     @Override
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        this.tickDegradation(state, world, pos, random);
+    public InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+        if (pStack.getItem() instanceof HoneycombItem) {
+            Optional<Block> waxed = WeatheringShutter.getWaxedBlock(pState.getBlock());
+            if (waxed.isPresent()) {
+                pLevel.setBlockAndUpdate(pPos, waxed.get().withPropertiesOf(pState));
+                if (!pPlayer.isCreative()) {
+                    pStack.shrink(1);
+                }
+                pLevel.levelEvent(pPlayer, 3003, pPos, 0);
+                return InteractionResult.TRY_WITH_EMPTY_HAND;
+            }
+        } else if (pStack.getItem() instanceof AxeItem) {
+            Optional<Block> unwaxed = WeatheringShutter.getUnwaxedBlock(pState.getBlock());
+            Optional<Block> previous = WeatheringShutter.getPrevious(pState.getBlock());
+            if (unwaxed.isPresent()) {
+                pLevel.setBlockAndUpdate(pPos, unwaxed.get().withPropertiesOf(pState));
+
+                pLevel.playSound(pPlayer, pPos, SoundEvents.AXE_WAX_OFF, SoundSource.BLOCKS, 1.0F, 1.0F);
+                pLevel.levelEvent(pPlayer, 3004, pPos, 0);
+            } else  if (previous.isPresent()) {
+                pLevel.setBlockAndUpdate(pPos, previous.get().withPropertiesOf(pState));
+
+                pLevel.playSound(pPlayer, pPos, SoundEvents.AXE_SCRAPE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                pLevel.levelEvent(pPlayer, 3005, pPos, 0);
+            }
+            if ((unwaxed.isPresent() || previous.isPresent())) {
+                if (!pPlayer.isCreative()) {
+                    pStack.hurtAndBreak(1, pPlayer, pPlayer.getUsedItemHand());
+                }
+                return InteractionResult.SUCCESS;
+            }
+        }
+        return InteractionResult.TRY_WITH_EMPTY_HAND;
     }
 
     @Override
-    public boolean hasRandomTicks(BlockState state) {
-        return state.getBlock() != BlockInit.OXIDIZED_COPPER_SHUTTER;
+    protected MapCodec<? extends Block> codec() {
+        return CODEC;
     }
 
     @Override
-    public void tickDegradation(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        Oxidizable.super.tickDegradation(state, world, pos, random);
+    protected void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        this.changeOverTime(pState, pLevel, pPos, pRandom);
     }
 
     @Override
-    public OxidationLevel getDegradationLevel() {
-        return this.oxidationLevel;
+    protected boolean isRandomlyTicking(BlockState pState) {
+        return pState.getBlock() != BlockInit.OXIDIZED_COPPER_SHUTTER;
+    }
+
+    @Override
+    public WeatheringCopper.WeatherState getAge() {
+        return this.weatherState;
     }
 }

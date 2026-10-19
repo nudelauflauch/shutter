@@ -1,146 +1,143 @@
 package net.stehschnitzel.shutter.init;
 
+import net.fabricmc.fabric.api.registry.FuelRegistryEvents;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.Oxidizable;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.WeatheringCopper;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.stehschnitzel.shutter.ShutterMain;
 import net.stehschnitzel.shutter.block.GoldShutter;
+import net.stehschnitzel.shutter.block.InteractionShutter;
 import net.stehschnitzel.shutter.block.Shutter;
 import net.stehschnitzel.shutter.block.WeatheringCopperShutter;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class BlockInit {
-    public static void registerOxidizables() {
-        OxidizableBlocksRegistry.registerOxidizableBlockPair(BlockInit.COPPER_SHUTTER, BlockInit.EXPOSED_COPPER_SHUTTER);
-        OxidizableBlocksRegistry.registerOxidizableBlockPair(BlockInit.EXPOSED_COPPER_SHUTTER, BlockInit.WEATHERED_COPPER_SHUTTER);
-        OxidizableBlocksRegistry.registerOxidizableBlockPair(BlockInit.WEATHERED_COPPER_SHUTTER, BlockInit.OXIDIZED_COPPER_SHUTTER);
-        OxidizableBlocksRegistry.registerWaxableBlockPair(BlockInit.COPPER_SHUTTER, BlockInit.WAXED_COPPER_SHUTTER);
 
-        OxidizableBlocksRegistry.registerWaxableBlockPair(BlockInit.WEATHERED_COPPER_SHUTTER, BlockInit.WAXED_WEATHERED_COPPER_SHUTTER);
-        OxidizableBlocksRegistry.registerWaxableBlockPair(BlockInit.EXPOSED_COPPER_SHUTTER, BlockInit.WAXED_EXPOSED_COPPER_SHUTTER);
-        OxidizableBlocksRegistry.registerWaxableBlockPair(BlockInit.OXIDIZED_COPPER_SHUTTER, BlockInit.WAXED_OXIDIZED_COPPER_SHUTTER);
-    }
+    public static final Block INTERACTION_SHUTTER_WOOD = registerBlockWithoutItem("interaction_shutter_wood",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD).noLootTable().replaceable().noCollision()));
+
+    public static final Block INTERACTION_SHUTTER_CRIMSON = registerBlockWithoutItem("interaction_shutter_crimson",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.CRIMSON_DOOR).noLootTable().replaceable().noCollision()));
+
+    public static final Block INTERACTION_SHUTTER_IRON = registerBlockWithoutItem("interaction_shutter_iron",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR).noLootTable().replaceable().noCollision()));
+
+    public static final Block INTERACTION_SHUTTER_WARPED = registerBlockWithoutItem("interaction_shutter_warped",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.WARPED_DOOR).noLootTable().replaceable().noCollision()));
+
+    public static final Block INTERACTION_SHUTTER_COPPER = registerBlockWithoutItem("interaction_shutter_copper",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_BLOCK).noLootTable().replaceable().noCollision()));
+
+    public static final Block INTERACTION_SHUTTER_NETHERITE = registerBlockWithoutItem("interaction_shutter_netherite",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK).noLootTable().replaceable().noCollision()));
+
+    public static final Block INTERACTION_SHUTTER_GLASS = registerBlockWithoutItem("interaction_shutter_glass",
+            InteractionShutter::new, () -> (BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noLootTable().replaceable().noCollision()));
+
 
     // ecologics
-    public static final Block AZALEA_SHUTTER = registerBlock("azalea_shutter", 
-            Blocks.ACACIA_DOOR, Shutter::new);
+    public static final Block AZALEA_SHUTTER = registerWoodenShutter("azalea_shutter");
 
-    public static final Block COCONUT_SHUTTER = registerBlock("coconut_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block COCONUT_SHUTTER = registerWoodenShutter("coconut_shutter");
 
-    public static final Block FLOWERING_AZALEA_SHUTTER = registerBlock("flowering_azalea_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block FLOWERING_AZALEA_SHUTTER = registerWoodenShutter("flowering_azalea_shutter");
 
-    public static final Block WALNUT_SHUTTER = registerBlock("walnut_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block WALNUT_SHUTTER = registerWoodenShutter("walnut_shutter");
 
     //minecraft
-    public static final Block ACACIA_SHUTTER = registerBlock("acacia_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block ACACIA_SHUTTER = registerWoodenShutter("acacia_shutter");
 
-    public static final Block BIRCH_SHUTTER = registerBlock("birch_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block BIRCH_SHUTTER = registerWoodenShutter("birch_shutter");
 
-    public static final Block CRIMSON_SHUTTER = registerBlock("crimson_shutter",
-            Blocks.CRIMSON_PLANKS, Shutter::new);
+    public static final Block CRIMSON_SHUTTER = registerWoodenShutter("crimson_shutter");
 
-    public static final Block DARK_OAK_SHUTTER = registerBlock("dark_oak_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block DARK_OAK_SHUTTER = registerWoodenShutter("dark_oak_shutter");
 
     public static final Block IRON_SHUTTER = registerBlock("iron_shutter",
-            Blocks.IRON_DOOR, properties -> new Shutter(properties.strength(5.0F), true, false));
+            Shutter::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_DOOR), false);
 
-    public static final Block JUNGLE_SHUTTER = registerBlock("jungle_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block JUNGLE_SHUTTER = registerWoodenShutter("jungle_shutter");
 
-    public static final Block OAK_SHUTTER = registerBlock("oak_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block OAK_SHUTTER = registerWoodenShutter("oak_shutter");
 
-    public static final Block SPRUCE_SHUTTER = registerBlock("spruce_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block SPRUCE_SHUTTER = registerWoodenShutter("spruce_shutter");
 
-    public static final Block WARPED_SHUTTER = registerBlock("warped_shutter",
-            Blocks.WARPED_PLANKS, Shutter::new);
+    public static final Block WARPED_SHUTTER = registerWoodenShutter("warped_shutter");
 
-    public static final Block MANGROVE_SHUTTER = registerBlock("mangrove_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block MANGROVE_SHUTTER = registerWoodenShutter("mangrove_shutter");
 
-    public static final Block BAMBOO_SHUTTER = registerBlock("bamboo_shutter",
-            Blocks.BAMBOO_PLANKS, Shutter::new);
+    public static final Block BAMBOO_SHUTTER = registerWoodenShutter("bamboo_shutter");
 
-    public static final Block CHERRY_SHUTTER = registerBlock("cherry_shutter",
-            Blocks.CHERRY_PLANKS, Shutter::new);
+    public static final Block CHERRY_SHUTTER = registerWoodenShutter("cherry_shutter");
+
+    public static final Block PALE_OAK_SHUTTER = registerWoodenShutter("pale_oak_shutter");
 
     public static final Block COPPER_SHUTTER = registerBlock(
-            "copper_shutter", Blocks.COPPER_BLOCK,
-            properties -> new WeatheringCopperShutter(Oxidizable.OxidationLevel.UNAFFECTED, properties));
+            "copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR), false);
 
     public static final Block EXPOSED_COPPER_SHUTTER = registerBlock(
-            "exposed_copper_shutter", Blocks.EXPOSED_COPPER,
-            properties -> new WeatheringCopperShutter(Oxidizable.OxidationLevel.EXPOSED, properties));
+            "exposed_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR), false);
 
     public static final Block OXIDIZED_COPPER_SHUTTER = registerBlock(
-            "oxidized_copper_shutter", Blocks.OXIDIZED_COPPER,
-            properties -> new WeatheringCopperShutter(Oxidizable.OxidationLevel.OXIDIZED, properties));
+            "oxidized_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR), false);
 
     public static final Block WEATHERED_COPPER_SHUTTER = registerBlock(
-            "weathered_copper_shutter", Blocks.WEATHERED_COPPER,
-            properties -> new WeatheringCopperShutter(Oxidizable.OxidationLevel.WEATHERED, properties));
+            "weathered_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR), false);
 
     public static final Block WAXED_COPPER_SHUTTER = registerBlock(
-            "waxed_copper_shutter", Blocks.COPPER_BLOCK,
-            properties -> new WeatheringCopperShutter(Oxidizable.OxidationLevel.UNAFFECTED, properties));
+            "waxed_copper_shutter",properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED,
+                    properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR), false);
 
     public static final Block WAXED_EXPOSED_COPPER_SHUTTER = registerBlock(
-            "waxed_exposed_copper_shutter", Blocks.EXPOSED_COPPER,
-            properties -> new WeatheringCopperShutter(Oxidizable.OxidationLevel.EXPOSED, properties));
+            "waxed_exposed_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR), false);
 
     public static final Block WAXED_OXIDIZED_COPPER_SHUTTER = registerBlock(
-            "waxed_oxidized_copper_shutter", Blocks.OXIDIZED_COPPER,
-            properties -> new WeatheringCopperShutter(Oxidizable.OxidationLevel.OXIDIZED, properties));
+            "waxed_oxidized_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR), false);
 
     public static final Block WAXED_WEATHERED_COPPER_SHUTTER = registerBlock(
-            "waxed_weathered_copper_shutter", Blocks.WEATHERED_COPPER,
-            properties -> new WeatheringCopperShutter(Oxidizable.OxidationLevel.WEATHERED, properties));
+            "waxed_weathered_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED, properties),
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR), false);
 
     //mc but not really
     public static final Block GOLD_SHUTTER = registerBlock("gold_shutter",
-            Blocks.IRON_DOOR, GoldShutter::new);
+            GoldShutter::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK), false);
 
-    public static final Block GLASS_SHUTTER = registerBlock("glass_shutter", Blocks.GLASS,
-            properties -> new Shutter(properties.nonOpaque()));
+    public static final Block GLASS_SHUTTER = registerBlock("glass_shutter",
+            Shutter::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS), false);
 
     public static final Block NETHERITE_SHUTTER = registerBlock("netherite_shutter",
-            Blocks.IRON_DOOR, properties -> new Shutter(properties.strength(5.0F)));
+            GoldShutter::new, () -> BlockBehaviour.Properties.ofFullCopy(Blocks.NETHERITE_BLOCK), false);
 
     // Twigs Blocks
-    public static final Block STRIPPED_BAMBOO_SHUTTER = registerBlock("stripped_bamboo_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block STRIPPED_BAMBOO_SHUTTER = registerWoodenShutter("stripped_bamboo_shutter");
 
     // Snowy Spirit
-    public static final Block GINGERBREAD_SHUTTER = registerBlock("gingerbread_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block GINGERBREAD_SHUTTER = registerWoodenShutter("gingerbread_shutter");
 
     //goodending
-    public static final Block CYPRESS_SHUTTER = registerBlock("cypress_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block CYPRESS_SHUTTER = registerWoodenShutter("cypress_shutter");
 
-    public static final Block MUDDY_OAK_SHUTTER = registerBlock("muddy_oak_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block MUDDY_OAK_SHUTTER = registerWoodenShutter("muddy_oak_shutter");
 
     //beachparty
-    public static final Block PALM_SHUTTER = registerBlock("palm_shutter",
-            AZALEA_SHUTTER, Shutter::new);
+    public static final Block PALM_SHUTTER = registerWoodenShutter("palm_shutter");
 
     //endergetic
 //    public static final Block POISE_SHUTTER = registerBlock("poise_shutter",
@@ -189,18 +186,91 @@ public class BlockInit {
 //    public static final Block RIVER_SHUTTER = registerBlock("river_shutter",
 //            AZALEA_SHUTTER, Shutter::new);
 
-    private static Block registerBlock(String name, Block copiedBlock, Function<AbstractBlock.Settings, Block> function) {
-        Block toRegister = function.apply(AbstractBlock.Settings.copy(copiedBlock).registryKey(RegistryKey.of(RegistryKeys.BLOCK,
-                Identifier.of(ShutterMain.MOD_ID, name))));
-        registerBlockItem(name, toRegister);
-        return Registry.register(Registries.BLOCK, Identifier.of(ShutterMain.MOD_ID, name), toRegister);
+
+    // Wooden shutter
+    private static Shutter registerWoodenShutter(String name) {
+        return registerBlock(
+                name,
+                Shutter::new,
+                () -> BlockBehaviour.Properties.ofFullCopy(Blocks.ACACIA_WOOD)
+        );
     }
 
-    private static Item registerBlockItem(String name, Block block) {
-        return Registry.register(Registries.ITEM, Identifier.of(ShutterMain.MOD_ID, name),
-                new BlockItem(block, new Item.Settings().useBlockPrefixedTranslationKey()
-                        .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ShutterMain.MOD_ID, name)))));
+    // Register block with item (burnable by default)
+    private static <T extends Block> T registerBlock(
+            String name,
+            Function<BlockBehaviour.Properties, T> factory,
+            Supplier<BlockBehaviour.Properties> properties) {
+
+        return registerBlock(name, factory, properties, true);
     }
+
+    // Register block with configurable burnability
+    private static <T extends Block> T registerBlock(
+            String name,
+            Function<BlockBehaviour.Properties, T> factory,
+            Supplier<BlockBehaviour.Properties> properties,
+            boolean burnAble) {
+
+        T registeredBlock =
+                registerBlockWithoutItem(name, factory, properties);
+
+        registerBlockItem(name, registeredBlock, burnAble);
+
+        return registeredBlock;
+    }
+
+    // Register block without item
+    private static <T extends Block> T registerBlockWithoutItem(
+            String name,
+            Function<BlockBehaviour.Properties, T> factory,
+            Supplier<BlockBehaviour.Properties> properties) {
+
+        ResourceKey<Block> blockKey = ResourceKey.create(
+                Registries.BLOCK,
+                Identifier.fromNamespaceAndPath(ShutterMain.MOD_ID, name)
+        );
+
+        T block = factory.apply(properties.get().setId(blockKey));
+
+        return Registry.register(
+                BuiltInRegistries.BLOCK,
+                blockKey,
+                block
+        );
+    }
+
+    // Register block item
+    private static <T extends Block> void registerBlockItem(
+            String name,
+            T registeredBlock,
+            boolean burnAble) {
+
+        ResourceKey<Item> itemKey = ResourceKey.create(
+                Registries.ITEM,
+                Identifier.fromNamespaceAndPath(ShutterMain.MOD_ID, name)
+        );
+
+        BlockItem blockItem = new BlockItem(
+                registeredBlock,
+                new Item.Properties()
+                        .setId(itemKey)
+                        .useBlockDescriptionPrefix()
+        );
+
+        Registry.register(
+                BuiltInRegistries.ITEM,
+                itemKey,
+                blockItem
+        );
+
+        if (burnAble) {
+            FuelRegistryEvents.BUILD.register(
+                    (builder, context) -> builder.add(blockItem, 300)
+            );
+        }
+    }
+
 
 
     public static void registerModBlocks() {

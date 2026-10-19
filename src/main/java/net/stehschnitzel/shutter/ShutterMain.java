@@ -3,7 +3,6 @@ package net.stehschnitzel.shutter;
 import net.fabricmc.api.ModInitializer;
 
 import net.stehschnitzel.shutter.init.BlockInit;
-import net.stehschnitzel.shutter.init.ItemInit;
 import net.stehschnitzel.shutter.init.ShutterItemGroup;
 import net.stehschnitzel.shutter.init.SoundInit;
 import org.slf4j.Logger;
@@ -17,10 +16,8 @@ public class ShutterMain implements ModInitializer {
 	public void onInitialize() {
 		ShutterItemGroup.registerItemGroups();
 
-		ItemInit.registerModItems();
 		BlockInit.registerModBlocks();
 
 		SoundInit.registerSound();
-		BlockInit.registerOxidizables();
 	}
 }

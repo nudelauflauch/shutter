@@ -1,46 +1,45 @@
 package net.stehschnitzel.shutter.block;
 
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 
 public class GoldShutter extends Shutter {
 
-	public GoldShutter(Settings settings) {
-		super(settings, true, true);
-	}
+    public GoldShutter(Properties properties) {
+        super(properties, true);
+    }
 
-	@Override
-	public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
-		if (!player.isSneaking()
-				&& player.getActiveHand().equals(Hand.MAIN_HAND)
-				&& !state.get(POWERED)) {
-			super.update(world, pos, state.get(OPEN) + 1, false);
-			this.playSound(world, pos);
-			return ActionResult.SUCCESS_SERVER;
-		}
-		return ActionResult.FAIL;
-	}
+    @Override
+    public InteractionResult useWithoutItem(net.minecraft.world.level.block.state.BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, net.minecraft.world.phys.BlockHitResult pHitResult) {
+        if (!pPlayer.mayBuild()) {
+            return InteractionResult.PASS;
+        } else if (!pPlayer.isCrouching()
+                && !pLevel.getBlockState(pPos).getValue(Shutter.POWERED)) {
+            this.update(pLevel, pPos, pState.getValue(OPEN) + 1, false);
+            this.playSound(pPlayer, pLevel, pPos);
+            return InteractionResult.SUCCESS_SERVER;
+        }
+        return InteractionResult.FAIL;
+    }
 
-	@Override
-	public void redstoneUpdate(World world, BlockPos pos) {
-		if (world.isReceivingRedstonePower(pos)) {
-			world.setBlockState(pos,
-					world.getBlockState(pos).with(Shutter.POWERED, true));
-		} else if (!world.isReceivingRedstonePower(pos)
-				&& world.getBlockState(pos).get(POWERED)) {
-			world.setBlockState(pos, world.getBlockState(pos)
-					.with(Shutter.POWERED, false));
-		}
-	}
+    @Override
+    public void update(Level pLevel, BlockPos pPos, int state, boolean first) {
+        if (!pLevel.getBlockState(pPos).getValue(Shutter.POWERED)) {
+            super.update(pLevel, pPos, state, first);
+        }
+    }
 
-	@Override
-	public boolean canUpdate(WorldAccess world, BlockPos pos) {
-		return super.canUpdate(world, pos);
-	}
+    @Override
+    public void redstoneUpdate(Level pLevel, BlockPos pFromPos, BlockPos pPos) {
+        if (pLevel.hasNeighborSignal(pPos)) {
+            pLevel.setBlockAndUpdate(pPos,
+                    pLevel.getBlockState(pPos).setValue(Shutter.POWERED, true));
+        } else if (!pLevel.hasNeighborSignal(pPos)
+                && pLevel.getBlockState(pPos).getValue(POWERED)) {
+            pLevel.setBlockAndUpdate(pPos, pLevel.getBlockState(pPos)
+                    .setValue(Shutter.POWERED, false));
+        }
+    }
 }

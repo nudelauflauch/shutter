@@ -1,160 +1,165 @@
 package net.stehschnitzel.shutter.block;
 
-import net.minecraft.block.*;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvent;
-import net.minecraft.state.StateManager;
-import net.minecraft.state.property.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.stehschnitzel.shutter.block.properties.ShutterDouble;
 import net.stehschnitzel.shutter.block.properties.ShutterPos;
+import net.stehschnitzel.shutter.init.BlockInit;
 import net.stehschnitzel.shutter.init.SoundInit;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-abstract class AbstractShutter extends Block {
+abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
 
-    public static final EnumProperty<Direction> FACING = Properties.HORIZONTAL_FACING;
-    public static final BooleanProperty POWERED = Properties.POWERED;
-    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-    public static final EnumProperty<ShutterPos> POS = EnumProperty
-            .of("half", ShutterPos.class);
+    public static final EnumProperty<Direction> FACING = HorizontalDirectionalBlock.FACING;
+    public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
+    public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
-    public static final IntProperty OPEN = IntProperty.of("open", 0,2);
+    public static final EnumProperty<ShutterPos> SHUTTER_POS =
+            EnumProperty.create("half", ShutterPos.class);
 
-    public static final EnumProperty<ShutterDouble> DOUBLE_DOOR = EnumProperty
-            .of("double_door", ShutterDouble.class);
-    boolean isMetal = false;
-    private boolean cantupdatebyHand;
+    public static final IntegerProperty OPEN =
+            IntegerProperty.create("open", 0, 2);
 
-    public AbstractShutter(Settings settings, boolean isMetal, boolean cantupdatebyHand) {
-        super(settings);
+    public static final EnumProperty<ShutterDouble> DOUBLE_DOOR =
+            EnumProperty.create("double_door", ShutterDouble.class);
+
+    boolean isMetal;
+
+    public AbstractShutter(Properties properties, boolean isMetal) {
+        super(properties);
         this.isMetal = isMetal;
-        this.cantupdatebyHand = cantupdatebyHand;
-        this.setDefaultState(this.getStateManager().getDefaultState()
-                .with(FACING, Direction.NORTH)
-                .with(POWERED, false)
-                .with(OPEN, 0)
-                .with(POS, ShutterPos.NORMAL)
-                .with(DOUBLE_DOOR, ShutterDouble.NONE)
-                .with(WATERLOGGED, false));
+
+        this.registerDefaultState(this.defaultBlockState()
+                .setValue(FACING, Direction.NORTH)
+                .setValue(POWERED, false)
+                .setValue(OPEN, 0)
+                .setValue(SHUTTER_POS, ShutterPos.NORMAL)
+                .setValue(DOUBLE_DOOR, ShutterDouble.NONE)
+                .setValue(WATERLOGGED, false));
     }
 
-    public boolean getCantUpdateByHand() {
-        return this.cantupdatebyHand;
+    void updateRedstone(Level level, BlockPos pos, boolean first) {
+        updateRedstone(
+                level,
+                pos,
+                first,
+                level.getBlockState(pos).getValue(DOUBLE_DOOR),
+                level.getBlockState(pos).getValue(FACING)
+        );
     }
 
-    void updateRedstone(World world, BlockPos pos, boolean first) {
-        updateRedstone(world, pos, first, world.getBlockState(pos).get(DOUBLE_DOOR), world.getBlockState(pos).get(FACING));
-    }
-
-    void updateRedstone(World world, BlockPos pos, boolean first, ShutterDouble doorType, Direction facing) {
+    void updateRedstone(Level level, BlockPos pos, boolean first, ShutterDouble doorType, Direction axis) {
         if (doorType == ShutterDouble.NONE) {
-             if (stateTwoPossible(world, pos, first, false)) {
-                updateAll(world, pos, 2, first, false);
+            if (stateTwoPossible(level, pos, first, false)) {
+                updateAll(level, pos, 2, first, false);
             } else {
-                updateAll(world, pos, 1, first, false);
+                updateAll(level, pos, 1, first, false);
             }
         } else {
-            BlockPos neighborPos = getNeighborShutterPos(pos, doorType, facing);
+            BlockPos neighborPos = getNeighborShutterPos(pos, doorType, axis);
 
-             if (stateTwoPossibleDouble(world, pos, first, doorType, facing)) {
-                 updateAll(world, pos, 2, first, true);
-                 updateAll(world, neighborPos, 2, false, true);
-
+            if (stateTwoPossibleDouble(level, pos, first, doorType, axis)) {
+                updateAll(level, pos, 2, first, true);
+                updateAll(level, neighborPos, 2, false, true);
             } else {
-                updateAll(world, pos, 1, first, true);
-                updateAll(world, neighborPos, 1, false, true);
+                updateAll(level, pos, 1, first, true);
+                updateAll(level, neighborPos, 1, false, true);
             }
         }
     }
 
-    //updates the shutters to a give state
-    public boolean update(World world, BlockPos pos, int state, boolean first) {
-        if (cantChangeOpen(world, pos) || cantChangeOpen(world, getNeighborShutterPos(world, pos))) {
-            return false;
-        }
-        return updateWithoutChecks(world, pos, state, first);
+    public void update(Level level, BlockPos pos, int state, boolean first) {
+        update(level, pos, state, first, level.getBlockState(pos));
     }
 
-    public boolean updateWithoutChecks(World world, BlockPos pos, int state, boolean first) {
-        ShutterDouble doorType = world.getBlockState(pos).get(DOUBLE_DOOR);
+    public void update(Level level, BlockPos pos, int state, boolean first, BlockState blockState) {
+        update(level, pos, state, first, blockState.getValue(DOUBLE_DOOR), blockState.getValue(FACING));
+    }
 
-        if (doorType == ShutterDouble.NONE) {
-            updateSingleDoor(world, pos, state, first);
+    public void update(Level level, BlockPos pos, int state, boolean first, ShutterDouble shutterDouble, Direction facing) {
+        if (shutterDouble == ShutterDouble.NONE) {
+            updateSingleDoor(level, pos, state, first);
         } else {
-            updateDoubleDoor(world, pos, state, first, doorType);
+            updateDoubleDoor(level, pos, state, first, shutterDouble, facing);
         }
-        return true;
     }
 
-    private void updateSingleDoor(World world, BlockPos pos, int state, boolean first) {
+    private void updateSingleDoor(Level level, BlockPos pos, int state, boolean first) {
         if (state < 2) {
-            updateAll(world, pos, state, first, false);
-        } else if (state == 2 && stateTwoPossible(world, pos, first, false)) {
-            updateAll(world, pos, 2, first, false);
+            updateAll(level, pos, state, first, false);
+        } else if (state == 2 && stateTwoPossible(level, pos, first, false)) {
+            updateAll(level, pos, state, first, false);
         } else {
-            updateAll(world, pos, 0, first, false);
+            updateAll(level, pos, 0, first, false);
         }
     }
 
-    private void updateDoubleDoor(World world, BlockPos pos, int state, boolean first, ShutterDouble doorType) {
-        List<BlockState> sideblocks = getNeighborBlocks(world, pos);
-
-        BlockPos neighborPos = getNeighborShutterPos(world, pos);
-
-        if (state < 2) {
-            updateAll(world, pos, state, first, true);
-            updateAll(world, neighborPos, state, first, true);
-
-        } else if (state == 2 && stateTwoPossibleDouble(world, pos, first)) {
-            updateAll(world, pos, 2, first, true);
-            updateAll(world, neighborPos, 2, first, true);
-
-        } else {
-            updateAll(world, pos, 0, first, true);
-            updateAll(world, neighborPos, 0, first, true);
-        }
-    }
-
-    boolean stateTwoPossibleDouble(World world, BlockPos pos, boolean first) {
-        return stateTwoPossibleDouble(world, pos, first, world.getBlockState(pos).get(DOUBLE_DOOR), world.getBlockState(pos).get(FACING));
-    }
-
-    boolean stateTwoPossibleDouble(World world, BlockPos pos, boolean first, ShutterDouble shutterDouble, Direction facing) {
-        boolean thisCanUpdate = stateTwoPossible(world, pos, first, true);
+    private void updateDoubleDoor(Level level, BlockPos pos, int state, boolean first, ShutterDouble shutterDouble, Direction facing) {
         BlockPos neighborPos = getNeighborShutterPos(pos, shutterDouble, facing);
 
-        return thisCanUpdate && stateTwoPossible(world, neighborPos, first, true);
+        if (state < 2) {
+            updateAll(level, pos, state, first, true);
+            updateAll(level, neighborPos, state, false, true);
+        } else if (state == 2 && stateTwoPossibleDouble(level, pos, first, shutterDouble, facing)) {
+            updateAll(level, pos, 2, first, true);
+            updateAll(level, neighborPos, 2, false, true);
+        } else {
+            updateAll(level, pos, 0, first, true);
+            updateAll(level, neighborPos, 0, false, true);
+        }
     }
 
-    private void updateAll(World world, BlockPos pos, int state, boolean first, boolean isDouble) {
+    boolean stateTwoPossibleDouble(Level level, BlockPos pos, boolean first, ShutterDouble shutterDouble, Direction facing) {
+        boolean thisCanUpdate = stateTwoPossible(level, pos, first, true);
+        BlockPos neighborPos = getNeighborShutterPos(pos, shutterDouble, facing);
+
+        return thisCanUpdate && stateTwoPossible(level, neighborPos, first, true);
+    }
+
+    private void updateAll(Level level, BlockPos pos, int state, boolean first, boolean isDouble) {
         if (!first) {
-            setOpen(world, pos, state);
+            setOpen(level, pos, state);
+            handleInteractBlock(level, pos, state);
         }
 
-        boolean[] arr = {true, false};
+        boolean[] directions = {true, false};
+        BlockPos newPos;
 
-        for (boolean up : arr) {
+        for (boolean up : directions) {
             int y = pos.getY() + (up ? 1 : -1);
+            newPos = new BlockPos(pos.getX(), y, pos.getZ());
 
-            while (y > -70 && y < 330) {
-                BlockPos newPos = new BlockPos(pos.getX(), y, pos.getZ());
-                Block block = world.getBlockState(newPos).getBlock();
+            while (level.isInWorldBounds(newPos)) {
+                newPos = new BlockPos(pos.getX(), y, pos.getZ());
+                Block block = level.getBlockState(newPos).getBlock();
 
                 if (block instanceof Shutter shutter) {
-                    if (isDouble && world.getBlockState(newPos).get(DOUBLE_DOOR) == ShutterDouble.NONE) {
+                    BlockState newState = level.getBlockState(newPos);
+
+                    if (isDouble && newState.getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
                         break;
                     }
-                    if (!isDouble && world.getBlockState(newPos).get(DOUBLE_DOOR) != ShutterDouble.NONE) {
+
+                    if (!isDouble && newState.getValue(DOUBLE_DOOR) != ShutterDouble.NONE) {
                         break;
                     }
-                    shutter.setOpen(world, newPos, state);
+
+                    shutter.setOpen(level, newPos, state);
+                    handleInteractBlock(level, newPos, state);
                 } else {
                     break;
                 }
@@ -164,30 +169,34 @@ abstract class AbstractShutter extends Block {
         }
     }
 
-    boolean stateTwoPossible(World world, BlockPos pos, boolean first, boolean isDouble) {
-        boolean[] arr = {true, false};
+    boolean stateTwoPossible(Level level, BlockPos pos, boolean first, boolean isDouble) {
+        boolean[] directions = {true, false};
 
-        if (!first &&
-                world.getBlockState(pos).getBlock() instanceof Shutter shutter &&
-                !shutter.canUpdate(world, pos)) {
+        if (!first
+                && level.getBlockState(pos).getBlock() instanceof Shutter shutter
+                && !shutter.canUpdate(level, pos)) {
             return false;
         }
 
-        for (boolean up : arr) {
+        for (boolean up : directions) {
             int y = pos.getY();
 
-            while (y > -70 && y < 330) {
+            while (y > level.getMinSectionY() && y < level.getMaxSectionY()) {
                 BlockPos newPos = new BlockPos(pos.getX(), y, pos.getZ());
-                Block block = world.getBlockState(newPos).getBlock();
+                Block block = level.getBlockState(newPos).getBlock();
 
                 if (block instanceof Shutter shutter) {
-                    if (isDouble && world.getBlockState(newPos).get(DOUBLE_DOOR) == ShutterDouble.NONE) {
+                    BlockState newState = level.getBlockState(newPos);
+
+                    if (isDouble && newState.getValue(DOUBLE_DOOR) == ShutterDouble.NONE) {
                         break;
                     }
-                    if (!isDouble && world.getBlockState(newPos).get(DOUBLE_DOOR) != ShutterDouble.NONE) {
+
+                    if (!isDouble && newState.getValue(DOUBLE_DOOR) != ShutterDouble.NONE) {
                         break;
                     }
-                    if (!shutter.canUpdate(world, newPos)) {
+
+                    if (!shutter.canUpdate(level, newPos)) {
                         return false;
                     }
                 } else {
@@ -201,155 +210,199 @@ abstract class AbstractShutter extends Block {
         return true;
     }
 
-    // if a powered gold shutter is inbetween the others all the shutters connected cant update
-    boolean cantChangeOpen(World world, BlockPos pos) {
-        boolean[] arr = {true, false};
+    List<BlockState> getNeighborBlocks(Level level, BlockPos pos) {
+        return getNeighborBlocks(level, pos, level.getBlockState(pos).getValue(FACING));
+    }
 
-        for (boolean up : arr) {
-            int y = pos.getY();
+    List<BlockState> getNeighborBlocks(Level level, BlockPos pos, Direction axis) {
+        return switch (axis) {
+            case NORTH -> List.of(level.getBlockState(pos.east()), level.getBlockState(pos.west()));
+            case SOUTH -> List.of(level.getBlockState(pos.west()), level.getBlockState(pos.east()));
+            case EAST -> List.of(level.getBlockState(pos.south()), level.getBlockState(pos.north()));
+            default -> List.of(level.getBlockState(pos.north()), level.getBlockState(pos.south()));
+        };
+    }
 
-            Block block;
-            BlockPos newPos;
-            do {
-                newPos = new BlockPos(pos.getX(), y, pos.getZ());
-                block = world.getBlockState(newPos).getBlock();
+    public static void handleInteractBlock(Level level, BlockPos pos, int open) {
+        handleInteractBlock(level, pos, level.getBlockState(pos), open);
+    }
 
-                if ((block instanceof GoldShutter && world.getBlockState(newPos).get(POWERED))
-                        || (block instanceof Shutter shutter && !shutter.getCantUpdateByHand())) {
-                    return true;
+    //creates interaction shutters
+    public static void handleInteractBlock(Level level, BlockPos shutterPos, BlockState state, int open) {
+        if (open == 0 || open == 1) {
+            BlockPos[] neighbourPos = {
+                    shutterPos.north(),
+                    shutterPos.south(),
+                    shutterPos.west(),
+                    shutterPos.east()
+            };
+
+            for (BlockPos localPos : neighbourPos) {
+                if (level.getBlockState(localPos).getBlock() instanceof InteractionShutter) {
+                    level.setBlock(localPos, Blocks.AIR.defaultBlockState(), 22);
                 }
+            }
 
-                y = up ? y + 1 : y - 1;
-            } while (block instanceof Shutter &&
-                    world.getBlockState(newPos).get(POS) != (up ? ShutterPos.UPPER : ShutterPos.LOWER) &&
-                    world.getBlockState(newPos).get(POS) != ShutterPos.NORMAL
-            );
+            return;
         }
 
-        return false;
-    }
+        ShutterDouble shutterDouble = state.getValue(DOUBLE_DOOR);
+        BlockPos[] placePos = {BlockPos.ZERO};
 
-    List<BlockState> getNeighborBlocks(WorldAccess world, BlockPos pos) {
-        return getNeighborBlocks(world, pos, world.getBlockState(pos).get(FACING));
-    }
+        if (shutterDouble == ShutterDouble.NONE) {
+            if (state.getValue(FACING) == Direction.NORTH || state.getValue(FACING) == Direction.SOUTH) {
+                placePos = new BlockPos[]{shutterPos.east(), shutterPos.west()};
+            } else {
+                placePos = new BlockPos[]{shutterPos.north(), shutterPos.south()};
+            }
+        } else {
+            switch (state.getValue(FACING)) {
+                case NORTH -> {
+                    if (shutterDouble == ShutterDouble.LEFT) {
+                        placePos[0] = shutterPos.east();
+                    } else {
+                        placePos[0] = shutterPos.west();
+                    }
+                }
+                case SOUTH -> {
+                    if (shutterDouble == ShutterDouble.LEFT) {
+                        placePos[0] = shutterPos.west();
+                    } else {
+                        placePos[0] = shutterPos.east();
+                    }
+                }
+                case EAST -> {
+                    if (shutterDouble == ShutterDouble.LEFT) {
+                        placePos[0] = shutterPos.south();
+                    } else {
+                        placePos[0] = shutterPos.north();
+                    }
+                }
+                default -> {
+                    if (shutterDouble == ShutterDouble.LEFT) {
+                        placePos[0] = shutterPos.north();
+                    } else {
+                        placePos[0] = shutterPos.south();
+                    }
+                }
+            }
+        }
 
-    List<BlockState> getNeighborBlocks(WorldAccess world, BlockPos pos, Direction facing) {
-        switch (facing) {
-            case NORTH -> {
-                return List.of(new BlockState[]{world.getBlockState(pos.east()), world.getBlockState(pos.west())});
-            }
-            case SOUTH -> {
-                return List.of(new BlockState[]{world.getBlockState(pos.west()), world.getBlockState(pos.east())});
-            }
-            case EAST -> {
-                return List.of(new BlockState[]{world.getBlockState(pos.south()), world.getBlockState(pos.north())});
-            }
-            default -> {
-                return List.of(new BlockState[]{world.getBlockState(pos.north()), world.getBlockState(pos.south())});
+        for (BlockPos pos1 : placePos) {
+            boolean isLeft = switch (state.getValue(FACING)) {
+                case NORTH -> shutterPos.west().equals(pos1);
+                case SOUTH -> shutterPos.east().equals(pos1);
+                case WEST -> shutterPos.south().equals(pos1);
+                default -> shutterPos.north().equals(pos1);
+            };
+
+            if (level.getBlockState(pos1).getBlock() instanceof AirBlock) {
+                InteractionShutter.placeInteractionShutter(
+                        level,
+                        pos1,
+                        state,
+                        shutterDouble,
+                        isLeft
+                );
             }
         }
     }
 
-    public void playSound(World world, BlockPos pos) {
-        playSound(world, pos, world.getBlockState(pos).get(OPEN));
+    public void playSound(@Nullable Entity entity, Level level, BlockPos pos) {
+        playSound(entity, level, pos, level.getBlockState(pos).getValue(OPEN));
     }
 
-    public void playSound(World world, BlockPos pos, int state) {
-        world.playSound(null, pos, this.getSound(state), SoundCategory.BLOCKS, 1F, 1F);
+    public void playSound(@Nullable Entity entity, Level level, BlockPos pos, int state) {
+        level.playSound(entity, pos, this.getSound(state), SoundSource.BLOCKS,
+                1F,
+                level.getRandom().nextFloat() * 0.1F + 0.9F);
     }
 
     private SoundEvent getSound(int state) {
-        switch (state) {
-            case 0: return SoundInit.SHUTTER_CLOSE;
-            case 1: return SoundInit.SHUTTER_OPEN_HALF;
-            default: return SoundInit.SHUTTER_OPEN_FULL;
-        }
+        boolean metal = this.isMetal;
+
+        return switch (state) {
+            case 0 -> metal ? SoundInit.SHUTTER_CLOSE_METAL : SoundInit.SHUTTER_CLOSE;
+            case 1 -> metal ? SoundInit.SHUTTER_OPEN_HALF_METAL : SoundInit.SHUTTER_OPEN_HALF;
+            default -> metal ? SoundInit.SHUTTER_OPEN_FULL_METAL : SoundInit.SHUTTER_OPEN_FULL;
+        };
     }
 
-    BlockPos getNeighborShutterPos(WorldAccess world, BlockPos pos) {
-        return getNeighborShutterPos(pos, world.getBlockState(pos));
+    BlockPos getNeighborShutterPos(Level level, BlockPos pos) {
+        return getNeighborShutterPos(pos, level.getBlockState(pos));
     }
 
     BlockPos getNeighborShutterPos(BlockPos pos, BlockState state) {
-        return getNeighborShutterPos(pos, state.get(DOUBLE_DOOR), state.get(FACING));
+        return getNeighborShutterPos(pos, state.getValue(DOUBLE_DOOR), state.getValue(FACING));
     }
 
     BlockPos getNeighborShutterPos(BlockPos pos, ShutterDouble shutterDouble, Direction facing) {
-        switch (facing) {
-            case SOUTH -> {
-                return shutterDouble == ShutterDouble.RIGHT ? pos.west() : pos.east();
-            }
-            case NORTH -> {
-                return shutterDouble == ShutterDouble.RIGHT ? pos.east() : pos.west();
-            }
-            case EAST -> {
-                return shutterDouble == ShutterDouble.RIGHT ? pos.south() : pos.north();
-            }
-            default -> {
-                return shutterDouble == ShutterDouble.RIGHT ? pos.north() : pos.south();
-            }
-        }
+        return switch (facing) {
+            case SOUTH -> shutterDouble == ShutterDouble.RIGHT ? pos.west() : pos.east();
+            case NORTH -> shutterDouble == ShutterDouble.RIGHT ? pos.east() : pos.west();
+            case EAST -> shutterDouble == ShutterDouble.RIGHT ? pos.south() : pos.north();
+            default -> shutterDouble == ShutterDouble.RIGHT ? pos.north() : pos.south();
+        };
     }
 
-    public boolean hasRedstonePower(World world, BlockPos pos) {
-        return hasRedstonePower(world, pos, world.getBlockState(pos).get(FACING));
+    public boolean hasRedstonePower(Level level, BlockPos pos) {
+        return hasRedstonePower(level, pos, level.getBlockState(pos).getValue(FACING));
     }
 
-    public boolean hasRedstonePower(World world, BlockPos pos, Direction facing) {
-        boolean hasSignal;
+    public boolean hasRedstonePower(Level level, BlockPos pos, Direction facing) {
+        boolean hasSignal = level.hasNeighborSignal(pos);
 
         if (facing == Direction.WEST || facing == Direction.EAST) {
-            hasSignal = world.isReceivingRedstonePower(pos.north()) || world.isReceivingRedstonePower(pos.south());
-        } else {
-            hasSignal = world.isReceivingRedstonePower(pos.east()) || world.isReceivingRedstonePower(pos.west());
+            return hasSignal
+                    || level.hasNeighborSignal(pos.north())
+                    || level.hasNeighborSignal(pos.south());
         }
 
-        return hasSignal;
+        return hasSignal
+                || level.hasNeighborSignal(pos.east())
+                || level.hasNeighborSignal(pos.west());
     }
 
-    public void redstoneUpdate(World pWorld, BlockPos pPos) {
-        // For redstone or power
-            // opening
-            if (hasRedstonePower(pWorld, pPos)
-                    && !pWorld.getBlockState(pPos).get(POWERED)) {
-                setPowered(pWorld, pPos, true);
-                updateRedstone(pWorld, pPos, false);
-                this.playSound(pWorld, pPos);
+    public void redstoneUpdate(Level level, BlockPos fromPos, BlockPos pos) {
+        if (level.getBlockState(fromPos).getBlock() instanceof Shutter) {
+            return;
+        }
 
-            // closing
-            } else if (!hasRedstonePower(pWorld, pPos)
-                    && pWorld.getBlockState(pPos).get(POWERED)) {
-                setPowered(pWorld, pPos, false);
-                this.update(pWorld, pPos, 0, false);
-                this.playSound(pWorld, pPos);
-            }
+        if (hasRedstonePower(level, pos) && !level.getBlockState(pos).getValue(POWERED)) {
+            setPowered(level, pos, true);
+            updateRedstone(level, pos, false);
+            this.playSound(null, level, pos);
 
-            // for the shutter fully opens when it can
-            if (pWorld.getBlockState(pPos).get(OPEN) == 1
-                    && pWorld.getBlockState(pPos).get(POWERED)
-                    && canUpdate(pWorld,pPos)) {
-                updateRedstone(pWorld, pPos, false);
-                this.playSound(pWorld, pPos);
-            }
+        } else if (!hasRedstonePower(level, pos) && level.getBlockState(pos).getValue(POWERED)) {
+            setPowered(level, pos, false);
+            this.update(level, pos, 0, false);
+            this.playSound(null, level, pos, 0);
+        }
 
+        if (level.getBlockState(pos).getValue(OPEN) == 1
+                && level.getBlockState(pos).getValue(POWERED)
+                && canUpdate(level, pos)) {
+            updateRedstone(level, pos, false);
+            this.playSound(null, level, pos);
+        }
     }
 
-    ShutterPos getPosition(WorldAccess pWorld, BlockPos pPos) {
-        return getPosition(pWorld, pPos, pWorld.getBlockState(pPos).get(DOUBLE_DOOR));
+    ShutterPos getPosition(Level level, BlockPos pos) {
+        return getPosition(level, pos, level.getBlockState(pos).getValue(DOUBLE_DOOR));
     }
 
-    ShutterPos getPosition(WorldAccess pWorld, BlockPos pPos, ShutterDouble shutterDouble) {
+    ShutterPos getPosition(Level level, BlockPos pos, ShutterDouble shutterDouble) {
+        boolean above = this.getBlockAbove(pos, level) instanceof Shutter
+                && (((shutterDouble == ShutterDouble.NONE
+                && level.getBlockState(pos.above()).getValue(DOUBLE_DOOR) == ShutterDouble.NONE)
+                || (shutterDouble != ShutterDouble.NONE
+                && level.getBlockState(pos.above()).getValue(DOUBLE_DOOR) != ShutterDouble.NONE)));
 
-        boolean above = this.getBlockAbove(pPos, pWorld) instanceof Shutter &&
-                        ((shutterDouble == ShutterDouble.NONE &&
-                        pWorld.getBlockState(pPos.up()).get(DOUBLE_DOOR) == ShutterDouble.NONE) ||
-                        (shutterDouble != ShutterDouble.NONE &&
-                        pWorld.getBlockState(pPos.up()).get(DOUBLE_DOOR) != ShutterDouble.NONE));
-
-        boolean below = this.getBlockBelow(pPos, pWorld) instanceof Shutter && ((shutterDouble == ShutterDouble.NONE &&
-                    pWorld.getBlockState(pPos.down()).get(DOUBLE_DOOR) == ShutterDouble.NONE) ||
-                    (shutterDouble != ShutterDouble.NONE &&
-                    pWorld.getBlockState(pPos.down()).get(DOUBLE_DOOR) != ShutterDouble.NONE));
+        boolean below = this.getBlockBelow(pos, level) instanceof Shutter
+                && ((shutterDouble == ShutterDouble.NONE
+                && level.getBlockState(pos.below()).getValue(DOUBLE_DOOR) == ShutterDouble.NONE)
+                || (shutterDouble != ShutterDouble.NONE
+                && level.getBlockState(pos.below()).getValue(DOUBLE_DOOR) != ShutterDouble.NONE));
 
         if (above && below) {
             return ShutterPos.MIDDLE;
@@ -358,31 +411,33 @@ abstract class AbstractShutter extends Block {
         } else if (below) {
             return ShutterPos.UPPER;
         }
+
         return ShutterPos.NORMAL;
     }
 
 //    @Override
-//    public boolean isFlammable(BlockState state, BlockGetter world, BlockPos pos, Direction direction) {
-//        return this.isMetal || state.is(BlockInit.GLASS_SHUTTER.get());
+//    public boolean isFlammable(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
+//        return !this.isMetal || state.is(BlockInit.GLASS_SHUTTER.get());
 //    }
 //
 //    @Override
-//    public int getFlammability(BlockState state, BlockGetter world, BlockPos pos, Direction direction) {
+//    public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
 //        return !this.isMetal || state.is(BlockInit.GLASS_SHUTTER.get()) ? 20 : 0;
 //    }
 //
 //    @Override
-//    public int getFireSpreadSpeed(BlockState state, BlockGetter world, BlockPos pos, Direction direction) {
+//    public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
 //        return !this.isMetal || state.is(BlockInit.GLASS_SHUTTER.get()) ? 5 : 0;
 //    }
 
-    public boolean canUpdate(WorldAccess world, BlockPos pos) {
-        List<BlockState> sideblocks = getNeighborBlocks(world, pos);
+    public boolean canUpdate(Level level, BlockPos pos) {
+        List<BlockState> sideblocks = getNeighborBlocks(level, pos);
 
-        ShutterDouble shutterDouble = world.getBlockState(pos).get(DOUBLE_DOOR);
+        ShutterDouble shutterDouble = level.getBlockState(pos).getValue(DOUBLE_DOOR);
         if (shutterDouble == ShutterDouble.NONE) {
             return canUpdateSingle(sideblocks);
         }
+
         return canUpdateDouble(shutterDouble, sideblocks);
     }
 
@@ -390,24 +445,36 @@ abstract class AbstractShutter extends Block {
         if (shutterDouble == ShutterDouble.RIGHT) {
             return isValidBlockForUpdate(sideblocks.get(1).getBlock());
         }
+
         return isValidBlockForUpdate(sideblocks.get(0).getBlock());
     }
 
     boolean canUpdateSingle(List<BlockState> sideblocks) {
-        for (BlockState block1 : sideblocks) {
-            if (!isValidBlockForUpdate(block1.getBlock())) {
+        for (BlockState blockState : sideblocks) {
+            if (!isValidBlockForUpdate(blockState.getBlock())) {
                 return false;
             }
         }
+
         return true;
     }
 
     private boolean isValidBlockForUpdate(Block block) {
         return block == Blocks.AIR
-                || block instanceof PlantBlock
+                || block instanceof InteractionShutter
+                || block instanceof SugarCaneBlock
+                || block instanceof BushBlock
+                || block instanceof BambooStalkBlock
+                || block instanceof BambooSaplingBlock
+                || block instanceof CactusBlock
+                || block instanceof WaterlilyBlock
+                || block instanceof StemBlock
+                || block instanceof BigDripleafBlock
+                || block instanceof BigDripleafStemBlock
                 || block instanceof FenceBlock
                 || block instanceof FenceGateBlock
-                || block == Blocks.WATER || block == Blocks.LAVA
+                || block == Blocks.WATER
+                || block == Blocks.LAVA
                 || block == Blocks.IRON_BARS
                 || block instanceof LanternBlock
                 || block instanceof FlowerPotBlock
@@ -418,52 +485,46 @@ abstract class AbstractShutter extends Block {
                 || block instanceof SignBlock
                 || block instanceof ChainBlock
                 || block instanceof VineBlock
-                || block instanceof RedstoneTorchBlock
+                || block instanceof RedStoneWireBlock
                 || block instanceof LeverBlock
-                || block instanceof TripwireBlock
-                || block instanceof TripwireHookBlock
+                || block instanceof TripWireBlock
+                || block instanceof TripWireHookBlock
                 || block instanceof LightningRodBlock
                 || block instanceof BellBlock
-                || block instanceof BigDripleafBlock
-                || block instanceof BigDripleafStemBlock
                 || block instanceof PointedDripstoneBlock
                 || block instanceof AmethystClusterBlock
                 || block instanceof BuddingAmethystBlock
-                || block instanceof CobwebBlock
+                || block instanceof WebBlock
                 || block instanceof CoralFanBlock
-                || block instanceof CoralBlockBlock
+                || block instanceof CoralPlantBlock
+                || block instanceof IronBarsBlock
                 || block instanceof SkullBlock
-                || block instanceof SporeBlossomBlock
-                || block instanceof BambooBlock;
+                || block instanceof SporeBlossomBlock;
     }
 
-    public void setPowered(World world, BlockPos pos, boolean state) {
-        world.setBlockState(pos, world.getBlockState(pos).with(POWERED, state));
-    }
-
-    public void setOpen(World world, BlockPos pos, int state) {
-        world.setBlockState(pos, world.getBlockState(pos).with(OPEN, state));
-    }
-
-    Block getBlockAbove(BlockPos pos, WorldAccess world) {
-        return world.getBlockState(pos.up()).getBlock();
-    }
-
-    Block getBlockBelow(BlockPos pos, WorldAccess world) {
-        return world.getBlockState(pos.down()).getBlock();
-    }
-
-    @Override
-    public FluidState getFluidState(BlockState state) {
-        if (state.get(WATERLOGGED).booleanValue()) {
-            return Fluids.WATER.getStill(false);
+    public void setPowered(Level level, BlockPos pos, boolean state) {
+        if (level.getBlockState(pos).hasProperty(POWERED)) {
+            level.setBlock(pos, level.getBlockState(pos).setValue(POWERED, state), 3);
         }
-        return super.getFluidState(state);
+    }
+
+    public void setOpen(Level level, BlockPos pos, int state) {
+        if (level.getBlockState(pos).hasProperty(OPEN)) {
+            level.setBlockAndUpdate(pos, level.getBlockState(pos).setValue(OPEN, state));
+        }
+    }
+
+    Block getBlockAbove(BlockPos pos, Level level) {
+        return level.getBlockState(pos.above()).getBlock();
+    }
+
+    Block getBlockBelow(BlockPos pos, Level level) {
+        return level.getBlockState(pos.below()).getBlock();
     }
 
     @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(POS);
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+        builder.add(SHUTTER_POS);
         builder.add(FACING);
         builder.add(OPEN);
         builder.add(POWERED);
