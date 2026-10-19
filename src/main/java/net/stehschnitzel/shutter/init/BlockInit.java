@@ -102,35 +102,35 @@ public class BlockInit {
 
     public static final DeferredBlock<Shutter> COPPER_SHUTTER = registerBlock(
 			"copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED, properties),
-            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR));
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR), false);
 
 	public static final DeferredBlock<Shutter> EXPOSED_COPPER_SHUTTER = registerBlock(
 			"exposed_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED, properties),
-            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR));
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR), false);
 
 	public static final DeferredBlock<Shutter> OXIDIZED_COPPER_SHUTTER = registerBlock(
 			"oxidized_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED, properties),
-            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR));
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR), false);
 
 	public static final DeferredBlock<Shutter> WEATHERED_COPPER_SHUTTER = registerBlock(
 			"weathered_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED, properties),
-            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR));
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR), false);
 
 	public static final DeferredBlock<Shutter> WAXED_COPPER_SHUTTER = registerBlock(
 			"waxed_copper_shutter",properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.UNAFFECTED,
-                    properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR));
+                    properties), () -> BlockBehaviour.Properties.ofFullCopy(Blocks.COPPER_DOOR), false);
 
 	public static final DeferredBlock<Shutter> WAXED_EXPOSED_COPPER_SHUTTER = registerBlock(
 			"waxed_exposed_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.EXPOSED, properties),
-            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR));
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.EXPOSED_COPPER_DOOR), false);
 
 	public static final DeferredBlock<Shutter> WAXED_OXIDIZED_COPPER_SHUTTER = registerBlock(
 			"waxed_oxidized_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.OXIDIZED, properties),
-            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR));
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.OXIDIZED_COPPER_DOOR), false);
 
 	public static final DeferredBlock<Shutter> WAXED_WEATHERED_COPPER_SHUTTER = registerBlock(
 			"waxed_weathered_copper_shutter", properties -> new WeatheringCopperShutter(WeatheringCopper.WeatherState.WEATHERED, properties),
-            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR));
+            () -> BlockBehaviour.Properties.ofFullCopy(Blocks.WEATHERED_COPPER_DOOR), false);
 
 
 	//mc but not really
@@ -144,8 +144,7 @@ public class BlockInit {
 
 	public static final DeferredBlock<Shutter> GLASS_SHUTTER = registerBlock(
 			"glass_shutter", Shutter::new, () -> (
-					BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion()),
-			 false);
+					BlockBehaviour.Properties.ofFullCopy(Blocks.GLASS).noOcclusion()), false);
 
     //beachparty
     public static final DeferredBlock<Shutter> PALM_SHUTTER = registerWoodenShutter(
