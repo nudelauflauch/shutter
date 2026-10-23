@@ -32,7 +32,7 @@ public class ShutterBlockModelGenerators extends BlockModelGenerators {
     public static TextureMapping shutterMapping(Block block, Block particle) {
         return new TextureMapping()
                 .put(ShutterTemplates.BASE, TextureMapping.getBlockTexture(block))
-                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(block));
+                .put(TextureSlot.PARTICLE, TextureMapping.getBlockTexture(particle));
     }
 
     //for blocks that look like a different block for example waxed shutters dont have their own textures

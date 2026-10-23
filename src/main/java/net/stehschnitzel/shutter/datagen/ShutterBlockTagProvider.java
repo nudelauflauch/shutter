@@ -28,7 +28,7 @@ public class ShutterBlockTagProvider extends FabricTagProvider.BlockTagProvider 
                 .add(BlockInit.GOLD_SHUTTER)
                 .add(BlockInit.NETHERITE_SHUTTER);
 
-        valueLookupBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+        valueLookupBuilder(BlockTags.MINEABLE_WITH_AXE)
                 .add(BlockInit.AZALEA_SHUTTER)
                 .add(BlockInit.COCONUT_SHUTTER)
                 .add(BlockInit.FLOWERING_AZALEA_SHUTTER)

@@ -2,6 +2,6 @@
   "parent": "shutter:block/template_shutter_lower_2",
   "textures": {
     "base": "shutter:block/pale_oak_shutter",
-    "particle": "shutter:block/pale_oak_shutter"
+    "particle": "minecraft:block/pale_oak_planks"
   }
 }

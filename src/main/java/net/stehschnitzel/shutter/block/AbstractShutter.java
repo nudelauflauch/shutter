@@ -5,7 +5,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
@@ -16,7 +15,6 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.stehschnitzel.shutter.block.properties.ShutterDouble;
 import net.stehschnitzel.shutter.block.properties.ShutterPos;
-import net.stehschnitzel.shutter.init.BlockInit;
 import net.stehschnitzel.shutter.init.SoundInit;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,6 +36,10 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
             EnumProperty.create("double_door", ShutterDouble.class);
 
     boolean isMetal;
+
+    private static final List<Class<? extends Block>> BLOCK_TYPES = List.of(InteractionShutter.class, SugarCaneBlock.class, BambooStalkBlock.class, BambooSaplingBlock.class, CactusBlock.class, BigDripleafBlock.class, BigDripleafStemBlock.class, CrossCollisionBlock.class, VegetationBlock.class, GrowingPlantBlock.class, HangingRootsBlock.class, HangingMossBlock.class,
+            RodBlock.class, CopperGolemStatueBlock.class, HeavyCoreBlock.class, ConduitBlock.class, GlowLichenBlock.class, BaseCoralPlantTypeBlock.class, BannerBlock.class, FenceGateBlock.class, LanternBlock.class, FlowerPotBlock.class, BaseTorchBlock.class, CandleBlock.class, ButtonBlock.class, LadderBlock.class, SignBlock.class, ChainBlock.class, VineBlock.class,
+            RedStoneWireBlock.class, LeverBlock.class, TripWireBlock.class, TripWireHookBlock.class, BellBlock.class, PointedDripstoneBlock.class, AmethystClusterBlock.class, BuddingAmethystBlock.class, WebBlock.class, SkullBlock.class, SporeBlossomBlock.class);
 
     public AbstractShutter(Properties properties, boolean isMetal) {
         super(properties);
@@ -368,12 +370,14 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
             return;
         }
 
-        if (hasRedstonePower(level, pos) && !level.getBlockState(pos).getValue(POWERED)) {
+        boolean hasPower = level.hasNeighborSignal(pos);
+
+        if (hasPower && !level.getBlockState(pos).getValue(POWERED)) {
             setPowered(level, pos, true);
             updateRedstone(level, pos, false);
             this.playSound(null, level, pos);
 
-        } else if (!hasRedstonePower(level, pos) && level.getBlockState(pos).getValue(POWERED)) {
+        } else if (hasPower && level.getBlockState(pos).getValue(POWERED)) {
             setPowered(level, pos, false);
             this.update(level, pos, 0, false);
             this.playSound(null, level, pos, 0);
@@ -461,45 +465,9 @@ abstract class AbstractShutter extends Block implements SimpleWaterloggedBlock {
 
     private boolean isValidBlockForUpdate(Block block) {
         return block == Blocks.AIR
-                || block instanceof InteractionShutter
-                || block instanceof SugarCaneBlock
-                || block instanceof BushBlock
-                || block instanceof BambooStalkBlock
-                || block instanceof BambooSaplingBlock
-                || block instanceof CactusBlock
-                || block instanceof WaterlilyBlock
-                || block instanceof StemBlock
-                || block instanceof BigDripleafBlock
-                || block instanceof BigDripleafStemBlock
-                || block instanceof FenceBlock
-                || block instanceof FenceGateBlock
                 || block == Blocks.WATER
                 || block == Blocks.LAVA
-                || block == Blocks.IRON_BARS
-                || block instanceof LanternBlock
-                || block instanceof FlowerPotBlock
-                || block instanceof TorchBlock
-                || block instanceof CandleBlock
-                || block instanceof ButtonBlock
-                || block instanceof LadderBlock
-                || block instanceof SignBlock
-                || block instanceof ChainBlock
-                || block instanceof VineBlock
-                || block instanceof RedStoneWireBlock
-                || block instanceof LeverBlock
-                || block instanceof TripWireBlock
-                || block instanceof TripWireHookBlock
-                || block instanceof LightningRodBlock
-                || block instanceof BellBlock
-                || block instanceof PointedDripstoneBlock
-                || block instanceof AmethystClusterBlock
-                || block instanceof BuddingAmethystBlock
-                || block instanceof WebBlock
-                || block instanceof CoralFanBlock
-                || block instanceof CoralPlantBlock
-                || block instanceof IronBarsBlock
-                || block instanceof SkullBlock
-                || block instanceof SporeBlossomBlock;
+                || BLOCK_TYPES.stream().anyMatch(type -> type.isInstance(block));
     }
 
     public void setPowered(Level level, BlockPos pos, boolean state) {
