@@ -95,6 +95,7 @@ public class Shutter extends AbstractShutter {
             updatePosNeighborHelper(level, pos);
         }
 
+        redstoneUpdate(level, pos);
 
         // resets the shutter to 0 when it can't be in state 2
         if (!level.isClientSide() && state.getValue(OPEN) == 2
@@ -145,8 +146,6 @@ public class Shutter extends AbstractShutter {
         if (state.getValue(WATERLOGGED)) {
             scheduledTickAccess.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
         }
-
-        redstoneUpdate((Level) level, neighborPos, pos);
 
         // update position
         if (pos.above().equals(neighborPos) || pos.below().equals(neighborPos)) {
@@ -244,8 +243,7 @@ public class Shutter extends AbstractShutter {
             }
         }
 
-
-        boolean neighbor_has_signal = hasRedstonePower(level, blockpos, direction);
+        boolean neighbor_has_signal = hasRedstonePower(level, blockpos);
 
         if (neighbor_has_signal) {
             open_state = doubleDoor == ShutterDouble.NONE
